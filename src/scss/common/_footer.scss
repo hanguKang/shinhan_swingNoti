@@ -1,0 +1,50 @@
+@use '../config/mixin';
+.footer{$font-size:16px; font-size:$font-size;  background-color:#1E3754;color:#fff; padding-top:em(40px); padding-bottom:em(40px);
+  .container{margin:0 auto; width:100%; max-width:1400px; display:flex; justify-content: space-between; align-items: start;
+    .foot_txt_box{font-weight:400;
+      .txt1{margin-top:em(8px);
+        .each{
+          .big{margin:0 em(24px) 0 em(8px); font-size:em(24px);}
+        }
+      }
+      
+    }
+    .footer_util_box{display:flex; justify-content: start; align-items: start;
+      .footer_util_box_1{
+        .foot_util_menu{@extend .footer_util_box;
+          li{margin:0 em(12px);
+            &:first-child{margin-left:0; position:relative;
+              &:before{@include mixin.afterBefore(('_width': 1px, '_height':12px,'_border':0 none, '_border-radius':0, '_padding':0, '_bg-color':rgba(255,255,255,0.5), '_left':auto,'_right':-12px ));
+              }
+            }
+            a{color:#fff; }
+          }
+        }
+        .foot_txt_box{margin-top: em(8px); color: #99a0a8; 
+        }
+      }
+      
+      .webaccess{
+        img{ margin-left:em(32px); width:em(56px);
+
+        }
+      }
+    }
+    @include mixin.maxWidth(720px){
+      $font-size:16px; font-size:$font-size;
+      display:block;
+      .foot_txt_box{font-weight:300; 
+        .txt1{margin-top:em(8px);
+          .each{$font-size:14px; font-size:$font-size; margin-bottom:em(16px, $font-size);
+            .big{margin:0 em(16px,$font-size) 0 em(8px,$font-size); font-size:em(20px);}
+          }
+        }
+      }
+      .footer_util_box{margin-top:em(16px,$font-size);
+        .webaccess{
+          img{display: none;}
+        }
+      }
+    }
+  }// .container End
+}

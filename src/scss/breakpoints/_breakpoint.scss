@@ -1,0 +1,25 @@
+$breakpoints: (
+    'mobile-extra-small': (min-width:  21.25rem),        // 340
+    'mobile-portrait-only': (max-width:  29.9375rem),    // 479
+    'mobile-landscape': (max-width:  51rem),             // 816
+    'tablet-portrait': (min-width: 48rem),               // 768
+    'desktop-template': (min-width: 48.0625rem),         // 769
+    'tablet-portrait-only': (max-width: 48rem),          // 768
+    'tablet-big': (min-width: 60.625rem),                // 970
+    'desktop': (min-width: 64rem),                       // 1024
+    'desktop-medium': (min-width: 75rem),                // 1200
+    'desktop-large': (min-width: 90rem),                 // 1440
+    'desktop-extra-large': (min-width: 120rem)           // 1920
+);
+
+@mixin respond-to($name) {
+    @if map-has-key($breakpoints, $name) { //map-has-key(map, key) key가 map에 있는 지 확인
+        @media only screen and #{inspect(map-get($breakpoints, $name))} { //inspect함수는 "(따옴표)가 없는 값을 반환받을 수 있다. 
+            @content;
+        }
+    }
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.";
+    }
+}
+

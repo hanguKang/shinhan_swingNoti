@@ -1,0 +1,36 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+.s_outer{
+  .vote_create_each{
+    .center_white_box{$font-size:16px; font-size:$font-size; padding:em(40px, $font-size); margin:0 auto; width:100%; max-width:em(1400px, $font-size); background-color:#fff; 
+      .form_row{
+        #o_sort{width:em(148px, $font-size); height:em(48px, $font-size);}
+        .cell{
+          &.btn{cursor:auto;
+            .b-{
+              width:em(120px, $font-size); 
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @include mixin.maxWidth(720px){
+    .vote_create_each{
+      .center_white_box{$font-size:16px; font-size:$font-size;
+        .form_row{
+          #o_sort{width:100%;}
+          .cell{
+            &.btn{cursor:auto; padding:0; width:100%; margin-top:em(8px, $font-size);
+              .b-{
+                width:100%; 
+              }
+            }
+          }
+        }
+      }
+    }
+  }// 720px 반응형 끝
+}

@@ -1,0 +1,16 @@
+@use '../utiles/var';
+@use '../utiles/var_colors';
+@use '../config/mixin';
+.s_outer{ 
+  $font-size:16px; font-size:$font-size;
+  background-color:var_colors.$page_bg;  padding-top:em(48px, $font-size); padding-bottom:em(80px, $font-size); 
+  @include mixin.maxWidth(720px){
+    padding-top:em(16px, $font-size); padding-bottom:em(24px, $font-size); 
+  }
+}
+.onoff_box{background-color:var_colors.$page_bg;}
+.container{
+  .container_wrap{
+    .board_view{ background-color:var_colors.$page_bg; width:100%; max-width:100%; }
+  }
+}

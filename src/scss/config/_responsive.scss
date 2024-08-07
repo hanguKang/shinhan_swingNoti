@@ -1,0 +1,12 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+
+
+.web{display: block;}
+  .mobile{display: none;}
+
+@include mixin.maxWidth($m720){
+  .web{display: none;}
+  .mobile{display: block;}
+}

@@ -1,0 +1,90 @@
+@use '../config/mixin';
+/* ******** reset.css ********* */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ul, ol, li, form, fieldset, legend, label, input, button, select, textarea, header, main, footer, section, article, aside, menu, nav, table, caption, tbody, tfoot, thead, tr, th, td, summary, figure, figcaption, hgroup { margin: 0; padding: 0; border: 0; font-size: 100%;-webkit-box-sizing: border-box; box-sizing: border-box; word-break: keep-all;}
+html, body { width: 100%; height: 100%;}
+body {font-size: 16px; line-height: 1.4; color: #222;font-family:'Noto Sans','sans-serif';letter-spacing:-0.05em;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+h1, h2, h3, h4, h5, h6 { font-size: 1rem; font-weight: normal;}
+ul, ol, li {list-style:none; }
+ul:after,ol:after,dl:after {}
+a {color: inherit; text-decoration: none; display:inline-block;}
+img { max-width: 100%; border: 0;vertical-align:middle; }
+p { max-height: 9999px; }
+address { font-style: normal; }
+button { margin: 0; padding: 0; -webkit-box-sizing: border-box; box-sizing: border-box; border: 0 none; background-color: transparent; font-family: inherit; font-size: inherit; cursor: pointer;-webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none; -webkit-box-sizing: border-box; box-sizing: border-box; cursor: pointer;  }
+caption,legend { height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); font-size:100%; line-height:1;}
+.hide { position:absolute; margin:auto; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px); clip-path:inset(50%);  position:absolute; font-size:100%; line-height:1; }
+.clear {clear:both;}
+.br {display:block;}
+table {display:table;width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;}
+.thead-hidden{position: absolute;left:-9999px; top:-9999px; width:0;height: 0;overflow: hidden;font-size:0; line-height:0; }
+select::-ms-expand { display: none; }
+input::-ms-check { display: none; }
+form {display:block;width:100%;}
+input,  select, textarea { box-sizing:border-box; padding: 0 10px; 
+  //-webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none; -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; display: block; border: 0; font-family: inherit; 
+}
+input[type="checkbox"], input[type="radio"]{accent-color: #000;}
+textarea{resize:none;}
+// a:visited {
+//   color: #636363;
+//   text-decoration: none;
+//   &.inverse{ color:#fff;}
+// }
+a {
+  /*color: #636363;*/
+  color: #252525;
+  text-decoration: none;
+  &.inverse{ color:#fff;}
+}
+.table_th_space{display: flex; justify-content: space-between; align-items:center;}
+.colon{padding:0 10px;}
+body{
+  &.fixing{
+    width:100vw; height:100vh; overflow:hidden; 
+  }
+}
+.clear {clear:both;}
+.br {display:block;}
+.sft_font{transform: rotate(-0.03deg);}
+.ico{display: inline-block; vertical-align: middle;}
+table {display:table;width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;}
+
+.term_txt{$font-size:16px;
+  ul, ol {line-height: 1.8;margin: 0;padding-inline-start: 1.5em;list-style-position: inside;}
+  ul {list-style-type: square;}
+  ol {list-style-type: decimal;}
+  li::marker {font-weight: bold;} //목록의 맨 앞에 점이나 동그라미 
+  ol {counter-reset: list 0;
+    >li{margin-top:$font-size; position:relative;
+      &:before {position:absolute; left:-20px; top:0; content: counter(list, decimal) ". ";counter-increment: list;} 
+    }
+  }
+  //숫자 원형 목록
+  .circle_list {$font-size:16px; font-size:$font-size; counter-reset: circle 0; //시작 목록을 지정, 별도 지정 없으면0부터 시작
+    .circle_item {position: relative;list-style: none;padding-left:24px; 
+      &.digit_2{
+        &:before{left:0.2em;}
+        &:after{}
+      }
+      &:before {position: absolute;top: $font-size;left: 0.4em;transform: translateY(-50%);counter-increment: circle 1;content: counter(circle); font-size: 0.8em;} //counter-increment: 변수 시작숫자 -> 1부터 시작, counter(circle) ->content: ["추가문자열"] counter(변수명->부모요소의 변수명) ["추가문자열"] content: counter(var-count) ": "; , counter-increment"으로 지정한 값만큼씩 자동 증가
+      
+      &:after {content: '';position: absolute;top: $font-size;left: 0;transform: translateY(-50%);display: inline-block;border: 1px solid #333;border-radius: 50%;width: 1em;height: 1em;}
+    }
+  }
+  .kor_list{
+    .kor_item{list-style-type:hangul; margin-top:10px; 
+      &:before{content:''}
+    }
+  }
+}
+
+.bull_list{$font-size:16px; font-size:$font-size;
+  li{padding-left:em(16px,$font-size); position:relative;
+    &:before{
+      @include mixin.afterBefore(('_width':4px, '_height':4px,'_border':0 none, '_border-radius':50%, '_padding':0, '_bg-color':#79818C, '_left':0 )); top:50%; transform:translateY(-50%);
+    }
+  }
+}
+

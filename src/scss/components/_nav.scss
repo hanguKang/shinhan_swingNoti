@@ -1,0 +1,101 @@
+@use '../config/mixin';
+@use '../utiles/var_colors';
+@use '../utiles/var';
+header{
+    &.head_fix{
+        .nav{display:none;}
+    }
+    .nav{font-size:1rem; margin-top: em(38px); letter-spacing: -2px; 
+        .nav_list{margin:0 auto; width: em(690px); 
+            &:has( > .nav_item ){
+                display:flex; justify-content: space-between; align-items: center;
+                
+                .nav_item { font-size: em(14px);
+                    .link{position:relative; display:block; margin:0 auto; width: em(64px); height: em(94px); 
+                     padding-top: em(72px);  text-align:center; 
+                        .txt{ @include mixin.pos_x_50;}
+                    }
+                    &:has( >.nav_list_dp2 ){position:relative; height: em(94px);
+                        &.active{ 
+                            > .link {}
+                            .nav_list_dp2{
+                                display:block;
+                                li{
+                                    &.active{
+                                        a{text-decoration:underline; color:var_colors.$primary_color;}
+                                    }
+                                }
+                            }
+                        }
+                        .nav_list_dp2{$font-size:14px; font-size:$font-size; line-height:1.5; font-weight:600; display:none; box-sizing:border-box; position:absolute; top: em(62px,$font-size); right:0;  z-index:100;  padding:em(12px,$font-size) em(20px,$font-size); margin-bottom:em(4px, $font-size); width:em(107px,$font-size); border:1.5px solid var_colors.$primary_color; border-radius:em(24px,$font-size) 0 em(24px,$font-size) 0; background-color:#fff;
+                        }
+                    }
+                    @each $idx in (1,2,3,4,5,6,7) {
+                        &:nth-child(#{$idx}){ background: url( var.$imgurl_ico + "ico_header_"+$idx+".png") no-repeat 0 0/contain;
+                            &:has(>.nav_list_dp2){
+                                &.active{
+                                    background: url( var.$imgurl_ico + "ico_header_"+$idx+"_on.png") no-repeat 0 0/contain;
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            
+            }
+        }
+
+        @include mixin.maxWidth(720px){
+            display: block;
+        }
+
+    }//nav End
+    @include mixin.maxWidth(720px){
+        $font-size:16px; font-size: $font-size;
+        .m_dep2_menu {margin-top:em(26px, $font-size); height:em(48px, $font-size); width:calc(100% + em(32px, $font-size));  margin-left:em(-16px, $font-size);background-color:var_colors.$primary_bg;
+            display: flex;
+            li{flex:0 0 25%; position:relative;
+                a{display:flex; height:100%; justify-content:center; align-items:center; color:#fff;}
+
+                &:not(:first-child):after{position:absolute; content:'';
+                    left:0; top:50%; transform:translateY(-50%); height:50%; border-left:1px solid rgba(250,250,250, 0.2);
+                }
+            }
+        }
+        .m_gnb_wrap{position:fixed; left:0; top:0; width:100%; height:100%; background-color:#fff; z-index:9999;
+            display: none;
+            .mobile{display: block;}
+            .nav_head{ background-color:var_colors.$primary_bg; 
+                .m_gnb_logo{padding:em(12px,$font-size) em(20px,$font-size); height:em(56px, $font-size); border-bottom:1px solid #003cc7;}
+                .inner{padding:em(12px,$font-size) em(20px,$font-size); 
+                    .m_gnb_util_menu{
+                        display: flex; 
+                        li{ position:relative;
+                            a{padding:0 em(8px,$font-size); color:#fff; font-weight:300;}
+                            &:not(:first-child):after{position:absolute; content:'';
+                                left:0; top:50%; transform:translateY(-50%); height:50%; border-left:1px solid rgba(250,250,250, 0.2);
+                            }
+                        }
+                    }
+                }
+            }
+            .m_gnb{ position:relative; background-color:#F7F7F8; height:calc(100% - em(104px, $font-size)); padding-top:em(16px, $font-size);
+                >li{
+                    &.active{ 
+                        a{background-color:#fff;color:#000; }
+                    }
+                    >a{$font-size:18px; font-size: $font-size; display: flex; width:30%; padding-left:em(16px, $font-size); align-items: center; height:em(44px, $font-size); color:#696E76;}
+                    .m_sub_gnb{$font-size:16px; font-size: $font-size; position:absolute; left:30%; top:0; width:70%; height:100%; padding-top:em(16px, $font-size); background-color:#fff; 
+                        >li{
+                            >a{display: flex; width:100%; padding-left:em(16px, $font-size); align-items: center; height:em(44px, $font-size);}
+                        }
+                    }
+                }
+            }
+
+            .m_gnb_close{$font-size:16px; font-size: $font-size; position:absolute; right:em(16px, $font-size); top:em(12px, $font-size); width:em(24px,$font-size); height:em(24px, $font-size); background:url(var.$imgurl_ico + 'ico_btn_close_white.png') no-repeat 0 0/auto; }
+        }
+    }
+    
+    
+}//header End

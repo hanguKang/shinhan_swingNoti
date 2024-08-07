@@ -1,0 +1,13 @@
+@function rem($px, $base: 16px) {
+  @return calc($px / $base * 1rem);
+}
+
+@function em($px, $base: 16px) {
+  @return calc($px / $base * 1em);
+}
+@function radius_50($height){
+  @return calc($height/2);
+}
+@function flx_equ_spc($width, $cnt, $spc){
+  @return calc( ( ( $width -  ( $cnt - 1) * $spc ) / $cnt ) );
+}

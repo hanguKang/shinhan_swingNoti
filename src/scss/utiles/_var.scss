@@ -1,0 +1,59 @@
+//디자인의 변수 값
+//폰트
+//width, height, padding, margin ...등을 사용
+@use '../config/mixin';
+@use '../utiles/var_colors';
+
+// input
+$formHeight         : 50px;
+// button
+$btnHeight          : calc($formHeight - 6px);
+//font
+$fontSet            : "Pretendard", "맑은고딕","malgun gothic", AppleGothic, "돋움", dotum, Helvetica, Arial, sans-serif;
+$defaultfontsize    : 16px;
+ //h1~h6
+$headingFont        : "Pretendard", "맑은고딕","malgun gothic", sans-serif;
+
+$imgurl:'../images/common/';
+$imgurl_ico:'../images/ico/';
+$imgurl_date:'../images/20240215/';
+
+// 반응형 중단점
+$wide : 1301px;
+$web : 1300px;
+
+$container: 1420px;
+$pc: 1200px;
+$tab: 1080px;
+$m768: 768px;
+$m721: 721px;
+$m720: 720px;
+$m576: 576px;
+
+
+.round-sm, .round_util_btn{
+	border-radius: 4px;
+}
+.round-rg{
+	border-radius: 6px;
+}
+.round-md{
+	border-radius: 8px;
+}
+.round-lg{
+	border-radius: 16px;
+}
+.round-xlg{
+	border-radius: 22px;
+}
+
+.round-xxlg{
+	border-radius: 32px;
+}
+
+.round-xxxlg{
+	border-radius: 50px;
+}
+
+
+

@@ -1,0 +1,215 @@
+@use '../utiles/var';
+@use '../utiles/var_colors';
+@use '../config/mixin';
+
+.modal-overlay{
+  position: fixed; top: 0px; left: 0px; width: 100vw; height: 100vh;
+  z-index: 9999;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.layer_pop_box {
+  .layer_pop_start{$font-size:16px; font-size:$font-size; line-height:1.5;
+    display:inline-block; vertical-align:middle; margin:0 auto; width:100%; max-width:em(640px); height:em(430px); position:relative;
+    .layer_pop_content{padding:em(40px) em(32px) em(32px) em(32px);  position:absolute; width:100%; left:50%; top:50%; transform:translateX(-50%) translateY(-50%); background-color:#fff; 
+      .layer_pop_header{padding:0; margin-bottom:em(24px); border-bottom:0 none;
+        h2.sub_tit2{$font-size:24px; font-size:$font-size; font-weight:600;}
+      }
+      .layer_pop_body{background-color:var_colors.$bbsBg; padding:em(32px);
+        ul.tbl_style_list{
+          li{display: flex; justify-content: start; align-items: stretch; margin-bottom:em(24px);
+            .cell.left{flex:0 0 em(30px); margin-right:em(40px);
+              h3.tit{}
+            }
+            .cell.right{flex:1 1 auto; }
+          }
+            
+        }
+        .tsch_input{width:em(528px); height:em(48px); padding-left:em(20px); }
+        .common_btn_box{margin-top:em(58px);
+          .b-srch.common_btn.sch.btn_search2{height:auto; line-height:1.5;}
+        }
+      }
+      .btn.layer_pop_close{position:absolute; right:em(32px); top:em(40px); width:em(32px); height:em(32px); background:url(var.$imgurl_ico + 'ico_btn_close_popup.png') no-repeat center/auto; border:0 none;}
+    }
+  }
+}
+
+
+//시민참여단 - 투표목록
+#votelist_layer_popup{
+  .layer_pop{box-sizing:border-box; $font-size:16px; font-size:$font-size;
+    width:100%; max-width:em(1200px,$font-size);
+    .sub_tit2{$font-size:24px; font-size:$font-size; padding-left:em(40px, $font-size); position:relative; background:url(var.$imgurl_ico+'.png') no-repeat 0 0/auto; 
+      &:before{display: inline-block; content:''; height:100%; vertical-align: middle;}
+      &:after{position:absolute; content:''; left:0; top:50%; transform:translateY(-50%); width:em(24px, $font-size); height:em(24px, $font-size); background:url(var.$imgurl_ico+'ico_bullet_square.png') no-repeat 0 0/auto; }
+      span { display: inline-block; vertical-align: middle;}
+    }
+    .s_table{overflow-y:auto;
+      th,td[colspan="7"]{text-align:center;}
+      .thd_tr{
+        th{
+          
+        }
+      }
+      .tbd{
+        .item{ height:em(90px, $font-size); 
+          &:nth-child(odd){background-color:#ffffff; }
+          &:nth-child(even){background-color:#F7F7F8; 
+            >:first-child{ border-radius:em(8px); }
+          }
+          &:has(>:nth-child(2)){
+            &:nth-child(even){background-color:#F7F7F8; 
+              >:first-child{ border-radius:em(8px) 0 0 em(8px); }
+              >:last-child{ border-radius:0 em(8px) em(8px) 0; }
+            }
+          }
+          
+        }
+      }
+      
+     }
+  }
+}
+
+//모달 공통
+.layer_pop_box {
+  box-sizing: border-box;
+  $font-size:16px; font-size:$font-size; line-height:1.5;
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: auto;
+  padding: em(100px, $font-size) em(50px, $font-size);
+  background-color: rgba(0,0,0,0.5);
+  text-align: center;
+  &:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  } 
+  
+  //qr 코드
+  &[data-layernum="qr"]{
+    .layer_pop {
+      .qr_scanbox{
+        text-align:center;
+        .common_btn_box{margin-bottom:0;}
+      }
+    }
+  }
+
+  //비공개 투표
+  &[data-layernum="private"]{
+    .layer_pop {
+      .form_input{margin-top:em(24px, $font-size);}
+      .common_btn_box{margin-bottom:0;}
+    }
+  }
+  
+  
+  .layer_pop {$font-size:16px; font-size:$font-size; 
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    max-width: em(640px, $font-size);
+    padding: em(48px, $font-size) em(32px, $font-size);
+    background-color: #fff;
+    text-align: left;
+    vertical-align: middle;
+    .sub_tit2{$font-size:24px; font-size:$font-size; font-weight:600; margin-bottom:em(24px, $font-size);}
+    
+    //---------------------------------- 팝업 배너 
+    .vote_pop_contents {
+      .vote_pop_slider_box{
+        .vote_pop_slider.owl-carousel.owl-theme.owl-loaded{position: relative; overflow:hidden;
+          .owl-stage-outer{position:relative; right:-2px;}
+          .owl-nav{
+            [class*=owl-] {
+              position: absolute;
+              left:0; 
+              top: 50%;
+              z-index: 10;
+              overflow: hidden;
+              width: em(36px, $font-size);
+              height: em(36px, $font-size);
+              margin-top: em(-26px, $font-size);
+              background: url(var.$imgurl_ico + 'ico_banner_btn_prev.png') center no-repeat !important;
+              text-indent: -9999px;
+              &[class ^="owl-next"] {
+                left: auto;
+                right:0;
+                background: url(var.$imgurl_ico + 'ico_banner_btn_next.png') center no-repeat !important;
+              }
+            }
+          }
+        }
+      }
+    }// .vote_pop_contents End
+    .vote_pop_txt{
+      .vote_pop_tit{$font-size:20px; font-size:$font-size; font-weight:600;}
+      .vote_pop_txt {$font-size:16px; font-size:$font-size; color:#484B51;
+        p {}
+      }
+    }// 팝업 배너 끝
+
+    //--------------------------------- 팝업 신고하기
+    .report_item_list{margin-bottom:em(32px, $font-size);
+      li{margin-bottom:em(16px, $font-size);
+      }
+    }     
+    //하단 설명
+    .style_deco_box1 {
+      padding: em(24px,$font-size);
+      background-color: var_colors.$input_bg;
+    }
+    //팝업 닫기
+    .layer_pop_close{position:absolute; right:em(40px); top:em(40px); width:em(32px); height:em(32px); @include mixin.bgSet; background-image:url(var.$imgurl_ico+'ico_btn_close_popup.png');}
+  }
+  .common_btn_box.ta_c{margin-top:em(24px); text-align: center; display: flex; justify-content: center; align-items: center;
+    .common_btn{margin:0 em(8px, $font-size);height:em(52px); font-weight:600; display: flex; justify-content: center; align-items: center;
+      &.cancel_btn{background-color:#fff; color:var_colors.$primary_color; border:2px solid var_colors.$primary_color;}
+      &.confirm_btn{}
+    }
+  }
+}
+@include mixin.maxWidth(720px){
+    .layer_pop_box{position:fixed;
+      $font-size:16px; font-size:$font-size;
+      padding:40% em(16px, $font-size);
+      .layer_pop{padding:em(16px,$font-size); position:fixed; width:calc(100% - em(32px,$font-size));left:em(16px, $font-size); right:em(16px, $font-size);
+        .layer_pop_close{right:em(16px, $font-size); top:em(16px, $font-size);}
+      }
+      .common_btn_box.ta_c{
+        $font-size:16px; font-size:$font-size;
+        .common_btn{height:em(48px,$font-size); 
+          &.cancel_btn{}
+          &.confirm_btn{}
+        }
+      }
+    }
+}
+
+
+//투표목록 이미지 팝업
+.img_box{$font-size:16px; font-size:$font-size; position:relative; 
+  $padding:10px;
+  .vote_img_tooltip{position:absolute; left:100%; top:100%; padding:em($padding, $font-size); width:200%; background:#fff; box-shadow: 0 0 8px rgba(0,0,0,.2); border-radius:8px;
+    img{width:100%; height:auto; border-radius:6px;}
+    //&:before{position:absolute; left:-36px; top:em($padding*-2, $font-size); content:''; width:0px; height:0px; border:40px solid #fff; border-left-color:transparent; border-bottom-color:transparent; transform: scale(1, 0.5); box-shadow:0 0 4px rgba(0,0,0,0.2);}
+  }
+}
+
+@include mixin.maxWidth(720px){
+  .img_box{$font-size:16px; font-size:$font-size; position:relative; 
+    $padding:10px;
+    .vote_img_tooltip{display:none;}
+  }
+}
+  

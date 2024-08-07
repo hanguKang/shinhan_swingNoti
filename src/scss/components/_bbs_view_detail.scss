@@ -1,0 +1,151 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+
+//게시판 상세
+.board_view{$font-size:16px; font-size:16px; line-height:1.5; margin:0 auto; width:100%; max-width:em(1400px, $font-size); 
+  //게시판 상단 제목
+  .board_view_wrap{ padding:em(40px, $font-size); margin-bottom:em(40px, $font-size); background-color:#fff;
+    &.question{
+      .tit{
+        &:before{content:'Q'; display: inline-block; $font-size:32px; font-size:$font-size; font-weight:600; margin-right:em(16px,$font-size);  color:var_colors.$primary_bg;}
+      }
+    }
+    &.answer{
+      .tit{
+        &:before{content:'A'; display: inline-block; $font-size:32px; font-size:$font-size; font-weight:600; margin-right:em(16px,$font-size);  color:var_colors.$btn_bg_red;}
+      }
+    }
+  }
+  .board_view_top{ padding-bottom:em(24px, $font-size); margin-bottom:em(24px, $font-size); border-bottom:1px solid var_colors.$bdcolor;
+    .info_list{ display: flex; align-items: center;
+      li{$font-size:16px; font-size:16px; position:relative; margin-right:em(34px, $font-size); color:#71777f;
+        &:not(:last-child):after{$font-size:16px; font-size:16px;
+          @include mixin.afterBefore(('_width':1px, '_height':em(14px,$font-size) ,'_border':0 none, '_border-radius':0, '_padding':0, '_bg-color':#DDE1E4, '_left':auto,'_right':em(-17px,$font-size) ));
+        }
+        .label{margin-right:em(12px, $font-size);text-shadow:0 0 1px #26282C; color:#26282C;}
+        .fc_partial, .per {color:var_colors.$color_orange;}
+        
+      }
+    }
+  }
+  //게시판 본문
+  .board_view_con{ 
+    .editor_view{$font-size:16px; font-size:16px; line-height:1.5; color:#484B51;}
+    //첨부파일, 정책반영괄과의 투포명
+    .board_view_info{margin-bottom:em(32px, $font-size);}
+    .board_view_file, .board_view_info {display:flex; align-items: center; margin-top:em(40px, $font-size); padding:em(20px, $font-size) em(24px, $font-size);  background-color:var_colors.$input_bg;
+      .ico{$font-size:20px; font-size:$font-size; margin-right:em(12px, $font-size);
+        &.ico_point{display: inline-block; width:em(28px,$font-size); height:em(28px,$font-size); border-radius:50%; background:var_colors.$primary_bg url(var.$imgurl_ico + 'ico_exclamation_mark.png') no-repeat center center/auto; }
+      }
+      .label{font-weight:500; text-shadow:0 0 1px #26282C; margin-right:em(34px,$font-size); position:relative; color:#26282C;
+        &:after{$font-size:16px; font-size:16px;
+          @include mixin.afterBefore(('_width':1px, '_height':em(14px,$font-size) ,'_border':0 none, '_border-radius':0, '_padding':0, '_bg-color':#C6CBD0, '_left':auto,'_right':em(-17px,$font-size) ));
+        }
+      }
+      .right_cell{
+        &:before{content:''; display: inline-block; height:100%; vertical-align: middle;}
+        .file_list.inlineblock{display: inline-block; vertical-align: middle;
+          li{display: inline-block; margin-right:em(24px,$font-size); 
+            a{padding-right:em(30px,$font-size); background:url(var.$imgurl_ico + 'ico_file.png') no-repeat 100% 50%/auto; }
+          }
+        }
+        .veiwstory-btn-box{vertical-align: middle;
+          a{margin-right:em(8px,$font-size);
+            img{}
+          }
+        }
+      }
+    }
+  }
+  //이전 글, 다음 글 
+  .board_view_navi{$font-size:20px; font-size:$font-size; font-weight:500; text-shadow:0 0 1px #000000; display: flex; justify-content: space-between; align-items:center;   padding:em(48px,$font-size) em(40px, $font-size) ; position:relative;  background-color:#fff;
+    .prev_box{flex:0 1 auto; width:50%; 
+      .each{position:relative; display: flex; align-items: center; padding-left:em(60px, $font-size); 
+        &:before{ @include mixin.afterBefore(('_width':em(32px,$font-size), '_height':em(32px, $font-size) ,'_border':0 none, '_border-radius':0, '_padding':0,'_left':0));background:url(var.$imgurl_ico + 'ico_bbs_arr_prev.png') no-repeat center/auto; }
+      }
+    }
+    .next_box{flex:0 1 auto; width:50%; position:relative;
+      .each{  display: flex; justify-content:right; align-items: center;  text-align:right; padding-right:em(60px, $font-size); 
+        &:before{ @include mixin.afterBefore(('_width':em(32px,$font-size), '_height':em(32px, $font-size) ,'_border':0 none, '_border-radius':0, '_padding':0,'_right':0)); background:url(var.$imgurl_ico + 'ico_bbs_arr_nxt.png') no-repeat center/auto; flex:0 0 em(60px, $font-size);}
+      }
+    }
+    .tit{flex:0 0 calc( 100% - em(94px, $font-size)); @include mixin.ellipsis(2); }
+    .ico_list{position:absolute; left:50%; top:50%; transform:translateX(-50%) translateY(-50%); width:em(48px, $font-size); height:em(48px, $font-size); background:url(var.$imgurl_ico + 'ico_bbs_list.png') no-repeat 0 0/auto; }
+
+    .each{ color:#26282C; 
+      >:first-child{margin-right:em(32px,$font-size); }
+      &:before{content:''; display: inline-block; height:100%; vertical-align: middle; }
+      .label{font-weight:600; text-shadow:0 0 1px #26282C; flex:0 0 em(34px, $font-size);}
+      .tit{font-weight:400; } 
+    }
+  }
+}
+
+@include mixin.maxWidth(720px){
+  //게시판 상세
+  .board_view{$font-size:16px; font-size:16px; 
+    //게시판 상단 제목
+    .board_view_wrap{ padding:em(16px, $font-size); margin-bottom:em(24px, $font-size); border-radius:0;}
+    .board_view_top{ padding-bottom:em(24px, $font-size); margin-bottom:em(24px, $font-size); border-bottom:1px solid var_colors.$bdcolor;
+      .info_list{ display: flex; align-items: center; flex-wrap:wrap;
+        li{$font-size:16px; font-size:16px; position:relative; margin-right:em(34px, $font-size); color:#71777f; margin-bottom:em(8px, $font-size); max-width:100%;
+          &:not(:last-child):after{display: none;}
+          .info{max-width:100%; @include mixin.ellipsis(1); margin-bottom:em(8px, $font-size); }
+          .label{margin-right:em(12px, $font-size);text-shadow:0 0 1px #26282C; color:#26282C; }
+          .fc_partial, .per {color:var_colors.$color_orange;}
+          
+        }
+      }
+    }
+    .board_view_navi{$font-size:16px; font-size:$font-size; font-weight:500; box-sizing:content-box; padding:em(12px,$font-size) em(2px,$font-size); border-radius:0; height:em(40px, $font-size);
+      .prev_box{
+        .each{position:relative; display: flex; align-items: center; padding-left:em(28px, $font-size); 
+          &:before{ @include mixin.afterBefore(('_width':em(32px,$font-size), '_height':em(32px, $font-size) ,'_border':0 none, '_border-radius':0, '_padding':0,'_left':0));background:url(var.$imgurl_ico + 'ico_bbs_arr_prev.png') no-repeat center/auto; }
+        }
+      }
+      .next_box{flex:0 1 auto; width:50%; position:relative;
+        .each{  display: flex; justify-content:right; align-items: center;  text-align:right; padding-right:em(28px, $font-size); 
+          &:before{ @include mixin.afterBefore(('_width':em(32px,$font-size), '_height':em(32px, $font-size) ,'_border':0 none, '_border-radius':0, '_padding':0,'_right':0)); background:url(var.$imgurl_ico + 'ico_bbs_arr_nxt.png') no-repeat center/auto; flex:0 0 em(60px, $font-size);}
+        }
+      }
+      .tit{$font-size:14px; font-size:$font-size; flex:0 0 calc( 100% - em(54px, $font-size)); }
+      .ico_list{position:absolute; left:50%; top:50%; transform:translateX(-50%) translateY(-50%); width:em(32px, $font-size); height:em(32px, $font-size); background:url(var.$imgurl_ico + 'ico_bbs_list.png') no-repeat 0 0/contain; }
+
+      .each{ color:#26282C; 
+        >:first-child{margin-right:0; }
+        &:before{content:''; display: inline-block; height:100%; vertical-align: middle; }
+        .label{font-weight:600; text-shadow:0 0 1px #26282C; flex:0 0 em(34px, $font-size);}
+        .tit{font-weight:400; } 
+      }
+    }
+    //게시판 본문
+    .board_view_con{ 
+      .editor_view{}
+      //첨부파일, 정책반영괄과의 투포명
+      .board_view_info{}
+      .board_view_file, .board_view_info {margin-top:em(16px, $font-size); padding:em(8px, $font-size) em(24px, $font-size); 
+        .ico{
+          &.ico_point{}
+        }
+        .label{
+          &:after{}
+        }
+        .right_cell{
+          &:before{display: none;}
+          .file_list.inlineblock{
+            li{
+              a{padding-right:em(30px,$font-size); background:url(var.$imgurl_ico + 'ico_file.png') no-repeat 100% 50%/auto; @include mixin.ellipsis(1); }
+            }
+          }
+          .veiwstory-btn-box{
+            a{
+              img{}
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

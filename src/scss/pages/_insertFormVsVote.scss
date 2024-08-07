@@ -1,0 +1,64 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+.s_outer{
+  #aform{
+    .center_box{
+      .vote_create_each{
+        .center_white_box.full{
+          .form_row{position:relative;
+            .cell{
+              .form_textarea{$font-size:18px; font-size:$font-size; 
+                &.vs_tit{width:100%; height:em(120px, $font-size); padding-bottom:em(24px, $font-size); border:1px solid var_colors.$bdcolor;}
+              }
+            }
+            &.vs_box_area{$font-size:18px; font-size:$font-size; display: flex; justify-content: space-between; align-items: center;
+              .vs_attach_img{flex:0 0 calc(50% - em(12px, $font-size)); height:auto;
+                .input_box{position:relative; margin-bottom:em(24px, $font-size);
+                  .form_input{height:em(120px, $font-size);}
+                  .txt_length{bottom:em(12px, $font-size);}
+                }
+                .repre_img_box{$font-size:18px; font-size:$font-size; position:relative; height:em(204px, $font-size); background-color: var_colors.$input_bg;
+                  .inner_txt_box{display: block; height:100%; text-align: center;
+                    &:before{content:''; display: inline-block; height:100%; vertical-align: middle;}
+                    .txt_box {$font-size:14px; font-size:$font-size;
+                      display: inline-block;
+                      padding-top: em(45px, $font-size); background: url(var.$imgurl_ico + 'ico_logo_sm.png') center 0/auto no-repeat;
+                      vertical-align: middle;
+                    }
+                  }
+                  
+                }
+              }
+              .vs{$font-size:18px; font-size:$font-size; position:absolute; left:50%; z-index:10; bottom:em(40px, $font-size); transform:translateX(-50%); width:em(64px, $font-size); height:em(64px, $font-size); border-radius:50%; text-align: center; background:url(var.$imgurl_ico + 'ico_vs_big.png') no-repeat 0 0/auto;} 
+            }
+            @include mixin.maxWidth(720px){
+
+              &.vs_box_area{$font-size:18px; font-size:$font-size; display: block;
+                .vs_attach_img{ height:auto; 
+                  &:first-child{position:relative; margin-bottom:em(100px, $font-size);
+                    &:before{content:''; position:absolute; bottom:em(-50px,$font-size); width:100%; height:0; border-top:4px dashed lighten(var_colors.$primary_bg, 30%);}
+                  }
+                  .input_box{position:relative; margin-bottom:em(24px, $font-size);
+                    .form_input{height:auto;}
+                    .txt_length{bottom:em(12px, $font-size);}
+                  }
+                }
+              }
+              .cell{
+                &.vs{$font-size:18px; font-size:$font-size; position:absolute; left:50%; z-index:10; bottom:50%; transform:translateX(-50%) translateY(50%); box-shadow:0 0 8px rgba(100,100,100, .3);
+                } 
+              }
+              
+            }
+
+            .input{$font-size:18px; font-size:$font-size;
+              .txt_length{bottom:em(12px, $font-size);}
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}

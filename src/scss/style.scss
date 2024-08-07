@@ -1,0 +1,53 @@
+@charset 'UTF-8';
+@import './font/fonts';
+@import './common/bootcustom_var';
+@import '../../node_modules/bootstrap/scss/bootstrap';
+@import './common/bootcustom_style';
+@import './config/function';
+@import './config/mixin';
+@import './config/reset';
+@import './utiles/var_colors';
+@import './utiles/var';
+@import './config/responsive';
+@import './breakpoints/breakpoint';
+@import './utiles/box-shadow';
+@import './components/button';
+@import './components/input';
+@import './layout/layout';
+@import './components/h_title';
+@import './common/header';
+@import './common/footer';
+@import './components/nav';
+@import './components/modal';
+@import './pages/sub_conts_head';
+@import './components/bbs_common';
+@import './components/bbs_view_detail';
+@import './components/bbs_pic';
+@import './common/page_bg_color';
+@import './common/pagination';
+@import './components/banner';
+@import './pages/index';
+@import './pages/term';
+@import './pages/select_hotissue_jumin';
+@import './pages/updateFormObjectiveVote';
+@import './pages/insertFormVsVote';
+@import './pages/insertForm';
+@import './pages/usr_form';
+@import './pages/join';
+@import './components/owl.carousel';
+
+
+
+
+header+img{background:black;}
+body{font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+.pagination{display:block;}
+
+.mobile{display:none;}
+@media only screen and ( max-width: 720px )  {
+  .web{display:none;}
+}
+
+@media only screen and (pointer:coarse) and (max-height:720px) {
+  .web{display:none;}
+}

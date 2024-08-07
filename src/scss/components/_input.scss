@@ -1,0 +1,256 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+
+//체크박스
+.chk_each_box{$font-size:16px; font-size: $font-size; text-align:left; }
+.chk_each, .chk_each.notxt{margin-right:em(20px); letter-spacing: -1px;
+  input[type="checkbox"]{$font-size:16px; font-size: $font-size; position:relative; width:em(32px, $font-size); height:em(32px, $font-size); vertical-align: middle; border-color:#AAB0B8;
+    &:checked{
+      &:before{  content: ""; position:absolute; width:em(32px, $font-size); height:em(32px, $font-size); background:#fff url(var.$imgurl_ico+'ico_checkbox.png') no-repeat 0 0/contain;}
+      
+    }
+  }
+  @include mixin.maxWidth(var.$m721){
+    $font-size:16px; font-size:$font-size; flex:0 0 auto;  height:em(24px, $font-size); margin-right:em(8px, $font-size);
+    input[type=checkbox] {width: em(24px, $font-size); height:em(24px, $font-size);  overflow: hidden;
+      &:checked{ 
+        &:before{ width:em(24px, $font-size); height:em(24px, $font-size); border-radius:4px; }
+      }
+    }
+  }
+}
+
+
+//라디오
+.radio_each, .chk_each.notxt{$font-size:16px; font-size:$font-size; letter-spacing: -2px; display:inline-block; color:#484B51; 
+  input[type="radio"]{position:relative; margin-right:em(12px,$font-size); width:em(32px, $font-size); height:em(32px, $font-size); border-color:#AAB0B8; vertical-align: middle;
+    &:checked{
+      &+label{ vertical-align: middle;
+        .up{color:var_colors.$primary_color; font-weight:600;}
+      }
+      &:before{ position:absolute; width:em(32px, $font-size); height:em(32px); content: ""; background:#fff url(var.$imgurl_ico+'ico_radio_big.png') no-repeat 0 0/contain;}
+      
+    }
+    &+label{display: inline-block; vertical-align:middle; margin-right:em(40px,$font-size);}
+
+    @include mixin.maxWidth(var.$m721){
+      width:em(24px, $font-size); height:em(24px, $font-size);
+      &:checked{
+        &+label{ 
+          .up{}
+        }
+        &:before{ width:em(24px, $font-size); height:em(24px); content: ""; background:#fff url(var.$imgurl_ico+'ico_radio_big.png') no-repeat 0 0/contain;}
+        
+      }
+      &+label{margin-right:em(12px, $font-size);}
+    }
+  }
+}
+//팝업에 사용하는 라디오
+.layer_pop_box{$font-size:16px; font-size:$font-size;
+  .radio_each{display:flex; justify-content: flex-start; align-items: center;
+    input[type="radio"]{
+      &[id ^="vItem"]{margin-right:em(6px, $font-size); vertical-align:top; align-self: start;}
+      &+label{
+        &[for ^="vItem"]{width:calc(100% - em(40px, $font-size)); margin-right:0; word-break: break-all; letter-spacing: -2px;}
+      }
+    }
+  }
+}
+//셀렉트
+.form_slt{$font-size:16px; font-size:$font-size; appearance:none; background: url(var.$imgurl_ico+'ico_slct_arrow_down.png') no-repeat 90% 50%/auto; width:em(148px, $font-size); height:em(48px,$font-size); border:1px solid var_colors.$bdcolor;
+    // &::part(button) {
+    //   border: 2px solid #aa99a0;
+    //   border-radius: .15rem;
+    //   padding: .6rem;
+    // }
+    // &::part(listbox) {
+    //   background: #aa99a0;
+    //   box-shadow: 0 0 .3rem 0 #0003;
+    //   margin-top: .3rem;
+    //   border: 2px solid #aa99a0;
+    //   border-radius: .15rem;
+    //   padding: 0;
+    //   display: grid;
+    //   grid-template-rows: repeat(10, 1fr);
+    //   grid-auto-flow: column;
+    //   gap: 2px;
+    // }
+    // & option {
+    //   padding: .6rem;
+    //   background: white;
+    // }
+  &:focus{background-image: url(var.$imgurl_ico+'ico_slct_arrow_up.png');}
+
+  @include mixin.maxWidth(720px){
+    width:100%;
+  }
+
+}
+
+
+
+.form_row{$font-size:16px; font-size:$font-size; display:flex; justify-content: start; align-items: center; margin-bottom:0;
+  &.up{align-items: start;
+    .cell{
+      &.label{ line-height:2.5; }
+      .ref_bull_txt{color:var_colors.$color_orange; margin-top:em(12px, $font-size); padding-left:em(16px, $font-size); 
+      }
+    }
+  }
+  &.service{
+    .cell{
+      &.label{ flex:0 0 em(120px, $font-size); 
+        .star_mark{margin-right:em(4px,$font-size); color:var_colors.$color_orange; vertical-align: middle;}
+      }
+      // .cell요소가 2개가 되었던 3개가 되었던 .inpu요소는 2개일 때 또는 3개일 때 고정된 값을 뺀 나머지 값을 모두 갖게 된다. 
+      &.inp{flex:1 0 auto; margin:0 em(16px,$font-size);
+        &.no_margin{flex:0 0 calc(100% - em(284px,$font-size)); margin:0;}
+        .form_input{width:100%;}
+        .form_in{margin-top:em(16px, $font-size);
+          &:before{
+            content:''; display: inline-block; margin-right:em(8px,$font-size); width:em(16px, $font-size); height:em(16px, $font-size); background:url(var.$imgurl_ico+'ico_star.png') no-repeat 0 0/ auto; vertical-align: middle;
+          }
+        }
+      }
+      &.btn{padding:0; flex:0 0 em(134px, $font-size); 
+        .form_btn{line-height:em(48px, $font-size); font-weight:300; padding:0 em(12px, $font-size); width: 100%; height:em(48px,$font-size); max-width: em(124px,$font-size); background-color: var_colors.$viewbdtopcolor; color: #fff; text-align: center; }
+      }
+    }
+  }  
+  .cell{$fon-size:16px; font-size:$font-size; flex: 1 0 auto; position:relative;
+    
+    .pwd_confirm_box{margin-top:em(24px, $font-size);
+      .form_input{display: inline-block; width:48%; }
+    }
+    
+    &.f_shrink{flex:0 1 auto;
+      &:nth-child(2){min-width:em(180px, $font-size);}
+    }
+    //input
+    input[type="text"]:not(.cal_input) {padding-right: 110px;}
+    //글자수 제한
+    .txt_length{position: absolute; right: em(24px,$font-size); bottom:em(24px, $font-size); color:#26282C;
+      &.input{bottom:em(12px, $font-size);} 
+      b{color:var_colors.$primary_color; font-weight:600; }
+      .maxlength_val{}
+    }
+    //이미지
+    &.attach_img, &.vs_attach_img{flex:0 0 em(240px); margin-right:em(32px, $font-size); height:em(204px,$font-size);
+      :is( &.vs_attach_img ){margin-right:0;}
+      .repre_img_box { position: relative; height: 100%; background-color: #f3f7fd; font-size: 0; text-align: center; 
+        .att_view_img_box { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden;
+          .inner_txt_box { height: 100%; position: absolute; left: 0; top: 0; width: 100%; 
+            &:before{ content: ''; display: inline-block; height: 100%; vertical-align: middle; }
+            .txt_box { display: inline-block; padding-top: 45px; background: url(var.$imgurl_ico+'ico_logo_sm.png') no-repeat 50% 0/auto auto; font-size: 16px; vertical-align: middle; 
+            }
+          }
+          img{position:absolute; left:50%; top:50%; transform:translateX(-50%) translateY(-50%); width: 80%; height:auto; }
+        }
+        .attach_img_del_btn { display: block; position: absolute; right: 5px; top: 5px; z-index: 3; width: 34px; height: 34px; background:url(var.$imgurl_ico+'ico_close_img.png') center /cover no-repeat; border-radius: 50%; transition: all 0.3s; 
+        }
+      }//.repre_img_box End
+    }
+    //textarea박스
+    &.tarea{ height:em(204px,$font-size);
+      .form_textarea{padding:em(16px, $font-size) em(24px, $font-size); width:100%; height:100%; border:1px solid var_colors.$bdcolor; }
+    }
+    //.label 제목
+    &.label{flex:0 0 em(175px,$font-size); $font-size:20px; font-size:$font-size; font-weight:500; text-shadow:0 0 1px #26282C; 
+      &.sm {flex:0 0 em(160px,$font-size); }
+    }
+    //라디오 박스
+    &.radio{display:flex; justify-content: start; align-items: center;
+      .radio_each{$font-size:16px; font-size: $font-size; display:flex; justify-content: start; align-items: center; margin-right:em(40px,$font-size);}
+
+    }
+  }
+
+  
+  
+  //질문과 답변 만들기 #1 - 상단
+  &.v_tit_s{padding-right:em(250px); 
+    //투표유형 제목 - 주관식/ 객관식
+    .form_input{ background-color:var_colors.$input_bg;
+      &:focus{}
+    }
+  }
+  
+}//.form_row End 
+
+
+
+
+//글자입력
+.form_input {$font-size:16px; font-size:$font-size; width: 100%; height: em(48px, $font-size); padding:em(16px, $font-size) em(24px, $font-size); border:1px solid var_colors.$bdcolor; 
+  &.ico{padding:0; padding-left:em(40px, $font-size); 
+    &.usr{ border-radius:em(4px,$font-size) em(4px,$font-size) 0 0; background:url(var.$imgurl_ico+'ico_usr_off.png') no-repeat 12px 50%/auto auto, url(var.$imgurl_ico+'ico_login_close.png') no-repeat 96% 50%/auto auto;
+      &:focus{background:url(var.$imgurl_ico+'ico_usr_on.png') no-repeat 12px 50%/auto auto;}
+    }
+    &.pwd{ top:-1px; border-radius:0 0 em(4px,$font-size) em(4px,$font-size); background:url(var.$imgurl_ico+'ico_lock_off.png') no-repeat 12px 50%/auto auto;
+      &:focus{background:url(var.$imgurl_ico+'ico_lock_on.png') no-repeat 12px 50%/auto auto;}
+    }
+    &.phone, &#moblphonNo, &.numeric{
+      background:url(var.$imgurl_ico+'ico_phone_off.png') no-repeat 12px 50%/auto auto; 
+      &:focus{background:url(var.$imgurl_ico+'ico_phone_on.png') no-repeat 12px 50%/auto auto;}
+    }
+    &.certify, &#smsCrtfcNo, &.cnum{
+      background:url(var.$imgurl_ico+'ico_certify_off.png') no-repeat 12px 50%/auto auto; 
+      &:focus{background:url(var.$imgurl_ico+'ico_certify_on.png') no-repeat 12px 50%/auto auto;}
+    } 
+
+  }
+
+}
+
+@include mixin.maxWidth(720px){
+  .form_row{$font-size:16px; font-size:16px;
+    display: block;
+    .cell{
+      input[type="text"]:not(.cal_input) {padding-right: 0;}
+      &.input_box{}
+      &.btn.txt_box{width:100%; margin-top:em(8px, $font-size);
+        a.form_btn{width:100%;}
+      }
+      &.txt_box{}
+      &.up{align-items: start;
+        .cell{
+          &.label{ line-height:2.5; }
+          .ref_bull_txt{ margin-top:em(12px, $font-size); padding-left:0; 
+          }
+        }
+      }
+      //글자수 제한
+      .txt_length{position: static; display: block; text-align:right; margin:em(8px, $font-size) em(8px,$font-size) 0 0; color:#26282C;
+        &.input{bottom:em(12px, $font-size);} 
+        b{color:var_colors.$primary_color; font-weight:600; }
+        .maxlength_val{}
+      }
+    }
+
+    &.service{
+      .cell{
+        &.label{ flex:0 0 em(120px, $font-size); 
+          .star_mark{margin-right:em(4px,$font-size); color:var_colors.$color_orange; vertical-align: middle;}
+        }
+        // .cell요소가 2개가 되었던 3개가 되었던 .inpu요소는 2개일 때 또는 3개일 때 고정된 값을 뺀 나머지 값을 모두 갖게 된다. 
+        &.inp{flex:1 0 auto; margin:0;
+          &.no_margin{flex:0 0 calc(100% - em(284px,$font-size)); margin:0;}
+          .form_input{width:100%;}
+          .form_in{position:relative; margin-top:em(16px, $font-size); margin-bottom:em(8px, $font-size); padding-left:14px;
+            &:before{ position:absolute; left: 0px; top:9px; transform:translateY(-50%); 
+              content:''; display: inline-block; margin-right:em(8px,$font-size); width:em(16px, $font-size); height:em(16px, $font-size); background:url(var.$imgurl_ico+'ico_star.png') no-repeat 0 0/ auto; vertical-align: middle;
+            }
+          }
+        }
+        &.btn{padding:0; flex:0 0 100%; display: block; margin-top:em(8px, $font-size); width:100%;
+          .form_btn{width: 100%;  max-width: 100%; }
+          &.ccount{text-align:right; margin-top:em(8px, $font-size);}
+        }
+      }
+    }
+    .radio_each{flex:0 0 50%; width:50%; margin:8px 0 ;}
+  }
+  .form_input {$font-size:16px; font-size:$font-size; height: auto; padding:em(8px, $font-size) em(8px, $font-size);}
+}

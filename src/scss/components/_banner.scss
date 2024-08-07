@@ -1,0 +1,96 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+
+.banner_seoul{
+  $font-size:16px; font-size:$font-size;
+  padding-bottom: em(60px,$font-size); background-color:#F7F7F8;  
+  .banner_box{text-align:center;}
+  @include mixin.maxWidth(720px){
+    $font-size:16px; font-size:$font-size; padding-bottom:em(32px, $font-size);
+  }
+}
+//hot issue > 페이지 상단 배너
+
+[data-focus="focus01"]{
+  .vote_pop_slider.owl-theme.owl-carousel {$font-size:16px; font-size:$font-size;
+    .owl-item {
+      img{max-width:100%; }
+    }
+    .owl-nav {
+      [class*=owl-] {
+        width:em(56px); height:em(56px); left:em(-28px); 
+        background: url(var.$imgurl_ico + 'banner_arrow_left.png') center no-repeat !important;
+        box-shadow:0 4px 24px 0 rgba(0,0,0,0.08); 
+        &.owl-next{
+          width:em(56px); height:em(56px); right:em(-28px); 
+          background: url(var.$imgurl_ico + 'banner_arrow_right.png') center no-repeat !important;
+          box-shadow:0 4px 24px 0 rgba(0,0,0,0.08);
+        }
+      }
+    }
+  }
+}
+.vote_detail .top_img_box {
+  margin-bottom: 55px;
+  text-align: center;
+}
+
+.banner_box{
+  position:relative; 
+}
+.owl-carousel {
+  width: 100%;
+  z-index: 1;
+  .owl-stage-outer {
+
+  }
+}
+.no-js .owl-carousel, .owl-carousel.owl-loaded {
+  display: block;
+}
+.owl-carousel .owl-stage{position:relative; display: flex ; align-items: start;
+  .owl-item { height:0; 
+    &.active{height:auto;}
+    &.article-items{ 
+      display: flex;justify-content: center;align-items:center;
+      flex: 1 0 auto;
+    }
+  }
+}
+
+
+.owl-carousel.owl-drag .owl-item{
+  float:none;
+  overflow:hidden; 
+  a{
+    position:relative; display: flex; overflow:hidden;
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    img{}
+  }
+}
+
+.owl-nav{$font-size:16px; font-size:$font-size; width:100%; height:1px; 
+  button{position:absolute; top:40%; transform:translateY(-50%);  z-index:10; width:em(56px, $font-size); height:em(56px, $font-size); border-radius:50%; box-shadow:4px 4px 18px rgba(0,0,0, 0.2); 
+    &.owl-prev{left:em(-20px, $font-size);  background:url(var.$imgurl_ico + 'ico_banner_btn_prev.png') no-repeat 0 0/auto; }
+    &.owl-next{left:auto; right:em(-20px, $font-size); background:url(var.$imgurl_ico + 'ico_banner_btn_next.png') no-repeat 0 0/auto;}
+  }
+}
+
+@include mixin.maxWidth(720px){
+  
+  .owl-carousel {$font-size:16px; font-size:$font-size;
+    .owl-item {
+      img{max-width:100%; }
+    }
+    & + .owl-nav {
+      [class*=owl-] {display: none;
+        &.owl-next{display: none;
+        }
+      }
+    }
+  }
+
+.vote_detail .top_img_box {margin-bottom: 16px;}
+}

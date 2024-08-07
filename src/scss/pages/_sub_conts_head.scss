@@ -1,0 +1,104 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+
+.sub_tit1_box{ $font-size:16px; font-family: var.$fontSet; font-size:$font-size; text-align:center; position:relative; display:flex; flex-wrap:wrap; justify-content: center; align-items: stretch; margin:0 auto; background-color:#fff;  height: em(83px, $font-size); 
+  &.my{height:auto;
+    .center_box{height: em(83px, $font-size); display: flex; justify-content: center; align-items: center;
+      &:before{display:none;}
+    }  
+    .basic_tab{ display:flex; margin-bottom:em(40px, $font-size); height:em(64px, $font-size); width:100%;
+      li{flex:0 0 50%;
+        background-color:#F7F7F8;
+        &.active{background-color:var_colors.$primary_bg; font-weight:500; text-shadow:0 0 1px #fff;
+          a{color:#fff;}
+        }
+        a{$font-size:18px; font-size:$font-size; display: block; height:100%; color:#fff; display: flex; justify-content: center; align-items: center;
+          color:#000;
+        }
+      }
+      
+    }
+    @include mixin.maxWidth(720px){
+      .basic_tab{height:em(48px, $font-size); overflow:hidden; border-radius:4px;}
+    }
+  }
+  
+  .center_box{position:relative; margin:0 auto; width:100%; max-width:em(1400px);
+    &:before{
+      content:'';
+      display: inline-block;
+      height:100%;
+      vertical-align: middle;
+    }
+    .my_vote_list{position:absolute; left:0; top:50%; transform:translateY(-50%); text-align:right;
+      .rgt_box{ display: inline-block; padding:em(12px) em(16px); border:1px solid var_colors.$bdcolor; background:#fff;
+        &:before{
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+        .ico{margin-right:em(8px); width:em(24px); height:em(24px);  background:url(var.$imgurl_ico+"ico_check.png") no-repeat 0 0/auto; }
+      }
+    }
+    .vote_view_order{$font-size:16px; font-size:$font-size; position:absolute; right:0; top:50%; transform: translateY(-50%);
+      .vote_view_order_list{ display: flex;
+        .vote_view_order_item{position:relative; margin-left:em(16px, $font-size); font-weight:400; padding-left:em(12px, $font-size); 
+          &:before{
+            @include mixin.afterBefore(('_width':em(6px,$font-size), '_height':em(6px,$font-size),'_border':0 none, '_border-radius':50%, '_padding':0, '_bg-color':#ccc, '_left':0,'_right':auto ));
+          }
+          a{color:#696E76;}
+          &.on {font-weight:500; text-shadow: 0 0 0px #000;
+            &:before{background-color:var_colors.$primary_bg;}
+            a{color:#000;}
+          } 
+        }
+      }  
+    }
+    .board_util_box{ @include mixin.pos_y_50; left:auto; right:0; width:em(220px); 
+      .board_util_array{ display: flex; justify-content: start; align-items: center;
+        li{position:relative; margin-right:em(30px);
+          &:before{@include mixin.afterBefore(('_width':6px, '_height':6px,'_border':0 none, '_border-radius':50%, '_padding':0, '_bg-color':#ccc, '_left':em(-14px) ));}
+          &.active{
+            &:before{ background-color: var_colors.$primary_bg; }
+          }
+        }
+      }
+    }
+
+    //반응형
+    @include mixin.maxWidth(1420px){box-sizing:border-box;
+      $font-size:16px; font-size:$font-size;
+      padding-left:em(16px,$font-size); padding-right:em(16px,$font-size);
+      .my_vote_list{left:em(16px,$font-size);}
+      .vote_view_order{right:em(16px,$font-size);}
+    }
+
+    //반응형
+    
+  }// center_box END
+  @include mixin.maxWidth(720px){
+    $font-size:16px; font-size:$font-size;
+    height:auto;
+    &.my{display: block; text-align: left;
+      .center_box{display: block; height:auto;
+        &:last-child{display: block; padding-bottom:1px;
+          .basic_tab{margin-bottom:em(16px, $font-size);}
+        }
+      }
+    }
+    .center_box{ height:auto;
+      $font-size:16px; font-size:$font-size; text-align:left;
+      &:before{display:none;}
+      .sub_tit1{}
+      .my_vote_list{left:auto; right:0; border:0 none;
+        .rgt_box{ border:0 none;
+          .ico{background: url(var.$imgurl_ico+"ico_check_m.png") no-repeat center center/auto; }
+        }
+      }
+      .vote_view_order{display: none; }      
+    }
+  }
+  
+}

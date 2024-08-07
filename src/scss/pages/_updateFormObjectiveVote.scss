@@ -1,0 +1,182 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+
+.s_outer{
+  #aform{$font-size:16px; font-size:$font-size; line-height:1.5;}
+  .center_box{$font-size:16px; font-size:$font-size;margin:0 auto; width:100%; max-width:em(1400px, $font-size);}
+  .vote_create_each{$font-size:16px; font-size:$font-size; margin-bottom:em(40px, $font-size); background:transparent;
+    .center_white_box.full{position:relative; padding:em(40px,$font-size); background-color:#fff;
+      //제목, 이미지 
+      &:has(>:nth-child(n+2)){
+        .form_row{ margin-bottom:em(24px, $font-size); }
+      }
+      //질문과 답변 만들기 #2 - 디테일
+      //투표유형있는 투표상자 - select 상자
+      .vote_sort_slt_box {$font-size:16px; font-size: $font-size;position: absolute; z-index:9999; right: em(40px, $font-size); top: em(40px, $font-size);
+        .sel_label{margin-right:em(16px, $font-size);}
+        .form_slt { width: em(148px,$font-size); height: em(44px,$font-size); padding: 0 em(10px,$font-size); border: 1px solid #ccc; }
+      }
+      .q_wrap{ //사용자가 샐렉트 옵션에서 객관식/ 주관식 선택할 때 질문추가할 때 생기는 블럭
+        margin-top:em(38px,$font-size);
+        //.form_row 다시 생김
+        .form_row{display: flex; justify-content: start; align-items: stretch;
+          .cell{//각 요소들 -  input, 사진업로드 버튼 등
+            height:em(48px, $font-size); margin-left:em(16px, $font-size);
+            //질문 입력
+            &:not(.att_sm_view):not(.btn):not(.btn2){ flex:0 1 calc(100% - em(210px, $font-size));  margin-left:0; max-width:em(1050px,$font-size); 
+              input[type = "text"]{width: 100%;}
+            }
+            &.att_sm_view{ position:relative; flex: 0 0 em(48px,$font-size); 
+              .att_view_img_box{ text-align: center; display: block; width:100%; height:100%; background-color: var_colors.$input_bg;
+                &:before{ content:''; display: inline-block; height:100%; vertical-align: middle;
+                }
+                img{vertical-align: middle;}
+              }
+              .attach_img_del_btn{position:absolute; width:em(18px, $font-size); height:em(18px, $font-size); right:em(-9px,$font-size); top:em(-9px,$font-size); background:url(var.$imgurl_ico+'ico_vote_sm_view_close.png') no-repeat 0 0/auto;}
+            } //.att_sm_view End 사진 이미지
+            &.btn{ 
+              flex: 0 0 em(124px, $font-size); padding:0;
+              .form_btn { display: flex; justify-content: center; align-items: center; width: 100%; height:em(48px,$font-size); max-width: em(124px,$font-size); background-color: var_colors.$viewbdtopcolor; color: #fff; text-align: center;
+              }
+            }//.cell.btn End
+            &.btn2{
+              flex: 0 0 em(48px,$font-size);
+              .pnm { width: 48px; height: 48px; background: var_colors.$primary_bg url(var.$imgurl_ico+'ico_vote_btn_more.png') no-repeat center/auto; vertical-align: top;
+                &.minus{
+                  background: var_colors.$primary_bg url(var.$imgurl_ico+'ico_vote_btn_del.png') no-repeat center/auto;
+                }
+              }
+            }//.cell.btn2 End
+          }// .cell End
+
+          //질문 답변 세팅하기
+          &.setting{ flex-wrap:wrap; justify-content: space-between;
+            &:before{flex:0 0 calc(100% + em(80px,$font-size));display: block; content:''; margin-top:em(32px,$font-size);margin-bottom:em(32px,$font-size); margin-left:em(-40px,$font-size); border-bottom:1px solid var_colors.$bdcolor;}
+            div{display: flex; align-items: center;
+              .cell{ 
+                &:not(:last-child){margin-right:em(32px,$font-size);}
+                .mm_slt_each{ display: flex; align-items: center;
+                  &:not(:last-child){margin-right:em(24px,$font-size);}
+                  .lbl_txt{$font-size:20px; font-size:$font-size; font-weight:500; text-shadow:0 0 1px #26282C; margin-right:em(32px,$font-size); 
+                    &.sel_lbl_txt{$font-size:16px; font-size:$font-size; margin-right:em(16px,$font-size);}
+                  }
+                  .sel_random{width:em(148px, $font-size); height:em(48px,$font-size);}
+                  .sel_count{width:em(104px, $font-size); height:em(48px,$font-size);}
+                }
+              }                
+            }
+          }
+        }// .q_wrap 내부의 .form_row End
+      }
+    }//.center_white_box.full End
+    //버튼들 - 질문삭제 질문추가
+    .inq_pnm{$font-size:18px; font-size:$font-size; font-weight:500; text-align:center; text-shadow:0 0 1px #fff; margin-top:em(18px,$font-size); margin-right:em(16px,$font-size); color: #fff; display:inline-block; width:em(128px,$font-size); height:em(56px,$font-size); vertical-align: middle;
+      &:before{content:''; display: inline-block; height:100%; vertical-align: middle;}
+      &.minus{background-color:var_colors.$color_blue_gray; vertical-align: middle;}
+      &.plus{background-color:var_colors.$color_dark_orange; vertical-align: middle;}
+      span{vertical-align: middle;}
+    }
+
+    //투표기간
+    .date_slt_box{font-weight:600; display: inline-block ; margin-right: 15px; vertical-align: middle; 
+      &:before{content:''; display: inline-block; height:100%; vertical-align: middle;}
+      >*{display:inline-block; vertical-align: middle; }
+      .cal_btn {
+        width: em(24px,$font-size);
+        height:em(24px,$font-size);
+        background: url(var.$imgurl_ico+'ico_cal.png') no-repeat center/auto;
+      }
+      .input_box {margin-left:em(16px, $font-size);  
+        input.ymd {width: em(120px, $font-size); height: em(30px, $font-size);} ;
+      }
+      .form_slt{font-weight:500; margin:0 em(16px,$font-size); width:em(104px,$font-size); height:em(48px,$font-size);}
+      &.cell{ margin-top:em(16px, $font-size); $font-size:14px;  font-size:$font-size; font-weight:500; display: block; color:#696E76;
+        &:before{content:'※';  color:var_colors.$color_dark_orange;}
+      }
+    }
+    .date_slt_wave{font-weight:500; margin:0 em(16px, $font-size); }
+    .radio_each{vertical-align: middle; margin-right:em(40px, $font-size); 
+      &:before{content:''; display: inline-block; height:100%; vertical-align: middle;}
+      label{$font-size:18px; font-size:$font-size; font-weight:500; vertical-align: middle;
+        &:before{content:''; display: inline-block; height:100%; vertical-align: middle;}
+        .vradio{}
+      }
+    }
+    //태그 해시태그
+    .center_white_box.full{ //#2
+      .form_row{ //#2
+        .cell{
+          &.tag{ $font-size:16px; font-size:$font-size; line-height:1.5;  
+            .tag_add_box{width:100%;
+              &:before{content:''; display: inline-block; height:100%; vertical-align: middle;}
+              .form_input{width:calc(40% - 64px); vertical-align: middle;}
+              .add_tag{display: inline-block; margin-left:em(10px, $font-size); width:em(48px, $font-size); height:em(48px, $font-size); background:url(var.$imgurl_ico+'ico_vote_btn_more.png') no-repeat center/auto; vertical-align: middle;}
+            }
+            .added_tag_list{margin-top:em(32px, $font-size);
+              .vote_hash_mark{display: inline-block; padding:em(8px, $font-size) em(44px,$font-size) em(8px,$font-size) em(16px,$font-size); margin-right:em(12px, $font-size); margin-bottom:em(12px, $font-size); background:var_colors.$input_bg url(var.$imgurl_ico+'ico_vote_hash_close.png') no-repeat 90% 50%/auto; }
+            }
+          }
+
+          @include mixin.maxWidth(720px){
+            &.tag{
+              .tag_add_box{width:100%;
+                
+                .form_input{width:calc(100% - 64px); }
+                .add_tag{width:em(40px, $font-size); height:em(40px, $font-size);}
+              }
+              .added_tag_list{
+                .vote_hash_mark{}
+              }
+            }
+            
+          }
+
+        }
+      } // .form_row End #2
+    } // .center_white_box.full #2 End
+    
+  }// .vote_create_each End
+  
+
+  @include mixin.maxWidth(720px){
+    $font-size:16px; font-size:$font-size;
+    .center_white_box{padding:em(16px, $font-size); border-radius:0;}
+    .center_box{}
+    .vote_create_each{
+      .center_white_box.full{ padding:em(16px, $font-size); border-radius:0; }
+
+      //투표기간
+      .date_slt_box{font-weight:600; display: flex ; justify-content: start; align-items: center; 
+        &:before{display:none;}
+        >*{display:inline-block; vertical-align: middle; }
+        .cal_btn {
+          width: em(36px,$font-size);
+          height:em(36px,$font-size);
+          background: url(var.$imgurl_ico+'ico_cal.png') no-repeat center/auto;
+        }
+        .input_box {margin-top:em(8px, $font-size); margin-left:em(4px, $font-size);  
+          input.ymd {width: em(100px, $font-size); height: em(30px, $font-size);} ;
+        }
+        .form_slt{ margin:0 em(4px,$font-size); width:em(94px,$font-size); height:em(32px,$font-size);}
+        &.cell{ margin-top:em(16px, $font-size); $font-size:14px;  font-size:$font-size; font-weight:500; display: block; color:#696E76;
+          &:before{content:'※';  color:var_colors.$color_dark_orange;}
+        }
+      }
+      .cell:has(.radio_each){
+        display: flex; flex-wrap:wrap;
+        &:before{display:none;}
+        .radio_each{flex:0 0 50%;  margin:em(8px, $font-size) 0; display: flex; align-items:center;
+          &:before{display:none;}
+        }
+      }
+      .cell{
+        &.tag{
+          .tag_add_box{
+            .input_tag{width:calc(100% - 64px); vertical-align: middle;}
+          }
+        }
+      }
+    }
+  }
+}//s_outer END

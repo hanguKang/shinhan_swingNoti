@@ -1,0 +1,58 @@
+@use '../utiles/box-shadow';
+@mixin border-card {
+  border-radius: 16px;
+  box-shadow: box-shadow.$box-shadow-card;
+}
+@mixin bgSet($repeat:no-repeat,$position:center, $size:auto ){
+  background-repeat:$repeat;  background-position:$position; background-size:$size; 
+}
+@mixin afterBefore($aftBef : ('_width':auto, '_height':auto,'_border':0 none, '_border-radius':50%, '_padding':0, '_bg-color':#ccc, '_left':auto,'_right':auto )){
+  content:'';
+  position:absolute; 
+  top:50%; 
+  transform:translateY(-50%);
+  left:map-get($map: $aftBef, $key:'_left');
+  right:map-get($map: $aftBef, $key:'_right');
+  display:block; 
+  width:map-get($map: $aftBef, $key:'_width'); 
+  height:map-get($map:$aftBef, $key:'_height'); 
+  border:map-get($map: $aftBef, $key:'_border'); 
+  border-radius:map-get($map: $aftBef, $key:'_border-radius'); 
+  padding:map-get($map: $aftBef, $key:'_padding');
+  background-color:map-get($map: $aftBef, $key:'_bg-color');; 
+}
+@mixin bg-card($url:'#ffffff'){
+  background:$url no-repeat 50% 50%/auto 100%;
+}
+
+@mixin pos_y_50($_dir:'left'){
+  position:absolute; top:50%; transform:translateY(-50%); @if $_dir == 'left'{left:0;}@else{right:0;}
+}
+@mixin pos_x_50(){
+  position:absolute; left:50%; transform:translateX(-50%);
+}
+@mixin ellipsis($line: 1) {
+  @if ($line == 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word; // 공백 없을때 글자 짤림 방지
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+  }
+}
+
+@mixin maxWidth($width){
+	@media screen and (max-width:$width){
+        @content;
+    }
+}
+@mixin minWidth($width){
+	@media screen and (min-width:$width){
+        @content;
+    }   
+}

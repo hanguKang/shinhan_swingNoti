@@ -1,0 +1,112 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+
+$font-size:16px; 
+
+.join_step { font-size: $font-size; overflow:hidden; box-sizing: content-box; padding-bottom:em(48px, $font-size);  margin:0 auto;  width:100%;  max-width: em(1400px, $font-size); height:em(138px, $font-size);
+  display: flex; justify-content: space-between;
+  li{flex:0 0 flx_equ_spc( 100%, 3, 8px ); display: flex; justify-content: start; align-items: start; padding:em(40px, $font-size) em(80px, $font-size); box-sizing:border-box; border:2px solid var_colors.$bdcolor;
+    &.active{
+      .step_txt{color:var_colors.$primary_bg;}
+    }
+    img{margin-right:em(22px, $font-size); }
+    .step_txt{ 
+      .step_txt1{$font-size:20px; font-size:$font-size; font-weight:700;}
+      .step_txt1{}
+    }
+  }
+}
+
+.join_top_txt_box{margin:0 auto;  margin-bottom:em(16px,$font-size); width:100%;  max-width: em(1400px, $font-size); text-align:right;
+  &.txt_lft{text-align:left;}
+  .ico{position:relative; padding-left:em(20px, $font-size);
+    &.star{
+      &:before{content:''; display:inline-block; width:em(16px,$font-size); height:em(16px, $font-size);  @include mixin.bgSet; background-image:url(var.$imgurl_ico+'ico_star.png'); vertical-align: middle;}
+    }
+  }
+}
+.chk_wrap{ margin:0 auto;  width:100%;  max-width: em(1400px, $font-size); 
+  .box-shadow-card{ padding:em(40px, $font-size); margin-bottom:em(24px, $font-size); background-color:#fff;
+    &.all{background-color:#E7EDFB;border:2px solid var_colors.$primary_bg; }
+  }
+
+  .chk_each{
+    input[type="checkbox"] {width:em(32px, $font-size); height:em(32px, $font-size);
+      &:checked{
+        &:before{width:em(32px, $font-size); height:em(32px, $font-size); background-image:url(var.$imgurl_ico+'ico_checkbox_big.png');}
+      }
+    }
+    .label_join{$font-size:20px; font-size:$font-size; margin-left:em(32px, $font-size);
+      .v_blue{margin-left:em(10px, $font-size); color:var_colors.$primary_bg; font-style:normal;}
+    }
+  }
+  .all{
+    .chk_each{ }
+  }
+}
+.chk_wrap2{
+  //각 input check박스와 '새창에서 내용보기'를 감싸는 상자
+  li{display: flex; justify-content: space-between; align-items: center;
+    a{padding-right:em(30px, $font-size); background:url(var.$imgurl_ico+'ico_link.png') no-repeat 100% 0/auto; 
+    }
+  }
+}
+
+.sub_txt{text-align:center; margin-bottom:em(48px, $font-size);
+  .em0{display:block; $font-size:28px; font-size:$font-size; line-height:1.5; font-weight:500; font-style:normal; text-shadow:0 0 1px #000; margin-bottom:em(16px, $font-size);}
+  .em1{ $font-size:20px; font-size:$font-size; color:var_colors.$primary_bg; font-style:normal; }
+  +.common_btn{
+    &.login{$font-size:20px; font-size:$font-size;display: block; margin:0 auto; width:em(400px, $font-size); height:em(64px, $font-size); margin-bottom:em(24px, $font-size); text-align:center;}
+    +.main{$font-size:20px; font-size:$font-size;display: block; margin:0 auto; width:em(400px, $font-size); height:em(64px, $font-size);  text-align:center; background-color:#ffffff; color: var_colors.$primary_bg; border:2px solid var_colors.$primary_bg;}
+  }
+
+}
+
+@include mixin.maxWidth(720px){
+  .join_step {$font-size:16px; font-size:$font-size; box-sizing:border-box; width:auto; align-items: stretch; height:auto; padding:em(16px, $font-size);
+    li{flex:0 0 flx_equ_spc( 100%, 3, 8px ); display: flex; flex-direction:column; justify-content: start; align-items: start; padding:em(12px, $font-size);
+      img{display:none; margin-bottom:em(8px, $font-size);}
+      &.active{
+        border-color:var_colors.$primary_bg;
+      }
+    } 
+  }
+  .join_top_txt_box{position:relative; margin:0 auto;  margin-bottom:em(16px,$font-size); width:100%;  max-width: em(1400px, $font-size); text-align:left; padding-left:em(10px,$font-size);
+    &.space{padding:0 28px;}
+    .ico{
+      &.star{$font-size:16px; font-size:16px; position:relative; padding-left:em(4px, $font-size); 
+        &:before{position:absolute; left:em(-12px,$font-size); top:em(4px,$font-size); transform:translateY(0);}
+      }
+    }
+  }
+  .chk_wrap{ flex-wrap:wrap; margin-right:em(8px, $font-size);
+    .box-shadow-card{flex-wrap:wrap; justify-content: start; $font-size:16px; font-size:$font-size; padding:em(12px, $font-size); height:auto;
+      &.all{ }
+    }
+    .chk_each{flex:1 0 auto;  display: flex; align-items: center;   
+      &:before{display:none;}
+      input[type="checkbox"] {width:em(24px, $font-size); height:em(24px, $font-size);
+        &:checked{
+          &:before{width:em(24px, $font-size); height:em(24px, $font-size); background-position:center;}
+        }
+      }
+      .label_join{$font-size:16px; font-size:$font-size; margin-left:em(8px, $font-size); letter-spacing: -2px;
+        .v_blue{margin-left:em(10px, $font-size); color:var_colors.$primary_bg; font-style:normal;}
+      }
+
+      & + a{flex:0 0 auto; display:block; height:em(24px, $font-size); text-indent:-150px; overflow:hidden;}
+    }
+    
+  }
+
+  .sub_txt{t
+    .em0{}
+    .em1{}
+    +.common_btn{
+      &.login{$font-size:18px; font-size:$font-size;display: block; margin:0 auto; width:80%; height:em(48px, $font-size); margin-bottom:em(24px, $font-size); text-align:center;}
+      +.main{$font-size:18px; font-size:$font-size;display: block; margin:0 auto; width:80%; height:em(48px, $font-size);  text-align:center; background-color:#ffffff; color: var_colors.$primary_bg; border:2px solid var_colors.$primary_bg;}
+    }
+  
+  }
+}

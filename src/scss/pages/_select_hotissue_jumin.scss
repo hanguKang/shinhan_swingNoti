@@ -1,0 +1,596 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+@use '../config/function';
+
+.board_view{$font-size:16px;  line-height:1.5; 
+  
+  .srch_list_wrap{
+    .view_box_wrp{ padding:em(40px,$font-size); margin-bottom:em(50px,$font-size); background-color:#fff;}
+    //투표 상단
+    .board_view_top{margin-bottom:em(40px);
+      .board_view_top_up{display: flex; justify-content: space-between; margin-top:em(20px);
+        .ico_box{display: flex; justify-content: end; align-items: center;
+          .siren{margin-right:16px;
+            .ico{$font-size:16px; font-size:16px; vertical-align:middle; text-align:center; display:inline-block; padding-left:em(22px, $font-size); width:em(114px, $font-size); height:em(36px, $font-size); border:2px solid var_colors.$bdcolor;  background:url($imgurl_ico + 'ico_report_sm.png') no-repeat 12px 50%/auto; 
+
+              span{vertical-align: -5px;}
+              &:before{content:''; vertical-align: middle; height:100%;}
+            }
+          }
+        }
+        .sns_share_util{@extend .board_view_top_up; width:em(164px); height:em(32px); margin-top:0;
+          .sns_share_util_item{
+            .btn_sns{display: block; width:em(32px); height:em(32px);  @include mixin.bgSet;}
+            .btn_facebook{background-image:url(var.$imgurl_ico+'ico_share_facebook.png');}
+            .btn_twitter{background-image:url(var.$imgurl_ico+'ico_share_x.png');}
+            .btn_qr{background-image:url(var.$imgurl_ico+'ico_share_qr.png');}
+            .btn_urlcopy{background-image:url(var.$imgurl_ico+'ico_share_url.png');}
+          }
+
+        }
+      }
+      .board_view_top_down{display: flex; justify-content: space-between;margin-top:em(24px); align-items: end;
+        .info_list{display: flex; justify-content: start; height:em(60px);
+          .info_list_item{position:relative; margin-right:em(50px); 
+            &:nth-child(n){
+              &::after{display:none;}
+            }
+            &:first-child{
+              &:before{@include mixin.afterBefore(('_width':1px, '_height':60px,'_border':0 none, '_border-radius':0, '_padding':0, '_bg-color':var_colors.$input_bg, '_left':auto,'_right':-24px ));
+              }
+            }
+            .label{display: block;margin-bottom:em(8px, $font-size);}
+            .info_data{font-weight:600;}
+
+          }
+        }
+        .count_area{$font-size:16px; font-size:$font-size; display: flex; justify-content: start; width:em(250px, $font-size); height:em(32px, $font-size); 
+          .round_mark{position:relative; flex:1 0 auto; word-break: keep-all;  padding-left:em(32px,$font-size); letter-spacing: -1px;
+            &:before{
+              content:'';
+              display: inline-block; 
+              height:100%;
+              vertical-align: middle;
+            }
+            .ico{@include mixin.pos_y_50; top:45%; display: inline-block; width:em(32px); height:em(32px); @include mixin.bgSet; vertical-align: middle;}
+            .num{margin-left:em(8px); }
+          }
+          .vote_cnt{
+            .ico{ background-image:url(var.$imgurl_ico+'ico_vote_reply.png'); }
+          }
+          .reply{
+            .ico{background-image:url(var.$imgurl_ico+'ico_vote_cnt.png');}
+          }
+        }
+      }      
+    }// board_view_top End
+
+    // vote_view_detail 시작
+    .user_hash_list{$font-size:16px; font-size:$font-size; margin-bottom:em(40px, $font-size);}    
+    .vote_detail{margin-top:em(40px);
+      .editor_view_box {
+        .editor_view{word-break: break-all;
+          .txt_line{$font-size:16px; font-size:16px; color:#484B51;}
+          .editor_view_info {$font-size:16px; font-size:16px; margin-top:em(12px, $font-size);
+            .editor_view_info_list{
+              .editor_view_info_item{position:relative; padding-left:em(14px,$font-size); margin-bottom:em(8px, $font-size);
+                &:before{@include mixin.afterBefore(('_width':4px, '_height':1px,'_border':0 none, '_border-radius':0, '_padding':0, '_bg-color':#79818C, '_left':0 ));}
+              }
+            }
+          }
+          .editor_view_caution{position:relative; $font-size:14px; font-size:16px; color:#696E76; padding-left:em(14px,$font-size);
+            &:before{ content:'*'; position:absolute; left:0; top:50%; transform: translateY(-38%);}
+          }
+        }
+        .link_url_right{text-align: right; margin: 5px;
+          .round_mark.url{ $font-size:16px; font-size: $font-size; font-weight: 600; display: inline-block; position:relative; padding: em(8px) em(72px, $font-size) em(8px, $font-size) em(16px, $font-size); background-color: #fff;  border: 1px solid var_colors.$bdcolor;  color:#26282C;
+            &:hover{
+              color: var_colors.$primary_color; 
+            }
+            .ico {position:absolute; right:em(14px,$font-size); top:50%; transform:translateY(-50%); @include mixin.bgSet; width:em(14px, $font-size); height:em(14px, $font-size); background-image:url(var.$imgurl_ico+'ico_plus.png'); }
+          }
+        }// .link_url_right END
+      }//.editor_view_box End
+    }// vote_detail End
+  }
+  //jumin.scss
+  //탭메뉴 설정
+  .vote_dep1_tab{display: flex; justify-content: space-between; align-items: stretch; margin-bottom:em(40px);
+    li{flex: 0 0 50%; background-color:#fff; 
+      a{$font-size:20px; font-size:20px; font-weight:500; display: block; height:em(64px, $font-size); display: flex; justify-content: center; align-items: center;}
+      &.active{background-color:#1E3754;  
+        a{color:#fff;}
+      }
+      
+    }
+  }
+  //텝메뉴 tabA, tabB 
+  .vote_join_list{
+    //탭메뉴 
+    .vote_item_tab{ //ul 목록
+      display:flex; justify-content: start; align-items: center; margin-bottom:em(40px);
+      &:has(>:nth-child(4)){
+        .btn_vote_word{// li 목록 
+          flex:1 0 23%; margin-right:em(16px);
+          &:last-child{margin-right:0;} 
+          a{$font-size:18px; font-size:$font-size; display: block; height:em(56px, $font-size); display: flex; justify-content: space-between; align-items: center; background-color:#fff;
+            .vote_word_tit{}
+            .word_count{ display: flex; justify-content: center; align-items: center; }
+          }
+          &.active{background-color:var_colors.$primary_color; 
+            a{color:#fff;}
+          }
+        }
+      }
+      .btn_vote_word{// li 목록 
+        $font-size:18px;
+        flex:0 0 25%; margin-right:em(16px);
+        a{ font-size:$font-size; padding:em(20px) em(12px); height:em(56px, $font-size); display: flex; justify-content: space-between; align-items: center; background-color:#fff; @include mixin.ellipsis(2);
+          .vote_word_tit{}
+          .word_count{ flex:0 0 28px; font-weight:600; display: flex; justify-content: center; align-items: center;  height:em(28px, $font-size);  background-color:var_colors.$input_bg; color:#0069cc; border-radius:50%;  }
+        }
+        &.active{
+          a{color:#fff;background-color:var_colors.$primary_bg; 
+            .word_count{ background-color:#fff;}
+          }
+        }
+      }
+    }
+  }
+
+  //투표 디테일
+  .main_vote_area{$font-size:16px; font-size:$font-size; line-height:1.5;
+    .vote_ref_txt { margin-bottom: 10px; text-align: right;
+      &:before{content: ''; display: inline-block; height:100%; vertical-align: middle;}
+      strong{ color:var_colors.$color_orange;}
+      .star_mark{display: inline-block; vertical-align: middle; margin-left:em(12px); margin-right:em(8px); color:var_colors.$color_orange;}
+    }
+    //투표 진행 결과 막대 
+    .top{
+      .vote_result_bar{
+        .bar{ background-image: linear-gradient(90deg,#5E8EFF, #0047EB ); }
+      }
+    }
+    .vote_result_bar {position:relative;
+      flex:0 0 calc(100% - em(100px, $font-size));
+      height: em(12px, $font-size);
+      margin-top: em(30px, $font-size);
+      background-color: #e9f0fa;
+      border-radius: em(6px, $font-size);  
+      .bar{display: block; width:0; max-width:100%; height: em(12px, $font-size); border-radius: em(6px, $font-size); background-image: linear-gradient(90deg,#FFD500, #FF9D2B );  }
+      .vote_count{position:absolute; right:em(-100px,$font-size); top:50%;  transform:translateY(-50%);
+        .num{margin-right:em(8px,$font-size);}
+        .per{}
+      }
+    }
+    .vote_dep1_con_box{
+      .vote_dep1_con.vote_join_list{
+        .vote_item_con_box{
+          //각 투표요소 감싸는 상자
+            //각 투표리스트 묶음 (체크박스, 글쓰기, 예, 아니오 등..)
+            .count_vote{$font-size:18px; font-size:$font-size; font-weight:600;
+              .check_cnt {$font-size:28px; font-size:$font-size; color: var_colors.$primary_bg;}
+            }
+          .vote_item{$font-size:16px; font-size:$font-size;
+            margin-bottom:em(70px, $font-size);
+          }
+        }
+      }
+    }
+    .thd{$font-size:20px; font-size:$font-size; font-weight:600; display:flex; justify-content: start; align-items: center; padding:0 em(40px, $font-size); margin-bottom: em(32px, $font-size);background-color: var_colors.$viewbdtopcolor;height:em(78px); color:#fff;}
+    //투표 목록
+    .vote_select_list{$font-size:20px; font-size:$font-size;
+      .answer-box{ display: flex; justify-content: space-between; align-items: center; flex-wrap:wrap; box-sizing:border-box; min-height: em(182px, $font-size); margin-bottom: em(24px, $font-size); padding: em(40px, $font-size); background-color: #fff;
+        //이미지 없을 때 
+        &.no_photo{ 
+          .slt_area{
+            .img_view_item{ text-decoration:underline; }
+          }
+        }
+        //이미지와 글 상자
+        .slt_area{flex:1 0 calc(100% - 80px); margin-right:em(32px, $font-size);
+          .img_view_item{display: flex; justify-content: start; align-items: center;
+            .img_box{flex:0 0 em(180px, $font-size); max-width:em(180px, $font-size); margin-right:em(32px, $font-size);
+              .inner{
+                img{width:100%; height: 100%; max-height:em(102px, $font-size);  }
+              }
+            }            
+          }
+          .vote_wrp{align-self:stretch; display: flex; flex-direction:column; justify-content: center; align-items:start ;
+            .txt.vote_box_text{$font-size:20px; font-size:$font-size; font-weight:600; @include mixin.ellipsis(2); }
+            .b-more{position:relative; $font-size:16px; font-size:$font-size; padding-right:em(40px, $font-size); margin-top:em(10px, $font-size); background-color:#fff; border:1px solid var_colors.$bdcolor; color:#484B51;
+              .ico.plus{position:absolute; right:em(14px, $font-size); top:50%; transform:translateY(-50%); @include mixin.bgSet; width:em(14px, $font-size); height:em(14px, $font-size);  background-image:url(var.$imgurl_ico+'ico_plus.png');}
+            }
+          }
+        }
+        //체크박스 & 라디오박스
+        // .chk_each.notxt{flex:0 0 em(32px, $font-size); height:em(32px, $font-size); 
+        //   input[type="checkbox"]{position:relative; width:em(32px, $font-size); height:em(32px, $font-size); border-color:#AAB0B8; vertical-align: top;
+        //     &:checked{
+        //       &:before{ position:absolute; width:em(32px, $font-size); height:em(32px); content: ""; background:#fff url(var.$imgurl_ico+'ico_checkbox_big.png') no-repeat 0 0/contain;}
+        //     }
+        //   }
+        //   input[type="radio"]{position:relative; width:em(32px, $font-size); height:em(32px, $font-size); border-color:#AAB0B8; vertical-align: top;
+        //     &:checked{
+        //       &:before{ position:absolute; width:em(32px, $font-size); height:em(32px); content: ""; background:#fff url(var.$imgurl_ico+'ico_radio_big.png') no-repeat 0 0/contain;}
+        //     }
+        //   }
+        // }
+        //기타 체크시 input[type=text]
+        .slt_txtarea{display:none; flex:1 0 auto; margin-top:em(32px,$font-size);
+          .etc-area{padding-left:em(32px, $font-size); width:100%; height:em(64px, $font-size); background-color:var_colors.$input_bg;}
+        }
+      }
+    }//.vote_select_list End
+    .vote_input_box{ padding:em(40px, $font-size); background-color:#fff; 
+      textarea{  width:100%; height:100%;}
+      .word_count {text-align: right;
+        .cnum.count_ta{font-weight:600; margin-right:em(10px, $font-size);color:var_colors.$primary_color;}
+      }
+    }
+  } 
+  //버튼 상자
+  .common_btn_box.ta_c.bg_none{height:auto; background-color:transparent;}
+  .user_hash_area, .hash_area{
+    .user_hash_list, .link{
+      .vote_hash_mark{padding:em(8px,$font-size) em(16px,$font-size); margin-right:em(12px, $font-size); background-color:var_colors.$input_bg; color:#26282C;
+        @include mixin.maxWidth(720px){ 
+          $font-size:14px; font-size:$font-size;
+          padding:em(4px,$font-size) em(8px,$font-size); margin-bottom:em(8px, $font-size); 
+        }
+      }
+    }
+  }
+  .view_box_wrp{position:relative; margin-bottom:em(64px,$font-size);
+    .comment_area{
+      //댓글관련 폼
+      .comment_input_box{position:relative; padding-top:em(32px,$font-size); padding-bottom:em(40px, $font-size); 
+        &::after{content:'';position:absolute; margin-left:em(-40px, $font-size); left:0; bottom:0; width: calc(100% + em(80px, $font-size)); border-bottom:1px solid var_colors.$bdcolor; }
+        .writer{ font-weight:600;}
+        .textarea_box{
+          textarea{margin-bottom:em(40px, $font-size); width:100%; height:80px; }
+          .word_count {text-align: right;
+            .cnum.count_ta{font-weight:600; margin-right:em(10px, $font-size);color:var_colors.$primary_color;}
+            .regist_btn{margin-left:em(24px, $font-size); width:em(112px, $font-size); height:em(40px,$font-size); 
+              &:before{ content:''; display: inline-block; height:100%; vertical-align: middle;
+                span{vertical-align: middle;}
+              }
+            }
+          }
+        }
+      }// .commnet_input_box End
+    }
+    //댓글 목록 공통 시작
+    .comment_list.reply_area.reply_list{ padding-top:em(40px, $font-size);
+      //마지막 댓글
+      .text_finish{$font-size:20px; font-size:$font-size; font-weight:600; text-align:center; padding:em(20px, $font-size); background-color:var_colors.$input_bg;
+      }
+      //각 댓글
+      .reply-wrap{margin-bottom:em(32px, $font-size);
+        //작성자 작성날짜, 유틸버튼
+        .info_area{display: flex; justify-content: space-between; align-items: center;
+          .usr_box{flex:1 0 auto; display: flex; justify-content: start; align-items: center;
+            .writer{ $font-size:20px; font-size:$font-size; font-weight:500; text-shadow: 0 0 1px #000000, 0 0  1px #000000, 0 0 0 #000000; margin-right:em(24px, $font-size);}
+            .info_list{$font-size:16px; @extend .info_area; flex:0 0 auto; color:#6e7681; 
+              li{position:relative; margin:0 em(8px);
+                &:nth-child(2){
+                  &::after{@include mixin.afterBefore(('_width':1px, '_height':em(12px, $font-size),'_border':0 none, '_border-radius':0, '_padding':0, '_bg-color':var_colors.$bdcolor, '_left':em(-8px) ))}
+                }
+              }
+            }
+          }
+          
+        }// 작성자 정보 및 유틸 End
+        .txt.reply_text{padding:em(32px, $font-size);; margin-top:em(16px, $font-size); background-color:#F6F8FC;
+
+        }
+      }
+    }
+  }
+
+  .report_info_box{$font-size:16px; font-size:$font-size; padding-top:em(56px, $font-size); text-align:center; background:url(var.$imgurl_ico + 'ico_report_big.png') no-repeat 50% 0/ auto;
+    .tit{$font-size:24px; font-size:$font-size; font-weight:600; margin-bottom:em(24px, $font-size);}
+    .txt1{$font-size:18px; font-size:$font-size;color:#26282C; margin-bottom:em(8px, $font-size);}
+    .txt2{$font-size:16px; font-size:$font-size;color:#696E76; margin-bottom:em(8px, $font-size);}
+  }
+}
+
+@include mixin.maxWidth(790px){
+  .board_view{$font-size:16px;  line-height:1.5; 
+    //투표 상단
+    .board_view_top{
+      .board_view_top_up{
+        .tit{}
+        .ico_box{
+          .siren{
+            .ico{
+              span{}
+              &:before{content:''; vertical-align: middle; height:100%;}
+            }
+          }
+        }
+        .sns_share_util{
+          .sns_share_util_item{
+            .btn_sns{}
+            .btn_facebook{}
+            .btn_twitter{}
+            .btn_qr{}
+            .btn_urlcopy{}
+          }
+        }
+      }
+      .board_view_top_down{flex-wrap:wrap; 
+        .count_area {margin-top:em(24px, $font-size);}
+      }
+    }
+  }
+}
+
+@include mixin.maxWidth(720px){
+  .board_view{$font-size:16px;  line-height:1.5; 
+    
+    .srch_list_wrap{
+      //투표 상단
+      .board_view_top{position:relative; margin-bottom:em(24px); 
+        .board_view_top_up{ margin-top:0; display:block; 
+          .tit{}
+          .ico_box{ position:absolute; bottom: em(66px, $font-size); justify-content: start;
+            .siren{
+              .ico{
+                span{}
+                &:before{}
+              }
+            }
+          }
+          .sns_share_util{display: flex;
+            .sns_share_util_item{ 
+              .btn_sns{}
+              .btn_facebook{}
+              .btn_twitter{}
+              .btn_qr{}
+              .btn_urlcopy{}
+            }
+          }
+        }
+        .board_view_top_down{ flex-wrap:wrap; margin-top:0;
+          .info_list{flex-wrap:wrap;  height:auto;
+            .info_list_item{height:auto; margin:0; flex:0 0 100%;
+              &:first-child:before{display:none;}
+              .label{display: inline-block; margin-bottom:0;}
+              .info_data{display: inline-block;}
+            }
+          }
+          .count_area {flex:0 0 100%; margin-top:em(60px, $font-size);}
+        }
+      }
+      .user_hash_list{margin-bottom:em(8px, $font-size);}
+      
+      .board_view_con{
+        // 실제 투표 컨텐츠        
+        .vote_detail{margin-top:em(16px,$font-size);
+          .editor_view_box {position:relative; 
+            .editor_view{}
+          }
+          .link_url_right{$font-size:16px; font-size: $font-size; 
+            .round_mark.url{ position:relative; overflow:hidden; padding:0; padding-right: em(24px, $font-size); text-indent:-100px; 
+              &:hover{
+                color: var_colors.$primary_color; 
+              }
+              .ico {position:absolute; right:em(5px, $font-size); top:50%; transform:translateY(-50%); @include mixin.bgSet; width:em(14px, $font-size); height:em(14px, $font-size); background-image:url(var.$imgurl_ico+'ico_plus.png'); }
+            }
+          }// .link_url_right END
+        }
+
+        .vote_join_list{
+          //탭메뉴 
+          .vote_item_tab{ //ul 목록
+            .btn_vote_word{// li 목록 
+              $font-size:18px;
+              overflow:hidden;
+              flex:0 0 25%; margin-right:em(16px);
+              a{ font-size:$font-size; display: block; padding:em(20px) em(12px); height:em(56px, $font-size); display: flex; justify-content: space-between; align-items: center; background-color:#fff;
+                .vote_word_tit{}
+                .word_count{ font-weight:600; display: flex; justify-content: center; align-items: center; width:em(32px,$font-size); height:em(32px, $font-size);  background-color:var_colors.$input_bg; color:#0069cc; border-radius:50%;  }
+              }
+              &.active{
+                a{color:#fff;background-color:var_colors.$primary_bg; 
+                  .word_count{ background-color:#fff;}
+                }
+              }
+            }
+          }
+        }
+      }
+      .view_box_wrp{ padding:em(16px,$font-size); border-radius:0;
+        .comment_list.reply_area.reply_list{ height:auto; padding-top:0;
+          //작성자 정보
+          .reply-wrap{
+            .info_area{ display:block;
+              .usr_box{display: block; margin:em(8px,$font-size) 0;
+                .writer{ $font-size:16px; font-size:$font-size; text-shadow: 0 0 0 #000000; margin-right:0;}
+                .info_list{ display: flex; justify-content:start;
+                  li{position:relative; margin:0;
+                    &:nth-child(2) {margin-left:em(16px, $font-size);}
+                  }
+                }
+              }
+            }
+          }
+          // 작성자 정보 및 유틸 End
+          .txt.reply_text{padding:em(16px, $font-size); margin-top:em(8px, $font-size); word-break: break-all; }
+        }
+      }
+    }
+
+    .vote_join_list{
+      //탭메뉴 
+      .vote_item_tab{ //ul 목록 
+        box-sizing:content-box; flex-wrap:wrap; margin-left:0; box-sizing:border-box; margin-bottom:em(16px); padding:0 em(16px, $font-size);
+        &:has(>:nth-child(4)){
+          .btn_vote_word{// li 목록 
+            margin-bottom:em(8px, $font-size);  flex:0 0 calc(50% - 4px); 
+            &:nth-child(odd){margin-right:4px; } 
+            &:nth-child(even){margin-left:4px; margin-right:0;}
+          }
+        }
+        .btn_vote_word{// li 목록 
+          //@use flx_equ_spc(100%, 2, 8px);
+          $fon-size:14px; font-size:$font-size; line-height:1.1; margin-bottom:em(8px, $font-size);  flex:0 0 calc(50% - 4px); 
+            &:nth-child(odd){margin-right:4px; } 
+            &:nth-child(even){margin-left:4px;  margin-right:0;}
+        }
+      }
+      
+    }
+    .report_info_box{$font-size:16px; font-size:$font-size; line-height:1.5; 
+      .tit{$font-size:20px; font-size:$font-size; padding:0 em(16px, $font-size); word-break: break-all;}
+      .txt1{$font-size:18px; font-size:$font-size; padding:0 em(16px, $font-size); word-break: break-all;}
+      .txt2{$font-size:16px; font-size:$font-size; padding:0 em(16px, $font-size); word-break: break-all;}
+    }
+
+    .main_vote_area{
+      .vote_ref_txt{padding:0 em(16px, $font-size); text-align:left;
+        &:before{display:none;}
+        strong{display:block;}
+        .star_mark{margin-left:0;}
+      }
+      .vote_dep1_con_box {
+        .vote_dep1_con.vote_join_list {
+          .vote_item_con_box {
+            .count_vote{padding:0 em(16px, $font-size);
+              .check_cnt{font-size:20px;}
+            }
+            .vote_item{
+                margin-bottom: em(48px, $font-size);
+            }
+          }
+        }
+      }
+      .thd{$font-size:16px; font-size:$font-size; font-weight:400; display:flex; justify-content: center; align-items: center; padding:em(8px, $font-size) em(16px, $font-size); margin-bottom: em(16px, $font-size);background-color: var_colors.$viewbdtopcolor; height:em(60px, $font-size); color:#fff; border-radius:0;}
+
+      .vote_select_list{
+        .answer-box {$font-size:16px; font-size:$font-size;
+          min-height: em(96px, $font-size);
+          margin-bottom: em(8px, $font-size);
+          padding: em(16px, $font-size);
+          border-radius:0;
+          .slt_area{ $font-size:16px; font-size:$font-size; margin-right:em(8px, $font-size); order:2; display:flex; justify-content: start; align-items:center;
+            &:before{display: none;}
+            .img_view_item{ $font-size:16px; font-size:$font-size;  display:flex; justify-content: start; align-items:center;
+              .img_box{flex:0 1 auto; flex:0 0 em(84px, $font-size); margin-right:0; }
+            }
+            .vote_wrp {flex-direction:row;  margin-left:em(8px, $font-size); align-items:center;
+              .txt { margin:0;
+                &.vote_box_text{ $font-size:14px; font-size:$font-size; flex:1 1 calc(100% - em(24px, $font-size)); margin-right:em(8px, $font-size);}
+              }
+              .b-more{ overflow:hidden; $font-size:16px; text-indent:-100px; flex:0 0 em(24px, $font-size); height:em(24px, $font-size); padding-left:0; padding-right:0;border-radius:0; margin:0; margin-left:auto; 
+                &:before{display: none; }
+                .ico.plus{ right:4px; }
+
+              }
+            }
+          }
+        }
+      } 
+
+      .vote_input_box {
+        padding: em(16px, $font-size);
+        background-color: #fff;
+      }
+    } 
+
+    .view_box_wrp{
+      .comment_area{
+        //댓글관련 폼
+        .comment_input_box{
+          &::after{content:'';position:absolute; margin-left:em(-40px, $font-size); left:0; bottom:0; width: calc(100% + em(80px, $font-size)); border-bottom:1px solid var_colors.$bdcolor; }
+          .writer{ }
+          .textarea_box{
+            textarea{}
+            .word_count {
+              .cnum.count_ta{}
+              .regist_btn{margin-left:em(12px, $font-size); width:em(72px, $font-size); height:em(38px,$font-size); 
+                &:before{ content:''; display: inline-block; height:100%; vertical-align: middle;
+                  span{vertical-align: middle;}
+                }
+              }
+            }
+          }
+        }// .commnet_input_box End
+      }
+    }
+  }
+}
+
+@include mixin.maxWidth(480px){
+  .board_view{$font-size:16px;  line-height:1.5; 
+    
+    .srch_list_wrap{
+      //투표 상단
+      .board_view_top{margin-bottom:em(16px);
+        .board_view_top_up{
+          .tit{}
+          .ico_box{
+            .siren{
+              .ico{
+                span{}
+                &:before{content:''; vertical-align: middle; height:100%;}
+              }
+            }
+          }
+          .sns_share_util{display:flex;
+            .sns_share_util_item{
+              .btn_sns{}
+              .btn_facebook{}
+              .btn_twitter{}
+              .btn_qr{}
+              .btn_urlcopy{}
+            }
+          }
+        }
+        .board_view_top_down{
+          .info_list{flex-wrap:wrap; margin-top:em(8px,$font-size); height:auto;
+             .info_list_item {}
+            
+          } 
+          .count_area {}
+        }
+      }
+
+      .view_box_wrp{ 
+        .comment_list.reply_area.reply_list{ 
+          //작성자 정보
+          .reply-wrap{
+            .info_area{ 
+              .usr_box{
+                .writer{ }
+                .info_list{
+                  li{}
+                }
+              }
+            }
+          }
+          // 작성자 정보 및 유틸 End
+          .txt.reply_text{ }
+        }
+      }
+    }
+
+    // 실제 투표 컨텐츠        
+    .vote_detail{$font-size:16px; font-size:$font-size;
+      .editor_view_box {
+        .editor_view{}
+      }
+      .link_url_right{ position:absolute; right:0; top:em(4px, $font-size);
+        .round_mark.url{ }
+      }// .link_url_right END
+    }
+    .report_info_box{
+      .tit{}
+      .txt1{}
+      .txt2{}
+    }
+  }
+}
+
