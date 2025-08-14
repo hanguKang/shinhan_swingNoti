@@ -1,0 +1,60 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+
+
+.alarm_wrap{
+    //아이콘 
+    .icon_alarm{flex:0 0 2.4rem; height:2.4rem; margin-right:1rem; background:url(var.$imgurl_ico+".png") no-repeat 0 0;
+                &.icon_alarm_all_noti{background-position:0 0;}
+                &.icon_alarm_siren{background-position:0 0;}
+    }
+    .alarm_txt{margin-right:1rem;}
+    .alarm_noti_cnt{flex:1 0 1.6rem; height:2.4rem; padding:0 0.4rem; background-color:var_colors.$color_red; border-radius:2.4rem; text-align:center; color:var_colors.$color_white;}
+
+    .alarm_tit_box{display: flex; justify-content: space-between ;} 
+    .alarm_noti_box{
+        &>.alarm_h3{background-color:var_colors.$shinhan_bg_gray;}
+        .alarm_h3{display:flex; padding:1rem 2.4rem; align-items:center;}
+    }
+    .alarm_list{
+        .alarm_item{ padding:0.4rem 2.4rem;
+            a{position:relative; margin-left:3.4rem; font-size:1.5rem; font-family:'Noto Sans KR'; font-weight:400; line-height:var.$shinhan_line-height;
+                .alarm_noti{position:absolute; right:-1rem; top:0; width:0.6rem; height:0.6rem; border-radius:100%; background-color:var_colors.$color_red;}
+            }
+        }
+    }
+    .alarm_setting{display:flex; padding:1rem 2.4rem; align-items:center;
+        .icon_alarm{
+            &.alarm_set{background-position:0 0;}
+        }
+    }
+
+    #content.content{background-color:var_colors.$color_white; overflow-y: auto;
+        .title_bar{
+            .tgl_snb{
+                i.ico.ico_tgl_snb{}
+            }
+            .title{
+                h3{display:flex; align-items: center;
+                    span{
+                        &:first-child{}
+                        &.alarm_noti_cnt{margin-left:1rem; line-height:2.4rem;}
+                    }
+                }
+            }
+        }
+        .content_area{
+            .alarm_card_wrapper{ margin-top:1.6rem;
+                .alarm_swiper.swiper{ width:123rem;
+                    .swiper-wrapper{
+                        .swiper-slide{height:20.6rem; border:0.1rem solid var_colors.$bdcolor;
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

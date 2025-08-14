@@ -1,0 +1,66 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no")
+        link(rel="stylesheet", href="./css/jquery.fileupload-ui.css") 
+        link(rel="stylesheet", href="./css/jquery-ui-1.10.3.custom.css") 
+        link(rel="stylesheet", href="./css/ui.dynatree.css") 
+        link(rel="stylesheet", href="./css/jquery.mCustomScrollbar.css") 
+        link(rel="stylesheet", href="./css/jquery.qtip.css") 
+        link(rel="stylesheet", href="./css/select2.css") 
+        link(rel="stylesheet", href="./css/jquery.contextMenu.css") 
+        link(rel="stylesheet", href="./css/scrolltabs.css") 
+        link(rel="stylesheet", href="./css/c3.css") 
+        link(rel="stylesheet", href="./css/jquery.mentiony.css") 
+        link(rel="stylesheet", href="./css/toastr.css") 
+        link(rel="stylesheet", href="./css/basic_v7a.css") 
+        link(rel="stylesheet", href="./css/layout_v7a.css") 
+        link(rel="stylesheet", href="./css/fonts_noto.css") 
+        link(rel="stylesheet", href="./css/main_v7a.css") 
+        link(rel="stylesheet", href="./css/theme_v7a.css") 
+        link(rel="stylesheet", href="./css/board_v7a.css")
+        link(rel="stylesheet", href="./css/style.css") 
+        link(rel="stylesheet", href="./css/swiper.min.css") 
+        script(src="./js/jquery-3.3.1.min.js")
+        script(src="./js/jquery-migrate-1.4.1.min.js")
+        script(src="./js/jquery-migrate-3.0.0.min.js")
+        script(src="./js/jquery-ui-1.10.3.custom.min.js")
+        script(src="./js/jquery-ui.datepicker-ko.js")
+        script(src="./js/jquery.dynatree.js")
+        script(src="./js/jquery.qtip.js")
+        script(src="./js/select2.js")
+        script(src="./js/jquery.timepicker.js")
+        script(src="./js/jquery.contextMenu.js")
+        script(src="./js/jquery.mousewheel.min.js")
+        script(src="./js/sortable.js")
+        script(src="./js/d3.v3.min.js")
+        script(src="./js/c3.min.js")
+        script(src="./js/toastr.js")
+        script(src="./js/autosize.min.js")
+        script(src="./js/bootstrap.js")
+        script(src="./js/layout_v7a.js")
+        script(src="./js/ui_v7a.js")
+        script(src="./js/swiper-bundle.js")
+        script(src="./js/alarm.js")
+        title 
+    body.layout_auto.layout_ex.gw_sub.gw_header.gw_color1.gw_theme15.gw_subtheme1
+        <div id="skip_ui" class="skip_ui">
+            <a href="#content_layout">본문 바로가기</a>
+        </div>
+        //include ../partials/index_var
+        //- include ../partials/nav
+        #layout_wrap.snb_w_med
+            include ../partials/header_classic
+            //.Page.wrapper(class=page)
+                //- include ../partials/header
+                //- .content_wrap
+                    include ../partials/nav
+        //----------------------- // 컨텐츠 시작 -----------------------
+        block content 
+
+            //- include ../partials/banner
+            //- include ../partials/footer
+        //script(src="./js/main.js" defer )
+        //script(src="./js/test.js", type="module")
+        //script(src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js")

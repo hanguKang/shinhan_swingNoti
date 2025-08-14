@@ -1,10 +1,10 @@
-$primary_color : #0074e0;
-$primary_bg : #0047EB;
+$primary_color : #3B6EE7;
+$primary_bg : #15213D; 
 
-$page_bg : #F7F7F8;
+$page_bg : #FFFFFF;
 
 // board list color
-$bdcolor            : #DDE1E4;
+$bdcolor            : #DEE2E6;
 $bdtopcolor         : #494b50;
 $linkColor          : #000;
 $cellhovercolor		: #f4f4f4;
@@ -16,6 +16,11 @@ $viewheadBgcolor : #f4f4f4;
 $viewheadcolor : #333333; 
 
 
+$shinhan_text_primary:#212529;
+$shinhan_text_gray : #7a858f;
+$shinhan_acitve : #3b6ee7;
+$shinhan_warn : #FF2D55;
+$shinhan_bg_gray : #f4f6f8;
 $color_black        : #000;
 $color_white        : #fff;
 $color_deepgray     : #333;
@@ -25,7 +30,7 @@ $color_orange       : #d62e00;
 $color_dark_orange  : #C64700;
 $color_blue         : $primary_color;
 $color_cobalt       : #02728D;
-$color_red          : #c10101;
+$color_red          : $shinhan_warn;
 $color_green        : #0A892A;
 
 $btnbgcolor : $primary_bg;

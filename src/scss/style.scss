@@ -1,13 +1,14 @@
 @charset 'UTF-8';
 @import './font/fonts';
-@import './common/bootcustom_var';
-@import '../../node_modules/bootstrap/scss/bootstrap';
-@import './common/bootcustom_style';
+//@import './common/bootcustom_var';
+//@import '../../node_modules/bootstrap/scss/bootstrap';
+//@import './common/bootcustom_style';
 @import './config/function';
 @import './config/mixin';
-@import './config/reset';
+//@import './config/reset';
 @import './utiles/var_colors';
 @import './utiles/var';
+@import './utiles/skip';
 @import './config/responsive';
 @import './breakpoints/breakpoint';
 @import './utiles/box-shadow';
@@ -16,6 +17,7 @@
 @import './layout/layout';
 @import './components/h_title';
 @import './common/header';
+@import './common/nav';
 @import './common/footer';
 @import './components/nav';
 @import './components/modal';
@@ -26,6 +28,7 @@
 @import './common/page_bg_color';
 @import './common/pagination';
 @import './components/banner';
+@import './pages/alarm';
 @import './pages/index';
 @import './pages/term';
 @import './pages/select_hotissue_jumin';
@@ -34,7 +37,8 @@
 @import './pages/insertForm';
 @import './pages/usr_form';
 @import './pages/join';
-@import './components/owl.carousel';
+@import './components/core';
+//@import './components/owl.carousel';
 
 
 

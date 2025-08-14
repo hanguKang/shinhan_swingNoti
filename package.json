@@ -11,12 +11,12 @@
     "Safari >= 12",
     "not Explorer <= 11",
     "ie 11"
-  ],
+  ], 
   "type": "module",
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
-    "@babel/register": "^7.23.7",
+    "@babel/register": "^7.27.1",
     "@types/jquery": "^3.5.29",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.16",
@@ -29,6 +29,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-eslint": "^6.0.0",
     "gulp-gh-pages": "^0.5.4",
+    "gulp-postcss": "^10.0.0",
     "gulp-pug": "^5.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
@@ -40,6 +41,7 @@
     "sass-lint": "^1.13.1",
     "tsify": "^5.0.4",
     "typescript": "^5.3.3",
+    "update-browserslist-db": "^1.1.3",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^4.0.0"
@@ -51,7 +53,8 @@
   "scripts": {
     "dev": "gulp dev",
     "build": "gulp build",
-    "deploy": "gulp deploy"
+    "deploy": "gulp deploy",
+    "browserslist:update": "update-browserslist-db --update-db"
   },
   "dependencies": {
     "babelify": "^10.0.0",

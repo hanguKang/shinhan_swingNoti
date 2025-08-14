@@ -1,0 +1,27 @@
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+
+
+.nav{$font-size:16px; font-size:$font-size; font-family: var.$fontSet; width:em(148px, $font-size);
+    .main_menu{width:100%; padding:0 em(10px, $font-size);
+        .lnb{ display: flex; flex-wrap: wrap; justify-content: center;
+            .nt{flex:0 0 em(64px, $font-size); height:em(62px, $font-size); margin-bottom:em(6px, $font-size);
+                .nta{display:block;
+                    .nti{display: block; height: 24px; margin: 0 auto 7px; background: url(var.$imgurl+'main/icons_nti.png') no-repeat 0 0; opacity: 1;
+                        &.nti_mail{background-position:50% 0px;}
+                        &.nti_app{background-position:50% -48px;}
+                        &.nti_cal{background-position:50% -120px;}
+                        &.nti_todo{background-position:50% -672px;}
+                        &.nti_rtag{background-position:50% -696px;}
+                        &.nti_sbsc{background-position:50% -648px;}
+                        &.nti_drwr{background-position:50% -216px;}
+                        &.nti_agile{background-position:50% -336px;}
+                        &.nti_alarm{background-position:50% 0px;}
+                    }
+                    .nti_txt{display:block; text-align: center; font-size: em(12px, $font-size); line-height: 1; color:var_colors.$color_white;}
+                }
+            }
+        }
+    }
+}    

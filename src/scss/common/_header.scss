@@ -2,80 +2,19 @@
 @use '../utiles/var';
 @use '../config/mixin';
 
-.skip_navi {position: absolute;z-index: 999999;width: 100%;left: 0;top: 0;text-align: center;
-  a {display: block;position: absolute;left: 0;top: -9999px;z-index: 1;width: 100%;height: 40px;line-height: 40px;background-color: #333;color: #fff;font-size:  rem(20px);font-weight: 700;    
-    &:focus{top: 0; }
-  }
-}
-.Page{overflow:hidden; $font-size:16px; font-size:$font-size; padding-top: em(24px, $font-size); font-family: var.$fontSet;
-  // .seoul-common-gnb{height: rem(30px);font-weight:400;font-size: rem(14px); 
-  //   .seoul-gnb-plugin{margin:0 auto; max-width: rem(1400px);
-  //     .seoul-gnb-holder{display: flex;justify-content: space-between;
-  //       .left_box{@extend .seoul-gnb-holder; align-items:center;
-  //         .seoul-gnb-link{width: rem(106px); margin-right: rem(45px); 
-  //           a{display: block;width:100%;
-  //             img{width: 100%;}
-  //           }
-  //         }
-  //         .seoul-gnb-news{@extend .seoul-gnb-holder; align-items:center; padding-top: rem(10px);
-  //           .seoul-gnb-icon-notice{display: block;width:  rem(14px);height:  rem(14px);margin: 0 0 0 0;padding: 0;background: url( var.$imgurl_ico + 'ico_speak.png ') rem( 0px) rem(0px) no-repeat;text-indent: - rem(9999px);background-size: contain auto;}
-  //         }
-  //       }
-  //       .seoul-gnb-menu{@extend .seoul-gnb-holder; padding-top: rem(10px);
-  //         dd{margin-left: rem(24px);
-  //           .seoul-gnb-menu-section{display: none;position: absolute; top:  rem(48px); right: 0; width:  rem(200px);  border: rem(1px) solid #959595; background: #fff;z-index: 9999; box-sizing: border-box;
-  //           }
-  //         }
-          
-  //       }
-        
-  //     }
-  //   }
-  // }
-  .header{  border-bottom:1px solid var_colors.$bdcolor; background-color:#fff;
-    .outer_container{
-      .container.clearfix { $font-size:16px; font-size:$font-size; margin:0 auto; margin-top: em(40px);  width: em(1080px); height: em(187px);
-        .header_top {display: flex;justify-content: space-between;align-items:center; 
-          .head_logo{flex:0 0 em(170px); margin-right:em(48px);
-            a{display:block;
-              img{width:100%;
-                &.fixed{display: none;}
-              }
-            }
-          }
-          #searchForm{$font-size:16px; font-size:$font-size; width: em(588px, $font-size); height: em(52px,$font-size); @extend .header_top; 
-            .head_sch_box{width: em(468px,$font-size); height:em(50px,$font-size); background:url(var.$imgurl+"/srch_box_frm.png") no-repeat 0 0/100% 100%;
-              .inner{@extend .header_top;  height:em(47px,$font-size);
-                input.head_sch_input{margin-left:em(14px,$font-size); height:em(36px,$font-size); width:em(400px,$font-size);}
-                .head_common_btn{display: block; width:em(21px,$font-size); height:em(21px,$font-size); margin-right:em(20px,$font-size);
-                  .ico_srch{display: block; width:100%; height:em(21px,$font-size); background:url(var.$imgurl_ico+"/srch_zoom.png") no-repeat 0 0/contain;}
-                }
-              }
-            }
-          }
-          .head_util_menu{@extend .header_top; font-size:em(14px); line-height:1;
-            .head_util_menu_item{margin-left:em(28px)}
-            .login{}
-            .join{}
-            .seoul{ width: em(78px); height: em(24px);
-              img{ width:100%; }
-            }
-          }
-          #gpsform{position:absolute;}
-        } // header_top End
-        .header_btm{
-          .common_left.main_menu{
-            .nav{
-              .common_left_menu{ //.nav_list - ul요소
-                .nav_item{ // .nav_item - li요소
-                  
-                }
-              }
-            }
-          }
-        }        
+.Page{overflow:hidden; $font-size:16px; font-size:$font-size; font-family: var.$fontSet;
+  .header{display:flex;  height: em(60px, $font-size); background-color:var_colors.$primary_bg;
+    a{color:var_colors.$color_white;}
+    .logo{width:em(148px, $font-size); height:em(60px, $font-size);
+      h1{height:100%; display: flex; justify-content: center; align-items: center;}
+    }
+    .shinhan_menu{ height:100%;
+      .sh_ul{display: flex; height:100%;
+        li{
+          a{ display: flex; justify-content:center; align-items: center; padding:em(16px, $font-size); height:em(60px, $font-size); font-weight:700;}
+        }
       }
-    }//.outer_container End
+    }
 
     @include mixin.maxWidth(1420px){
       

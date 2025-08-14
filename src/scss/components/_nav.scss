@@ -5,8 +5,8 @@ header{
     &.head_fix{
         .nav{display:none;}
     }
-    .nav{font-size:1rem; margin-top: em(38px); letter-spacing: -2px; 
-        .nav_list{margin:0 auto; width: em(690px); 
+    .nav{$font-size:16px; font-size:$font-size; margin-top: em(38px, $font-size); letter-spacing: -2px; 
+        .nav_list{margin:0 auto; width: em(690px, $font-size); 
             &:has( > .nav_item ){
                 display:flex; justify-content: space-between; align-items: center;
                 

@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+@font-face {
+	font-family: 'Noto Sans KR';
+	src: url('../font/NotoSansKR-Light.woff2') format('woff2'),
+		 url('../font/NotoSansKR-Light.woff') format('woff');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Noto Sans KR';
+	src: url('../font/NotoSansKR-Regular.woff2') format('woff2'),
+		 url('../font/NotoSansKR-Regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Noto Sans KR';
+	src: url('../font/NotoSansKR-Medium.woff2') format('woff2'),
+		 url('../font/NotoSansKR-Medium.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Noto Sans KR';
+	src: url('../font/NotoSansKR-Bold.woff2') format('woff2'),
+		 url('../font/NotoSansKR-Bold.woff') format('woff');
+	font-weight: 800;
+	font-style: normal;
+}
+@font-face {  
+	font-family: 'Roboto';  
+	font-style: normal;  
+	font-weight: 100;
+	src: url('../font/Roboto-Thin.woff') format('woff');
+		unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+}
+@font-face {  
+	font-family: 'Roboto';  
+	font-style: normal;  
+	font-weight: 300;
+	src: url('../font/Roboto-Light.woff') format('woff');
+		unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+}
+@font-face {   
+	font-family: 'Roboto';   
+	font-style: normal;   
+	font-weight: 400;
+	src: url('../font/Roboto-Regular.woff') format('woff');
+		unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+}
+@font-face {
+	font-family: 'Roboto';   
+	font-style: normal;   
+	font-weight: 500;
+	src: url('../font/Roboto-Medium.woff') format('woff');
+		unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+}
+@font-face {   
+	font-family: 'Roboto';   
+	font-style: normal;   
+	font-weight: 600;
+	src: url('../font/Roboto-Bold.woff') format('woff');
+		unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+}
+@font-face {
+	font-family: '원신한 Bold';
+	src: url('../font/OneShinhanBold.woff') format('woff');
+}
+@font-face {
+	font-family: 'OneShinhan Bold';
+	src: url('../font/OneShinhanBold.woff') format('woff');
+}
+
+/* 원화 표시 */
+@font-face {   
+	font-family: 'Char';   
+	font-style: normal;   
+	font-weight: 600;
+	src: local("Malgun Gothic");
+	unicode-range: U+005C, U+5C, U+20A9, U+FFE6;
+}
+
+/* 폰트 재정의 (basic_v7.css) */
+body, input, textarea, select, button, table, pre,
+ul.dynatree-container,
+ul.dynatree-container .count,
+#wrap_print .btn_print_help,
+#wrap_print #content .print_page,
+.gw7_start .loading_msg_box,
+.gw7_start1 .loading_msg_box,
+.sp-container input,
+.dropdown-menu,
+.carousel_control,
+.context-menu-list,
+.tree_menu_box .mn_lst .count,
+.tree_menu_box .mn_lst .sl,
+.pagination a, .pagination span,
+.mini_calendar .cal_tit_month,
+.mini_calendar .cal_tbl_box .cal_tbl tbody td,
+.fileupload-progress .progress-extended,
+.org_setup_manager .addr_menu .mn_group .count,
+.select2-container-multi .select2-choices .select2-search-field input,
+.tooltipster-default .tooltipster-content, .tooltipster-memo .tooltipster-content,
+.ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button,
+.ui-datepicker, .ui-datepicker table, .ui-datepicker .ui-datepicker-title select, .ntalk_map_body .pac-container,
+.naon_talk, .naon_chat {font-family:'Char', 'Roboto', 'Noto Sans KR', '맑은 고딕', 'Malgun Gothic', '돋움', Dotum, Arial, sans-serif;} /* 'Char', 'Roboto', */
+.stats_chart_box *, .c3 svg {font-family:'Roboto', 'Noto Sans KR' !important;} /* 'Roboto', */
+
+/* 에디터 */
+.editor_view,
+.editor_view pre,
+.editor_view table,
+.editor_content,
+.editor_content pre,
+.editor_content table {font-family:'Char', 'Noto Sans KR';} /* 'Char', */
+
+/* 폰트 자간 */
+body, input, textarea, select, button, table, pre,
+.input_txt, input.input_date, input.input_time, input.frm_txt,
+.btn, .combo_value, .select_value, .drop_value, .combo_code, .select_code, .select_btn {letter-spacing:normal;}
+
+/* 폰트 재정의 (layout_v7a.css) */
+.keywords_box .recomm_kwd .kwd_lst .rank,
+.keywords_box .recomm_kwd .issue_kwd .kwd_lst .no,
+.lst_file li .box_cont .item .cont .size {font-family:'Roboto', 'Noto Sans KR', '맑은 고딕', 'Malgun Gothic', '돋움', Dotum, Arial, sans-serif;} /* 'Roboto', */
+#layout_content .content .title_bar .title .count .badge {font-family:arial;}
+
+/* 폰트 재정의 (main_v7a.css) */
+.my_calendar .mini_calendar .cal_nav .date,
+.w2 .my_calendar .mini_calendar .cal_tbl_box .cal_tbl tbody td,
+.h2 .my_calendar .mini_calendar .cal_tbl_box .cal_tbl tbody td {font-family:'Roboto', 'Noto Sans KR', '맑은 고딕', 'Malgun Gothic', '돋움', Dotum, Arial, sans-serif;} /* 'Roboto', */
+
+/* 폰트 재정의 (messenger_v7a.css) */
+#ntalk_body, #ntalk_body input, #ntalk_body textarea, #ntalk_body select, #ntalk_body button, #ntalk_body table, #ntalk_body pre {font-family:'Char', 'Roboto', 'Noto Sans KR', '맑은 고딕', 'Malgun Gothic', '돋움', Dotum, Arial, sans-serif;} /* 'Char', 'Roboto', */
+.naon_chat, .naon_chat .audio_box .green-audio-player .controls .controls__left-time {font-family:'Char', 'Roboto', 'Noto Sans KR', '맑은 고딕', 'Malgun Gothic', '돋움', Dotum, Arial, sans-serif;} /* 'Char', 'Roboto', */

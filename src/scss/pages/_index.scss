@@ -3,6 +3,18 @@
 @use '../config/mixin';
 @use 'sass:color';
 
+body{background-color:var_colors.$primary_bg; 
+  ul, ol{list-style: none; padding:0; margin:0;}
+  li{list-style:none; }
+  a{color:var_colors.$shinhan_text_primary; text-decoration:none;}
+  .link_wt, .icon_text{color:var_colors.$color_white;}
+}
+.content.alarm{
+  $font-size:16px; font-size:$font-size; min-height:calc(100vh - em(60px, $font-size)); background-color:var_colors.$color_white; overflow-y:auto;
+
+}
+
+
 .container{$font-size:1rem; font-size:1rem; line-height:1.5;
   .container_wrap{
     .sub_tit1_box{ position:relative;

@@ -14,7 +14,7 @@ p { max-height: 9999px; }
 address { font-style: normal; }
 button { margin: 0; padding: 0; -webkit-box-sizing: border-box; box-sizing: border-box; border: 0 none; background-color: transparent; font-family: inherit; font-size: inherit; cursor: pointer;-webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none; -webkit-box-sizing: border-box; box-sizing: border-box; cursor: pointer;  }
 caption,legend { height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); font-size:100%; line-height:1;}
-.hide { position:absolute; margin:auto; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px); clip-path:inset(50%);  position:absolute; font-size:100%; line-height:1; }
+.sr-only { position:absolute; margin:auto; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px); clip-path:inset(50%);  font-size:100%; line-height:1; white-space: nowrap;border:0;}
 .clear {clear:both;}
 .br {display:block;}
 table {display:table;width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;}
@@ -25,6 +25,7 @@ form {display:block;width:100%;}
 input,  select, textarea { box-sizing:border-box; padding: 0 10px; 
   //-webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none; -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; display: block; border: 0; font-family: inherit; 
 }
+i{font-style: normal;}
 input[type="checkbox"], input[type="radio"]{accent-color: #000;}
 textarea{resize:none;}
 // a:visited {
@@ -88,3 +89,8 @@ table {display:table;width:100%;border-collapse:collapse;border-spacing:0;table-
   }
 }
 
+.skip_ui {position: absolute;z-index: 999999;width: 100%;left: 0;top: 0;text-align: center;
+  a {display: block;position: absolute;left: 0;top: -9999px;z-index: 1;width: 100%;height: 40px;line-height: 40px;background-color: #333;color: #fff;font-size:  rem(20px);font-weight: 700;    
+    &:focus{top: 0; }
+  }
+}

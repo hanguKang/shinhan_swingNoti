@@ -1,70 +1,70 @@
 /* eb-garamond-regular - latin */
-@font-face {
-    font-family: 'jalnan';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/jalnan.eot'); /* IE9 Compat Modes */
-    src: local('※'),
-        url('../fonts/jalnan.woff') format('woff'), /* Modern Browsers */
-        url('../fonts/jalnan.woff2') format('woff2'), /* Super Modern Browsers */
-        url('../fonts/jalnan.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('../fonts/jalnan.svg') format('svg'); /* Legacy iOS */
-}
-@font-face {
-  font-family: 'JalnanGothic';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/JalnanGothic.eot'); /* IE9 Compat Modes */
-  src: local('※'),
-      url('../fonts/JalnanGothic.woff') format('woff'), /* Modern Browsers */
-      url('../fonts/JalnanGothic.woff2') format('woff2'), /* Super Modern Browsers */
-      url('../fonts/JalnanGothic.ttf') format('truetype'), /* Safari, Android, iOS */
-      url('../fonts/JalnanGothic.svg') format('svg'); /* Legacy iOS */
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../fonts/Pretendard-ExtraBold.eot'); /* IE9 Compat Modes */
-  src: local('※'),
-      url('../fonts/Pretendard-ExtraBold.woff') format('woff'), /* Modern Browsers */
-      url('../fonts/Pretendard-ExtraBold.woff2') format('woff2'), /* Super Modern Browsers */
-      url('../fonts/Pretendard-ExtraBold.ttf') format('truetype'), /* Safari, Android, iOS */
-      url('../fonts/Pretendard-ExtraBold.svg') format('svg'); /* Legacy iOS */
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/Pretendard-Medium.eot'); /* IE9 Compat Modes */
-  src: local('※'),
-      url('../fonts/Pretendard-Medium.woff') format('woff'), /* Modern Browsers */
-      url('../fonts/Pretendard-Medium.woff2') format('woff2'), /* Super Modern Browsers */
-      url('../fonts/Pretendard-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
-      url('../fonts/Pretendard-Medium.svg') format('svg'); /* Legacy iOS */
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 500;
-  src: url('../fonts/Pretendard-Regular.eot'); /* IE9 Compat Modes */
-  src: local('※'),
-      url('../fonts/Pretendard-Regular.woff') format('woff'), /* Modern Browsers */
-      url('../fonts/Pretendard-Regular.woff2') format('woff2'), /* Super Modern Browsers */
-      url('../fonts/Pretendard-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
-      url('../fonts/Pretendard-Regular.svg') format('svg'); /* Legacy iOS */
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-style: bold;
-  font-weight: 600;
-  src: url('../fonts/Pretendard-SemiBold.eot'); /* IE9 Compat Modes */
-  src: local('※'),
-      url('../fonts/Pretendard-SemiBold.woff') format('woff'), /* Modern Browsers */
-      url('../fonts/Pretendard-SemiBold.woff2') format('woff2'), /* Super Modern Browsers */
-      url('../fonts/Pretendard-SemiBold.ttf') format('truetype'), /* Safari, Android, iOS */
-      url('../fonts/Pretendard-SemiBold.svg') format('svg'); /* Legacy iOS */
-}
+// @font-face {
+//     font-family: 'jalnan';
+//     font-style: normal;
+//     font-weight: 400;
+//     src: url('../fonts/jalnan.eot'); /* IE9 Compat Modes */
+//     src: local('※'),
+//         url('../fonts/jalnan.woff') format('woff'), /* Modern Browsers */
+//         url('../fonts/jalnan.woff2') format('woff2'), /* Super Modern Browsers */
+//         url('../fonts/jalnan.ttf') format('truetype'), /* Safari, Android, iOS */
+//         url('../fonts/jalnan.svg') format('svg'); /* Legacy iOS */
+// }
+// @font-face {
+//   font-family: 'JalnanGothic';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url('../fonts/JalnanGothic.eot'); /* IE9 Compat Modes */
+//   src: local('※'),
+//       url('../fonts/JalnanGothic.woff') format('woff'), /* Modern Browsers */
+//       url('../fonts/JalnanGothic.woff2') format('woff2'), /* Super Modern Browsers */
+//       url('../fonts/JalnanGothic.ttf') format('truetype'), /* Safari, Android, iOS */
+//       url('../fonts/JalnanGothic.svg') format('svg'); /* Legacy iOS */
+// }
+// @font-face {
+//   font-family: 'Pretendard';
+//   font-style: normal;
+//   font-weight: 700;
+//   src: url('../fonts/Pretendard-ExtraBold.eot'); /* IE9 Compat Modes */
+//   src: local('※'),
+//       url('../fonts/Pretendard-ExtraBold.woff') format('woff'), /* Modern Browsers */
+//       url('../fonts/Pretendard-ExtraBold.woff2') format('woff2'), /* Super Modern Browsers */
+//       url('../fonts/Pretendard-ExtraBold.ttf') format('truetype'), /* Safari, Android, iOS */
+//       url('../fonts/Pretendard-ExtraBold.svg') format('svg'); /* Legacy iOS */
+// }
+// @font-face {
+//   font-family: 'Pretendard';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url('../fonts/Pretendard-Medium.eot'); /* IE9 Compat Modes */
+//   src: local('※'),
+//       url('../fonts/Pretendard-Medium.woff') format('woff'), /* Modern Browsers */
+//       url('../fonts/Pretendard-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+//       url('../fonts/Pretendard-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
+//       url('../fonts/Pretendard-Medium.svg') format('svg'); /* Legacy iOS */
+// }
+// @font-face {
+//   font-family: 'Pretendard';
+//   font-style: normal;
+//   font-weight: 500;
+//   src: url('../fonts/Pretendard-Regular.eot'); /* IE9 Compat Modes */
+//   src: local('※'),
+//       url('../fonts/Pretendard-Regular.woff') format('woff'), /* Modern Browsers */
+//       url('../fonts/Pretendard-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+//       url('../fonts/Pretendard-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+//       url('../fonts/Pretendard-Regular.svg') format('svg'); /* Legacy iOS */
+// }
+// @font-face {
+//   font-family: 'Pretendard';
+//   font-style: bold;
+//   font-weight: 600;
+//   src: url('../fonts/Pretendard-SemiBold.eot'); /* IE9 Compat Modes */
+//   src: local('※'),
+//       url('../fonts/Pretendard-SemiBold.woff') format('woff'), /* Modern Browsers */
+//       url('../fonts/Pretendard-SemiBold.woff2') format('woff2'), /* Super Modern Browsers */
+//       url('../fonts/Pretendard-SemiBold.ttf') format('truetype'), /* Safari, Android, iOS */
+//       url('../fonts/Pretendard-SemiBold.svg') format('svg'); /* Legacy iOS */
+// }
 
 // @font-face {
 //   font-family: 'EB Garamond';
@@ -274,61 +274,80 @@
 //        url('../fonts/open-sans-v23-latin-800italic.ttf') format('truetype'), /* Safari, Android, iOS */
 //        url('../fonts/open-sans-v23-latin-800italic.svg#OpenSans') format('svg'); /* Legacy iOS */
 // }
-// /* Noto Sans */
-//   @font-face {
-// 	font-family: 'Noto Sans';
-// 	font-weight: 100;
-// 	font-style: normal;
-// 	src: url('../fonts/NotoSansKR-Thin.eot');
-// 	src: local(※), url('../fonts/NotoSansKR-Thin.eot#iefix') format('embedded-opentype'),
-// 	url('../fonts/NotoSansKR-Thin.woff') format('woff'),
-// 	url('../fonts/NotoSansKR-Thin.otf') format('opentype');
-// 	}
-//   @font-face {
-// 	font-family: 'Noto Sans';
-// 	font-weight: 200;
-// 	font-style: normal;
-// 	src: url('../fonts/NotoSansKR-Light.eot');
-// 	src: local(※), url('../fonts/NotoSansKR-Light.eot#iefix') format('embedded-opentype'),
-// 	url('../fonts/NotoSansKR-Light.woff') format('woff'),
-// 	url('../fonts/NotoSansKR-Light.otf') format('opentype');
-// 	}
-// 	@font-face {
-// 	font-family: 'Noto Sans';
-// 	font-weight: 300;
-// 	font-style: normal;
-// 	src: url('../fonts/NotoSansKR-DemiLight.eot');
-// 	src: local(※), url('../fonts/NotoSansKR-DemiLight.eot#iefix') format('embedded-opentype'),
-// 	url('../fonts/NotoSansKR-DemiLight.woff') format('woff'),
-// 	url('../fonts/NotoSansKR-DemiLight.otf') format('opentype');
-// 	}
-// 	@font-face {
-// 	font-family: 'Noto Sans';
-// 	font-weight: 400;
-// 	font-style: normal;
-// 	src: url('../common/fonts/NotoSansKR-Regular.eot');
-// 	src: local(※), url('../fonts/NotoSansKR-Regular.eot#iefix') format('embedded-opentype'),
-// 	url('../fonts/NotoSansKR-Regular.woff') format('woff'),
-// 	url('../fonts/NotoSansKR-Regular.otf') format('opentype');
-// 	}
-// 	@font-face {
-// 	font-family: 'Noto Sans';
-// 	font-weight: 500;
-// 	font-style: normal;
-// 	src: url('../fonts/NotoSansKR-Medium.eot');
-// 	src: local(※), url('../fonts/NotoSansKR-Medium.eot#iefix') format('embedded-opentype'),
-// 	url('../fonts/NotoSansKR-Medium.woff') format('woff'),
-// 	url('../fonts/NotoSansKR-Medium.otf') format('opentype');
-// 	}
-// 	@font-face {
-// 	font-family: 'Noto Sans';
-// 	font-weight: 700;
-// 	font-style: normal;
-// 	src: url('../fonts/NotoSansKR-Bold.eot');
-// 	src: local(※), url('../fonts/NotoSansKR-Bold.eot#iefix') format('embedded-opentype'),
-// 	url('../fonts/NotoSansKR-Bold.woff') format('woff'),
-// 	url('../fonts/NotoSansKR-Bold.otf') format('opentype');
-// 	}
+/* One shinhan */
+  	// @font-face {
+	// 	font-family: 'Char';
+	// 	font-weight: 800;
+	// 	font-style: normal;
+	// 	src: url('../fonts/OneShinhanBold.eot');
+	// 	src: local(※), url('../fonts/OneShinhanBold.eot#iefix') format('embedded-opentype'),
+	// 	url('../fonts/OneShinhanBold.woff') format('woff'),
+	// 	url('../fonts/OneShinhanBold.otf') format('opentype');
+	// }
+  	// @font-face {
+	// 	font-family: 'Char';
+	// 	font-weight: 600;
+	// 	font-style: normal;
+	// 	src: url('../fonts/OneShinhanBold.eot');
+	// 	src: local(※), url('../fonts/OneShinhanBold.eot#iefix') format('embedded-opentype'),
+	// 	url('../fonts/OneShinhanBold.woff') format('woff'),
+	// 	url('../fonts/OneShinhanBold.otf') format('opentype');
+	// }
+/* Noto Sans */
+  	// @font-face {
+	// 	font-family: 'Noto Sans';
+	// 	font-weight: 100;
+	// 	font-style: normal;
+	// 	src: url('../fonts/NotoSansKR-Thin.eot');
+	// 	src: local(※), url('../fonts/NotoSansKR-Thin.eot#iefix') format('embedded-opentype'),
+	// 	url('../fonts/NotoSansKR-Thin.woff') format('woff'),
+	// 	url('../fonts/NotoSansKR-Thin.otf') format('opentype');
+	// }
+  	// @font-face {
+	// 	font-family: 'Noto Sans';
+	// 	font-weight: 200;
+	// 	font-style: normal;
+	// 	src: url('../fonts/NotoSansKR-Light.eot');
+	// 	src: local(※), url('../fonts/NotoSansKR-Light.eot#iefix') format('embedded-opentype'),
+	// 	url('../fonts/NotoSansKR-Light.woff') format('woff'),
+	// 	url('../fonts/NotoSansKR-Light.otf') format('opentype');
+	// }
+	// @font-face {
+	// 	font-family: 'Noto Sans';
+	// 	font-weight: 300;
+	// 	font-style: normal;
+	// 	src: url('../fonts/NotoSansKR-DemiLight.eot');
+	// 	src: local(※), url('../fonts/NotoSansKR-DemiLight.eot#iefix') format('embedded-opentype'),
+	// 	url('../fonts/NotoSansKR-DemiLight.woff') format('woff'),
+	// 	url('../fonts/NotoSansKR-DemiLight.otf') format('opentype');
+	// }
+	// @font-face {
+	// 	font-family: 'Noto Sans';
+	// 	font-weight: 400;
+	// 	font-style: normal;
+	// 	src: url('../common/fonts/NotoSansKR-Regular.eot');
+	// 	src: local(※), url('../fonts/NotoSansKR-Regular.eot#iefix') format('embedded-opentype'),
+	// 	url('../fonts/NotoSansKR-Regular.woff') format('woff'),
+	// 	url('../fonts/NotoSansKR-Regular.otf') format('opentype');
+	// }
+	// @font-face {
+	// 	font-family: 'Noto Sans';
+	// 	font-weight: 500;
+	// 	font-style: normal;
+	// 	src: url('../fonts/NotoSansKR-Medium.eot');
+	// 	src: local(※), url('../fonts/NotoSansKR-Medium.eot#iefix') format('embedded-opentype'),
+	// 	url('../fonts/NotoSansKR-Medium.woff') format('woff'),
+	// 	url('../fonts/NotoSansKR-Medium.otf') format('opentype');
+	// }
+	// @font-face {
+	// 	font-family: 'Noto Sans';
+	// 	font-weight: 700;
+	// 	font-style: normal;
+	// 	src: url('../fonts/NotoSansKR-Bold.eot');
+	// 	src: local(※), url('../fonts/NotoSansKR-Bold.eot#iefix') format('embedded-opentype'),
+	// 	url('../fonts/NotoSansKR-Bold.woff') format('woff'),
+	// 	url('../fonts/NotoSansKR-Bold.otf') format('opentype');
+	// }
 //   /*본명조*/
 //   @font-face {
 //     font-family: 'NotoSerifKR';

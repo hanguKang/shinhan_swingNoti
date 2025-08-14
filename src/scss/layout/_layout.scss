@@ -1,1 +1,11 @@
-.center_box{$font-size:16px; font-size:$font-size; margin:0 auto; width:100%; max-width:em(1400px, $font-size); }
+@use '../utiles/var_colors';
+@use '../utiles/var';
+@use '../config/mixin';
+
+//.center_box{$font-size:16px; font-size:$font-size; margin:0 auto; width:100%; max-width:em(1400px, $font-size); }
+.content_wrap{ $font-size:16px; font-size:$font-size; display: flex; justify-content:space-between; align-items: flex-start; 
+    .lnb{flex:0 0 em(128px, $font-size);}
+    .layout_container{ flex:1 0 auto; overflow-y:auto; background-color:var_colors.$color_white;
+        
+    }
+}

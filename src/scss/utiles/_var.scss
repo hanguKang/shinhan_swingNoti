@@ -5,18 +5,19 @@
 @use '../utiles/var_colors';
 
 // input
+$shinhan_line-height: 2.4rem;
 $formHeight         : 50px;
 // button
 $btnHeight          : calc($formHeight - 6px);
 //font
-$fontSet            : "Pretendard", "맑은고딕","malgun gothic", AppleGothic, "돋움", dotum, Helvetica, Arial, sans-serif;
+$fontSet            : "Char","Noto Sans", AppleGothic,"맑은고딕","malgun gothic", "돋움", dotum, Helvetica, Arial, sans-serif;
 $defaultfontsize    : 16px;
  //h1~h6
 $headingFont        : "Pretendard", "맑은고딕","malgun gothic", sans-serif;
 
-$imgurl:'../images/common/';
-$imgurl_ico:'../images/ico/';
-$imgurl_date:'../images/20240215/';
+$imgurl:'../img/';
+$imgurl_ico:'../img/main/';
+$imgurl_date:'../img/20240215/';
 
 // 반응형 중단점
 $wide : 1301px;

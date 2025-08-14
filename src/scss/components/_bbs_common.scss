@@ -2,227 +2,234 @@
 @use '../utiles/var_colors';
 @use '../utiles/var';
 
-//상단 시민참여단 탭메뉴
-.basic_tab.tab_5p {$font-size:16px; font-size:$font-size; font-weight:500; line-height:1.5; text-shadow:0 0 1px #000; overflow: hidden; margin:0 auto em(40px, $font-size) auto; display:flex; justify-content: space-between; align-items:stretch; width:100%; max-width:em(1400px, $font-size); height:em(64px,$font-size);
-  li{flex:0 0 calc(20% -  1.5px); background-color:var_colors.$page_bg; 
-    a{$font-size:18px; font-size:$font-size;text-align: center; display: flex; justify-content: center; align-items: center; height:100%;}
-    &.active{
-      a{background-color:var_colors.$primary_bg; color:#fff; text-shadow:0 0 1px #fff;}
-    }
-  }
-}
 
-//상단 서치창
-.sch_bar {$font-size:16px; font-size:$font-size; line-height:1.5; font-family: var.$fontSet; position: relative; display:flex; justify-content: center; align-items: center; margin:0 auto; margin-bottom:em(48px, $font-size); height: em(64px, $font-size); width:em(1400px, $font-size);
-  .top_slt_box{
-    .sch_input{ display: inline-block;}
-  }
-  .btn_box{
-    .common_btn{position:absolute; @include mixin.pos_y_50; left:auto; right:0; $font-size:20px; font-size:$font-size; font-weight:600; display: inline-block; margin:0 em(8px,$font-size); width:em(184px,$font-size); height:em(64px,$font-size); border:0 none; background-color:var_colors.$primary_bg;; color:#fff; vertical-align: middle; text-align:center;
-			&:before{content:''; display: inline-block; height:100%; vertical-align: middle;}
-    }
-  }
-  .sch_slt, .form_slt {
-    appearance: none;
-    $font-size:20px;
-    box-sizing: border-box;
-    width: em(200px, $font-size);
-    height: em(64px, $font-size);
-    margin-right: em(16px, $font-size);
-    padding: 0 em(30px, $font-size);
-    border: 2px solid var_colors.$bdcolor;
-    border-radius: radius_50(em(64px, $font-size)); 
-    vertical-align: top;
-    box-shadow: em(12px, $font-size) em(12px, $font-size) em(12px, $font-size) rgba(23,100,232,0.06);
-    font-size: em($font-size);    
-    background:url(var.$imgurl_ico+'ico_slct_arrow.png') no-repeat 90% 50%/auto auto;
-  }
-  .sch_input{$font-size:20px;  position: relative; width: em(720px); height: em(64px);
-    .sch_input {
-      width: em(720px, $font-size);
-      height: em(64px, $font-size);
-      padding: 0 em(64px, $font-size) 0 em(32px, $font-size);
-      border: 2px solid var_colors.$bdcolor;
-      border-radius: radius_50(em(64px, $font-size)); 
-      font-size: em($font-size);
-      vertical-align: top;
-      box-shadow: em(12px, $font-size) em(12px, $font-size) em(12px, $font-size) rgba(23,100,232,0.06);
-    }
-    .sch_btn{
-      @include mixin.pos_y_50('right');
-      position: absolute;
-      right: 15px;
-      width: 60px;
-      height: 60px;      
-      background: url(var.$imgurl_ico+'ico_bbs_srch.png') no-repeat center/auto;
-    }
-  }
+
+//보드 글자
+.board_list{$font-size:13px; font-size: $font-size; font-weight: 400; color:var_colors.$shinhan_text_gray;}
+.board_date{$font-size:12px; font-size: $font-size; font-weight: 400; color:var_colors.$shinhan_text_gray; line-height:em(26px, $font-size);}
+.board_page{$font-size:13px; font-size: $font-size; font-weight: 600; color:var_colors.$shinhan_text_primary; }
+
+// //상단 시민참여단 탭메뉴
+// .basic_tab.tab_5p {$font-size:16px; font-size:$font-size; font-weight:500; line-height:1.5; text-shadow:0 0 1px #000; overflow: hidden; margin:0 auto em(40px, $font-size) auto; display:flex; justify-content: space-between; align-items:stretch; width:100%; max-width:em(1400px, $font-size); height:em(64px,$font-size);
+//   li{flex:0 0 calc(20% -  1.5px); background-color:var_colors.$page_bg; 
+//     a{$font-size:18px; font-size:$font-size;text-align: center; display: flex; justify-content: center; align-items: center; height:100%;}
+//     &.active{
+//       a{background-color:var_colors.$primary_bg; color:#fff; text-shadow:0 0 1px #fff;}
+//     }
+//   }
+// }
+
+// //상단 서치창
+// .sch_bar {$font-size:16px; font-size:$font-size; line-height:1.5; font-family: var.$fontSet; position: relative; display:flex; justify-content: center; align-items: center; margin:0 auto; margin-bottom:em(48px, $font-size); height: em(64px, $font-size); width:em(1400px, $font-size);
+//   .top_slt_box{
+//     .sch_input{ display: inline-block;}
+//   }
+//   .btn_box{
+//     .common_btn{position:absolute; @include mixin.pos_y_50; left:auto; right:0; $font-size:20px; font-size:$font-size; font-weight:600; display: inline-block; margin:0 em(8px,$font-size); width:em(184px,$font-size); height:em(64px,$font-size); border:0 none; background-color:var_colors.$primary_bg;; color:#fff; vertical-align: middle; text-align:center;
+// 			&:before{content:''; display: inline-block; height:100%; vertical-align: middle;}
+//     }
+//   }
+//   .sch_slt, .form_slt {
+//     appearance: none;
+//     $font-size:20px;
+//     box-sizing: border-box;
+//     width: em(200px, $font-size);
+//     height: em(64px, $font-size);
+//     margin-right: em(16px, $font-size);
+//     padding: 0 em(30px, $font-size);
+//     border: 2px solid var_colors.$bdcolor;
+//     border-radius: radius_50(em(64px, $font-size)); 
+//     vertical-align: top;
+//     box-shadow: em(12px, $font-size) em(12px, $font-size) em(12px, $font-size) rgba(23,100,232,0.06);
+//     font-size: em($font-size);    
+//     background:url(var.$imgurl_ico+'ico_slct_arrow.png') no-repeat 90% 50%/auto auto;
+//   }
+//   .sch_input{$font-size:20px;  position: relative; width: em(720px); height: em(64px);
+//     .sch_input {
+//       width: em(720px, $font-size);
+//       height: em(64px, $font-size);
+//       padding: 0 em(64px, $font-size) 0 em(32px, $font-size);
+//       border: 2px solid var_colors.$bdcolor;
+//       border-radius: radius_50(em(64px, $font-size)); 
+//       font-size: em($font-size);
+//       vertical-align: top;
+//       box-shadow: em(12px, $font-size) em(12px, $font-size) em(12px, $font-size) rgba(23,100,232,0.06);
+//     }
+//     .sch_btn{
+//       @include mixin.pos_y_50('right');
+//       position: absolute;
+//       right: 15px;
+//       width: 60px;
+//       height: 60px;      
+//       background: url(var.$imgurl_ico+'ico_bbs_srch.png') no-repeat center/auto;
+//     }
+//   }
   
-}
-//margin-top: header의 높이 52px, .page에 padding-top 높이 24px가 있어서 그만큼 뺀다. 28px
-.header.head_fix + .contents, .header.head_fix + main > .contents{$font-size:16px; font-size:$font-size;
-  margin-top:em(28px, $font-size);
-}
-.contents{$font-size:16px; font-size:$font-size; width:100%; margin:0; font-family:var.$fontSet; 
-  .container{padding:0; // width: 100%; max-width: 100%;
-    .common_right{
-      .bbs_form{font-size:1rem;
-        //시민참여 게시판
-        .sub_each{$font-size:16px; font-size:$font-size; line-height:1.5; margin:0 auto; width:100%; max-width:em(1400px,$font-size);
-          .sub_tit2{$font-size:22px; font-size:$font-size; padding-left:em(40px, $font-size); margin-top:em(40px, $font-size); margin-bottom:em(28px, $font-size); position:relative;
-            &:before{position:absolute; content:''; left:0; top:50%; transform:translateY(-50%); width:em(24px, $font-size); height:em(24px, $font-size); background:url(var.$imgurl_ico+'ico_bullet_square.png') no-repeat 0 0/auto; }
-          }
-        }
-      }//.bbs_form
+// }
+// //margin-top: header의 높이 52px, .page에 padding-top 높이 24px가 있어서 그만큼 뺀다. 28px
+// .header.head_fix + .contents, .header.head_fix + main > .contents{$font-size:16px; font-size:$font-size;
+//   margin-top:em(28px, $font-size);
+// }
+// .contents{$font-size:16px; font-size:$font-size; width:100%; margin:0; font-family:var.$fontSet; 
+//   .container{padding:0; // width: 100%; max-width: 100%;
+//     .common_right{
+//       .bbs_form{font-size:1rem;
+//         //시민참여 게시판
+//         .sub_each{$font-size:16px; font-size:$font-size; line-height:1.5; margin:0 auto; width:100%; max-width:em(1400px,$font-size);
+//           .sub_tit2{$font-size:22px; font-size:$font-size; padding-left:em(40px, $font-size); margin-top:em(40px, $font-size); margin-bottom:em(28px, $font-size); position:relative;
+//             &:before{position:absolute; content:''; left:0; top:50%; transform:translateY(-50%); width:em(24px, $font-size); height:em(24px, $font-size); background:url(var.$imgurl_ico+'ico_bullet_square.png') no-repeat 0 0/auto; }
+//           }
+//         }
+//       }//.bbs_form
 
-      //게시판 공통
-      .board_list_box{}
-      // table과 pagination 감싸는 상자 start
-      .s_outer{
-        .s_table{
-          //시민 참여 게시판 
-          .board_list{
-            &.just_this{
-              .thd{
-                .thd_tr{$font-size: 20px; font-size:$font-size;
-                  >:first-child{ border-radius:em(8px, $font-size) 0 0 0; }
-                  >:last-child{ border-radius:0 em(8px,$font-size) 0 0; }
-                }
+//       //게시판 공통
+//       .board_list_box{}
+//       // table과 pagination 감싸는 상자 start
+//       .s_outer{
+//         .s_table{
+//           //시민 참여 게시판 
+//           .board_list{
+//             &.just_this{
+//               .thd{
+//                 .thd_tr{$font-size: 20px; font-size:$font-size;
+//                   >:first-child{ border-radius:em(8px, $font-size) 0 0 0; }
+//                   >:last-child{ border-radius:0 em(8px,$font-size) 0 0; }
+//                 }
                 
-              }
-              .tbd{$font-size: 18px; font-size:$font-size;
-                .item{
-                  th, td{ background-color:#fff;}
-                  >:first-child{ border-radius:0 0 0 em(8px, $font-size); }
-                  >:last-child{ border-radius:0 0 em(8px,$font-size) 0; }
-                }
+//               }
+//               .tbd{$font-size: 18px; font-size:$font-size;
+//                 .item{
+//                   th, td{ background-color:#fff;}
+//                   >:first-child{ border-radius:0 0 0 em(8px, $font-size); }
+//                   >:last-child{ border-radius:0 0 em(8px,$font-size) 0; }
+//                 }
                 
-              }
-            }
-          }
-          //공통 게시판
-          // 실제 table start
-          .board_list{margin:0 auto; max-width: em(1400px); 
-            $font-size:16px;
-            font-size: $font-size;
-            text-align: center;
-            border-collapse: collapse;
-            table-layout: fixed;
-            .thd{background-color: var_colors.$viewbdtopcolor; height:em(78px, $font-size);
-              .thd_tr{$font-size: 20px; font-size:$font-size; 
-                th{color:#ffffff; font-weight:500;}
-                >:first-child{ border-radius:em(8px, $font-size) 0 0 em(8px, $font-size); }
-                >:last-child{ border-radius:0 em(8px,$font-size) em(8px, $font-size) 0; }
-              }
-            }
-            .tbd{
-              .item{$font-size: 18px; font-size:$font-size; height: em(90px,$font-size);
-                .num{font-weight:600; position:relative;
-                  &:before{
-                    @include mixin.afterBefore(('_width':1px, '_height':em(43px,$font-size),'_border':0 none, '_border-radius':0, '_padding':0, '_bg-color':#EBEEF0, '_right':em(0px) ));
-                  }
-                }
-                .sort{
-                  .sort_txt{display: flex; justify-content: center; align-items: center;
-                    &.notice{$font-size:14px; @extend .sort_txt; color:#fff; flex:0 0 em(48px, $font-size); margin:0 auto; width:em(48px, $font-size); height: em(28px, $font-size); background-color:var_colors.$primary_bg; font-size:14px;
-                    }
-                  }
-                }
-                .tit_td{
-                  h3{position:relative; text-align:left; margin-left: em(26px);}
-                }
-                &:nth-child(odd){background-color:#F7F7F8;}
-                &:nth-child(even){background-color:#ffffff;
-                  >:first-child{ border-radius:em(8px) 0 0 em(8px); }
-                  >:last-child{ border-radius:0 em(8px) em(8px) 0; }
-                }
-              }
+//               }
+//             }
+//           }
+//           //공통 게시판
+//           // 실제 table start
+//           .board_list{margin:0 auto; max-width: em(1400px); 
+//             $font-size:16px;
+//             font-size: $font-size;
+//             text-align: center;
+//             border-collapse: collapse;
+//             table-layout: fixed;
+//             .thd{background-color: var_colors.$viewbdtopcolor; height:em(78px, $font-size);
+//               .thd_tr{$font-size: 20px; font-size:$font-size; 
+//                 th{color:#ffffff; font-weight:500;}
+//                 >:first-child{ border-radius:em(8px, $font-size) 0 0 em(8px, $font-size); }
+//                 >:last-child{ border-radius:0 em(8px,$font-size) em(8px, $font-size) 0; }
+//               }
+//             }
+//             .tbd{
+//               .item{$font-size: 18px; font-size:$font-size; height: em(90px,$font-size);
+//                 .num{font-weight:600; position:relative;
+//                   &:before{
+//                     @include mixin.afterBefore(('_width':1px, '_height':em(43px,$font-size),'_border':0 none, '_border-radius':0, '_padding':0, '_bg-color':#EBEEF0, '_right':em(0px) ));
+//                   }
+//                 }
+//                 .sort{
+//                   .sort_txt{display: flex; justify-content: center; align-items: center;
+//                     &.notice{$font-size:14px; @extend .sort_txt; color:#fff; flex:0 0 em(48px, $font-size); margin:0 auto; width:em(48px, $font-size); height: em(28px, $font-size); background-color:var_colors.$primary_bg; font-size:14px;
+//                     }
+//                   }
+//                 }
+//                 .tit_td{
+//                   h3{position:relative; text-align:left; margin-left: em(26px);}
+//                 }
+//                 &:nth-child(odd){background-color:#F7F7F8;}
+//                 &:nth-child(even){background-color:#ffffff;
+//                   >:first-child{ border-radius:em(8px) 0 0 em(8px); }
+//                   >:last-child{ border-radius:0 em(8px) em(8px) 0; }
+//                 }
+//               }
               
-            }
-          }// .board_list End              
-        }//.s_table End                     
-      }//.s_outer End
-    }
-  }
-}
+//             }
+//           }// .board_list End              
+//         }//.s_table End                     
+//       }//.s_outer End
+//     }
+//   }
+// }
 
-//mobile
-.m_lbl_txt, .m_lbl_txt2 {display: none;}
+// //mobile
+// .m_lbl_txt, .m_lbl_txt2 {display: none;}
 
-@include mixin.maxWidth(720px){
-  .contents{$font-size:16px; font-size:$font-size; width:100%; margin:0; font-family:var.$fontSet; 
-    .container{padding:0; 
-      .common_right{
-        .bbs_form{
-          //시민참여 게시판
-          .sub_each{
-            .sub_tit2{$font-size:20px; font-size:$font-size; margin:0 em(16px, $font-size); padding:em(16px, $font-size) 0;
-              &:before{position:absolute; content:''; left:0; top:50%; transform:translateY(-50%); width:em(24px, $font-size); height:em(24px, $font-size); background:url(var.$imgurl_ico+'ico_bullet_square.png') no-repeat 0 0/auto; }
-            }
-          }
-        }//.bbs_form
-        .s_outer{ 
-          .s_table{
-            //시민 참여 게시판 
-            .board_list{ margin-bottom: em(16px, $font-size);
-              &.just_this{
-                .thd{
-                  .thd_tr{$font-size: 20px; font-size:$font-size;
-                    >:first-child{ border-radius:em(8px, $font-size) 0 0 0; }
-                    >:last-child{ border-radius:0 em(8px,$font-size) 0 0; }
-                  }
+// @include mixin.maxWidth(720px){
+//   .contents{$font-size:16px; font-size:$font-size; width:100%; margin:0; font-family:var.$fontSet; 
+//     .container{padding:0; 
+//       .common_right{
+//         .bbs_form{
+//           //시민참여 게시판
+//           .sub_each{
+//             .sub_tit2{$font-size:20px; font-size:$font-size; margin:0 em(16px, $font-size); padding:em(16px, $font-size) 0;
+//               &:before{position:absolute; content:''; left:0; top:50%; transform:translateY(-50%); width:em(24px, $font-size); height:em(24px, $font-size); background:url(var.$imgurl_ico+'ico_bullet_square.png') no-repeat 0 0/auto; }
+//             }
+//           }
+//         }//.bbs_form
+//         .s_outer{ 
+//           .s_table{
+//             //시민 참여 게시판 
+//             .board_list{ margin-bottom: em(16px, $font-size);
+//               &.just_this{
+//                 .thd{
+//                   .thd_tr{$font-size: 20px; font-size:$font-size;
+//                     >:first-child{ border-radius:em(8px, $font-size) 0 0 0; }
+//                     >:last-child{ border-radius:0 em(8px,$font-size) 0 0; }
+//                   }
                   
-                }
-                .tbd{$font-size: 18px; font-size:$font-size;
-                  .item{
-                    th, td{ background-color:#fff;}
-                    >:first-child{ border-radius:0 0 0 em(8px, $font-size); }
-                    >:last-child{ border-radius:0 0 em(8px,$font-size) 0; }
-                  }
+//                 }
+//                 .tbd{$font-size: 18px; font-size:$font-size;
+//                   .item{
+//                     th, td{ background-color:#fff;}
+//                     >:first-child{ border-radius:0 0 0 em(8px, $font-size); }
+//                     >:last-child{ border-radius:0 0 em(8px,$font-size) 0; }
+//                   }
                   
-                }
-              }
-            }
+//                 }
+//               }
+//             }
       
-            .board_list{
-              $font-size:16px; font-size: $font-size;
-              display:block; 
-              // thead
-              .thd{display: none;} 
-              //tbody
-              .tbd{display: block; padding:em(16px, $font-size); background-color:#fff;
-                .item{display: block; $font-size: 18px; font-size:$font-size; height: auto; 
-                  th, td{display:flex; align-items: center; overflow:hidden; background-color:transparent; max-width:100%; min-height:em(42px, $font-size); border-bottom:1px solid var_colors.$bdcolor; 
-                    &:last-child{border-bottom:0 none; }
-                    .m_lbl_txt, .m_lbl_txt2 {display: block; flex:0 0 calc(30% - em(8px,$font-size)); width:calc(30% - em(8px,$font-size));  text-align:left; @include mixin.ellipsis(1);}
-                    .tbd_cell_txt{flex:0 0 70%; width:70%; text-align:left; @include mixin.ellipsis(1); word-break: break-all;}
-                  }
-                  .num{font-weight:600; position:relative;
-                    &:before{
-                      @include mixin.afterBefore(('_width':1px, '_height':em(43px,$font-size),'_border':0 none, '_border-radius':0, '_padding':0, '_bg-color':#EBEEF0, '_right':em(0px) ));
-                    }
-                  }
-                  .sort{
-                    .sort_txt{display: flex; justify-content: center; align-items: center;
-                      &.notice{$font-size:14px; @extend .sort_txt; color:#fff; flex:0 0 em(48px, $font-size); margin:0 auto; width:em(48px, $font-size); height: em(28px, $font-size); background-color:var_colors.$primary_bg; font-size:14px;
-                      }
-                    }
-                  }
-                  .tit_td{
-                    h3{position:relative; text-align:left; margin-left: em(26px);}
-                  }
-                  &:nth-child(odd){background-color:#F7F7F8;}
-                  &:nth-child(even){background-color:#ffffff;
-                    >:first-child{ border-radius:em(8px) 0 0 em(8px); }
-                    >:last-child{ border-radius:0 em(8px) em(8px) 0; }
-                  }
-                }
+//             .board_list{
+//               $font-size:16px; font-size: $font-size;
+//               display:block; 
+//               // thead
+//               .thd{display: none;} 
+//               //tbody
+//               .tbd{display: block; padding:em(16px, $font-size); background-color:#fff;
+//                 .item{display: block; $font-size: 18px; font-size:$font-size; height: auto; 
+//                   th, td{display:flex; align-items: center; overflow:hidden; background-color:transparent; max-width:100%; min-height:em(42px, $font-size); border-bottom:1px solid var_colors.$bdcolor; 
+//                     &:last-child{border-bottom:0 none; }
+//                     .m_lbl_txt, .m_lbl_txt2 {display: block; flex:0 0 calc(30% - em(8px,$font-size)); width:calc(30% - em(8px,$font-size));  text-align:left; @include mixin.ellipsis(1);}
+//                     .tbd_cell_txt{flex:0 0 70%; width:70%; text-align:left; @include mixin.ellipsis(1); word-break: break-all;}
+//                   }
+//                   .num{font-weight:600; position:relative;
+//                     &:before{
+//                       @include mixin.afterBefore(('_width':1px, '_height':em(43px,$font-size),'_border':0 none, '_border-radius':0, '_padding':0, '_bg-color':#EBEEF0, '_right':em(0px) ));
+//                     }
+//                   }
+//                   .sort{
+//                     .sort_txt{display: flex; justify-content: center; align-items: center;
+//                       &.notice{$font-size:14px; @extend .sort_txt; color:#fff; flex:0 0 em(48px, $font-size); margin:0 auto; width:em(48px, $font-size); height: em(28px, $font-size); background-color:var_colors.$primary_bg; font-size:14px;
+//                       }
+//                     }
+//                   }
+//                   .tit_td{
+//                     h3{position:relative; text-align:left; margin-left: em(26px);}
+//                   }
+//                   &:nth-child(odd){background-color:#F7F7F8;}
+//                   &:nth-child(even){background-color:#ffffff;
+//                     >:first-child{ border-radius:em(8px) 0 0 em(8px); }
+//                     >:last-child{ border-radius:0 em(8px) em(8px) 0; }
+//                   }
+//                 }
                 
-              }
-            }// .board_list End 
-          }
-        }   
-      } //common_right END
-    }// .container END
-  }// .contents END
-}
+//               }
+//             }// .board_list End 
+//           }
+//         }   
+//       } //common_right END
+//     }// .container END
+//   }// .contents END
+// }
