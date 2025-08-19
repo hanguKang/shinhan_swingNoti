@@ -24,11 +24,11 @@ block content
           </div>
           .alarm_noti_box
             .alarm_h3
-              i.icon_alarm.icon_alarm_all_noti
+              i.icon_alarm.icon_alarm_all_noti_blu
               span.alarm_txt 전체알림
             .alarm_tit_box
               .alarm_h3 
-                i.icon_alarm.icon_alarm_siren
+                i.icon_alarm.icon_icon_alarm_siren_bk
                 span.alarm_txt 중요/긴급 알림  
                 span.alarm_noti_cnt 999
 
@@ -101,7 +101,7 @@ block content
                       | 시스템
                       span.alarm_noti
             p.alarm_setting 
-              i.icon_alarm.alarm_set 
+              i.icon_alarm.alarm_set_bk          
               | 알림설정  
         #content.content 
           .title_bar 
@@ -114,47 +114,28 @@ block content
           #content_area.content_area
             .alarm_card_wrapper 
               .swiper.alarm_swiper
-                .swiper-wrapper 
+                .swiper-wrapper.alrm_swiper_wrapper 
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 구독
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_sub 구독
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_gudok")
-                        label 
+                        label.chkbox(for="alrm_chk_subscribe_0")
+                          input.input_chk(type="checkbox", name="" id="alrm_chk_subscribe_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
-                    .alarm_bottom 
-                      .alarm_writer 홍길동
-                      .alarm_time 
-                        | 오늘 
-                        time(datetime="2019-04-19T20:00:00") 20:00
-
-                  .swiper-slide.alarm_card
-                    .alarm_card_header
-                      strong.title 메일
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
-                      .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_mail")
-                        label 
-                          span.alrm_chk_on 읽음
-                    .alarm_content 
-                      .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
-                      .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
@@ -162,21 +143,25 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 게시판
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_mail 메일
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_board1")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_mail_0")
+                        label(for="alrm_chk_mail_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
@@ -184,21 +169,25 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 내서랍
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_board 게시판
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_drawer")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_board_0")
+                        label(for="alrm_chk_board_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
@@ -206,16 +195,21 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title SAQ
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_drawer 내서랍
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_SAQ")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_drawer_0")
+                        label(for="alrm_chk_drawer_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
@@ -228,21 +222,25 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 태그
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_SAQ SAQ
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_tag")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_SAQ_0")
+                        label(for="alrm_chk_SAQ_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
@@ -250,21 +248,25 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 자원예약
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_tag 태그
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_resource")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_tag_0")
+                        label(for="alrm_chk_tag_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
@@ -272,21 +274,25 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 시스템
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_resource 자원예약
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_system")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_resource_0")
+                        label(for="alrm_chk_resource_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
@@ -294,21 +300,25 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 게시판
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_system 시스템
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_board2")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_system_0")
+                        label(for="alrm_chk_system_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
@@ -316,21 +326,25 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 설문
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_board 게시판
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_survey")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_board_1")
+                        label(for="alrm_chk_board_1")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
@@ -338,21 +352,25 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 할일
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_survey 설문
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_todo")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_survey_0")
+                        label(for="alrm_chk_survey_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
@@ -360,21 +378,25 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 일정
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_todo 할일
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_schedule")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_todo_0")
+                        label(for="alrm_chk_todo_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
@@ -382,30 +404,66 @@ block content
                         time(datetime="2019-04-19T20:00:00") 20:00
                   .swiper-slide.alarm_card
                     .alarm_card_header
-                      strong.title 쪽지
-                      span.icon_alarm.alarm_siren 
-                      .alarm_btn_box 
-                        button
-                          i.icon_alarm.alarm_calendar
-                          i.icon_alarm.alarm_copy
-                          i.icon_alarm.alarm_remember 
+                      strong.title.alrm_tit_schedule 일정
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .alarm_btn_box
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
                       .alarm_input 
-                        input(type="checkbox", name="" id="alrm_chk_memo")
-                        label 
+                        input(type="checkbox", name="" id="alrm_chk_schedule_0")
+                        label(for="alrm_chk_schedule_0")
                           span.alrm_chk_on 읽음
                     .alarm_content 
                       .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
                       .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-
+                    .alarm_bottom 
+                      .alarm_writer 홍길동
+                      .alarm_time 
+                        | 오늘 
+                        time(datetime="2019-04-19T20:00:00") 20:00
+                  .swiper-slide.alarm_card
+                    .alarm_card_header
+                      strong.title.alrm_tit_memo 쪽지
+                      span.icon_alarm.icon_alarm_siren_wt
+                      .C
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_calendar_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_copy_gry
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_recall_gry
+                        button(type="button") 
+                          i.icon_alarm.icon_alarm_more_bk
+                      .alarm_input 
+                        input(type="checkbox", name="" id="alrm_chk_memo_0")
+                        label(for="alrm_chk_memo_0")
+                          span.alrm_chk_on 읽음
+                    .alarm_content 
+                      .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                      .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
                     .alarm_bottom 
                       .alarm_writer 홍길동
                       .alarm_time 
                         | 오늘 
                         time(datetime="2019-04-19T20:00:00") 20:00
                 .swiper-button-prev 
-                .swiper-button-next 
+                .swiper-button-next#nextSwiperBtn
+              .swiper_data 
+                .status 
+                  | 현재슬라이드 수 : 
+                  span#slideCount 0 
+                    | / 다음로딩 : 
+                    span#nextLoadNum 14
+                    | 번 부터
 
-              </div>
 
 
 
