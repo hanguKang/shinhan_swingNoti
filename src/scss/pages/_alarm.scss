@@ -61,6 +61,65 @@
         }
     }
 
+    //경고
+    .status-display {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 100;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .status-loading {
+        color: #007bff;
+        background-color: #e3f2fd;
+    }
+
+    .status-complete {
+        color: #28a745;
+        background-color: #f0fff4;
+    }
+
+    .status-warning {
+        color: #ff9800;
+        background-color: #fff3e0;
+    }
+
+    .status-normal {
+        color: #6c757d;
+        background-color: #f8f9fa;
+    }
+
+    /* 에러 슬라이드 스타일 */
+    .error-slide {
+        background: linear-gradient(135deg, #fff3f3 0%, #ffe6e6 100%);
+        border: 2px dashed #ff6b6b;
+    }
+
+    .error-slide .error-message {
+        text-align: center;
+        padding: 2rem;
+        color: #d32f2f;
+    }
+
+    .error-slide .retry-btn {
+        margin-top: 1rem;
+        padding: 8px 16px;
+        background: #d32f2f;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .error-slide .retry-btn:hover {
+        background: #b71c1c;
+    }
+
     #content.content{background-color:var_colors.$color_white; overflow-y: auto;
         .title_bar{
             .tgl_snb{
@@ -77,45 +136,134 @@
         }
         .content_area{
             .alarm_card_wrapper{ margin-top:1.6rem;
-                .alarm_swiper.swiper{ width:123rem;
-                    .swiper-wrapper{
-                        .swiper-slide{position: relative; display:flex; flex-direction: column; justify-content: left ; align-items: flex-start; padding: 20px; height:20.6rem; border:0.1rem solid var_colors.$bdcolor; box-sizing: border-box; background-color: #f9f9f9;
-                            &.alarm_card{
-                                .alarm_card_header{display:flex; align-items:center; width:100%; 
-                                    .title{flex:0 0 6.8rem; display:block; margin-right:0.8rem; width:6.8rem; height:2.4rem; text-align:center; line-height:2.4rem; font-size:1.3rem; font-family: var.$shinhan_noti; font-weight:500; background-color: var_colors.$shinhan_bg_disable; color:var_colors.$color_white; border-radius:0.4rem; background-color:var_colors.$color_white;
-                                        &.alrm_tit_sub{background-color:#9970fc;}
-                                        &.alrm_tit_mail{background-color:#3B6EE7;}
-                                        &.alrm_tit_board{background-color:#5021f2;}
-                                        &.alrm_tit_drawer{background-color:#7a858f;}
-                                        &.alrm_tit_SAQ{background-color:#9C27B0;}
-                                        &.alrm_tit_tag{background-color:#6A4A3E;}
-                                        &.alrm_tit_resource{background-color:#495057;}
-                                        &.alrm_tit_system{background-color:#212529;}
-                                        &.alrm_tit_survey{background-color:#9970FC;}
-                                        &.alrm_tit_todo{background-color:#00BCD4;}
-                                        &.alrm_tit_schedule{background-color:#25B039;}
-                                        &.alrm_tit_memo{background-color:#88931A;}
-                                        &.alrm_tit_pay {background-color:#F98D00;}
-                                    }
-                                    .icon_alarm{}
-                                    .alarm_btn_box{margin-left:auto; display:flex;
-                                        .alarm_btn_ico_box{
-                                            button{width:2.4rem; height:2.4rem;}
+                .swiper-wrapper-outer{ position:relative; margin:0 auto; width:142rem;
+                    .alarm_swiper.swiper{ width:123rem; padding:0 4.8rem; padding-bottom:.5rem;
+                        .swiper-wrapper{left:-4.2rem; //transition: height 0.3s ease-out; // 슬라이드 삭제시 레이아웃이 무너지지 않도록 처리
+                            .swiper-slide{position: relative; display:flex; flex-direction: column; justify-content: left ; align-items: flex-start; padding: 20px; height:20.6rem; border:0.1rem solid var_colors.$bdcolor; box-sizing: border-box; background-color: #fff; box-shadow:0.3rem 0.3rem 0.6rem rgba(0,0,0,0.05); border-radius: 0.4rem; margin-right: 1.6rem; 
+                                &.alarm_card{ 
+                                    .alarm_card_header{display:flex; align-items:center; width:100%; 
+                                        .title{flex:0 0 6.8rem; display:block; margin-right:0.8rem; width:6.8rem; height:2.4rem; text-align:center; line-height:2.4rem; font-size:1.3rem; font-family: var.$shinhan_noti; font-weight:500; background-color: var_colors.$shinhan_bg_disable; color:var_colors.$color_white; border-radius:0.4rem; background-color:var_colors.$color_white;
+                                            &.alrm_tit_subscribe{background-color:#9970fc;}
+                                            &.alrm_tit_mail{background-color:#3B6EE7;}
+                                            &.alrm_tit_board{background-color:#5021f2;}
+                                            &.alrm_tit_drawer{background-color:#7a858f;}
+                                            &.alrm_tit_SAQ{background-color:#9C27B0;}
+                                            &.alrm_tit_tag{background-color:#6A4A3E;}
+                                            &.alrm_tit_resource{background-color:#495057;}
+                                            &.alrm_tit_system{background-color:#212529;}
+                                            &.alrm_tit_survey{background-color:#9970FC;}
+                                            &.alrm_tit_todo{background-color:#00BCD4;}
+                                            &.alrm_tit_schedule{background-color:#25B039;}
+                                            &.alrm_tit_memo{background-color:#88931A;}
+                                            &.alrm_tit_pay {background-color:#F98D00;}
                                         }
+                                        .icon_alarm{}
+                                        .alarm_btn_box{ margin-left:auto; display:flex; overflow:hidden; 
+                                            .alarm_btn_ico_box{ position:relative; width:8.1rem; transform:scaleX(0) translateX(12rem); opacity:0; transition:all 0.3s cubic-bezier(1,-0.09,.95,.33);
+                                                button{width:2.4rem; height:2.4rem;}
+                                            }
+                                            &.on{
+                                               .alarm_btn_ico_box { transform:scaleX(1) translateX(0); opacity: 1;}
+                                            }
+                                        }
+                                        .alarm_input{
+                                            .chkbox{display: inline-block; cursor:pointer;}
+                                        }
+                                    } 
+                                    .alarm_content{ width:100%; margin-top:1.6rem;
+                                        .alarm_h3{width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+                                        .txt{width:100%; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;}
                                     }
-                                } 
-                                .none_data{
-                                    width:auto; height:100%;
-                                    background:url(var.$imgurl) no-repeat 100% 100%;
+                                    .alarm_bottom{display: flex; justify-content: space-between; align-items: center; width:100%; margin-top:1.6rem;
+                                        .alarm_writer{}
+                                        .alarm_time{font-size:1.3rem;}
+
+                                    }
+                                    .none_data{
+                                        width:auto; height:100%;
+                                        background:url(var.$imgurl) no-repeat 100% 100%;
+                                    }
+                                }
+
+                                &.swiper-slide.removing { transition: all 0.8s ease-out; transform-origin: 50% 50%; transform: scale(0.8); opacity: 0; height: 0 !important; margin: 0 !important; padding: 0 !important; border: none !important; pointer-events: none;
+                                }
+
+                               
+                               
+                            }
+                        }//- swiper-wrapper
+                    }
+                    .swiper-button-next, .swiper-button-prev {position:absolute; z-index:100; top:50%; transform:translateY(-50%); width: 4.8rem; height: 4.8rem; display: flex; align-items: center; justify-content: center; cursor:pointer; background:rgba(255,255,255,1) url(var.$imgurl+'swp_arrow.png') no-repeat 0 0; }
+                    .swiper-button-prev{left:0; background-position:0 -4.8rem;}
+                    .swiper-button-next{right:0; background-position:0 -14.4rem;}
+                    .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled { opacity: 0.35 ; cursor: not-allowed; pointer-events: none;}
+                    .swiper-button-next.custom-disabled, .swiper-button-prev.custom-disabled {
+                        opacity: 0.5 !important;
+                        cursor: not-allowed !important;
+                        pointer-events: none !important;
+                    }
+                    .swiper-button-prev.swiper-button-disabled{ background-position:0 0;}
+                    .swiper-button-next.swiper-button-disabled{background-position:0 -9.6rem;}
+                }
+            }
+            .division_list{
+                .listbox_cont{
+                    .list_tabs{
+                        .nav.nav_tabs{
+                            li{
+                                &.active{
+
                                 }
                             }
                         }
-                        .swiper-button-next, .swiper-button-prev {background-color: rgba(0,0,0,0.5); color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+                    }
+                    .box_toolbar{
+                        .btn_toolbar{
+                            .btn{
+                                &.alarm_btn_del_all{}
+                                &.alarm_btn_del_read{}
                             }
+                        }
+                        .alrm_info{margin-left:1.6rem; line-height:3.4rem; 
+                            .alarm_unread{color:var_colors.$shinhan_warn;}
+                            .alarm_bar{margin-left:0.8rem;}
+                            .alarm_all{color:var_colors.$shinhan_text_gray;}
+                        }
                     }
                 }
             }
         }
 
+    }
+}
+
+@keyframes slideRemoveAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        height: auto;
+        margin: 0;
+    }
+    60% {
+        transform: scale(0.8);
+        opacity: 0.3;
+        height: auto;
+        margin: 0;
+    }
+    80% {
+        transform: scale(0);
+        opacity: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: none;
     }
 }

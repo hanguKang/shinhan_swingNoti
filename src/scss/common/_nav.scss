@@ -3,7 +3,7 @@
 @use '../config/mixin';
 
 
-.nav{$font-size:16px; font-size:$font-size; font-family: var.$fontSet; width:em(148px, $font-size);
+.alarm_nav{$font-size:16px; font-size:$font-size; font-family: var.$fontSet; width:em(148px, $font-size);
     .main_menu{width:100%; padding:0 em(10px, $font-size);
         .lnb{ display: flex; flex-wrap: wrap; justify-content: center;
             .nt{flex:0 0 em(64px, $font-size); height:em(62px, $font-size); margin-bottom:em(6px, $font-size);

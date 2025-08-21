@@ -3,7 +3,7 @@
 @use '../utiles/var';
 header{
     &.head_fix{
-        .nav{display:none;}
+        .alarm_nav{display:none;}
     }
     .nav{$font-size:16px; font-size:$font-size; margin-top: em(38px, $font-size); letter-spacing: -2px; 
         .nav_list{margin:0 auto; width: em(690px, $font-size); 
