@@ -9,8 +9,8 @@ block content
       .alarm_wrap
         #snb.snb.snb_board 
           .svc_title
-            .title.tp_on
-              .alarm_tit_box
+            .alrm_cate_headings.tp_on
+              .alarm_headings_box
                 h2(title="알림센터")
                   a(href="") 알림센터
                 .toggl_btn_wrapper
@@ -114,18 +114,26 @@ block content
               .swiper-wrapper-outer
                 .swiper.swiper-container.alarm_swiper
                   .swiper-wrapper.alrm_swiper_wrapper 
-                    .swiper-slide.alarm_card
+                    .swiper-slide.alarm_card.none_data
+                      .none_txt
+                        span.hidden 중요 또는 긴급한 알림이 오면 이곳에서도 확인할 수 있어요
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alrm_0")
                       .alarm_card_header
-                        strong.title.alrm_tit_subscribe 구독
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_subscribe 구독
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -138,20 +146,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alrm_1")
                       .alarm_card_header
-                        strong.title.alrm_tit_mail 메일
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_mail 메일
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -164,20 +178,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_2")
                       .alarm_card_header
-                        strong.title.alrm_tit_board 게시판
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_board 게시판
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -190,20 +210,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_3")
                       .alarm_card_header
-                        strong.title.alrm_tit_drawer 내서랍
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_drawer 내서랍
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -217,20 +243,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_4")
                       .alarm_card_header
-                        strong.title.alrm_tit_SAQ SAQ
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_SAQ SAQ
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -243,20 +275,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_5")
                       .alarm_card_header
-                        strong.title.alrm_tit_tag 태그
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_tag 태그
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -269,20 +307,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_6")
                       .alarm_card_header
-                        strong.title.alrm_tit_resource 자원예약
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_resource 자원예약
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -295,20 +339,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_7")
                       .alarm_card_header
-                        strong.title.alrm_tit_system 시스템
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_system 시스템
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -321,20 +371,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_8")
                       .alarm_card_header
-                        strong.title.alrm_tit_board 게시판
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_board 게시판
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -347,20 +403,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_9")
                       .alarm_card_header
-                        strong.title.alrm_tit_survey 설문
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_survey 설문
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -373,21 +435,27 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_10")
                       .alarm_card_header
-                        strong.title.alrm_tit_todo 할일
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_todo 할일
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
-                          button.alarm_more(type="button")
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
+                          button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
                           label.chkbox(for="alrm_chk_todo_0")
@@ -399,20 +467,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_11")
                       .alarm_card_header
-                        strong.title.alrm_tit_schedule 일정
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_schedule 일정
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -425,20 +499,26 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
-                    .swiper-slide.alarm_card
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                    .swiper-slide.alarm_card(data-alarm-slide-id="alarm_12")
                       .alarm_card_header
-                        strong.title.alrm_tit_memo 쪽지
-                        span.icon_alarm.icon_alarm_siren_wt
+                        strong.alrm_cate_tit.alrm_tit_memo 쪽지
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
                         .alarm_btn_box
-                          .alarm_btn_ico_box 
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                            button(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
@@ -451,8 +531,9 @@ block content
                       .alarm_bottom 
                         .alarm_writer 홍길동
                         .alarm_time 
-                          | 오늘 
-                          time(datetime="2019-04-19T20:00:00") 20:00
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
                 button.swiper-button-prev(type="button") 
                   span.hidden 이전 슬라이드
                 button#nextSwiperBtn.swiper-button-next(type="button")
@@ -468,14 +549,14 @@ block content
               // List Container
               #list_container.list_container.list_container_vr
                 #listbox.listbox.listbox_vr
-                  .listbox_cont
+                  .listbox_cont.alarm_board
                     .list_tabs
                       ul.nav.nav_tabs
                         li.active
                           a(href="#none") 
                             | 일반알림 
                             span.count 999
-                        li.tp_onli
+                        li
                           a(href="#none") 
                             | 전체알림 
                             span.count 999
@@ -489,6 +570,33 @@ block content
                           span.alarm_unread 미확인 120
                           span.alarm_bar / 
                           span.alarm_all 1,300건
+                      .fr.alarm_srch
+                        .srch_alarm_filter
+                          .srch_alarm_filter_list
+                            button.btn.btn_alarm_srch_filter.alarm_filter_list_0( type="button") 
+                              span.btn_alarm_txt 미확인 
+                              i.icon_alarm.icon_alarm_close_gry
+                            button.btn.btn_alarm_srch_filter.alarm_filter_list_1( type="button") 
+                              span.btn_alarm_txt 일주일
+                              i.icon_alarm.icon_alarm_close_gry
+                            button.btn.btn_alarm_srch_filter.alarm_filter_list_2( type="button") 
+                              span.btn_alarm_txt 메일
+                              i.icon_alarm.icon_alarm_close_gry
+                            button.btn.btn_alarm_srch_filter.alarm_filter_list_3( type="button") 
+                              span.btn_alarm_txt 태그
+                              i.icon_alarm.icon_alarm_close_gry
+                          .srch_filter_more
+                            button.btn.srch_filter_setting( type="button") 
+                              i.icon_alarm.icon_alarm_more_bk
+                              span.hidden 필터 더보기
+                          .srch_alarm_box
+                            form.srch_alarm_form( action="#none" method="get")
+                              label.srch_label.hidden(for="search_alrm_keyword") 
+                                span.hidden 검색  
+                              input.input_alarm_text( type="text" placeholder="검색어를 입력하세요." name="search__alrm_keyword" id="search_alrm_keyword")
+                              button.btn.srch_alarm_btn( type="button") 
+                                i.icon_alarm.icon_alarm_search_bk
+                                span.hidden 검색
                     .list_head
                       .eapp
                         table.lst_hr_tbl
@@ -498,7 +606,7 @@ block content
                             col.col3(style="width:180px;")
                             col.col4(style="width:180px;")
                             col.col5(style="width:200px;")
-                            col.col6(style="width:60px;")
+                            col.col6(style="width:100px;")
                           thead
                             tr
                               th.alrm_tbl_th_cate
@@ -506,21 +614,31 @@ block content
                                   a(href="#none" title="번호") 종류
                               th.alrm_tbl_th_cont 내용
                               th.alrm_tbl_th_writer 보낸이
-                              th.alrm_tbl_th_date
-                                span.alrm_tbl_th_time 오늘 15:00
+                              th.alrm_tbl_th_date 시간
                               th.alrm_tbl_th_util 
                                 span.hidden 유틸
                               th.alrm_tbl_th_del 삭제
                           tbody 
+                            tr.alarm_empty(style="padding-top:268px;")
+                              td(colspan="6" style="height:calc(100vh - 600px); padding-top:268px; background:url(./img/alarm_board_empty.png) no-repeat center center;") 
+                                span.hidden 알림이 없습니다.
                             tr
                               td.alrm_tbl_td_cate
                                 .el
-                                  a(href="#none") 메일
+                                  div.alrm_cate_tit.alrm_tit_mail 메일
                               td.alrm_tbl_td_cont 
                                 dl.alarm_board_cont 
                                   dt.alarm_board_tit 부서기획 협업 요청건
                                   dd.alarm_board_txt 킥오프 미팅을 아래와 같이 개최합니다. 
-                              td.alrm_tbl_td_writer 남궁뎅이
+                              td.alrm_tbl_td_writer 
+                                span.thmb.thmb_1 
+                                  strong 이
+                                span.name(title="이다희")
+                                  a(href="#none") 이다희
+                              td.alrm_tbl_td_date 
+                                time(datetime="2025-08-21T14:20") 
+                                  span.alarm_t_day 오늘
+                                  span.alarm_t 14:20 
                               td.alrm_tbl_td_util 
                                 .alarm_btn_ico_box 
                                   button(type="button")
@@ -538,8 +656,153 @@ block content
                               td.alrm_tbl_td_del 
                                  .alarm_btn_ico_box 
                                   button(type="button")
-                                    i.icon_alarm.icon_alarm_delete_gry
+                                    i.icon_alarm.icon_alarm_close_bk
                                     span.hidden 스케쥴
+                            tr
+                              td.alrm_tbl_td_cate
+                                .el
+                                  div.alrm_cate_tit.alrm_tit_mail 메일
+                              td.alrm_tbl_td_cont 
+                                dl.alarm_board_cont 
+                                  dt.alarm_board_tit 부서기획 협업 요청건
+                                  dd.alarm_board_txt 킥오프 미팅을 아래와 같이 개최합니다. 
+                              td.alrm_tbl_td_writer 
+                                span.thmb.thmb_1 
+                                  strong 이
+                                span.name(title="이다희")
+                                  a(href="#none") 이다희
+                              td.alrm_tbl_td_date 
+                                time(datetime="2025-08-21T14:20") 
+                                  span.alarm_t_day 오늘
+                                  span.alarm_t 14:20 
+                              td.alrm_tbl_td_util 
+                                .alarm_btn_ico_box 
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_calendar_gry
+                                    span.hidden 스케쥴
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_not_noti_gry
+                                    span.hidden 알림중지
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_copy_gry
+                                    span.hidden 알림복사
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_recall_gry
+                                    span.hidden 알림 저장
+                              td.alrm_tbl_td_del 
+                                 .alarm_btn_ico_box 
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_close_bk
+                                    span.hidden 스케쥴
+                            tr
+                              td.alrm_tbl_td_cate
+                                .el
+                                  div.alrm_cate_tit.alrm_tit_mail 메일
+                              td.alrm_tbl_td_cont 
+                                dl.alarm_board_cont 
+                                  dt.alarm_board_tit 부서기획 협업 요청건
+                                  dd.alarm_board_txt 킥오프 미팅을 아래와 같이 개최합니다. 
+                              td.alrm_tbl_td_writer 
+                                span.thmb.thmb_1 
+                                  strong 이
+                                span.name(title="이다희")
+                                  a(href="#none") 이다희
+                              td.alrm_tbl_td_date 
+                                time(datetime="2025-08-21T14:20") 
+                                  span.alarm_t_day 오늘
+                                  span.alarm_t 14:20 
+                              td.alrm_tbl_td_util 
+                                .alarm_btn_ico_box 
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_calendar_gry
+                                    span.hidden 스케쥴
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_not_noti_gry
+                                    span.hidden 알림중지
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_copy_gry
+                                    span.hidden 알림복사
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_recall_gry
+                                    span.hidden 알림 저장
+                              td.alrm_tbl_td_del 
+                                 .alarm_btn_ico_box 
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_close_bk
+                                    span.hidden 스케쥴
+                            tr
+                              td.alrm_tbl_td_cate
+                                .el
+                                  div.alrm_cate_tit.alrm_tit_mail 메일
+                              td.alrm_tbl_td_cont 
+                                dl.alarm_board_cont 
+                                  dt.alarm_board_tit 부서기획 협업 요청건
+                                  dd.alarm_board_txt 킥오프 미팅을 아래와 같이 개최합니다. 
+                              td.alrm_tbl_td_writer 
+                                span.thmb.thmb_1 
+                                  strong 이
+                                span.name(title="이다희")
+                                  a(href="#none") 이다희
+                              td.alrm_tbl_td_date 
+                                time(datetime="2025-08-21T14:20") 
+                                  span.alarm_t_day 오늘
+                                  span.alarm_t 14:20 
+                              td.alrm_tbl_td_util 
+                                .alarm_btn_ico_box 
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_calendar_gry
+                                    span.hidden 스케쥴
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_not_noti_gry
+                                    span.hidden 알림중지
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_copy_gry
+                                    span.hidden 알림복사
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_recall_gry
+                                    span.hidden 알림 저장
+                              td.alrm_tbl_td_del 
+                                 .alarm_btn_ico_box 
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_close_bk
+                                    span.hidden 스케쥴
+                            tr
+                              td.alrm_tbl_td_cate
+                                .el
+                                  div.alrm_cate_tit.alrm_tit_mail 메일
+                              td.alrm_tbl_td_cont 
+                                dl.alarm_board_cont 
+                                  dt.alarm_board_tit 부서기획 협업 요청건
+                                  dd.alarm_board_txt 킥오프 미팅을 아래와 같이 개최합니다. 
+                              td.alrm_tbl_td_writer 
+                                span.thmb.thmb_1 
+                                  strong 이
+                                span.name(title="이다희")
+                                  a(href="#none") 이다희
+                              td.alrm_tbl_td_date 
+                                time(datetime="2025-08-21T14:20") 
+                                  span.alarm_t_day 오늘
+                                  span.alarm_t 14:20 
+                              td.alrm_tbl_td_util 
+                                .alarm_btn_ico_box 
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_calendar_gry
+                                    span.hidden 스케쥴
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_not_noti_gry
+                                    span.hidden 알림중지
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_copy_gry
+                                    span.hidden 알림복사
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_recall_gry
+                                    span.hidden 알림 저장
+                              td.alrm_tbl_td_del 
+                                 .alarm_btn_ico_box 
+                                  button(type="button")
+                                    i.icon_alarm.icon_alarm_close_bk
+                                    span.hidden 스케쥴
+
 
 
 

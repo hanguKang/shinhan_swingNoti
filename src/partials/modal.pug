@@ -1,0 +1,152 @@
+.modal_outer_alarm.alarm_wrap
+    .modal_dimmed_alarm
+        .modal_conts.modal_calender_alarm 
+            .modal_wrap_alarm 
+                .modal_header_alarm 
+                    h2.modal_title 알림 스케쥴
+                    button.btn.btn_close_alarm_modal(type="button") 닫기 
+                        i.icon_close
+                .modal_body_alarm 
+                    .alarm_wrap_alarm 
+                        
+                .modal_footer_alarm 
+                    button.btn.btn_close_alarm_modal(type="button") 닫기
+        .modal_conts.modal_srch_filter 
+            .modal_wrap_alarm 
+                .modal_header_alarm 
+                    h2.modal_title.hidden 알림 필터
+                    form.srch_alarm_form2( action="#none" method="get")
+                        label.srch_label.hidden(for="search_alrm_keyword2") 
+                            span.hidden 검색  
+                        input.input_alarm_text2( type="text" placeholder="검색어를 입력하세요." name="search__alrm_keyword2" id="search_alrm_keyword2")
+                        button.btn.srch_alarm_btn2( type="button") 
+                            i.icon_alarm.icon_alarm_search_bk
+                            span.hidden 검색
+                .modal_body_alarm 
+                    .alarm_wrap_alarm 
+                        .srch_filter_list
+                            h3.alarm_strong 알림 종류
+                            ul.srch_filter_list_ul.srch_filter_list_cate
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_mail")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_mail" id="filter_alarm_mail")
+                                        span.srch_filter_txt 메일
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_approve")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_approve" id="filter_alarm_approve")
+                                        span.srch_filter_txt 결재
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_tag")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_tag" id="filter_alarm_scedule")
+                                        span.srch_filter_txt 일정
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_todo")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_todo" id="filter_alarm_todo")
+                                        span.srch_filter_txt 할일
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_tag")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_tag" id="filter_alarm_tag")
+                                        span.srch_filter_txt 태그
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_SAQ")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_SAQ" id="filter_alarm_SAQ")
+                                        span.srch_filter_txt SAQ
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_memo")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_memo" id="filter_alarm_memo")
+                                        span.srch_filter_txt 쪽지
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_subscribe")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_subscrib" id="filter_alarm_subscribe ")
+                                        span.srch_filter_txt 구독
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_drawer")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_drawer" id="filter_alarm_drawer")
+                                        span.srch_filter_txt 내서랍
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_board")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_board" id="filter_alarm_board")
+                                        span.srch_filter_txt 게시판
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_survey")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_survey" id="filter_alarm_survey")
+                                        span.srch_filter_txt 설문
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_resource")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_resource" id="filter_alarm_resource")
+                                        span.srch_filter_txt 자원예약
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_system")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_system" id="filter_alarm_system")
+                                        span.srch_filter_txt 시스템
+                        .srch_filter_list
+                            h3.alarm_strong 알림 확인
+                            ul.srch_filter_list_ul.srch_filter_list_cate
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_confirm")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_confirm" id="filter_alarm_confirm")
+                                        span.srch_filter_txt 확인
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_confirm_yet")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_confirm_yet" id="filter_alarm_confirm_yet")
+                                        span.srch_filter_txt 미확인
+                        .srch_filter_list
+                            h3.alarm_strong 제목/내용
+                            ul.srch_filter_list_ul.srch_filter_list_cate
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_tit")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_tit" id="filter_alarm_tit")
+                                        span.srch_filter_txt 제목
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_conts")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_conts" id="filter_alarm_conts")
+                                        span.srch_filter_txt 내용
+                        .srch_filter_list.margin_0
+                            h3.alarm_strong 조회기간
+                            ul.srch_filter_list_ul.srch_filter_list_cate
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_date_today")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_date_today" id="filter_alarm_date_today")
+                                        span.srch_filter_txt 오늘
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_date_week")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_date_week" id="filter_alarm_date_week")
+                                        span.srch_filter_txt 일주일
+                                li.srch_filter_list_li
+                                    label.srch_filter_label(for="filter_alarm_date_month")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_date_month" id="filter_alarm_date_month")
+                                        span.srch_filter_txt 한달
+                        .srch_filter_list
+                            .alarm_strong 
+                            ul.srch_filter_list_ul.srch_filter_list_cate
+                                li.srch_filter_list_li.expand
+                                    label.srch_filter_label(for="filter_alarm_direct_text")
+                                        input.srch_filter_input(type="checkbox" name="filter_alarm_direct_text" id="filter_alarm_direct_text")
+                                        span.srch_filter_txt 직접입력
+                                    .alarm_srch_slct_box 
+                                        <input name="" type="text" title="날짜선택" placeholder="yyyy-mm-dd" class="input_date hasDatepicker alarm_date_picker" id="dp1754556217703"> -
+                                        span.input_wrap_alarm 
+                                            <input name="" type="text" title="날짜선택" placeholder="yyyy-mm-dd" class="input_date hasDatepicker alarm_date_picker" id="dp1754556217704">
+                                            .alarm_btn_ico_box 
+                                                button.srch_alarm_modal_opener(type="button")
+                                                    i.icon_alarm.icon_alarm_calendar_gry
+                                                    span.hidden 스케쥴
+                                        button.btn.alarm_srch_refresh(type="button")
+                                            i.icon_alarm.icon_alarm_refresh_bk
+                                            span.hidden 조회기간 직접입력 값 새로고침
+                .modal_footer_alarm 
+                    .modal_footer_alarm_txt * 필터에서 선택한 알림만 검색합니다.  모든 알림을 검색하려면 초기화하세요
+                    button.btn.alarm_srch_refreshAll(type="button")
+                        span 전체 초기화
+                        i.icon_alarm.icon_alarm_refresh_bk
+                .modal_alarm_srch_schedule
+                    .modal_wrap_alarm 
+                        .modal_header_alarm 
+                            h2.modal_title 검색 기간 조정
+                            button.btn.btn_close_alarm_schedule_modal(type="button") 닫기 
+                                i.icon_close
+                        .modal_body_alarm 
+                            .alarm_wrap_alarm 
+                                
+                        .modal_footer_alarm 
+                            button.btn.btn_close_alarm_schedule_modal(type="button") 닫기

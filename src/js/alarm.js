@@ -6,18 +6,192 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleSwitch();
     sizing();
     swiperDo();
-    alarmMore();
+    controlAlarmSwiperBtn();
+    filterListAlarm();
+    setSearchModal();
 });
 
-function alarmMore() {
+const schedule_data = new Map([]);
+
+
+function setSearchModal(){
+    const btn_srch_alarm_modal_opener = document.querySelector('.srch_alarm_modal_opener');
+    const btn_close_alarm_schedule_modal = document.querySelectorAll('.btn_close_alarm_schedule_modal');
+    const btn_alarm_srch_refresh = document.querySelector('.alarm_srch_refresh');
+    const btn_alarm_srch_refreshAll = document.querySelector('.alarm_srch_refreshAll');
+    const alarm_date_pickers = document.querySelectorAll('.alarm_date_picker');
+    // dimmed 영역 클릭시 모달 닫기 (.btn_close_alarm_schedule_modal 제외)
+    const modalDimmed = document.querySelector('.modal_dimmed_alarm');
+    if (modalDimmed) {
+        modalDimmed.addEventListener('click', (event) => {
+            // 클릭된 요소가 dimmed 자체인지 확인 (자식 요소 클릭 시에는 닫지 않음)
+            if (event.target === modalDimmed) {
+                const modalOuter = document.querySelector('.modal_outer_alarm');
+                const modalConts = document.querySelector('.modal_conts');
+                
+                // 스케쥴 모달(.modal_alarm_srch_schedule)이 열려있는지 확인
+                const scheduleModal = document.querySelector('.modal_alarm_srch_schedule');
+                const isScheduleModalOpen = scheduleModal && 
+                    (scheduleModal.style.display === 'block' || 
+                    window.getComputedStyle(scheduleModal).display !== 'none');
+                
+                // 스케쥴 모달이 열려있지 않을 때만 메인 모달 닫기
+                if (!isScheduleModalOpen && modalOuter && modalConts) {
+                    modalOuter.style.display = 'none';
+                    modalConts.style.display = 'none';
+                }
+            }
+        });
+    }
+
+
+    alarm_date_pickers.forEach((datePicker) => {
+        datePicker.addEventListener('input', (event) => {
+            // 1. 숫자 이외의 모든 문자(하이픈 포함) 제거
+            let value = event.target.value.replace(/[^0-9]/g, '');
+            
+            // 2. YYYY-MM-DD 형식으로 하이픈 추가
+            let formattedValue = '';
+            
+            // YYYY 부분 처리 (최대 4자리)
+            if (value.length > 0) {
+                formattedValue += value.substring(0, 4);
+                
+                // 4자리 이상이면 하이픈 추가
+                if (value.length > 4) {
+                    formattedValue += '-';
+                    
+                    // MM 부분 처리 (최대 2자리)
+                    formattedValue += value.substring(4, 6);
+                    
+                    // 6자리 이상이면 하이픈 추가
+                    if (value.length > 6) {
+                        formattedValue += '-';
+                        
+                        // DD 부분 처리 (최대 2자리)
+                        formattedValue += value.substring(6, 8);
+                    }
+                }
+            }
+            
+            // 3. 입력 필드에 적용
+            event.target.value = formattedValue;
+            
+            // 커서 위치를 끝으로 설정
+            event.target.setSelectionRange(formattedValue.length, formattedValue.length);
+        });
+        
+        // keyup 이벤트도 추가 (백스페이스 등의 키 처리)
+        datePicker.addEventListener('keyup', (event) => {
+            // input 이벤트와 동일한 로직
+            let value = event.target.value.replace(/[^0-9]/g, '');
+            
+            let formattedValue = '';
+            
+            if (value.length > 0) {
+                formattedValue += value.substring(0, 4);
+                
+                if (value.length > 4) {
+                    formattedValue += '-';
+                    formattedValue += value.substring(4, 6);
+                    
+                    if (value.length > 6) {
+                        formattedValue += '-';
+                        formattedValue += value.substring(6, 8);
+                    }
+                }
+            }
+            
+            event.target.value = formattedValue;
+            event.target.setSelectionRange(formattedValue.length, formattedValue.length);
+        });
+    });
+
+    btn_srch_alarm_modal_opener.addEventListener('click',()=>{
+        const modal_alarm_srch_schedule = document.querySelector('.modal_alarm_srch_schedule');
+        modal_alarm_srch_schedule.classList.add('open')
+    })
+    btn_close_alarm_schedule_modal.forEach((button)=>{
+        button.addEventListener('click',()=>{
+            const modal_alarm_srch_schedule = document.querySelector('.modal_alarm_srch_schedule');
+            modal_alarm_srch_schedule.classList.remove('open')
+        })
+    })
+    btn_alarm_srch_refresh.addEventListener('click',()=>{
+        alarm_date_pickers.forEach((inputDate)=>{
+            inputDate.value='';
+        })
+    });
+    btn_alarm_srch_refreshAll.addEventListener('click',()=>{
+        const srch_filter_inputs = document.querySelectorAll('.srch_filter_input');
+        srch_filter_inputs.forEach((inputChk)=>{
+            inputChk.checked=false;
+        });
+    });
+
+    // 모달 닫기 버튼
+    const closeModalBtns = document.querySelectorAll('.btn_close_alarm_modal');
+    if (closeModalBtns) {
+        closeModalBtns.forEach((button)=>{
+            button.addEventListener('click', () => {
+                const modalOuter = document.querySelector('.modal_outer_alarm');
+                const mddalConts = document.querySelector('.modal_conts');
+                if (modalOuter && mddalConts) {
+                    modalOuter.style.display = 'none';
+                    mddalConts.style.display = 'none';
+                }
+            });
+        });
+    }
+}
+
+function filterListAlarm () {
+    const btn_srch_filter = document.querySelector('.srch_filter_setting');
+    const filterButtons = document.querySelectorAll('.btn_alarm_srch_filter');
+
+    btn_srch_filter.addEventListener('click', (e) => {
+        // 모달 열기
+        const modalOuter = document.querySelector('.modal_outer_alarm');
+        const modal_srch_filter = document.querySelector('.modal_srch_filter');
+        if (modalOuter) {
+            modalOuter.style.display = 'block';
+            modal_srch_filter.style.display = 'block';
+        }
+    })
+
+    if(filterButtons.length > 0){
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                button.remove();
+                console.log('삭제');
+            });
+        });
+    }
+
+}
+
+
+function openModalWithApiCall(alarmId) {
+    console.log(`모달을 엽니다. 전달된 알림 ID: ${alarmId}`);
+
+    // 여기에 API 호출 로직을 구현
+
+
+}
+
+function controlAlarmSwiperBtn() {
     const swiperWrapper = document.querySelector('.alrm_swiper_wrapper');
+
     if (swiperWrapper) {
         swiperWrapper.addEventListener('click', (event) => {
             // more 버튼이나 그 자식 요소를 클릭한 경우
-            const moreBtn = event.target.closest('.alarm_more');
-            if (moreBtn) {
+            const btnMore = event.target.closest('.alarm_more');
+            const btnCalender = event.target.closest('.alarm_btn_calender');
+            const btnCopy = event.target.closest('.alarm_btn_copy');
+            const btnRecall = event.target.closest('.alarm_btn_recall');
+            if (btnMore) {
                 // 부모의 부모인 .alarm_btn_box 찾기
-                const btnBox = moreBtn.closest('.alarm_btn_box');
+                const btnBox = btnMore.closest('.alarm_btn_box');
                 if (btnBox) {
                     btnBox.classList.toggle('on');
                     
@@ -26,8 +200,62 @@ function alarmMore() {
                     // if (icoBox) icoBox.classList.toggle('on');
                 }
             }
+
+            if(btnCalender) {
+                // 다른 모든 모달 먼저 닫기
+                const allModals = document.querySelectorAll('.modal_conts');
+                allModals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                
+                //아이디 전달
+                const alarmCard = event.target.closest('.alarm_card');
+                if (alarmCard) {
+                    // data-alarmslide-id 속성에서 ID 값을 가져옵니다.
+                    const alarmId = alarmCard.dataset.alarmSlideId;
+                    
+                    // 모달을 열기 위한 함수에 ID를 전달
+                    openModalWithApiCall(alarmId);
+                }
+
+                // 캘린더 모달만 열기
+                const modalOuter = document.querySelector('.modal_outer_alarm');
+                const modalCalender = document.querySelector('.modal_calender_alarm');
+                if (modalOuter && modalCalender) {
+                    modalOuter.style.display = 'block';
+                    modalCalender.style.display = 'block';
+                    
+                    console.log('캘린더 모달이 열렸습니다'); // 디버깅용
+                }
+
+            }
+
+            if (btnCopy) {
+                // 복사 기능 구현
+                const slide = btnCopy.closest('.swiper-slide');
+                if (slide) {
+                    const title = slide.querySelector('.alarm_h3').textContent;
+                    const content = slide.querySelector('.txt').textContent;
+                    navigator.clipboard.writeText(`${title}\n${content}`).then(() => {
+                        alert('복사되었습니다.');
+                    }).catch(err => {
+                        console.error('복사 실패:', err);
+                    });
+                }
+            }
+
+            if (btnRecall) {
+                // 상기 기능 구현
+                const slide = btnRecall.closest('.swiper-slide');
+                if (slide) {
+                    const title = slide.querySelector('.alarm_h3').textContent;
+                    const content = slide.querySelector('.txt').textContent;
+                    alert(`상기: ${title}\n내용: ${content}`);
+                }
+            }
         });
     }
+
 }
 
 
@@ -131,7 +359,7 @@ function swiperDo(){
                         ['subscribe', '구독'],
                         ['resource', '자원예약'],
                         ['system', '시스템'],
-                        ['pay', '결제'],
+                        ['approve', '결재'],
                         ['schedule', '일정'],
                         ['survey', '설문'],
                         ['todo', '할일']
@@ -296,7 +524,8 @@ function swiperDo(){
                             id: `alarm_${nextLoadIndex + i}`,
                             title: `알림 ${nextLoadIndex + i + 1}`,
                             content: `이것은 ${nextLoadIndex + i + 1}번째 알림입니다.`,
-                            time: new Date().toLocaleTimeString()
+                            time: new Date().toLocaleTimeString(),
+                            writer:`${categoryTitle} 작성자 ${nextLoadIndex + i + 1}`,
                         };
                     });
                     
@@ -398,20 +627,22 @@ function swiperDo(){
         // 카테고리별 고유 ID 생성
         const categoryUniqueId = `${data.category_id}_${data.category_number}`;
         return `
-            <div class="swiper-slide alarm_card ${slideClasses}" data-id="${data.id}">
+            <div class="swiper-slide alarm_card ${slideClasses}" data-alarm-slide-id="${data.id}">
                 <div class="alarm_card_header">
-                    <strong class="title alrm_tit_${data.category_id}">${data.category_title}</strong><span class="icon_alarm icon_alarm_siren_wt"></span>
+                    <strong class="alrm_cate_tit alrm_tit_${data.category_id}">${data.category_title}</strong><span class="icon_alarm icon_alarm_siren_wt"></span>
                     <div class="alarm_btn_box">
-                        <div class="alarm_btn_ico_box"> 
-                            <button type="button"><i class="icon_alarm icon_alarm_calendar_gry"></i></button>
-                            <button type="button"><i class="icon_alarm icon_alarm_copy_gry"></i></button>
-                            <button type="button"><i class="icon_alarm icon_alarm_recall_gry"></i></button>
+                        <div class="alarm_btn_wrap">
+                            <div class="alarm_btn_ico_box"> 
+                            <button type="button" class="alarm_btn_calender" ><i class="icon_alarm icon_alarm_calendar_gry"></i><span class="hidden">일정</span></button>
+                            <button type="button" class="alarm_btn_copy" ><i class="icon_alarm icon_alarm_copy_gry"></i><span class="hidden">복사</span></button>
+                            <button type="button" class="alarm_btn_recall" ><i class="icon_alarm icon_alarm_recall_gry"></i><span class="hidden">상기</span></button>
+                            </div>
                         </div>
-                        <button type="button"> <i class="icon_alarm icon_alarm_more_bk"></i></button>
-                    </div>
-                    <div class="alarm_input"> 
-                        <label class="chkbox" for="alrm_chk_${categoryUniqueId}">
-                            <input class="input_chk" type="checkbox" name="" id="alrm_chk_${categoryUniqueId}"><span class="alrm_chk_on">읽음</span>
+                        <button class="alarm_more" type="button"> <i class="icon_alarm icon_alarm_more_bk"></i></button>
+                        </div>
+                        <div class="alarm_input"> 
+                        <label class="chkbox" for="alrm_chk_subscribe_0">
+                            <input class="input_chk" type="checkbox" name="" id="alrm_chk_subscribe_0"><span class="alrm_chk_on">읽음</span>
                         </label>
                     </div>
                 </div>
@@ -420,6 +651,7 @@ function swiperDo(){
                     <div class="txt">${data.content}</div>
                 </div>
                 <div class="alarm_bottom">
+                    <div class="alarm_writer">${data.writer}</div>
                     <div class="alarm_time">${data.time}</div>
                 </div>
             </div>
