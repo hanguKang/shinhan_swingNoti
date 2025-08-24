@@ -1,0 +1,9 @@
+{
+  "terminal.integrated.profiles.osx": {
+    "Rosetta": {
+      "path": "/usr/bin/arch",
+      "args": ["-x86_64", "zsh"]
+    }
+  },
+  "terminal.integrated.defaultProfile.osx": "Rosetta"
+}

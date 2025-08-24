@@ -2,17 +2,80 @@
 
 // controller
 document.addEventListener('DOMContentLoaded', () => {
+
+    window.addEventListener('resize', debounce(() => {
+        if (window.innerWidth > 1280) {
+            sizing();
+        }
+    }, 250)); // 0.25초 뒤에 실행
+
+    // 페이지 로드 시 초기 가로 사이즈 확인
+    if (window.innerWidth > 1280) {
+        sizing();
+    }
+
+    
+
+
     window.addEventListener('resize', sizing);  
+
+    const swiperAlarm = document.querySelector('.alarm_swiper');
     toggleSwitch();
-    sizing();
-    swiperDo();
+    if(swiperAlarm){
+        swiperDo();
+    }
+    if(window.innerWidth < 721){
+
+        init_Swiper_mobile_tab();
+    }
+
     controlAlarmSwiperBtn();
     filterListAlarm();
     setSearchModal();
 });
 
+let tab_swiper; 
 const schedule_data = new Map([]);
 
+// 디바운스 함수 정의
+function debounce(func, delay) {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
+// Swiper를 초기화하고 파괴하는 함수
+function init_Swiper_mobile_tab() {
+
+    if (!tab_swiper) {
+      // Swiper가 존재하지 않을 때만 초기화
+      tab_swiper = new Swiper('.tab_swiper', {
+        // 한 번에 3개씩 이동
+        slidesPerView: 4.5,
+        spaceBetween: 10,
+        // 드래그 가능한 마우스 커서
+        grabCursor: true,
+        allowTouchMove:true,
+        breakpoints:{
+            320:{
+                spaceBetween: 4.5,
+                navigation: false,
+            },
+            768:{
+                slidesPerView: 8.5,
+                spaceBetween: 8,
+                navigation: false,
+            },
+        },
+      });
+
+    }
+  
+}
 
 function setSearchModal(){
     const btn_srch_alarm_modal_opener = document.querySelector('.srch_alarm_modal_opener');
@@ -27,7 +90,7 @@ function setSearchModal(){
             // 클릭된 요소가 dimmed 자체인지 확인 (자식 요소 클릭 시에는 닫지 않음)
             if (event.target === modalDimmed) {
                 const modalOuter = document.querySelector('.modal_outer_alarm');
-                const modalConts = document.querySelector('.modal_conts');
+                const modalConts = document.querySelector('.modal_conts_alarm');
                 
                 // 스케쥴 모달(.modal_alarm_srch_schedule)이 열려있는지 확인
                 const scheduleModal = document.querySelector('.modal_alarm_srch_schedule');
@@ -123,7 +186,7 @@ function setSearchModal(){
         })
     });
     btn_alarm_srch_refreshAll.addEventListener('click',()=>{
-        const srch_filter_inputs = document.querySelectorAll('.srch_filter_input');
+        const srch_filter_inputs = document.querySelectorAll('.alarm_srch_filter_input');
         srch_filter_inputs.forEach((inputChk)=>{
             inputChk.checked=false;
         });
@@ -135,7 +198,7 @@ function setSearchModal(){
         closeModalBtns.forEach((button)=>{
             button.addEventListener('click', () => {
                 const modalOuter = document.querySelector('.modal_outer_alarm');
-                const mddalConts = document.querySelector('.modal_conts');
+                const mddalConts = document.querySelector('.modal_conts_alarm');
                 if (modalOuter && mddalConts) {
                     modalOuter.style.display = 'none';
                     mddalConts.style.display = 'none';
@@ -146,13 +209,13 @@ function setSearchModal(){
 }
 
 function filterListAlarm () {
-    const btn_srch_filter = document.querySelector('.srch_filter_setting');
+    const btn_srch_filter = document.querySelector('.srch_alarm_filter_setting');
     const filterButtons = document.querySelectorAll('.btn_alarm_srch_filter');
 
     btn_srch_filter.addEventListener('click', (e) => {
         // 모달 열기
         const modalOuter = document.querySelector('.modal_outer_alarm');
-        const modal_srch_filter = document.querySelector('.modal_srch_filter');
+        const modal_srch_filter = document.querySelector('.modal_srch_alarm_filter');
         if (modalOuter) {
             modalOuter.style.display = 'block';
             modal_srch_filter.style.display = 'block';
@@ -203,7 +266,7 @@ function controlAlarmSwiperBtn() {
 
             if(btnCalender) {
                 // 다른 모든 모달 먼저 닫기
-                const allModals = document.querySelectorAll('.modal_conts');
+                const allModals = document.querySelectorAll('.modal_conts_alarm');
                 allModals.forEach(modal => {
                     modal.style.display = 'none';
                 });
@@ -260,7 +323,7 @@ function controlAlarmSwiperBtn() {
 
 
 function toggleSwitch(){
-    const toggleSwitch = document.getElementById('toggle-switch');
+    const toggleSwitch = document.getElementById('alarm-concentration-toggle-switch');
     let isToggled = false;
     toggleSwitch.addEventListener('click', () => {
         isToggled = !isToggled;

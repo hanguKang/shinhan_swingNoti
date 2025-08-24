@@ -9,7 +9,7 @@
 @import './utiles/var_colors';
 @import './utiles/var';
 @import './utiles/skip';
-@import './config/responsive';
+//@import './config/responsive';
 @import './breakpoints/breakpoint';
 @import './utiles/box-shadow';
 @import './components/button';
@@ -43,15 +43,15 @@
 
 
 
-header+img{background:black;}
-body{font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
-.pagination{display:block;}
+// header+img{background:black;}
+// body{font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+// .pagination{display:block;}
 
-.mobile{display:none;}
-@media only screen and ( max-width: 720px )  {
-  .web{display:none;}
-}
+// .mobile{display:none;}
+// @media only screen and ( max-width: 720px )  {
+//   .web{display:none;}
+// }
 
-@media only screen and (pointer:coarse) and (max-height:720px) {
-  .web{display:none;}
-}
+// @media only screen and (pointer:coarse) and (max-height:720px) {
+//   .web{display:none;}
+// }

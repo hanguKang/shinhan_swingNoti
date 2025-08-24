@@ -1,0 +1,253 @@
+extends ../templates/layout
+
+block content 
+  #layout_container
+    #layout_content
+      //- .content
+      //-   .content_area.content_area_vr
+      //알람 컨텐츠 시작
+      .alarm_wrap
+        #snb.snb.snb_board 
+          .svc_title
+            .alrm_cate_headings.tp_on
+              .alarm_headings_box
+                h2(title="알림센터")
+                  a(href="") 알림센터
+                .toggl_btn_wrapper
+                  span.label_txt 
+                    | 집중근무
+                  // 알림 토글 버튼 컨테이너
+                  #alarm-concentration-toggle-switch.toggle-switch
+                    // 애니메이션 원형 요소
+                    .toggle-circle      
+          .alarm_noti_box
+            .alarm_h3
+              i.icon_alarm.icon_alarm_all_noti_blu
+              span.alarm_txt 전체알림
+            .alarm_tit_box
+              .alarm_h3 
+                i.icon_alarm.icon_icon_alarm_siren_bk
+                span.alarm_txt 중요/긴급 알림  
+                span.alarm_noti_cnt 999
+
+          #snb_scroll.snb_scroll 
+            .tree_menu_box
+              ul.alarm_list
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 메일
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 결재
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 일정
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 할일
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 태그
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | SAQ
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 쪽지
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 구독
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 내서랍
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 게시판
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 설문
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 자원예약
+                      span.alarm_noti
+                li 
+                  .alarm_item
+                    a(href="") 
+                      | 시스템
+                      span.alarm_noti
+            p.alarm_setting 
+              i.icon_alarm.icon_alarm_set_blu            
+              | 알림설정  
+        #content.content 
+          .title_bar 
+            .tgl_snb
+              <button type="button" onclick="toggleSnb()" title="사이드 메뉴" class="btn btn_tgl_snb"><i class="ico ico_tgl_snb"><span>사이드 메뉴</span></i></button>
+            .title
+              h3.fl 
+                span 알림설정
+          #content_area.content_area
+            .alarm_setting_page
+              .alarm_setting_body
+                .alarm_wrap
+                  .alarm_srch_filter_list.alarm_setting_on_off_cate
+                    .alarm_strong.alarm_setting_title_box
+                      h3 알림 받기/끄기
+                      p.alarm_setting_title_p 알림을 받고싶은 종류만 선택해 주세요
+                    .alarm__setting_conts_box
+                      ul.alarm_srch_filter_list_ul.alarm_setting_on_off
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_mail")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_mail" id="filter_setting_mail")
+                            span.alarm_srch_filter_txt 메일
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_approve")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_approve" id="filter_setting_approve")
+                            span.alarm_srch_filter_txt 결재
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_tag")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_tag" id="filter_setting_scedule")
+                            span.alarm_srch_filter_txt 일정
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_todo")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_todo" id="filter_setting_todo")
+                            span.alarm_srch_filter_txt 할일
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_tag")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_tag" id="filter_setting_tag")
+                            span.alarm_srch_filter_txt 태그
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_SAQ")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_SAQ" id="filter_setting_SAQ")
+                            span.alarm_srch_filter_txt SAQ
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_memo")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_memo" id="filter_setting_memo")
+                            span.alarm_srch_filter_txt 쪽지
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_subscribe")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_subscrib" id="filter_setting_subscribe ")
+                            span.alarm_srch_filter_txt 구독
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_drawer")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_drawer" id="filter_setting_drawer")
+                            span.alarm_srch_filter_txt 내서랍
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_board")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_board" id="filter_setting_board")
+                            span.alarm_srch_filter_txt 게시판
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_survey")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_survey" id="filter_setting_survey")
+                            span.alarm_srch_filter_txt 설문
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_resource")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_resource" id="filter_setting_resource")
+                            span.alarm_srch_filter_txt 자원예약
+                        li.alarm_srch_filter_list_li
+                          label.alarm_srch_filter_label(for="filter_setting_system")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_system" id="filter_setting_system")
+                            span.alarm_srch_filter_txt 시스템
+                      .alarm_flex_expand_box
+                        button.btn.alarm_setting_on_off_refresh(type="button")
+                          span 초기화
+                          i.icon_alarm.icon_alarm_refresh_bk  
+                  .alarm_srch_filter_list.v_center
+                    .alarm_strong.alarm_setting_title_box
+                      h3 모바일로 알림 받기
+                      p.alarm_setting_title_p 동일한 알림을 모바일로도 받을 수 있어요
+                    .alarm__setting_conts_box
+                      .toggl_btn_wrapper
+                        #alarm-mobile-toggle-switch.toggle-switch
+                          .toggle-circle     
+                  .alarm_srch_filter_list.v_center
+                    .alarm_strong.alarm_setting_title_box
+                      h3 집중근무 알림 켜기
+                      p.alarm_setting_title_p 2시간 동안 모든 알림을 중지해요
+                    .alarm__setting_conts_box
+                      .toggl_btn_wrapper
+                        #alarm-concentration-toggle-switch.toggle-switch
+                          .toggle-circle  
+                  .alarm_srch_filter_list.v_center.max_width_80
+                    .alarm_strong.alarm_setting_title_box
+                      h3 방해금지 스케줄 만들기
+                      p.alarm_setting_title_p 주중 특정 요일과 시간에 알림을 중지해요
+                    .alarm__setting_conts_box.alarm_setting_schedule_on_off_box.dp_block
+                      .dp_flx
+                        ul.alarm_srch_filter_list_ul.alarm_setting_schedule_on_off_ul
+                          li.alarm_srch_filter_list_li.alarm_setting_schedule_on_off_li
+                            label.alarm_srch_filter_label(for="filter_setting_day")
+                              input.alarm_srch_filter_input(type="checkbox" name="filter_setting_day" id="filter_setting_day")
+                              span.alarm_srch_filter_txt 평일
+                          li.alarm_srch_filter_list_li.alarm_setting_schedule_on_off_li
+                            label.alarm_srch_filter_label(for="filter_setting_mon")
+                              input.alarm_srch_filter_input(type="checkbox" name="filter_setting_mon" id="filter_setting_mon")
+                              span.alarm_srch_filter_txt 월
+                          li.alarm_srch_filter_list_li.alarm_setting_schedule_on_off_li
+                            label.alarm_srch_filter_label(for="filter_setting_tue")
+                              input.alarm_srch_filter_input(type="checkbox" name="filter_setting_tue" id="filter_setting_tue")
+                              span.alarm_srch_filter_txt 화
+                          li.alarm_srch_filter_list_li.alarm_setting_schedule_on_off_li
+                            label.alarm_srch_filter_label(for="filter_setting_wed")
+                              input.alarm_srch_filter_input(type="checkbox" name="filter_setting_wed" id="filter_setting_wed")
+                              span.alarm_srch_filter_txt 수
+                          li.alarm_srch_filter_list_li.alarm_setting_schedule_on_off_li
+                            label.alarm_srch_filter_label(for="filter_setting_thu")
+                              input.alarm_srch_filter_input(type="checkbox" name="filter_setting_thu" id="filter_setting_thu")
+                              span.alarm_srch_filter_txt 목
+                          li.alarm_srch_filter_list_li.alarm_setting_schedule_on_off_li
+                            label.alarm_srch_filter_label(for="filter_setting_fri")
+                              input.alarm_srch_filter_input(type="checkbox" name="filter_setting_fri" id="filter_setting_fri")
+                              span.alarm_srch_filter_txt 금
+                        .alarm_setting_schedule_time 
+                          <input type="time" id="no-disturb-time1" name="no-disturb-time1"> 
+                          | - 
+                          <input type="time" id="no-disturb-time2" name="no-disturb-time2">
+                        .alarm_btn_ico_box 
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_close_bk
+                            span.hidden 방해금지 스케쥴 삭제
+                      .dp_block 
+                        .alarm_btn_ico_box.mr_t_14
+                          button(type="button")
+                            i.icon_alarm.icon_alarm_plus
+                            span.hidden 방해금지 스케쥴 추가
+                  .alarm_srch_filter_list.v_center
+                    .alarm_strong.alarm_setting_title_box
+                      h3 알림 중지된 대상
+                      p.alarm_setting_title_p 알람을 받지 않도록 등록한 사용자를 보고 편집할 수 있어요
+                    .alarm__setting_conts_box
+                      .alarm_flex_expand_box.align_left
+                        button.btn.alarm_setting_on_off_edit(type="button")
+                          span 보기/편집
+                  .alarm_srch_filter_list.v_center
+                    .alarm_strong.alarm_setting_title_box
+                      h3 알림 설정 초기화
+                      p.alarm_setting_title_p 모든 알림 설정을 최초의 상태로 변경해요
+                    .alarm__setting_conts_box
+                      .alarm_flex_expand_box.align_left
+                        button.btn.alarm_setting_on_off_refreshAll(type="button")
+                          span 초기화
+                          i.icon_alarm.icon_alarm_refresh_bk

@@ -3,7 +3,11 @@
 @use '../config/mixin';
 
 
+
 .alarm_wrap{
+    &.mobile{
+        #snb.snb.snb_board {display:none;}
+    }
     h1, h2, h3, h4 {margin:0;}
     button{background-color:#fff; cursor:pointer;}
     //아이콘 
@@ -40,6 +44,9 @@
         &.icon_alarm_refresh_blu{background-position:0 -67.2rem;}
         &.icon_alarm_search_bk{background-position:0 -69.6rem;}
         &.icon_alarm_search_blu{background-position:0 -72rem;}
+        &.icon_alarm_plus {flex:0 0 4rem; display:inline-block; width:4rem; height:4rem; margin:0; border-radius:50%; background:var_colors.$shinhan_bg_icon_gry url(var.$imgurl_ico+"icon_alarm.png") no-repeat 0 0;
+            &:hover{}
+        }
     }
     .alarm_txt{margin-right:1rem;}
     .alarm_noti_cnt{flex:1 0 1.6rem; height:2.4rem; padding:0 0.4rem; background-color:var_colors.$color_red; border-radius:2.4rem; text-align:center; color:var_colors.$color_white;}
@@ -76,6 +83,7 @@
         &.alrm_tit_schedule{background-color:#25B039;}
         &.alrm_tit_memo{background-color:#88931A;}
         &.alrm_tit_approve {background-color:#F98D00;}
+        &.alrm_unread {background-color:#ADB5BD !important;}
     }
 
     //경고
@@ -137,7 +145,24 @@
         background: #b71c1c;
     }
 
+
+
+    //사이드 메뉴
+    .snb .tree_menu_box .alarm_list{
+        li{ font-weight:700;
+            &.alarm_active{
+                a{color:var_colors.$shinhan_acitve;}
+            }
+        }
+    }   
+    //컨텐츠 시작
     #content.content{background-color:var_colors.$color_white; overflow-y: auto;
+
+        .alrm_info{margin-left:1.6rem; line-height:3.4rem; 
+            .alarm_unread{color:var_colors.$shinhan_warn;}
+            .alarm_bar{margin-left:0.8rem;}
+            .alarm_all{color:var_colors.$shinhan_text_gray;}
+        }
         .title_bar{
             .tgl_snb{
                 i.ico.ico_tgl_snb{}
@@ -149,6 +174,7 @@
                         &.alarm_noti_cnt{margin-left:1rem; line-height:2.4rem;}
                     }
                 }
+                .alrm_info{font-size:1.4rem; font-weight:400;}
             }
         }
         .content_area{
@@ -240,11 +266,7 @@
                                         &.alarm_btn_del_read{}
                                     }
                                 }
-                                .alrm_info{margin-left:1.6rem; line-height:3.4rem; 
-                                    .alarm_unread{color:var_colors.$shinhan_warn;}
-                                    .alarm_bar{margin-left:0.8rem;}
-                                    .alarm_all{color:var_colors.$shinhan_text_gray;}
-                                }
+                                
                                 .fr.alarm_srch{ 
                                     .srch_alarm_filter{display: flex; align-items: center; justify-content: flex-end; margin-right:1.6rem;
                                         .srch_alarm_filter_list{display: flex; align-items: center;
@@ -254,7 +276,7 @@
                                             }
                                         }
                                         .srch_filter_more{
-                                            .btn.srch_filter_setting{display: flex; align-items: center; justify-content: center; border:0 none;}
+                                            .btn.srch_alarm_filter_setting{display: flex; align-items: center; justify-content: center; border:0 none;}
                                         }
                                         .srch_alarm_box{
                                             form.srch_alarm_form{ display: flex; align-items: center;
@@ -286,27 +308,38 @@
                                         }
                                     }
                                     tbody{
-                                         td{ border-bottom:1px solid #eee; 
-                                            .el{}
-                                            &.alrm_tbl_td_cate{
-                                                .alrm_cate_tit{margin:0 auto;}
-                                            }
-                                            &.alrm_tbl_td_cont{text-align: left;
-                                                dl{margin:0; padding:0;
-                                                    dt{margin:0; padding:0; font-weight:700;}
-                                                    dd{margin:0; padding:0;}
+                                        tr{
+                                            td{ border-bottom:1px solid #eee; 
+                                               .el{}
+                                               &.alrm_tbl_td_cate{
+                                                   .alrm_cate_tit{margin:0 auto;}
+                                               }
+                                               &.alrm_tbl_td_cont{text-align: left;
+                                                   dl{margin:0; padding:0;
+                                                       dt{margin:0; padding:0; font-weight:700;}
+                                                       dd{margin:0; padding:0;}
+                                                   }
+                                               }
+                                               &.alrm_tbl_td_writer{}
+                                               &.alrm_tbl_td_date{
+                                                   span.alrm_tbl_td_time {}
+                                               }
+                                               &.alrm_tbl_td_util{}
+                                               &.alrm_tbl_td_del{text-align:left;}
+                                           }
+                                           &.alarm_read{
+                                                td{
+                                                    color:var_colors.$shinhan_text_gray;
+                                                    a{
+                                                         color:var_colors.$shinhan_text_gray;
+                                                    }
                                                 }
-                                            }
-                                            &.alrm_tbl_td_writer{}
-                                            &.alrm_tbl_td_date{
-                                                span.alrm_tbl_td_time {}
-                                            }
-                                            &.alrm_tbl_td_util{}
-                                            &.alrm_tbl_td_del{text-align:left;}
+                                           }
                                         }
                                     }
                                 } 
                             }
+                            .alarm_pagination{ max-width:100%; border-top:0; margin-top:0;     margin-bottom: 20px;}
                         }
                     }
                 }
@@ -315,11 +348,47 @@
 
     }
 }
+
+//모달 세팅 공통
+.alarm_srch_filter_list{display: flex; margin-bottom:1.6rem;
+    &.margin_0{margin-bottom:0;}
+    .alarm_strong{flex:0 0 7.8rem; margin-top:0.8rem; color:var_colors.$shinhan_text_gray;}
+    .alarm_srch_filter_list_ul{ display: flex; flex-wrap: wrap; margin:0 -0.8rem;
+        li.alarm_srch_filter_list_li{ margin-left:0.8rem; margin-bottom:0.8rem;
+            .alarm_srch_filter_label{display:flex; align-items:center; font-size:1.3rem; width: 10rem; height: 3.4rem; border-radius: 1.6rem; border:0.1rem solid var_colors.$btnbdcolor; background-color: var_colors.$color_white; cursor:pointer;
+                .alarm_srch_filter_input{
+                    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+                }
+                .alarm_srch_filter_txt{ display: flex;  align-items: center; justify-content: center; width: 100%; height: 100%; font-weight: bold; transition: background-color 0.3s, color 0.3s;}
+
+                // 체크박스가 체크되었을 때의 스타일
+                &:has(.alarm_srch_filter_input:checked) {
+                    background-color: var_colors.$shinhan_text_primary; // 검정색 배경
+                    color: var_colors.$color_white; // 흰색 글자
+                }
+            }
+            &.expand{display: flex;
+                .alarm_srch_slct_box{margin-left:0.8rem;
+                    .input_wrap_alarm{ position:relative; 
+                            .alarm_btn_ico_box{width:auto; height:auto; padding:0; position:absolute; right:0.8rem; top:65%; transform: translateY(-50%); background:none;
+                                button{
+                                    .icon_alarm{margin-right:0;}
+                                }
+                            }
+                    }
+                    .alarm_srch_refresh{display: inline-flex; width:3.6rem; align-items: center; justify-content: center; border:0 none;
+                        .icon_alarm_refresh_bk{margin-left:0.4rem;}
+                    }
+                }
+            }
+        }
+    }
+}
 //모달
-.modal_outer_alarm {display:block; position:fixed; width:100%; height:100%; top:0; left:0; z-index:10000; 
+.modal_outer_alarm {display:none; position:fixed; width:100%; height:100%; top:0; left:0; z-index:10000; 
     h1, h2, h3, h4 {margin:0;}
     .modal_dimmed_alarm{position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); z-index:10000; display:flex; align-items:center; justify-content:center;
-        .modal_conts{position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); width:60rem; height:auto; min-height:30rem; background-color:#fff; border-radius:0.4rem; box-shadow:0 0.4rem 1.2rem rgba(0,0,0,0.1); z-index:10001;
+        .modal_conts_alarm{position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); width:60rem; height:auto; min-height:30rem; background-color:#fff; border-radius:0.4rem; box-shadow:0 0.4rem 1.2rem rgba(0,0,0,0.1); z-index:10001;
             .modal_header_alarm{padding:1.6rem; border-bottom:1px solid #eee; display:flex; align-items:center; justify-content:space-between;
                 h3{font-size:1.8rem; font-weight:500;}
                 button{background:none; border:none; cursor:pointer;}
@@ -329,7 +398,7 @@
                 .btn_close_alarm_calender{}
             }
             &.modal_calender_alarm{display: none;  z-index: 100;}
-            &.modal_srch_filter{ display: block; z-index:50; width:67rem; 
+            &.modal_srch_alarm_filter{ display: none; z-index:50; width:67rem; 
                 .modal_header_alarm{display: block; border-bottom:0 none;  padding-bottom:0;
                     .srch_alarm_form2{position:relative;  border-bottom:1px solid var_colors.$btnbdcolor; padding-bottom:1.6rem;
                         .input_alarm_text2{ width:100%; height:100%; border:0 none;
@@ -345,40 +414,7 @@
                     }
                 }
                 .modal_body_alarm{
-                    .srch_filter_list{display: flex; margin-bottom:1.6rem;
-                        &.margin_0{margin-bottom:0;}
-                        .alarm_strong{flex:0 0 7.8rem; margin-top:0.8rem; color:var_colors.$shinhan_text_gray;}
-                        .srch_filter_list_ul{ display: flex; flex-wrap: wrap; margin:0 -0.8rem;
-                            li.srch_filter_list_li{ margin-left:0.8rem; margin-bottom:0.8rem;
-                                .srch_filter_label{display:flex; align-items:center; font-size:1.3rem; width: 10rem; height: 3.4rem; border-radius: 1.6rem; border:0.1rem solid var_colors.$btnbdcolor; background-color: var_colors.$color_white; cursor:pointer;
-                                    .srch_filter_input{
-                                        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
-                                    }
-                                    .srch_filter_txt{ display: flex;  align-items: center; justify-content: center; width: 100%; height: 100%; font-weight: bold; transition: background-color 0.3s, color 0.3s;}
-    
-                                    // 체크박스가 체크되었을 때의 스타일
-                                    &:has(.srch_filter_input:checked) {
-                                        background-color: var_colors.$shinhan_text_primary; // 검정색 배경
-                                        color: var_colors.$color_white; // 흰색 글자
-                                    }
-                                }
-                                &.expand{display: flex;
-                                    .alarm_srch_slct_box{margin-left:0.8rem;
-                                        .input_wrap_alarm{ position:relative; 
-                                                .alarm_btn_ico_box{width:auto; height:auto; padding:0; position:absolute; right:0.8rem; top:65%; transform: translateY(-50%); background:none;
-                                                    button{
-                                                        .icon_alarm{margin-right:0;}
-                                                    }
-                                                }
-                                        }
-                                        .alarm_srch_refresh{display: inline-flex; width:3.6rem; align-items: center; justify-content: center; border:0 none;
-                                            .icon_alarm_refresh_bk{margin-left:0.4rem;}
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    
                 }
                 .modal_footer_alarm{display: flex; align-items: center; justify-content: flex-start;
                     .modal_footer_alarm_txt{ }
@@ -402,6 +438,80 @@
 
         }
     } 
+}
+
+//세팅 
+.alarm_setting_page{
+    .alarm_srch_filter_list{ flex-wrap:wrap; max-width:50%; width:100%;
+        &.max_width_80{max-width:80%;}
+        &.v_center{align-items:center;}
+        &.alarm_setting_on_off_cate{ }
+        &.margin_0{}
+        .alarm_strong{
+            &.alarm_setting_title_box{flex:0 0 24rem; padding:3rem 3.4rem; 
+                h3{font-size:1.6rem; font-weight:500; color:var_colors.$shinhan_text_primary; }
+                .alarm_setting_title_p{margin-bottom:0;}
+            }
+        }
+        .alarm__setting_conts_box{flex:0 0 44rem; padding:3rem 3.4rem;
+            &.alarm_setting_schedule_on_off_box{flex:0 0 70rem; display:flex; align-items:center; 
+                .dp_flx{display:inline-flex; align-items:center; padding:1rem 2rem; border-radius:0.8rem; background-color:var_colors.$shinhan_bg_icon_gry;}
+                .alarm_srch_filter_list_ul{ margin:0;
+                    &.alarm_setting_schedule_on_off_ul{
+                        li.alarm_setting_schedule_on_off_li{ margin-bottom:0;
+                            .alarm_srch_filter_label{ width:auto; padding-left:1.6rem; padding-right:1.6rem;}
+                            
+                        }
+                    } 
+                }
+                
+                .alarm_setting_schedule_time{margin-left:1.6rem;; }
+                .alarm_btn_ico_box{ margin-left:1.6rem;  
+                    &.mr_t_14{margin-top:1.4rem; }
+                    button {background-color:rgba(255,255,255,0);}
+                }
+            }
+            &.dp_block{display: block;}
+            .alarm_srch_filter_list_ul{ 
+                
+                li.alarm_srch_filter_list_li{ 
+                    .alarm_srch_filter_label{ 
+                        .alarm_srch_filter_input{
+                            
+                        }
+                        .alarm_srch_filter_txt{ }
+    
+                        // 체크박스가 체크되었을 때의 스타일
+                        &:has(.alarm_srch_filter_input:checked) {
+                           
+                        }
+                    }
+                    &.expand{
+                        .alarm_srch_slct_box{
+                            .input_wrap_alarm{ 
+                                    .alarm_btn_ico_box{w
+                                        button{
+                                            .icon_alarm{ }
+                                        }
+                                    }
+                            }
+                            .alarm_srch_refresh{
+                                .icon_alarm_refresh_bk{
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .alarm_flex_expand_box{text-align:right; padding-right:1rem;
+                &.align_left{text-align:left;}
+                .alarm_setting_on_off_refreshAll, .alarm_setting_on_off_refresh{display: inline-flex; justify-content:space-between; align-items: center; 
+                    .icon_alarm_refresh_bk{transform:scale(0.7) translateX(0.8rem);}
+                }
+                
+            }
+        }
+    }
 }
 @keyframes slideRemoveAnimation {
     0% {
@@ -433,3 +543,117 @@
         border: none;
     }
 }
+
+
+.web {display:block;}
+.mobile{display:none;}
+//태블릿, 모바일 
+@media only screen and ( max-width: 720px )  {
+    .mobile {display:block;}
+    .web{display:none;}
+    body.gw_theme15.gw_header #layout_header { display: none; }
+    #layout_container {
+        min-height: auto;
+        margin: 0;
+    }
+    #layout_wrap {
+        min-width: 100%; width:auto;
+        height: auto;
+    }
+    #layout_content .content .title_bar {display:none;}
+    .alarm_wrap #content.content .content_area .alarm_card_wrapper {display:none; }
+    body.gw_theme15.gw_header.gw_sub #layout_content, 
+    body.gw_theme15.gw_header.gw_sub 
+    .snb_w_def #layout_content, 
+    body.gw_theme15.gw_header.gw_sub 
+    .snb_w_med #layout_content, 
+    body.gw_theme15.gw_header.gw_sub 
+    .snb_w_lar #layout_content { padding-left:0;}
+
+    //알람센터 상단
+    .alarm_m_top { display: flex; justify-content: space-between; align-items: center; padding: 1rem; width: 100%; height: 60px; box-sizing: border-box;
+        .alarm_mobile_h { }
+        .flx_rgt { display: flex; align-items: center; gap: 1rem;
+            .srch_alarm_box {
+                .btn.srch_alarm_btn {background: none;border: none; padding: 0; display: flex; align-items: center;}
+            }
+            .toggl_btn_wrapper {
+                .label_txt { font-size: 1.4rem; line-height:2.2rem;}
+                .toggle-switch { margin-right:0.8rem; 
+                    .toggle-circle { }
+
+                }
+            }
+
+            .alarm_setting { display: flex; align-items: center; margin: 0; padding: 0;}
+        }
+    }
+    //알림센터 탭
+    .division_list.mobile {
+        .board_tab_alarm{   padding: 0 1rem; box-sizing: border-box;
+            .tab_swiper_alarm{ width: 100%; overflow: hidden;
+                ul.alarm_list.swiper-wrapper{display: flex;
+                    li.swiper-slide {display: flex; justify-content: center; align-items: center; flex-shrink: 0; white-space: nowrap;
+                        .alarm_item{display: flex; flex-direction: column; width: 100%;text-align: center;
+                            a{ margin-left:0;
+                                span.alarm_noti{}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 전체 리스트 컨테이너
+.board_list_alarm_box {width: 100%; padding: 1rem; box-sizing: border-box;
+  .alarm_board_list_ul_m {padding: 0;
+    // 개별 알림 아이템
+    .alarm_board_list_li_m { background-color: $color-white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 1rem; padding: 1rem; display: flex; align-items: flex-start; gap: 1rem;
+      // 알림 카테고리 컨테이너
+      .alarm_board_cate_m { display: flex; flex-direction: column; gap: 0.5rem;
+        .alrm_cate_tit { padding: 0.5rem 1rem; border-radius: 4px; color: $color-white; font-size: 0.875rem; font-weight: 600; text-align: center;
+          &.alrm_tit_mail { }
+
+          &.alrm_tit_siren {
+            background-color: #ef4444; // 긴급 아이콘 색상 (예시)
+            position: relative;
+            .icon_alarm { }
+          }
+        }
+      }
+
+      // 알림 내용 컨테이너
+      .alarm_board_conts_m { flex: 1;
+        .alarm_board_conts_box_m { margin: 0; padding: 0;}
+        .alarm_board_conts_title_m {font-size: 1.6rem; font-weight: 700; margin-bottom: 0.25rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+        .alarm_board_conts_text_m { font-size: 1.4rem; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+        .alarm_board_conts_info_m {margin-top: 0.5rem; font-size: 1.4em; display: flex; gap: 0.5rem;
+          .alarm_board_conts_writer_m,
+          .alarm_board_conts_day_m,
+          .alarm_board_conts_time_m { font-style: normal; }
+        }
+      }
+      // 알림 유틸리티 버튼 컨테이너
+      .alarm_board_util_m { display: flex; align-items: center; gap: 0.5rem;
+        .alarm_btn_box { display: flex; align-items: center;
+          .alarm_btn_wrap { display: flex;
+            .alarm_btn_ico_box { display: flex; gap: 0.25rem;
+              button { background: none; border: none;  padding: 0;
+                .icon_alarm { width: 16px; height: 16px; display: block; background-size: contain; background-repeat: no-repeat; background-position: center;
+                }
+              }
+            }
+          }
+        }
+
+        .alarm_more { background: none; border: none; padding: 0;
+          .icon_alarm { }
+        }
+      }
+    }
+  }
+}
+
+}
+

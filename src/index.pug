@@ -17,7 +17,7 @@ block content
                   span.label_txt 
                     | 집중근무
                   // 알림 토글 버튼 컨테이너
-                  #toggle-switch.toggle-switch
+                  #alarm-concentration-toggle-switch.toggle-switch
                     // 애니메이션 원형 요소
                     .toggle-circle      
           .alarm_noti_box
@@ -99,7 +99,7 @@ block content
                       | 시스템
                       span.alarm_noti
             p.alarm_setting 
-              i.icon_alarm.alarm_set_bk          
+              i.icon_alarm.icon_alarm_set_bk          
               | 알림설정  
         #content.content 
           .title_bar 
@@ -545,7 +545,7 @@ block content
                     | / 다음로딩 : 
                     span#nextLoadNum 14
                     | 번 부터
-            .division_list
+            .division_list.web
               // List Container
               #list_container.list_container.list_container_vr
                 #listbox.listbox.listbox_vr
@@ -625,7 +625,7 @@ block content
                             tr
                               td.alrm_tbl_td_cate
                                 .el
-                                  div.alrm_cate_tit.alrm_tit_mail 메일
+                                  .alrm_cate_tit.alrm_tit_mail 메일
                               td.alrm_tbl_td_cont 
                                 dl.alarm_board_cont 
                                   dt.alarm_board_tit 부서기획 협업 요청건
@@ -661,7 +661,7 @@ block content
                             tr
                               td.alrm_tbl_td_cate
                                 .el
-                                  div.alrm_cate_tit.alrm_tit_mail 메일
+                                  .alrm_cate_tit.alrm_tit_mail 메일
                               td.alrm_tbl_td_cont 
                                 dl.alarm_board_cont 
                                   dt.alarm_board_tit 부서기획 협업 요청건
@@ -697,7 +697,7 @@ block content
                             tr
                               td.alrm_tbl_td_cate
                                 .el
-                                  div.alrm_cate_tit.alrm_tit_mail 메일
+                                  .alrm_cate_tit.alrm_tit_mail 메일
                               td.alrm_tbl_td_cont 
                                 dl.alarm_board_cont 
                                   dt.alarm_board_tit 부서기획 협업 요청건
@@ -733,7 +733,7 @@ block content
                             tr
                               td.alrm_tbl_td_cate
                                 .el
-                                  div.alrm_cate_tit.alrm_tit_mail 메일
+                                  .alrm_cate_tit.alrm_tit_mail 메일
                               td.alrm_tbl_td_cont 
                                 dl.alarm_board_cont 
                                   dt.alarm_board_tit 부서기획 협업 요청건
@@ -769,7 +769,7 @@ block content
                             tr
                               td.alrm_tbl_td_cate
                                 .el
-                                  div.alrm_cate_tit.alrm_tit_mail 메일
+                                  .alrm_cate_tit.alrm_tit_mail 메일
                               td.alrm_tbl_td_cont 
                                 dl.alarm_board_cont 
                                   dt.alarm_board_tit 부서기획 협업 요청건
@@ -802,7 +802,126 @@ block content
                                   button(type="button")
                                     i.icon_alarm.icon_alarm_close_bk
                                     span.hidden 스케쥴
-
+            .alarm_m_top.mobile 
+              h3.alarm_mobile_h 알림센터
+              .flx_rgt 
+                .srch_alarm_box
+                  button.btn.srch_alarm_btn( type="button") 
+                    i.icon_alarm.icon_alarm_search_bk
+                    span.hidden 검색
+                .toggl_btn_wrapper
+                  span.label_txt 
+                    | 집중근무
+                  #alarm-concentration-toggle-switch.toggle-switch
+                    .toggle-circle
+                  p.alarm_setting 
+                    i.icon_alarm.icon_alarm_set_bk          
+                    span.hidden 알림설정
+            .division_list.mobile 
+              .board_tab_alarm
+                .tab_swiper_alarm.swiper
+                  ul.alarm_list.swiper-wrapper
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 메일
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 결재
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 일정
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 할일
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 태그
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | SAQ
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 쪽지
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 구독
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 내서랍
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 게시판
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 설문
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 자원예약
+                          span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          | 시스템
+                          span.alarm_noti
+              .board_list_alarm_box 
+                ul.alarm_board_list_ul_m
+                  li.alarm_board_list_li_m
+                    .alarm_board_cate_m
+                      .alrm_cate_tit.alrm_tit_mail 메일
+                      .alrm_cate_tit.alrm_tit_siren 
+                        .icon_alarm.icon_alarm_siren_wt
+                        span.hidden 긴급
+                    .alarm_board_conts_m
+                      dl.alarm_board_conts_box_m
+                        dt.alarm_board_conts_title_m 제목 제목 제목
+                        dd.alarm_board_conts_text_m 내용 내용 내용
+                        dd.alarm_board_conts_info_m
+                          span.alarm_board_conts_writer_m 홍길동 
+                          span.alarm_board_conts_date_m 
+                            em.alarm_board_conts_day_m 오늘
+                            em.alarm_board_conts_time_m 13:00
+                    .alarm_board_util_m
+                      .alarm_btn_box
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
+                          button.alarm_more(type="button") 
+                            i.icon_alarm.icon_alarm_more_bk
+                            span.hidden 알림 메뉴 더보기
+                          button.alarm_more(type="button") 
+                            i.icon_alarm.icon_alarm_close_bk
+                            span.hidden 알림 삭제
 
 
 

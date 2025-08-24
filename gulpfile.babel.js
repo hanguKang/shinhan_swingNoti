@@ -153,7 +153,13 @@ const js = async () => {
 const pug = () =>
   gulp.src(routes.pug.src).pipe(gpug({pretty:true})).pipe(gulp.dest(routes.pug.dest));
 const webServer = () => {
-  gulp.src("build").pipe(gws({ livereload: true, open: true }));
+  gulp.src("build").pipe(gws({ 
+    livereload: true, 
+    open: true,
+    server: {
+      baseDir: "./build" 
+    }
+  }));
 };
 const watch = () => {
   gulp.watch(routes.pug.watch, pug);
