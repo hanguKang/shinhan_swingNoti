@@ -3,38 +3,36 @@
 // controller
 document.addEventListener('DOMContentLoaded', () => {
 
+    const swiperAlarm = document.querySelector('.alarm_swiper');
+    
     window.addEventListener('resize', debounce(() => {
         if (window.innerWidth > 1280) {
             sizing();
         }
     }, 250)); // 0.25초 뒤에 실행
-
     // 페이지 로드 시 초기 가로 사이즈 확인
     if (window.innerWidth > 1280) {
         sizing();
     }
-
-    
-
-
     window.addEventListener('resize', sizing);  
 
-    const swiperAlarm = document.querySelector('.alarm_swiper');
     toggleSwitch();
     if(swiperAlarm){
         swiperDo();
     }
     if(window.innerWidth < 721){
-
         init_Swiper_mobile_tab();
+        init_mobile_board_list('.alarm_board_list_ul_m');
+        init_mobile_board_list('.alarm_board_list_card_ul_m');
     }
 
-    controlAlarmSwiperBtn();
-    filterListAlarm();
-    setSearchModal();
+    initializeModalHandlers();
+
+    
 });
 
 let tab_swiper; 
+
 const schedule_data = new Map([]);
 
 // 디바운스 함수 정의
@@ -50,13 +48,11 @@ function debounce(func, delay) {
 
 // Swiper를 초기화하고 파괴하는 함수
 function init_Swiper_mobile_tab() {
-
     if (!tab_swiper) {
       // Swiper가 존재하지 않을 때만 초기화
-      tab_swiper = new Swiper('.tab_swiper', {
+      tab_swiper = new Swiper('.tab_swiper_alarm', {
         // 한 번에 3개씩 이동
         slidesPerView: 4.5,
-        spaceBetween: 10,
         // 드래그 가능한 마우스 커서
         grabCursor: true,
         allowTouchMove:true,
@@ -77,160 +73,129 @@ function init_Swiper_mobile_tab() {
   
 }
 
-function setSearchModal(){
-    const btn_srch_alarm_modal_opener = document.querySelector('.srch_alarm_modal_opener');
-    const btn_close_alarm_schedule_modal = document.querySelectorAll('.btn_close_alarm_schedule_modal');
-    const btn_alarm_srch_refresh = document.querySelector('.alarm_srch_refresh');
-    const btn_alarm_srch_refreshAll = document.querySelector('.alarm_srch_refreshAll');
-    const alarm_date_pickers = document.querySelectorAll('.alarm_date_picker');
-    // dimmed 영역 클릭시 모달 닫기 (.btn_close_alarm_schedule_modal 제외)
-    const modalDimmed = document.querySelector('.modal_dimmed_alarm');
-    if (modalDimmed) {
-        modalDimmed.addEventListener('click', (event) => {
-            // 클릭된 요소가 dimmed 자체인지 확인 (자식 요소 클릭 시에는 닫지 않음)
-            if (event.target === modalDimmed) {
-                const modalOuter = document.querySelector('.modal_outer_alarm');
-                const modalConts = document.querySelector('.modal_conts_alarm');
-                
-                // 스케쥴 모달(.modal_alarm_srch_schedule)이 열려있는지 확인
-                const scheduleModal = document.querySelector('.modal_alarm_srch_schedule');
-                const isScheduleModalOpen = scheduleModal && 
-                    (scheduleModal.style.display === 'block' || 
-                    window.getComputedStyle(scheduleModal).display !== 'none');
-                
-                // 스케쥴 모달이 열려있지 않을 때만 메인 모달 닫기
-                if (!isScheduleModalOpen && modalOuter && modalConts) {
-                    modalOuter.style.display = 'none';
-                    modalConts.style.display = 'none';
-                }
-            }
-        });
-    }
+function initializeModalHandlers() {
+    // ----------------- 요소 선택 -----------------
+    const modalOuter = document.querySelector('.modal_outer_alarm');
+    const dimmedBackground = document.querySelector('.modal_dimmed_alarm');
+    const filterModal = document.querySelector('.modal_srch_alarm_filter');
+    const scheduleModal = document.querySelector('.modal_alarm_srch_schedule');
 
+    const openFilterBtn = document.querySelector('.srch_alarm_filter_setting');
+    const openScheduleBtn = document.querySelector('.srch_alarm_modal_opener');
 
-    alarm_date_pickers.forEach((datePicker) => {
-        datePicker.addEventListener('input', (event) => {
-            // 1. 숫자 이외의 모든 문자(하이픈 포함) 제거
-            let value = event.target.value.replace(/[^0-9]/g, '');
-            
-            // 2. YYYY-MM-DD 형식으로 하이픈 추가
-            let formattedValue = '';
-            
-            // YYYY 부분 처리 (최대 4자리)
-            if (value.length > 0) {
-                formattedValue += value.substring(0, 4);
-                
-                // 4자리 이상이면 하이픈 추가
-                if (value.length > 4) {
-                    formattedValue += '-';
-                    
-                    // MM 부분 처리 (최대 2자리)
-                    formattedValue += value.substring(4, 6);
-                    
-                    // 6자리 이상이면 하이픈 추가
-                    if (value.length > 6) {
-                        formattedValue += '-';
-                        
-                        // DD 부분 처리 (최대 2자리)
-                        formattedValue += value.substring(6, 8);
-                    }
-                }
-            }
-            
-            // 3. 입력 필드에 적용
-            event.target.value = formattedValue;
-            
-            // 커서 위치를 끝으로 설정
-            event.target.setSelectionRange(formattedValue.length, formattedValue.length);
-        });
-        
-        // keyup 이벤트도 추가 (백스페이스 등의 키 처리)
-        datePicker.addEventListener('keyup', (event) => {
-            // input 이벤트와 동일한 로직
-            let value = event.target.value.replace(/[^0-9]/g, '');
-            
-            let formattedValue = '';
-            
-            if (value.length > 0) {
-                formattedValue += value.substring(0, 4);
-                
-                if (value.length > 4) {
-                    formattedValue += '-';
-                    formattedValue += value.substring(4, 6);
-                    
-                    if (value.length > 6) {
-                        formattedValue += '-';
-                        formattedValue += value.substring(6, 8);
-                    }
-                }
-            }
-            
-            event.target.value = formattedValue;
-            event.target.setSelectionRange(formattedValue.length, formattedValue.length);
-        });
-    });
+    const closeFilterBtns = document.querySelectorAll('.btn_close_alarm_modal');
+    const closeScheduleBtns = document.querySelectorAll('.btn_close_alarm_schedule_modal');
 
-    btn_srch_alarm_modal_opener.addEventListener('click',()=>{
-        const modal_alarm_srch_schedule = document.querySelector('.modal_alarm_srch_schedule');
-        modal_alarm_srch_schedule.classList.add('open')
-    })
-    btn_close_alarm_schedule_modal.forEach((button)=>{
-        button.addEventListener('click',()=>{
-            const modal_alarm_srch_schedule = document.querySelector('.modal_alarm_srch_schedule');
-            modal_alarm_srch_schedule.classList.remove('open')
-        })
-    })
-    btn_alarm_srch_refresh.addEventListener('click',()=>{
-        alarm_date_pickers.forEach((inputDate)=>{
-            inputDate.value='';
-        })
-    });
-    btn_alarm_srch_refreshAll.addEventListener('click',()=>{
-        const srch_filter_inputs = document.querySelectorAll('.alarm_srch_filter_input');
-        srch_filter_inputs.forEach((inputChk)=>{
-            inputChk.checked=false;
-        });
-    });
+    const refreshDateBtn = document.querySelector('.alarm_srch_refresh');
+    const refreshAllBtn = document.querySelector('.alarm_srch_refreshAll');
+    const datePickers = document.querySelectorAll('.alarm_date_picker');
+    
 
-    // 모달 닫기 버튼
-    const closeModalBtns = document.querySelectorAll('.btn_close_alarm_modal');
-    if (closeModalBtns) {
-        closeModalBtns.forEach((button)=>{
-            button.addEventListener('click', () => {
-                const modalOuter = document.querySelector('.modal_outer_alarm');
-                const mddalConts = document.querySelector('.modal_conts_alarm');
-                if (modalOuter && mddalConts) {
-                    modalOuter.style.display = 'none';
-                    mddalConts.style.display = 'none';
-                }
-            });
-        });
-    }
-}
-
-function filterListAlarm () {
-    const btn_srch_filter = document.querySelector('.srch_alarm_filter_setting');
-    const filterButtons = document.querySelectorAll('.btn_alarm_srch_filter');
-
-    btn_srch_filter.addEventListener('click', (e) => {
-        // 모달 열기
-        const modalOuter = document.querySelector('.modal_outer_alarm');
-        const modal_srch_filter = document.querySelector('.modal_srch_alarm_filter');
-        if (modalOuter) {
+    // ----------------- 헬퍼 함수 -----------------
+    const showModal = (modalElement) => {
+        if (modalOuter && modalElement) {
             modalOuter.style.display = 'block';
-            modal_srch_filter.style.display = 'block';
+            modalElement.style.display = 'block';
+            modalElement.classList.add('open');
         }
-    })
+    };
 
-    if(filterButtons.length > 0){
-        filterButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                button.remove();
-                console.log('삭제');
-            });
+    const hideAllModals = () => {
+        if (modalOuter) {
+            modalOuter.style.display = 'none';
+        }
+        if (filterModal) {
+            filterModal.style.display = 'none';
+            filterModal.classList.remove('open');
+        }
+        if (scheduleModal) {
+            scheduleModal.style.display = 'none';
+            scheduleModal.classList.remove('open');
+        }
+    };
+
+    const hideScheduleModal = () => {
+        if (scheduleModal) {
+            scheduleModal.style.display = 'none';
+            scheduleModal.classList.remove('open');
+        }
+    };
+
+    const handleDateFormat = (event) => {
+        let value = event.target.value.replace(/[^0-9]/g, '');
+        let formattedValue = '';
+        
+        if (value.length > 0) {
+            formattedValue += value.substring(0, 4);
+            if (value.length > 4) {
+                formattedValue += '-' + value.substring(4, 6);
+                if (value.length > 6) {
+                    formattedValue += '-' + value.substring(6, 8);
+                }
+            }
+        }
+        event.target.value = formattedValue;
+    };
+
+    // ----------------- 이벤트 리스너 등록 -----------------
+    // 딤드 배경 클릭 시 모달 닫기
+    if (dimmedBackground) {
+        dimmedBackground.addEventListener('click', (event) => {
+            // 클릭된 요소가 딤드 배경 자체인지 확인
+            if (event.target === dimmedBackground) {
+                // 스케줄 모달이 열려있으면 스케줄 모달만 닫기
+                if (scheduleModal && scheduleModal.classList.contains('open')) {
+                    hideScheduleModal();
+                } else {
+                    // 그렇지 않으면 모든 모달 닫기
+                    hideAllModals();
+                }
+            }
         });
     }
 
+    // 필터 모달 열기
+    if (openFilterBtn) {
+        openFilterBtn.addEventListener('click', () => showModal(filterModal));
+    }
+
+    // 스케줄 모달 열기 (필터 모달 내에서)
+    if (openScheduleBtn) {
+        openScheduleBtn.addEventListener('click', () => {
+            // 필터 모달은 그대로 두고 스케줄 모달만 띄웁니다.
+            showModal(scheduleModal);
+        });
+    }
+
+    // 필터 모달 닫기 버튼
+    closeFilterBtns.forEach(button => {
+        button.addEventListener('click', () => hideAllModals());
+    });
+
+    // 스케줄 모달 닫기 버튼
+    closeScheduleBtns.forEach(button => {
+        button.addEventListener('click', () => hideScheduleModal());
+    });
+
+    // 날짜 입력 필드 포맷팅
+    datePickers.forEach(datePicker => {
+        datePicker.addEventListener('input', handleDateFormat);
+    });
+
+    // 날짜 입력 필드 초기화
+    if (refreshDateBtn) {
+        refreshDateBtn.addEventListener('click', () => {
+            datePickers.forEach(input => input.value = '');
+        });
+    }
+
+    // 전체 필터 초기화
+    if (refreshAllBtn) {
+        refreshAllBtn.addEventListener('click', () => {
+            document.querySelectorAll('.alarm_srch_filter_input').forEach(input => input.checked = false);
+            datePickers.forEach(input => input.value = '');
+        });
+    }
 }
 
 
@@ -242,21 +207,88 @@ function openModalWithApiCall(alarmId) {
 
 }
 
+function removeCard(checkbox){
+    const cardToRemove = checkbox.closest('.alarm_board_list_card_li_m');
+    if(!cardToRemove) return;
+
+    // transitionend 이벤트 리스너 추가
+    const onTransitionEnd = function() {
+        // 이벤트 리스너 제거
+        cardToRemove.removeEventListener('transitionend', onTransitionEnd);
+        cardToRemove.remove();
+    };
+
+    // 이벤트 리스너 등록
+    cardToRemove.addEventListener('transitionend', onTransitionEnd);
+    
+    // 애니메이션 트리거
+    cardToRemove.classList.add('remove_card');
+
+}
+
+function init_mobile_board_list(selector){
+    const mobile_board_list = document.querySelector(selector);
+    // 라벨 클릭만 처리 (중복 이벤트 방지)
+
+    if(mobile_board_list){
+        mobile_board_list.addEventListener('click', (event) => {
+            //console.log(1111111111)
+            const btnMore = event.target.closest('.alarm_more');
+            const $label = event.target.closest('.chkbox');
+            
+            
+
+            if (btnMore) {
+                event.stopImmediatePropagation();
+                event.preventDefault();
+                const btnBox = btnMore.closest('.alarm_btn_box');
+                if (btnBox) {
+                    btnBox.classList.toggle('alarm_on');
+                    
+                }
+            }
+
+
+            if ($label){
+                event.stopImmediatePropagation();
+                event.preventDefault();
+                const checkbox = $label.querySelector('.input_chk'); //이게 왜 오류가 나지?
+                if(checkbox){
+                    checkbox.checked = true;
+                    $label.classList.add('chkbox_on');
+                    const changeEvent = new Event('change', { bubbles: true });
+                    checkbox.dispatchEvent(changeEvent);
+    
+                    //console.log('삭제되라')
+                    removeCard(checkbox);
+                    setTimeout(() => {
+                        checkbox.checked = false;
+                        $label.classList.remove('chkbox_on');
+                    }, 300);
+                    
+                    return false;
+                }
+            }
+
+        });
+    }
+}
+
+
 function controlAlarmSwiperBtn() {
     const swiperWrapper = document.querySelector('.alrm_swiper_wrapper');
-
     if (swiperWrapper) {
         swiperWrapper.addEventListener('click', (event) => {
             // more 버튼이나 그 자식 요소를 클릭한 경우
+            console.log(event.target)
             const btnMore = event.target.closest('.alarm_more');
             const btnCalender = event.target.closest('.alarm_btn_calender');
             const btnCopy = event.target.closest('.alarm_btn_copy');
             const btnRecall = event.target.closest('.alarm_btn_recall');
             if (btnMore) {
-                // 부모의 부모인 .alarm_btn_box 찾기
                 const btnBox = btnMore.closest('.alarm_btn_box');
                 if (btnBox) {
-                    btnBox.classList.toggle('on');
+                    btnBox.classList.toggle('alarm_on');
                     
                     // 또는 특정 자식 요소에 적용하려면
                     // const icoBox = btnBox.querySelector('.alarm_btn_ico_box');
@@ -495,6 +527,7 @@ function swiperDo(){
         };
     }
 
+    controlAlarmSwiperBtn();
 
     // 최초 로딩 빌드된 초기 슬라이드가 있는지 확인
     function checkInitialData() {
@@ -865,76 +898,6 @@ function swiperDo(){
         }
     }
 
-    //************************jQuery에서 중복으로 사용하고 있는 이벤트 처리
-    function initSlideCheckboxHandler() {
-         const swiperContainer = document.querySelector('.alarm_swiper');
-        if (!swiperContainer) return;
-        
-        const swiperCheckboxes = swiperContainer.querySelectorAll('.input_chk');
-        
-        swiperCheckboxes.forEach((checkbox, index) => {
-            const jqueryEvents = $._data(checkbox, 'events');
-            if (!jqueryEvents || !jqueryEvents.change) return;
-            
-            // 핸들러 백업
-            originalEventHandlers.set(checkbox, []);
-            
-            jqueryEvents.change.forEach(handler => {
-                // 원본 핸들러 저장
-                originalEventHandlers.get(checkbox).push({
-                    handler: handler.handler,
-                    selector: handler.selector
-                });
-                
-                // Swiper 내부에서만 차단하는 핸들러로 교체
-                handler.handler = function(event) {
-                    if (this.closest('.alarm_swiper')) {
-                        event.stopImmediatePropagation();
-                        return false;
-                    }
-                    // 원본 핸들러 찾아서 실행
-                    const original = originalEventHandlers.get(checkbox).find(
-                        h => h.selector === handler.selector
-                    );
-                    return original.handler.apply(this, arguments);
-                };
-            });
-        });
-
-        // 기존 이벤트 제거
-        if (checkboxHandler) {
-            swiperContainer.removeEventListener('change', checkboxHandler, true);
-        }
-
-        // 새로운 이벤트 핸들러 정의
-        checkboxHandler = function(event) {
-            // Swiper 내부에서 발생한 이벤트인지 확인
-            if (!event.target.closest('.alarm_swiper')) return;
-            
-            const checkbox = event.target;
-            
-            if (checkbox.classList.contains('input_chk') && checkbox.checked) {
-                console.log('체크박스 이벤트 캡쳐됨');
-                event.stopImmediatePropagation();
-                event.preventDefault();
-                
-                removeSlide(checkbox);
-                
-                setTimeout(() => {
-                    checkbox.checked = false;
-                    // jQuery UI 업데이트
-                    const $chkbox = $(checkbox).closest('.chkbox');
-                    if ($chkbox.length) {
-                        $chkbox.removeClass('chkbox_on');
-                    }
-                }, 100);
-            }
-        };
-
-        // 이벤트 등록 (캡쳐링)
-        swiperContainer.addEventListener('change', checkboxHandler, true);
-        console.log('체크박스 핸들러 등록 완료');
-    }
 
     function setupEventListeners() {
 
