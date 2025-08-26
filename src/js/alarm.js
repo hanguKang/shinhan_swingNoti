@@ -47,84 +47,158 @@ document.addEventListener('DOMContentLoaded', () => {
     doNotDistrub();
 
     chk_all_ctrl();
+
+    setupRefreshAllButton();
 });
 
 let tab_swiper; 
 
 const schedule_data = new Map([]);
 
-function chk_all_ctrl() {
-    const selectAllCheckbox = document.getElementById('alrm_chk_emergency_all');
-    const selectAllButton = document.querySelector('.btn_cancel_slct_all');
-    const selectDeleteButton = document.querySelector('.btn_cancel_slct_del');
-    const totalCountSpan = document.querySelector('.alarm_cancel_noti span');
-    const listContainer = document.querySelector('.alarm_tbl_box');
-    const individualCheckboxes = listContainer.querySelectorAll('.alarm_cancel_board_body .input_emergency');
-
-    if (!selectAllCheckbox || !selectAllButton || !selectDeleteButton || !totalCountSpan || !listContainer) {
-        console.error('필요한 HTML 요소를 찾을 수 없습니다.');
-        return;
-    }
-
-    // 개별 체크박스 상태에 따라 전체 체크박스 상태를 업데이트하는 함수
-    function updateSelectAllStatus() {
-        const checkedCount = Array.from(individualCheckboxes).filter(cb => cb.checked).length;
-        const totalCount = individualCheckboxes.length;
-        const allChecked = checkedCount === totalCount;
-        
-        selectAllCheckbox.checked = allChecked;
-        selectAllButton.textContent = allChecked ? '전체 해제' : '전체 선택';
-    }
-
-    // '전체 선택' 체크박스 이벤트
-    selectAllCheckbox.addEventListener('change', function() {
-        const isChecked = this.checked;
-        individualCheckboxes.forEach(checkbox => {
-            checkbox.checked = isChecked;
-        });
-        updateSelectAllStatus();
-    });
-
-    // '전체 선택' 버튼 클릭 이벤트
-    selectAllButton.addEventListener('click', function() {
-        // 전체선택 체크박스의 현재 상태를 반전시킴
-        selectAllCheckbox.checked = !selectAllCheckbox.checked;
-        // 체크박스의 변경 이벤트를 강제로 발생시켜 동기화
-        selectAllCheckbox.dispatchEvent(new Event('change'));
-    });
-
-    // '전체 삭제' 버튼 클릭 이벤트
-    selectDeleteButton.addEventListener('click', function() {
-        // 선택된 항목들을 필터링
-        const checkedBoxes = Array.from(individualCheckboxes).filter(cb => cb.checked);
-        
-        if (checkedBoxes.length === 0) {
-            alert("삭제할 항목을 선택해주세요.");
-            return;
-        }
-
-        checkedBoxes.forEach(checkbox => {
-            const row = checkbox.closest('.alarm_cancel_board_body');
-            if (row) {
-                row.remove();
+function setupRefreshAllButton() {
+    const refreshBtn = document.querySelector('.alarm_setting_on_off_refreshAll');
+    
+    if (!refreshBtn) return;
+    
+    refreshBtn.addEventListener('click', function() {
+        // 1. 검색 입력 필드 초기화
+        const searchInputs = document.querySelectorAll('.alarm_srch_filter_input');
+        searchInputs.forEach(input => {
+            // 체크박스인 경우
+            if (input.type === 'checkbox') {
+                input.checked = false;
+                // change 이벤트 발생
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+                
+                // 라벨의 스타일도 업데이트 (CSS :checked에 의존하므로)
+                const label = input.closest('.alarm_srch_filter_label');
+                if (label) {
+                    label.style.backgroundColor = ''; // 기본값으로
+                    label.style.color = ''; // 기본값으로
+                }
+            } 
+            // 텍스트 입력인 경우
+            else {
+                input.value = '';
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                input.dispatchEvent(new Event('change', { bubbles: true }));
             }
         });
         
-        // 삭제 후 전체 항목 수 업데이트
-        const newCount = document.querySelectorAll('.alarm_cancel_board_body').length;
-        totalCountSpan.textContent = newCount;
+        // 2. 토글 스위치 초기화
+        const toggleSwitches = document.querySelectorAll('.alarm_toggle_switch_input');
+        toggleSwitches.forEach(switchInput => {
+            switchInput.checked = false;
+            switchInput.dispatchEvent(new Event('change', { bubbles: true }));
+            
+            // 라벨의 클래스도 업데이트
+            const label = switchInput.closest('label');
+            if (label && label.classList.contains('chkbox')) {
+                label.classList.remove('chkbox_on');
+            }
+        });
         
-        // 전체 체크박스 상태 업데이트
-        updateSelectAllStatus();
+        // 3. 시간 입력 필드 초기화
+        const timeInputs = document.querySelectorAll('input[type="time"]');
+        timeInputs.forEach(input => {
+            input.value = '';
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+        
+        // 4. 추가: select 요소들도 초기화 (있을 경우)
+        const selectElements = document.querySelectorAll('select');
+        selectElements.forEach(select => {
+            select.selectedIndex = 0;
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+        
+        console.log('모든 설정이 초기화되었습니다.');
     });
+}
 
-    // 개별 체크박스 변경 이벤트
-    individualCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', updateSelectAllStatus);
+function chk_all_ctrl() {
+    const selectAll = document.getElementById('alrm_chk_emergency_all');
+    const selectAllBtn = document.querySelector('.btn_cancel_slct_all');
+    const checkboxes = document.querySelectorAll('.input_emergency');
+    
+    if (!selectAll || checkboxes.length === 0) return;
+    
+    // 전체선택 버튼 클릭 이벤트
+    selectAllBtn.addEventListener('click', function() {
+        // 체크박스 상태 토글
+        selectAll.checked = !selectAll.checked;
+        
+        // selectAll의 CSS 클래스 업데이트
+        const selectAllLabel = selectAll.closest('label.chkbox');
+        if (selectAllLabel) {
+            if (selectAll.checked) {
+                selectAllLabel.classList.add('chkbox_on');
+            } else {
+                selectAllLabel.classList.remove('chkbox_on');
+            }
+        }
+        
+        // change 이벤트 발생시켜 기존 로직 실행
+        selectAll.dispatchEvent(new Event('change'));
+        
+        // 버튼 텍스트 변경
+        this.textContent = selectAll.checked ? '전체해제' : '전체선택';
     });
-
-    // 초기 상태 설정
-    updateSelectAllStatus();
+    
+    // 전체 선택 체크박스 이벤트
+    selectAll.addEventListener('change', function() {
+        // selectAll의 CSS 클래스 업데이트
+        const selectAllLabel = this.closest('label.chkbox');
+        if (selectAllLabel) {
+            if (this.checked) {
+                selectAllLabel.classList.add('chkbox_on');
+            } else {
+                selectAllLabel.classList.remove('chkbox_on');
+            }
+        }
+        
+        // 개별 체크박스 업데이트
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = this.checked;
+            
+            // CSS 업데이트 - label에 클래스 추가/제거
+            const label = checkbox.closest('label.chkbox');
+            if (label) {
+                if (this.checked) {
+                    label.classList.add('chkbox_on');
+                } else {
+                    label.classList.remove('chkbox_on');
+                }
+            }
+        });
+        
+        // 버튼 텍스트도 함께 업데이트
+        selectAllBtn.textContent = this.checked ? '전체해제' : '전체선택';
+    });
+    
+    // 개별 체크박스 이벤트 - 전체 선택 상태 업데이트
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const allChecked = [...checkboxes].every(cb => cb.checked);
+            const someChecked = [...checkboxes].some(cb => cb.checked);
+            
+            selectAll.checked = allChecked;
+            selectAll.indeterminate = someChecked && !allChecked;
+            
+            // selectAll의 CSS 클래스 업데이트
+            const selectAllLabel = selectAll.closest('label.chkbox');
+            if (selectAllLabel) {
+                if (allChecked) {
+                    selectAllLabel.classList.add('chkbox_on');
+                } else {
+                    selectAllLabel.classList.remove('chkbox_on');
+                }
+            }
+            
+            // 버튼 텍스트도 함께 업데이트
+            selectAllBtn.textContent = allChecked ? '전체해제' : '전체선택';
+        });
+    });
 }
 
 
