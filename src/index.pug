@@ -17,11 +17,12 @@ block content
                   span.label_txt 
                     | 집중근무
                   // 알림 토글 버튼 컨테이너
-                  #alarm-concentration-toggle-switch.toggle-switch
-                    // 애니메이션 원형 요소
-                    .toggle-circle      
+                  label.alarm_toggle_switch_wrapper.alarm_concentration_toggle(for="alarm-concentration-toggle-switch")
+                    input#alarm-concentration-toggle-switch.alarm_toggle_switch_input.alarm_concentration_toggle_switch(type="checkbox")
+                    span.alarm_toggle_switch-slider
+     
           .alarm_noti_box
-            .alarm_h3
+            .alarm_h3.active
               i.icon_alarm.icon_alarm_all_noti_blu
               span.alarm_txt 전체알림
             .alarm_tit_box 
@@ -99,8 +100,8 @@ block content
                       | 시스템
                       span.alarm_noti
             p.alarm_setting 
-              i.icon_alarm.icon_alarm_set_bk          
-              | 알림설정  
+              i.icon_alarm.icon_alarm_set_bk 
+              a(href="#none") 알림설정  
         #content.content 
           .title_bar 
             .tgl_snb
@@ -573,18 +574,19 @@ block content
                       .fr.alarm_srch
                         .srch_alarm_filter
                           .srch_alarm_filter_list
-                            button.btn.btn_alarm_srch_filter.alarm_filter_list_0( type="button") 
-                              span.btn_alarm_txt 미확인 
-                              i.icon_alarm.icon_alarm_close_gry
-                            button.btn.btn_alarm_srch_filter.alarm_filter_list_1( type="button") 
-                              span.btn_alarm_txt 일주일
-                              i.icon_alarm.icon_alarm_close_gry
-                            button.btn.btn_alarm_srch_filter.alarm_filter_list_2( type="button") 
-                              span.btn_alarm_txt 메일
-                              i.icon_alarm.icon_alarm_close_gry
-                            button.btn.btn_alarm_srch_filter.alarm_filter_list_3( type="button") 
-                              span.btn_alarm_txt 태그
-                              i.icon_alarm.icon_alarm_close_gry
+                            //- button.btn.btn_alarm_srch_filter.alarm_filter_list_0( type="button") 
+                            //-   span.btn_alarm_txt 미확인 
+                            //-   i.icon_alarm.icon_alarm_close_gry
+                            //- button.btn.btn_alarm_srch_filter.alarm_filter_list_1( type="button") 
+                            //-   span.btn_alarm_txt 일주일
+                            //-   i.icon_alarm.icon_alarm_close_gry
+                            //- button.btn.btn_alarm_srch_filter.alarm_filter_list_2( type="button") 
+                            //-   span.btn_alarm_txt 메일
+                            //-   i.icon_alarm.icon_alarm_close_gry
+                            //- button.btn.btn_alarm_srch_filter.alarm_filter_list_3( type="button") 
+                            //-   span.btn_alarm_txt 태그
+                            //-   i.icon_alarm.icon_alarm_close_gry
+                            //- button.btn.btn_checked_list_all_show( type="button" title="체크된 목록 전부 보기")  ...
                           .srch_filter_more
                             button.btn.srch_alarm_filter_setting( type="button") 
                               i.icon_alarm.icon_alarm_more_bk
@@ -655,9 +657,9 @@ block content
                                     span.hidden 알림 저장
                               td.alrm_tbl_td_del 
                                  .alarm_btn_ico_box 
-                                  button(type="button")
+                                  button.remove_alarm(type="button")
                                     i.icon_alarm.icon_alarm_close_bk
-                                    span.hidden 스케쥴
+                                    span.hidden 알림 삭제
                             tr
                               td.alrm_tbl_td_cate
                                 .el
@@ -691,9 +693,9 @@ block content
                                     span.hidden 알림 저장
                               td.alrm_tbl_td_del 
                                  .alarm_btn_ico_box 
-                                  button(type="button")
+                                  button.remove_alarm(type="button")
                                     i.icon_alarm.icon_alarm_close_bk
-                                    span.hidden 스케쥴
+                                    span.hidden 알림 삭제
                             tr
                               td.alrm_tbl_td_cate
                                 .el
@@ -727,9 +729,9 @@ block content
                                     span.hidden 알림 저장
                               td.alrm_tbl_td_del 
                                  .alarm_btn_ico_box 
-                                  button(type="button")
+                                  button.remove_alarm(type="button")
                                     i.icon_alarm.icon_alarm_close_bk
-                                    span.hidden 스케쥴
+                                    span.hidden 알림 삭제
                             tr
                               td.alrm_tbl_td_cate
                                 .el
@@ -763,9 +765,9 @@ block content
                                     span.hidden 알림 저장
                               td.alrm_tbl_td_del 
                                  .alarm_btn_ico_box 
-                                  button(type="button")
+                                  button.remove_alarm(type="button")
                                     i.icon_alarm.icon_alarm_close_bk
-                                    span.hidden 스케쥴
+                                    span.hidden 알림 삭제
                             tr
                               td.alrm_tbl_td_cate
                                 .el
@@ -799,9 +801,9 @@ block content
                                     span.hidden 알림 저장
                               td.alrm_tbl_td_del 
                                  .alarm_btn_ico_box 
-                                  button(type="button")
+                                  button.remove_alarm(type="button")
                                     i.icon_alarm.icon_alarm_close_bk
-                                    span.hidden 스케쥴
+                                    span.hidden 알림 삭제
             .alarm_m_top.mobile 
               h3.alarm_mobile_h 
                 | 알림센터
@@ -814,8 +816,9 @@ block content
                 .toggl_btn_wrapper
                   span.label_txt 
                     | 집중근무
-                  #alarm-concentration-toggle-switch.toggle-switch
-                    .toggle-circle
+                  label.alarm_toggle_switch_wrapper.alarm_concentration_toggle(for="alarm-concentration-toggle-switch-m")
+                    input#alarm-concentration-toggle-switch-m.alarm_toggle_switch_input.alarm_concentration_toggle_switch(type="checkbox")
+                    span.alarm_toggle_switch-slider
                   p.alarm_setting 
                     i.icon_alarm.icon_alarm_set_bk          
                     span.hidden 알림설정

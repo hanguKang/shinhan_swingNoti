@@ -3,8 +3,13 @@
 // controller
 document.addEventListener('DOMContentLoaded', () => {
 
+    //스와이퍼
     const swiperAlarm = document.querySelector('.alarm_swiper');
-    
+    if(swiperAlarm){
+        swiperDo();
+    }
+
+    //사이징에 따른 snb메뉴 및 컨텐츠 자동 높이 조정
     window.addEventListener('resize', debounce(() => {
         if (window.innerWidth > 1280) {
             sizing();
@@ -14,26 +19,639 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth > 1280) {
         sizing();
     }
+
     window.addEventListener('resize', sizing);  
 
-    toggleSwitch();
-    if(swiperAlarm){
-        swiperDo();
-    }
+
+    //모바일 이벤트 
     if(window.innerWidth < 721){
         init_Swiper_mobile_tab();
         init_mobile_board_list('.alarm_board_list_ul_m');
         init_mobile_board_list('.alarm_board_list_card_ul_m');
     }
 
+    //모달 이벤트
     initializeModalHandlers();
 
-    
+    //dropdown 이벤트
+    alarmDopdownHandler();
+
+    //알림모달의 필터세팅싱크 이벤트
+    initializeFilterHandlers();
+
+
+    initializeAlarmSettings();
+
+    removeAlarm();
+
+    doNotDistrub();
+
+    chk_all_ctrl();
 });
 
 let tab_swiper; 
 
 const schedule_data = new Map([]);
+
+function chk_all_ctrl() {
+    const selectAllCheckbox = document.getElementById('alrm_chk_emergency_all');
+    const selectAllButton = document.querySelector('.btn_cancel_slct_all');
+    const selectDeleteButton = document.querySelector('.btn_cancel_slct_del');
+    const totalCountSpan = document.querySelector('.alarm_cancel_noti span');
+    const listContainer = document.querySelector('.alarm_tbl_box');
+    const individualCheckboxes = listContainer.querySelectorAll('.alarm_cancel_board_body .input_emergency');
+
+    if (!selectAllCheckbox || !selectAllButton || !selectDeleteButton || !totalCountSpan || !listContainer) {
+        console.error('필요한 HTML 요소를 찾을 수 없습니다.');
+        return;
+    }
+
+    // 개별 체크박스 상태에 따라 전체 체크박스 상태를 업데이트하는 함수
+    function updateSelectAllStatus() {
+        const checkedCount = Array.from(individualCheckboxes).filter(cb => cb.checked).length;
+        const totalCount = individualCheckboxes.length;
+        const allChecked = checkedCount === totalCount;
+        
+        selectAllCheckbox.checked = allChecked;
+        selectAllButton.textContent = allChecked ? '전체 해제' : '전체 선택';
+    }
+
+    // '전체 선택' 체크박스 이벤트
+    selectAllCheckbox.addEventListener('change', function() {
+        const isChecked = this.checked;
+        individualCheckboxes.forEach(checkbox => {
+            checkbox.checked = isChecked;
+        });
+        updateSelectAllStatus();
+    });
+
+    // '전체 선택' 버튼 클릭 이벤트
+    selectAllButton.addEventListener('click', function() {
+        // 전체선택 체크박스의 현재 상태를 반전시킴
+        selectAllCheckbox.checked = !selectAllCheckbox.checked;
+        // 체크박스의 변경 이벤트를 강제로 발생시켜 동기화
+        selectAllCheckbox.dispatchEvent(new Event('change'));
+    });
+
+    // '전체 삭제' 버튼 클릭 이벤트
+    selectDeleteButton.addEventListener('click', function() {
+        // 선택된 항목들을 필터링
+        const checkedBoxes = Array.from(individualCheckboxes).filter(cb => cb.checked);
+        
+        if (checkedBoxes.length === 0) {
+            alert("삭제할 항목을 선택해주세요.");
+            return;
+        }
+
+        checkedBoxes.forEach(checkbox => {
+            const row = checkbox.closest('.alarm_cancel_board_body');
+            if (row) {
+                row.remove();
+            }
+        });
+        
+        // 삭제 후 전체 항목 수 업데이트
+        const newCount = document.querySelectorAll('.alarm_cancel_board_body').length;
+        totalCountSpan.textContent = newCount;
+        
+        // 전체 체크박스 상태 업데이트
+        updateSelectAllStatus();
+    });
+
+    // 개별 체크박스 변경 이벤트
+    individualCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateSelectAllStatus);
+    });
+
+    // 초기 상태 설정
+    updateSelectAllStatus();
+}
+
+
+
+
+// 여러 시점에서 실행 시도
+// document.addEventListener('DOMContentLoaded', chk_all_ctrl);
+// window.addEventListener('load', chk_all_ctrl);
+// setTimeout(chk_all_ctrl, 500);
+// setTimeout(chk_all_ctrl, 1000);
+
+function doNotDistrub(){
+    // 모든 이벤트의 기준이 될 가장 상위 컨테이너
+    const mainContainer = document.querySelector('.alarm__setting_conts_box.alarm_setting_schedule_on_off_box');
+    // 추가 버튼
+    const addButton = document.querySelector('.add_alarm_not_disturb');
+
+    if (mainContainer && addButton) {
+        
+        // 이벤트 위임으로 삭제 버튼 및 체크박스 변경 이벤트 처리
+        mainContainer.addEventListener('click', (event) => {
+            const clickedElement = event.target;
+
+            // '삭제' 버튼 클릭 시
+            if (clickedElement.closest('.remove_alarm_not_disturb')) {
+                const scheduleItem = clickedElement.closest('.dp_flx');
+                if (scheduleItem) {
+                    scheduleItem.remove();
+                }
+            }
+        });
+
+        mainContainer.addEventListener('change', (event) => {
+            const checkbox = event.target;
+            // 변경된 체크박스가 속한 `.dp_flx` 요소를 찾음
+            const scheduleItem = checkbox.closest('.dp_flx');
+
+            if (!scheduleItem) return;
+
+            // '평일' 체크박스 클릭 시
+            if (checkbox.id.includes('filter_setting_day')) {
+                const weekdayCheckboxes = scheduleItem.querySelectorAll(`
+                    input[id*="filter_setting_mon"],
+                    input[id*="filter_setting_tue"],
+                    input[id*="filter_setting_wed"],
+                    input[id*="filter_setting_thu"],
+                    input[id*="filter_setting_fri"]
+                `);
+
+                weekdayCheckboxes.forEach(weekdayCheckbox => {
+                    weekdayCheckbox.checked = checkbox.checked;
+                });
+            } 
+            // '월, 화, 수, 목, 금' 체크박스 클릭 시
+            else if (checkbox.id.includes('filter_setting_')) {
+                const weekdayCheckbox = scheduleItem.querySelector('input[id*="filter_setting_day"]');
+                const allDaysChecked = ['mon', 'tue', 'wed', 'thu', 'fri'].every(day => 
+                    scheduleItem.querySelector(`input[id*="filter_setting_${day}"]`).checked
+                );
+                
+                if (allDaysChecked) {
+                    weekdayCheckbox.checked = true;
+                } else {
+                    weekdayCheckbox.checked = false;
+                }
+            }
+        });
+
+        // 추가 기능
+        addButton.addEventListener('click', () => {
+            const newElement = document.createElement('div');
+            newElement.className = 'dp_flx';
+
+            const uniqueId = Date.now();
+            newElement.setAttribute('data-disturb-id', uniqueId);
+
+            newElement.innerHTML = `
+                <ul class="alarm_srch_filter_list_ul alarm_setting_schedule_on_off_ul">
+                    <li class="alarm_srch_filter_list_li alarm_setting_schedule_on_off_li">
+                        <label class="alarm_srch_filter_label" for="filter_setting_day_${uniqueId}">
+                            <input class="alarm_srch_filter_input" type="checkbox" name="filter_setting_day" id="filter_setting_day_${uniqueId}">
+                            <span class="alarm_srch_filter_txt">평일</span>
+                        </label>
+                    </li>
+                    <li class="alarm_srch_filter_list_li alarm_setting_schedule_on_off_li">
+                        <label class="alarm_srch_filter_label" for="filter_setting_mon_${uniqueId}">
+                            <input class="alarm_srch_filter_input" type="checkbox" name="filter_setting_mon" id="filter_setting_mon_${uniqueId}">
+                            <span class="alarm_srch_filter_txt">월</span>
+                        </label>
+                    </li>
+                    <li class="alarm_srch_filter_list_li alarm_setting_schedule_on_off_li">
+                        <label class="alarm_srch_filter_label" for="filter_setting_tue_${uniqueId}">
+                            <input class="alarm_srch_filter_input" type="checkbox" name="filter_setting_tue" id="filter_setting_tue_${uniqueId}">
+                            <span class="alarm_srch_filter_txt">화</span>
+                        </label>
+                    </li>
+                    <li class="alarm_srch_filter_list_li alarm_setting_schedule_on_off_li">
+                        <label class="alarm_srch_filter_label" for="filter_setting_wed_${uniqueId}">
+                            <input class="alarm_srch_filter_input" type="checkbox" name="filter_setting_wed" id="filter_setting_wed_${uniqueId}">
+                            <span class="alarm_srch_filter_txt">수</span>
+                        </label>
+                    </li>
+                    <li class="alarm_srch_filter_list_li alarm_setting_schedule_on_off_li">
+                        <label class="alarm_srch_filter_label" for="filter_setting_thu_${uniqueId}">
+                            <input class="alarm_srch_filter_input" type="checkbox" name="filter_setting_thu" id="filter_setting_thu_${uniqueId}">
+                            <span class="alarm_srch_filter_txt">목</span>
+                        </label>
+                    </li>
+                    <li class="alarm_srch_filter_list_li alarm_setting_schedule_on_off_li">
+                        <label class="alarm_srch_filter_label" for="filter_setting_fri_${uniqueId}">
+                            <input class="alarm_srch_filter_input" type="checkbox" name="filter_setting_fri" id="filter_setting_fri_${uniqueId}">
+                            <span class="alarm_srch_filter_txt">금</span>
+                        </label>
+                    </li>
+                </ul>
+                <div class="alarm_setting_schedule_time">
+                    <input type="time" id="no-disturb-time1_${uniqueId}" name="no-disturb-time1"> -
+                    <input type="time" id="no-disturb-time2_${uniqueId}" name="no-disturb-time2">
+                </div>
+                <div class="alarm_btn_ico_box">
+                    <button class="remove_alarm_not_disturb" type="button">
+                        <i class="icon_alarm icon_alarm_close_bk"></i>
+                        <span class="hidden">방해금지 스케쥴 삭제</span>
+                    </button>
+                </div>
+            `;
+            const addButtonParent = addButton.closest('.dp_block');
+            if(addButtonParent) {
+                addButtonParent.parentNode.insertBefore(newElement, addButtonParent);
+            }
+        });
+    }
+}
+
+function removeAlarm(){
+    const removeButtons = document.querySelectorAll('.remove_alarm');
+
+    if(removeButtons){
+        removeButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const row = event.target.closest('tr');
+                if (row) {
+                    row.remove();
+                }
+            });
+        });
+    }
+}
+
+//세팅 페이지 핸들러
+function initializeAlarmSettings() {
+    // '초기화' 버튼 요소를 가져옵니다.
+    const resetButton = document.querySelector('.alarm_setting_on_off_refresh');
+
+    // 초기화 버튼 클릭 시 이벤트를 처리합니다.
+    if (resetButton) {
+        resetButton.addEventListener('click', () => {
+            // 'alarm_setting_on_off' 클래스를 가진 ul의 모든 input[type="checkbox"] 요소를 가져옵니다.
+            const checkboxes = document.querySelectorAll('.alarm_setting_on_off input[type="checkbox"]');
+            
+            // 각 체크박스를 순회하며 'checked' 상태를 false로 설정합니다.
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+
+            console.log("알림 종류 설정이 초기화되었습니다.");
+
+        });
+    }
+
+    const mobileToggle = document.querySelector('#alarm-concentration-toggle-switch-m');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('change', (event) => {
+            const isMobileAlarmOn = event.target.checked;
+            console.log('모바일 알림 상태:', isMobileAlarmOn ? '켜짐' : '꺼짐');
+            // 여기에 모바일 알림 상태를 저장하는 로직을 추가할 수 있습니다.
+        });
+    }
+
+    // 집중근무 알림 토글 스위치 이벤트 핸들러
+    // 동기화할 토글 스위치들을 선택합니다.
+    const syncedToggles = document.querySelectorAll('.alarm_concentration_toggle_switch');
+
+    if (syncedToggles.length > 0) {
+        // 각 토글에 'change' 이벤트 리스너를 추가합니다.
+        syncedToggles.forEach(toggle => {
+            toggle.addEventListener('change', (event) => {
+                const isChecked = event.target.checked;
+                
+                // 다른 모든 동기화 토글의 상태를 변경된 상태로 업데이트합니다.
+                syncedToggles.forEach(otherToggle => {
+                    if (otherToggle !== event.target) {
+                        otherToggle.checked = isChecked;
+                    }
+                });
+
+                // 변경 상태를 콘솔에 기록합니다.
+                const logMessage = isChecked ? '집중 관련 알림이 모두 켜짐' : '집중 관련 알림이 모두 꺼짐';
+                console.log(logMessage);
+
+                // 여기에 상태를 서버에 저장하는 로직을 추가할 수 있습니다.
+            });
+        });
+    }
+
+
+}
+
+//알람 세팅 함수2
+function handleFilterCategoryButtonClick(category) {
+    // 모든 모달을 닫습니다.
+    document.querySelectorAll('.modal_conts_alarm').forEach(modal => {
+        modal.style.display = 'none';
+    });
+
+    // 필터 모달을 엽니다.
+    const modalOuter = document.querySelector('.modal_outer_alarm');
+    const modalFilter = document.querySelector('.modal_filter_alarm');
+    if (modalOuter && modalFilter) {
+        modalOuter.style.display = 'block';
+        modalFilter.style.display = 'block';
+    }
+
+    // '알림 종류' 카테고리 내의 모든 체크박스를 가져옵니다.
+    const categoryInputs = document.querySelectorAll('.alarm_srch_filter_list_cate .alarm_srch_filter_input');
+
+    // 모든 체크박스의 상태를 초기화하고, 선택된 카테고리만 활성화합니다.
+    categoryInputs.forEach(input => {
+        const inputCategory = input.name.replace('filter_alarm_', '');
+
+        if (inputCategory === category) {
+            // 해당 카테고리와 일치하면 체크하고 비활성화합니다.
+            input.checked = true;
+            input.disabled = true;
+        } else {
+            // 일치하지 않으면 체크를 해제하고 비활성화합니다.
+            input.checked = false;
+            input.disabled = true;
+        }
+    });
+
+    // 다른 모든 체크박스(알림 확인, 제목/내용, 조회기간)의 비활성화를 해제합니다.
+    const otherInputs = document.querySelectorAll(
+        '.alarm_srch_filter_list_confirm .alarm_srch_filter_input, ' +
+        '.alarm_srch_filter_list_title .alarm_srch_filter_input, ' +
+        '.alarm_srch_filter_list_period .alarm_srch_filter_input, ' +
+        '#filter_alarm_direct_text'
+    );
+    otherInputs.forEach(input => {
+        input.disabled = false;
+    });
+
+    console.log(`필터 모달이 열렸습니다. '${category}' 필터가 활성화되었습니다.`);
+}
+//알람 세팅 함수1
+// 특정 카테고리를 고정하는 새로운 핸들러 함수입니다.
+// 이 함수는 '알림 종류' 카테고리 버튼이 클릭되었을 때 호출됩니다.
+function setCategoryFilter(category) {
+    // Get all checkboxes within the 'alarm type' category.
+    const categoryInputs = document.querySelectorAll('.alarm_srch_filter_list_cate .alarm_srch_filter_input');
+
+    // Loop through each checkbox and disable all of them in this category group.
+    categoryInputs.forEach(input => {
+        const inputCategory = input.id.replace('filter_alarm_', '');
+
+        // Disable all checkboxes in this specific category group.
+        input.disabled = true;
+
+        // Only check the one that matches the page's category.
+        if (inputCategory === category) {
+            input.checked = true;
+        } else {
+            input.checked = false;
+        }
+    });
+
+    console.log(`The modal is open. The '${category}' filter is fixed and the entire category is disabled. Other filters can be used freely.`);
+}
+
+// The main function to initialize all filter handlers.
+function initializeFilterHandlers() {
+    const filterModal = document.querySelector('.modal_srch_alarm_filter');
+    const filterListContainer = document.querySelector('.srch_alarm_filter_list');
+    const directInputCheckbox = document.getElementById('filter_alarm_direct_text');
+    const dateRadios = document.querySelectorAll('input[name="filter_alarm_date"]');
+    const dateInputs = document.querySelectorAll('.alarm_date_picker, .alarm_date_picker2');
+    const resetButton = document.querySelector('.alarm_srch_refreshAll');
+    const openFilterBtn = document.querySelector('.srch_alarm_filter_setting');
+
+    // ----------------------------------------------------
+    // 1. Event Listeners
+    // ----------------------------------------------------
+
+    if (filterModal) {
+        filterModal.addEventListener('change', (event) => {
+            const target = event.target;
+            // The logic for date radio buttons and direct input remains unchanged.
+            if (target.matches('input[name="filter_alarm_date"]')) {
+                if (directInputCheckbox) directInputCheckbox.checked = false;
+                dateInputs.forEach(input => input.value = '');
+            } else if (target.matches('#filter_alarm_direct_text')) {
+                dateRadios.forEach(radio => radio.checked = false);
+            }
+            syncFiltersWithButtons();
+        });
+    }
+
+    dateInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            formatDateInput(input);
+            if (directInputCheckbox) directInputCheckbox.checked = true;
+            dateRadios.forEach(radio => radio.checked = false);
+            syncFiltersWithButtons();
+        });
+    });
+
+    if (resetButton) resetButton.addEventListener('click', () => {
+        resetAllFilters();
+        syncFiltersWithButtons();
+    });
+
+    if (openFilterBtn) {
+        openFilterBtn.addEventListener('click', () => {
+            // Modal opening logic
+            const modalOuter = document.querySelector('.modal_outer_alarm');
+            const modalFilter = document.querySelector('.modal_filter_alarm');
+            if (modalOuter && modalFilter) {
+                modalOuter.style.display = 'block';
+                modalFilter.style.display = 'block';
+            }
+            // Example: Call the function to fix the 'mail' category when the button is clicked.
+            // This needs to be called based on the specific page.
+            // For this example, we'll assume a 'data-category' attribute exists on the button.
+            const category = openFilterBtn.dataset.category;
+            if(category) {
+                setCategoryFilter(category);
+            }
+            // If no specific category, do nothing and allow all checkboxes to be active by default.
+        });
+    }
+
+    if (filterListContainer) {
+        filterListContainer.addEventListener('click', (event) => {
+            const closeBtn = event.target.closest('.btn_alarm_srch_filter .icon_alarm_close_gry');
+            const showMoreBtn = event.target.closest('.btn_checked_list_show');
+
+            if (closeBtn) {
+                const parentButton = closeBtn.closest('.btn_alarm_srch_filter');
+                const checkboxId = parentButton.getAttribute('data-checkbox-id');
+                const checkboxToUncheck = document.getElementById(checkboxId);
+                if (checkboxToUncheck) {
+                    checkboxToUncheck.checked = false;
+                    if (checkboxToUncheck.id === 'filter_alarm_direct_text') {
+                        dateInputs.forEach(input => input.value = '');
+                    }
+                }
+                syncFiltersWithButtons();
+            } else if (showMoreBtn) {
+                // Toggle the expanded state and re-render the buttons.
+                filterListContainer.classList.toggle('show_all_checked_btns');
+                syncFiltersWithButtons();
+            }
+        });
+    }
+
+    // ----------------------------------------------------
+    // 2. Helper Functions
+    // ----------------------------------------------------
+
+    function resetAllFilters() {
+        // Reset all checkboxes and radios to unchecked and enabled.
+        document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+            input.checked = false;
+            input.disabled = false;
+        });
+        
+        // Reset date inputs.
+        dateInputs.forEach(input => input.value = '');
+
+        // Re-apply disabled state for fixed categories if they exist.
+        const openFilterBtn = document.querySelector('.srch_alarm_filter_setting');
+        const category = openFilterBtn.dataset.category;
+
+        if (category) {
+            const categoryInputs = document.querySelectorAll('.alarm_srch_filter_list_cate .alarm_srch_filter_input');
+            categoryInputs.forEach(input => {
+                const inputCategory = input.id.replace('filter_alarm_', '');
+                input.disabled = true;
+                if (inputCategory === category) {
+                    input.checked = true;
+                } else {
+                    input.checked = false;
+                }
+            });
+        }
+    }
+
+    function formatDateInput(input) {
+        let value = input.value.replace(/\D/g, '').substring(0, 8);
+        let formattedValue = '';
+        if (value.length > 4) { formattedValue += value.substring(0, 4) + '-'; value = value.substring(4); }
+        if (value.length > 2) { formattedValue += value.substring(0, 2) + '-'; value = value.substring(2); }
+        formattedValue += value;
+        input.value = formattedValue;
+    }
+
+    function syncFiltersWithButtons() {
+        const isExpanded = filterListContainer.classList.contains('show_all_checked_btns');
+        
+        filterListContainer.innerHTML = '';
+        const checkedItems = [];
+        const allDateInputs = document.querySelectorAll('.alarm_date_picker, .alarm_date_picker2');
+        const dateStartInput = allDateInputs[0];
+        const dateEndInput = allDateInputs[1];
+
+        if (directInputCheckbox && directInputCheckbox.checked) {
+            const startDate = (dateStartInput && dateStartInput.value) || '';
+            const endDate = (dateEndInput && dateEndInput.value) || '';
+            let buttonText = '직접입력';
+            if (startDate || endDate) {
+                buttonText += ` : ${startDate || ''} - ${endDate || ''}`;
+            }
+            checkedItems.push({ text: buttonText, id: directInputCheckbox.id });
+        } else {
+            const checkedDateRadio = document.querySelector('input[name="filter_alarm_date"]:checked');
+            if (checkedDateRadio) {
+                const label = checkedDateRadio.closest('label');
+                const text = label.querySelector('.alarm_srch_filter_txt').textContent.trim();
+                checkedItems.push({ text: text, id: checkedDateRadio.id });
+            }
+        }
+
+        document.querySelectorAll(
+            '.alarm_srch_filter_list_cate .alarm_srch_filter_input:checked, ' +
+            '.alarm_srch_filter_list_confirm .alarm_srch_filter_input:checked, ' +
+            '.alarm_srch_filter_list_title .alarm_srch_filter_input:checked'
+        ).forEach(input => {
+            const label = input.closest('label');
+            const text = label.querySelector('.alarm_srch_filter_txt').textContent.trim();
+            if (text) {
+                checkedItems.push({ text: text, id: input.id });
+            }
+        });
+
+        let buttonCount = 0;
+        checkedItems.forEach(item => {
+            const newButton = document.createElement('button');
+            newButton.classList.add('btn', 'btn_alarm_srch_filter');
+            newButton.setAttribute('type', 'button');
+            newButton.setAttribute('data-checkbox-id', item.id);
+            newButton.innerHTML = `<span class="btn_alarm_txt">${item.text}</span><i class="icon_alarm icon_alarm_close_gry"></i>`;
+            
+            if (!isExpanded && buttonCount >= 3) {
+                newButton.classList.add('hidden');
+            }
+            filterListContainer.appendChild(newButton);
+            buttonCount++;
+        });
+
+        const showMoreBtn = document.querySelector('.btn_checked_list_show');
+        if (buttonCount > 3) {
+            if (!showMoreBtn) {
+                const newShowMoreBtn = document.createElement('button');
+                newShowMoreBtn.classList.add('btn', 'btn_checked_list_show');
+                newShowMoreBtn.setAttribute('type', 'button');
+                newShowMoreBtn.setAttribute('title', '확장/축소');
+                newShowMoreBtn.innerHTML = isExpanded ? '-' : '+';
+                filterListContainer.appendChild(newShowMoreBtn);
+            } else {
+                showMoreBtn.innerHTML = isExpanded ? '-' : '+';
+            }
+        } else if (showMoreBtn) {
+            showMoreBtn.remove();
+        }
+    }
+}
+
+
+
+//드롭다운
+// 드롭다운 선택 처리 함수
+function handleDropdownSelection(value) {
+    console.log(`선택된 값: ${value}에 대한 작업을 수행합니다.`);
+    // 여기에 선택된 값에 따른 추가 로직 구현
+}
+//드롭다운 핸들러
+function alarmDopdownHandler(){
+    // 문서 전체에 클릭 이벤트를 위임하여 모든 드롭다운을 관리합니다.
+    document.addEventListener('click', (event) => {
+                // 클릭된 요소가 드롭다운인지 확인
+        const clickedDropDown = event.target.closest('.alarm_drop_down');
+        
+        // 1. 드롭다운이 열려있는 상태에서 외부를 클릭하면 모두 닫습니다.
+        document.querySelectorAll('.alarm_drop_down.alarm_active_down').forEach(openDropDown => {
+            if (openDropDown !== clickedDropDown) {
+                openDropDown.classList.remove('alarm_active_down');
+            }
+        });
+
+        // 2. 클릭된 요소가 드롭다운이거나 그 내부에 있을 때 처리합니다.
+        if (clickedDropDown) {
+            // 클릭된 요소가 드롭다운 아이템(버튼)인지 확인합니다.
+            const isItemButton = event.target.closest('.alarm_drop_down_item button');
+            
+            if (isItemButton) {
+                // 아이템(버튼) 클릭 핸들러
+                const selectedValue = isItemButton.textContent.trim();
+                console.log('아이템이 클릭되었습니다:', selectedValue);
+                
+                // 선택된 아이템의 텍스트를 드롭다운 박스에 표시
+                const selectedValueElement = clickedDropDown.querySelector('.alarm_dropdown_selected_value');
+                if (selectedValueElement) {
+                    selectedValueElement.textContent = selectedValue;
+                }
+                
+                // 아이템을 선택했으니 드롭다운을 닫습니다.
+                clickedDropDown.classList.remove('alarm_active_down');
+                
+                // 여기에 선택된 값으로 추가 작업을 수행하는 함수 호출
+                handleDropdownSelection(selectedValue);
+            } else {
+                // 아이템이 아닌 드롭다운 본체를 클릭했을 때 열거나 닫습니다.
+                clickedDropDown.classList.toggle('alarm_active_down');
+            }
+        }
+    });
+}
 
 // 디바운스 함수 정의
 function debounce(func, delay) {
@@ -73,131 +691,262 @@ function init_Swiper_mobile_tab() {
   
 }
 
-function initializeModalHandlers() {
-    // ----------------- 요소 선택 -----------------
+
+// 모달을 열고 닫는 단일 함수
+const toggleModal = (modalSelector, action) => {
     const modalOuter = document.querySelector('.modal_outer_alarm');
-    const dimmedBackground = document.querySelector('.modal_dimmed_alarm');
-    const filterModal = document.querySelector('.modal_srch_alarm_filter');
-    const scheduleModal = document.querySelector('.modal_alarm_srch_schedule');
+    const targetModal = document.querySelector(modalSelector);
 
-    const openFilterBtn = document.querySelector('.srch_alarm_filter_setting');
-    const openScheduleBtn = document.querySelector('.srch_alarm_modal_opener');
+    if (!modalOuter || !targetModal) {
+        console.error(`Modal element not found for selector: ${modalSelector}`);
+        return;
+    }
 
-    const closeFilterBtns = document.querySelectorAll('.btn_close_alarm_modal');
-    const closeScheduleBtns = document.querySelectorAll('.btn_close_alarm_schedule_modal');
+    if (action === 'open') {
+        modalOuter.style.display = 'block';
+        targetModal.style.display = 'block';
+    } else if (action === 'close') {
+        targetModal.style.display = 'none';
 
-    const refreshDateBtn = document.querySelector('.alarm_srch_refresh');
-    const refreshAllBtn = document.querySelector('.alarm_srch_refreshAll');
-    const datePickers = document.querySelectorAll('.alarm_date_picker');
-    
-
-    // ----------------- 헬퍼 함수 -----------------
-    const showModal = (modalElement) => {
-        if (modalOuter && modalElement) {
-            modalOuter.style.display = 'block';
-            modalElement.style.display = 'block';
-            modalElement.classList.add('open');
-        }
-    };
-
-    const hideAllModals = () => {
-        if (modalOuter) {
+        // 열려있는 다른 모달이 있는지 확인
+        const activeModals = modalOuter.querySelectorAll('.modal_conts_alarm[style*="block"], .modal_alarm_srch_schedule[style*="block"]');
+        if (activeModals.length === 0) {
             modalOuter.style.display = 'none';
         }
-        if (filterModal) {
-            filterModal.style.display = 'none';
-            filterModal.classList.remove('open');
-        }
-        if (scheduleModal) {
-            scheduleModal.style.display = 'none';
-            scheduleModal.classList.remove('open');
-        }
-    };
+    }
+};
 
-    const hideScheduleModal = () => {
-        if (scheduleModal) {
-            scheduleModal.style.display = 'none';
-            scheduleModal.classList.remove('open');
-        }
-    };
+function initializeModalHandlers (){
 
-    const handleDateFormat = (event) => {
-        let value = event.target.value.replace(/[^0-9]/g, '');
-        let formattedValue = '';
+    document.addEventListener('click', function(e) {
+        const target = e.target;
         
-        if (value.length > 0) {
-            formattedValue += value.substring(0, 4);
-            if (value.length > 4) {
-                formattedValue += '-' + value.substring(4, 6);
-                if (value.length > 6) {
-                    formattedValue += '-' + value.substring(6, 8);
-                }
-            }
+        // 필터 모달 열기
+        if (target.closest('.srch_alarm_filter_setting')) {
+            e.preventDefault();
+            show('.modal_outer_alarm');
+            show('.modal_srch_alarm_filter');
         }
-        event.target.value = formattedValue;
-    };
+        
+        else if(target.closest('.alarm_setting_on_off_edit')){
+            e.preventDefault();
+            show('.modal_outer_alarm');
+            show('.modal_cancel_alarm');
+        }
+        
+        // 스케줄 종속 모달 열기
+        else if (target.closest('.srch_alarm_modal_opener')) {
+            e.preventDefault();
+            show('.modal_alarm_srch_schedule');
+        }
+        
+        // 모든 닫기 버튼
+        else if (target.closest('.btn_close_alarm_modal')) {
+            e.preventDefault();
+            closeModal(target);
+        }
+        
+        
+        // 딤드 클릭
+        else if (target.classList.contains('modal_dimmed_alarm')) {
+            closeDimmed();
+        }
+    });
+    
+    // ESC 키
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeDimmed();
+        }
+    });
+    
+    // 헬퍼 함수들
+    function show(selector) {
+        const el = document.querySelector(selector);
+        if (el) el.style.display = 'block';
+    }
+    
+    function hide(selector) {
+        const el = document.querySelector(selector);
+        if (el) el.style.display = 'none';
+    }
+    
+    function isVisible(selector) {
+        const el = document.querySelector(selector);
+        return el && el.style.display === 'block';
+    }
+    
+    function closeModal(button) {
+        // 어떤 모달의 버튼인지 확인
+        if (button.closest('.modal_alarm_srch_schedule')) {
+            hide('.modal_alarm_srch_schedule');
+        } else if (button.closest('.modal_srch_alarm_filter')) {
+            hide('.modal_srch_alarm_filter');
+            hide('.modal_alarm_srch_schedule');
+            hide('.modal_outer_alarm');
+        } else if (button.closest('.modal_calender_alarm')) {
+            hide('.modal_calender_alarm');
+            hide('.modal_outer_alarm');
+        } else if (button.closest('.modal_cancel_alarm')) {  // ← 새 모달 추가
+            hide('.modal_cancel_alarm');
+            hide('.modal_outer_alarm');
+        }
+    }
+    
+    function closeDimmed() {
+        if (isVisible('.modal_alarm_srch_schedule')) {
+            hide('.modal_alarm_srch_schedule');
+        } else if (isVisible('.modal_srch_alarm_filter')) {
+            hide('.modal_srch_alarm_filter');
+            hide('.modal_outer_alarm');
+        } else if (isVisible('.modal_calender_alarm')) {
+            hide('.modal_calender_alarm');
+            hide('.modal_outer_alarm');
+        } else if (isVisible('.modal_cancel_alarm')) {  // ← 새 모달 추가
+            hide('.modal_cancel_alarm');
+            hide('.modal_outer_alarm');
+        }
+    }
 
-    // ----------------- 이벤트 리스너 등록 -----------------
-    // 딤드 배경 클릭 시 모달 닫기
-    if (dimmedBackground) {
-        dimmedBackground.addEventListener('click', (event) => {
-            // 클릭된 요소가 딤드 배경 자체인지 확인
-            if (event.target === dimmedBackground) {
-                // 스케줄 모달이 열려있으면 스케줄 모달만 닫기
-                if (scheduleModal && scheduleModal.classList.contains('open')) {
-                    hideScheduleModal();
-                } else {
-                    // 그렇지 않으면 모든 모달 닫기
-                    hideAllModals();
-                }
+
+}
+class ModalManager {
+    constructor() {
+        this.modalOuter = document.querySelector('.modal_outer_alarm');
+        this.dimmed = document.querySelector('.modal_dimmed_alarm');
+        this.activeModals = [];
+        
+        // 모달 셀렉터 매핑
+        this.modalSelectors = {
+            'calender': '.modal_calender_alarm',
+            'filter': '.modal_srch_alarm_filter', 
+            'schedule': '.modal_alarm_srch_schedule',
+            'cancel': '.modal_cancel_alarm'
+        };
+        
+        // 종속 관계: schedule은 filter의 자식
+        this.dependencies = {
+            'schedule': 'filter'
+        };
+        
+        this.init();
+    }
+
+    init() {
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        // 모달 열기 버튼들
+        document.addEventListener('click', (e) => {
+            const target = e.target;
+
+            // 각 모달별 열기 버튼
+            if (target.matches('.srch_alarm_filter_setting')) {
+                e.preventDefault();
+                this.openModal('filter');
+            } else if (target.matches('.srch_alarm_modal_opener')) {
+                e.preventDefault();
+                this.openModal('schedule');
+            } else if (target.matches('[data-modal-open]')) {
+                e.preventDefault();
+                this.openModal(target.dataset.modalOpen);
+            }
+
+            // 모달 닫기 버튼들
+            if (target.matches('.btn_close_alarm_modal, .btn_close_alarm_schedule_modal, .btn_close_alarm_calender')) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.closeTopModal();
+            }
+        });
+
+        // 딤드 클릭으로 닫기
+        this.dimmed?.addEventListener('click', (e) => {
+            if (e.target === this.dimmed) {
+                this.closeTopModal();
+            }
+        });
+
+        // ESC 키로 닫기
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeTopModal();
             }
         });
     }
 
-    // 필터 모달 열기
-    if (openFilterBtn) {
-        openFilterBtn.addEventListener('click', () => showModal(filterModal));
+    openModal(modalName) {
+        const selector = this.modalSelectors[modalName];
+        const modal = document.querySelector(selector);
+        
+        if (!modal) {
+            console.warn(`모달을 찾을 수 없습니다: ${modalName}`);
+            return;
+        }
+
+        // 종속 모달 체크
+        const parentModal = this.dependencies[modalName];
+        if (parentModal && !this.activeModals.includes(parentModal)) {
+            console.warn(`${modalName} 모달은 ${parentModal} 모달이 열려있을 때만 열 수 있습니다.`);
+            return;
+        }
+
+        // 첫 번째 모달이면 outer 표시
+        if (this.activeModals.length === 0) {
+            this.modalOuter.style.display = 'block';
+        }
+
+        // 모달 표시
+        modal.style.display = 'block';
+        this.activeModals.push(modalName);
+
+        // z-index 조정 (나중에 열린 모달이 위에)
+        modal.style.zIndex = 10001 + this.activeModals.length;
     }
 
-    // 스케줄 모달 열기 (필터 모달 내에서)
-    if (openScheduleBtn) {
-        openScheduleBtn.addEventListener('click', () => {
-            // 필터 모달은 그대로 두고 스케줄 모달만 띄웁니다.
-            showModal(scheduleModal);
+    closeModal(modalName) {
+        const selector = this.modalSelectors[modalName];
+        const modal = document.querySelector(selector);
+        
+        if (!modal) return;
+
+        // 이 모달을 부모로 하는 종속 모달들 먼저 닫기
+        Object.entries(this.dependencies).forEach(([childModal, parentModal]) => {
+            if (parentModal === modalName && this.activeModals.includes(childModal)) {
+                this.closeModal(childModal);
+            }
+        });
+
+        // 모달 숨기기
+        modal.style.display = 'none';
+        modal.style.zIndex = ''; // z-index 초기화
+        this.activeModals = this.activeModals.filter(name => name !== modalName);
+
+        // 모든 모달이 닫혔으면 outer 숨기기
+        if (this.activeModals.length === 0) {
+            this.modalOuter.style.display = 'none';
+        }
+    }
+
+    closeTopModal() {
+        if (this.activeModals.length > 0) {
+            const topModal = this.activeModals[this.activeModals.length - 1];
+            this.closeModal(topModal);
+        }
+    }
+
+    closeAllModals() {
+        [...this.activeModals].forEach(modalName => {
+            this.closeModal(modalName);
         });
     }
 
-    // 필터 모달 닫기 버튼
-    closeFilterBtns.forEach(button => {
-        button.addEventListener('click', () => hideAllModals());
-    });
-
-    // 스케줄 모달 닫기 버튼
-    closeScheduleBtns.forEach(button => {
-        button.addEventListener('click', () => hideScheduleModal());
-    });
-
-    // 날짜 입력 필드 포맷팅
-    datePickers.forEach(datePicker => {
-        datePicker.addEventListener('input', handleDateFormat);
-    });
-
-    // 날짜 입력 필드 초기화
-    if (refreshDateBtn) {
-        refreshDateBtn.addEventListener('click', () => {
-            datePickers.forEach(input => input.value = '');
-        });
-    }
-
-    // 전체 필터 초기화
-    if (refreshAllBtn) {
-        refreshAllBtn.addEventListener('click', () => {
-            document.querySelectorAll('.alarm_srch_filter_input').forEach(input => input.checked = false);
-            datePickers.forEach(input => input.value = '');
-        });
+    // 특정 모달이 열려있는지 확인
+    isModalOpen(modalName) {
+        return this.activeModals.includes(modalName);
     }
 }
-
 
 function openModalWithApiCall(alarmId) {
     console.log(`모달을 엽니다. 전달된 알림 ID: ${alarmId}`);
@@ -252,7 +1001,7 @@ function init_mobile_board_list(selector){
             if ($label){
                 event.stopImmediatePropagation();
                 event.preventDefault();
-                const checkbox = $label.querySelector('.input_chk'); //이게 왜 오류가 나지?
+                const checkbox = $label.querySelector('.input_chk'); 
                 if(checkbox){
                     checkbox.checked = true;
                     $label.classList.add('chkbox_on');
@@ -354,14 +1103,7 @@ function controlAlarmSwiperBtn() {
 }
 
 
-function toggleSwitch(){
-    const toggleSwitch = document.getElementById('alarm-concentration-toggle-switch');
-    let isToggled = false;
-    toggleSwitch.addEventListener('click', () => {
-        isToggled = !isToggled;
-        toggleSwitch.classList.toggle('on', isToggled);
-    });
-}
+
 
 
 //컨텐츠 높이
@@ -725,7 +1467,7 @@ function swiperDo(){
         return `
             <div class="swiper-slide alarm_card ${slideClasses}" data-alarm-slide-id="${data.id}">
                 <div class="alarm_card_header">
-                    <strong class="alrm_cate_tit alrm_tit_${data.category_id}">${data.category_title}</strong><span class="icon_alarm icon_alarm_siren_wt"></span>
+                    <strong class="alrm_cate_tit alarm_tit_${data.category_id}">${data.category_title}</strong><span class="icon_alarm icon_alarm_siren_wt"></span>
                     <div class="alarm_btn_box">
                         <div class="alarm_btn_wrap">
                             <div class="alarm_btn_ico_box"> 

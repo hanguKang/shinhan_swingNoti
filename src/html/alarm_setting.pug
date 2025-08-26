@@ -17,9 +17,9 @@ block content
                   span.label_txt 
                     | 집중근무
                   // 알림 토글 버튼 컨테이너
-                  #alarm-concentration-toggle-switch.toggle-switch
-                    // 애니메이션 원형 요소
-                    .toggle-circle      
+                  label.alarm_toggle_switch_wrapper.alarm_concentration_toggle(for="alarm-concentration-toggle-switch")
+                    input#alarm-concentration-toggle-switch.alarm_toggle_switch_input.alarm_concentration_toggle_switch(type="checkbox")
+                    span.alarm_toggle_switch-slider      
           .alarm_noti_box
             .alarm_h3
               i.icon_alarm.icon_alarm_all_noti_blu
@@ -98,9 +98,9 @@ block content
                     a(href="") 
                       | 시스템
                       span.alarm_noti
-            p.alarm_setting 
-              i.icon_alarm.icon_alarm_set_blu            
-              | 알림설정  
+            p.alarm_setting.alarm_active
+              i.icon_alarm.icon_alarm_set_bk 
+              a(href="#none") 알림설정  
         #content.content 
           .title_bar 
             .tgl_snb
@@ -180,16 +180,19 @@ block content
                       p.alarm_setting_title_p 동일한 알림을 모바일로도 받을 수 있어요
                     .alarm__setting_conts_box
                       .toggl_btn_wrapper
-                        #alarm-mobile-toggle-switch.toggle-switch
-                          .toggle-circle     
+                        label.alarm_toggle_switch_wrapper.alarm_get-mobile_toggle(for="alarm-get-mobile-toggle-switch")
+                          input#alarm-get-mobile-toggle-switch.alarm_toggle_switch_input(type="checkbox")
+                          span.alarm_toggle_switch-slider
+   
                   .alarm_srch_filter_list.v_center
                     .alarm_strong.alarm_setting_title_box
                       h3 집중근무 알림 켜기
                       p.alarm_setting_title_p 2시간 동안 모든 알림을 중지해요
                     .alarm__setting_conts_box
                       .toggl_btn_wrapper
-                        #alarm-concentration-toggle-switch.toggle-switch
-                          .toggle-circle  
+                        label.alarm_toggle_switch_wrapper.alarm_concentration_toggle(for="alarm-concentration-toggle-switch2")
+                          input#alarm-concentration-toggle-switch2.alarm_toggle_switch_input.alarm_concentration_toggle_switch(type="checkbox")
+                          span.alarm_toggle_switch-slider
                   .alarm_srch_filter_list.v_center.max_width_80
                     .alarm_strong.alarm_setting_title_box
                       h3 방해금지 스케줄 만들기
@@ -226,12 +229,12 @@ block content
                           | - 
                           <input type="time" id="no-disturb-time2" name="no-disturb-time2">
                         .alarm_btn_ico_box 
-                          button(type="button")
+                          button.remove_alarm_not_disturb(type="button")
                             i.icon_alarm.icon_alarm_close_bk
                             span.hidden 방해금지 스케쥴 삭제
                       .dp_block 
                         .alarm_btn_ico_box.mr_t_14
-                          button(type="button")
+                          button.add_alarm_not_disturb(type="button")
                             i.icon_alarm.icon_alarm_plus
                             span.hidden 방해금지 스케쥴 추가
                   .alarm_srch_filter_list.v_center

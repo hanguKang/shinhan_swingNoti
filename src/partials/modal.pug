@@ -1,6 +1,6 @@
 .modal_outer_alarm.alarm_wrap
     .modal_dimmed_alarm
-        .modal_conts_alarm.modal_calender_alarm 
+        .modal_component_alarm.modal_calender_alarm 
             .modal_wrap_alarm 
                 .modal_header_alarm 
                     h2.modal_title 알림 스케쥴
@@ -11,7 +11,7 @@
                         
                 .modal_footer_alarm 
                     button.btn.btn_close_alarm_modal(type="button") 닫기
-        .modal_conts_alarm.modal_srch_alarm_filter 
+        .modal_component_alarm.modal_srch_alarm_filter 
             .modal_wrap_alarm 
                 .modal_header_alarm 
                     h2.modal_title.hidden 알림 필터
@@ -36,7 +36,7 @@
                                         input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_approve" id="filter_alarm_approve")
                                         span.alarm_srch_filter_txt 결재
                                 li.alarm_srch_filter_list_li
-                                    label.alarm_srch_filter_label(for="filter_alarm_tag")
+                                    label.alarm_srch_filter_label(for="filter_alarm_scedule")
                                         input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_tag" id="filter_alarm_scedule")
                                         span.alarm_srch_filter_txt 일정
                                 li.alarm_srch_filter_list_li
@@ -57,7 +57,7 @@
                                         span.alarm_srch_filter_txt 쪽지
                                 li.alarm_srch_filter_list_li
                                     label.alarm_srch_filter_label(for="filter_alarm_subscribe")
-                                        input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_subscrib" id="filter_alarm_subscribe ")
+                                        input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_subscrib" id="filter_alarm_subscribe")
                                         span.alarm_srch_filter_txt 구독
                                 li.alarm_srch_filter_list_li
                                     label.alarm_srch_filter_label(for="filter_alarm_drawer")
@@ -106,15 +106,15 @@
                             ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_period
                                 li.alarm_srch_filter_list_li
                                     label.alarm_srch_filter_label(for="filter_alarm_date_today")
-                                        input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_date_today" id="filter_alarm_date_today")
+                                        input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_today")
                                         span.alarm_srch_filter_txt 오늘
                                 li.alarm_srch_filter_list_li
                                     label.alarm_srch_filter_label(for="filter_alarm_date_week")
-                                        input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_date_week" id="filter_alarm_date_week")
+                                        input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_week")
                                         span.alarm_srch_filter_txt 일주일
                                 li.alarm_srch_filter_list_li
                                     label.alarm_srch_filter_label(for="filter_alarm_date_month")
-                                        input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_date_month" id="filter_alarm_date_month")
+                                        input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_month")
                                         span.alarm_srch_filter_txt 한달
                         .alarm_srch_filter_list
                             .alarm_strong 
@@ -124,9 +124,9 @@
                                         input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_direct_text" id="filter_alarm_direct_text")
                                         span.alarm_srch_filter_txt 직접입력
                                     .alarm_srch_slct_box 
-                                        <input name="" type="text" title="날짜선택" placeholder="yyyy-mm-dd" class="input_date hasDatepicker alarm_date_picker" id="dp1754556217703"> -
+                                        <input name="" type="text" title="날짜선택" placeholder="yyyy-mm-dd" class="input_date hasDatepicker alarm_date_picker alarm_date_picker1" id="dp1754556217703"> -
                                         span.input_wrap_alarm 
-                                            <input name="" type="text" title="날짜선택" placeholder="yyyy-mm-dd" class="input_date hasDatepicker alarm_date_picker" id="dp1754556217704">
+                                            <input name="" type="text" title="날짜선택" placeholder="yyyy-mm-dd" class="input_date hasDatepicker alarm_date_picker alarm_date_picker2" id="dp1754556217704">
                                             .alarm_btn_ico_box 
                                                 button.srch_alarm_modal_opener(type="button")
                                                     i.icon_alarm.icon_alarm_calendar_gry
@@ -143,17 +143,14 @@
             .modal_wrap_alarm 
                 .modal_header_alarm 
                     h2.modal_title 검색 기간 조정
-                    button.btn.btn_close_alarm_schedule_modal(type="button") 닫기 
+                    button.btn.btn_close_alarm_modal(type="button") 닫기 
                         i.icon_close
                 .modal_body_alarm 
                     .alarm_wrap_alarm 
                         
                 .modal_footer_alarm 
-                    button.btn.btn_close_alarm_schedule_modal(type="button") 닫기
-
-.modal_outer_alarm_cancel_edit.alarm_wrap
-    .modal_dimmed_alarm_cancel_deit 
-        .modal_conts_alarm.modal_cancel_alarm
+                    button.btn.btn_close_alarm_modal(type="button") 닫기
+        .modal_component_alarm.modal_cancel_alarm
                 .modal_wrap_alarm 
                     .modal_header_alarm 
                         h2.modal_title 
@@ -175,50 +172,202 @@
                                 .flx_rgt
                                     .srch_alarm_box
                                         form.srch_alarm_form( action="#none" method="get")
-                                        label.srch_label.hidden(for="search_alrm_keyword") 
-                                            span.hidden 검색  
-                                        input.input_alarm_text( type="text" placeholder="검색어를 입력하세요." name="search__alrm_keyword" id="search_alrm_keyword")
-                                        button.btn.srch_alarm_btn( type="button") 
-                                            i.icon_alarm.icon_alarm_search_bk
-                                            span.hidden 검색
-                                    .srch_alarm_box_cnt
-                                        .srch_alarm_slct_cnt
-                                            ul.srch_alarm_slct_cnt_ul 
-                                                li.srch_alarm_slct_cnt_li 10
-                                                li.srch_alarm_slct_cnt_li 20
-                                                li.srch_alarm_slct_cnt_li 30
+                                            label.srch_label.hidden(for="search_cancel_alrm_keyword") 
+                                                span.hidden 검색  
+                                            input.input_alarm_text( type="text" placeholder="검색어를 입력하세요." name="search_cancel_alrm_keyword" id="search_cancel_alrm_keyword")
+                                            button.btn.srch_alarm_btn( type="button") 
+                                                i.icon_alarm.icon_alarm_search_bk
+                                                span.hidden 검색
+                                    .alarm_drop_down.srch_alarm_box_cnt
+                                        .alarm_drop_down_box.srch_alarm_slct_cnt
+                                            span.alarm_dropdown_selected_value 10
+                                            ul.alarm_drop_down_wrapper.srch_alarm_slct_cnt_ul 
+                                                li.alarm_drop_down_item.srch_alarm_slct_cnt_li 
+                                                    button(type="button") 10
+                                                li.alarm_drop_down_item.srch_alarm_slct_cnt_li
+                                                    button(type="button") 20
+                                                li.alarm_drop_down_item.srch_alarm_slct_cnt_li
+                                                    button(type="button") 30
+                                        .icon_alarm_16.icon_down_bk_16
                             .alarm_tbl_box
-                                .alarm_cancel_board_top 
+                                .alarm_cancel_board_top.alarm_tbl_tr
                                     .alarm_input 
-                                        label.chkbox(for="alrm_chk_subscribe_0")
-                                        input.input_chk(type="checkbox" name="" id="alrm_chk_subscribe_0")
-                                    ul.alarm_cancel_board_th_ul 
-                                        li.alarm_cancel_board_th_li 
-                                            span.alarm_cancel_board_th_li_txt 알림코드명
-                                        li.alarm_cancel_board_th_li 
-                                            span.alarm_cancel_board_th_li_txt 서비스(서버)명
-                                        li.alarm_cancel_board_th_li 
-                                            span.alarm_cancel_board_th_li_txt 알림코드
-                                        li.alarm_cancel_board_th_li 
-                                            button.btn.alarm_btn_txt.alarm_btn_arrow_down 
+                                        label.chkbox(for="alrm_chk_emergency_all")
+                                            input.input_chk(type="checkbox" name="" id="alrm_chk_emergency_all")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt 알림코드명
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt 서비스(서버)명
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt 알림코드
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            button.alarm_btn_txt.alarm_btn_arrow_down 
                                                 | 등록일
-                                                i.alarm_icon.alarm_arrow_up
-                                .alarm_cancel_board_body 
+                                                i.icon_alarm_16.icon_down_bk_16
+                                .alarm_cancel_board_body.alarm_tbl_tr
                                     .alarm_input 
-                                        label.chkbox(for="alrm_chk_subscribe_0")
-                                        input.input_chk(type="checkbox" name="" id="alrm_chk_subscribe_0")
-                                    ul.alarm_cancel_board_th_ul 
-                                        li.alarm_cancel_board_th_li 
-                                            span.alarm_cancel_board_th_li_txt.alarm_cancel_board_tit 긴급알림
-                                        li.alarm_cancel_board_th_li 
-                                            span.alarm_cancel_board_th_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
-                                        li.alarm_cancel_board_th_li 
-                                            span.alarm_cancel_board_th_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
-                                        li.alarm_cancel_board_th_li 
-                                            span.alarm_cancel_board_th_li_txt.alarm_cancel_board_time 2024.02.28
-                                
-
+                                        label.chkbox(for="alrm_chk_emergency_0")
+                                            input.input_chk.input_emergency(type="checkbox" name="alrm_chk_emergency_0" id="alrm_chk_emergency_0")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
+                                .alarm_cancel_board_body.alarm_tbl_tr
+                                    .alarm_input 
+                                        label.chkbox(for="alrm_chk_emergency_1")
+                                            input.input_chk.input_emergency(type="checkbox" name="alrm_chk_emergency_1" id="alrm_chk_emergency_1")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
+                                .alarm_cancel_board_body.alarm_tbl_tr
+                                    .alarm_input 
+                                        label.chkbox(for="alrm_chk_emergency_2")
+                                            input.input_chk.input_emergency(type="checkbox" name="alrm_chk_emergency_2" id="alrm_chk_emergency_2")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
+                                .alarm_cancel_board_body.alarm_tbl_tr
+                                    .alarm_input 
+                                        label.chkbox(for="alrm_chk_emergency_3")
+                                            input.input_chk.input_emergency(type="checkbox" name="alrm_chk_emergency_3" id="alrm_chk_emergency_3")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
+                                .alarm_cancel_board_body.alarm_tbl_tr
+                                    .alarm_input 
+                                        label.chkbox(for="alrm_chk_emergency_4")
+                                            input.input_chk.input_emergency(type="checkbox" name="alrm_chk_emergency_4" id="alrm_chk_emergency_4")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
+                                .alarm_cancel_board_body.alarm_tbl_tr
+                                    .alarm_input 
+                                        label.chkbox(for="alrm_chk_emergency_5")
+                                            input.input_chk.input_emergency(type="checkbox" name="alrm_chk_emergency_5" id="alrm_chk_emergency_5")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
+                                .alarm_cancel_board_body.alarm_tbl_tr
+                                    .alarm_input 
+                                        label.chkbox(for="alrm_chk_emergency_6")
+                                            input.input_chk.input_emergency(type="checkbox" name="alrm_chk_emergency_6" id="alrm_chk_emergency_6")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
+                                .alarm_cancel_board_body.alarm_tbl_tr
+                                    .alarm_input 
+                                        label.chkbox(for="alrm_chk_emergency_7")
+                                            input.input_chk.input_emergency(type="checkbox" name="alrm_chk_emergency_7" id="alrm_chk_emergency_7")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
+                                .alarm_cancel_board_body.alarm_tbl_tr
+                                    .alarm_input 
+                                        label.chkbox(for="alrm_chk_emergency_8")
+                                            input.input_chk.input_emergency(type="checkbox" name="alrm_chk_emergency_8" id="alrm_chk_emergency_8")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
+                                .alarm_cancel_board_body.alarm_tbl_tr
+                                    .alarm_input 
+                                        label.chkbox(for="alrm_chk_emergency_9")
+                                            input.input_chk.input_emergency(type="checkbox" name="alrm_chk_emergency_9" id="alrm_chk_emergency_9")
+                                    ul.alarm_cancel_board_tbl_ul 
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
+                                   
                             .alarm_cancel_board_list  
-
+                                .pagination.alarm_pagination
+                                    ul
+                                        li.disabled
+                                            span.page_frst
+                                                span First
+                                        li.disabled
+                                            span.page_prev
+                                                span Prev
+                                        li
+                                            a(href="#none") 1
+                                        li
+                                            a(href="#none") 2
+                                        li.active
+                                            span 3
+                                        li
+                                            a(href="#none") 4
+                                        li
+                                            a(href="#none") 5
+                                        li
+                                            a(href="#none") 6
+                                        li
+                                            a(href="#none") 7
+                                        li
+                                            a(href="#none") 8
+                                        li
+                                            a(href="#none") 9
+                                        li
+                                            a(href="#none") 10
+                                        li
+                                            a.page_next(href="#none") Next
+                                        li
+                                            a.page_last(href="#none") Last
                     .modal_footer_alarm 
                         button.btn.btn_close_alarm_modal(type="button") 닫기
