@@ -33,21 +33,25 @@ document.addEventListener('DOMContentLoaded', () => {
     //모달 이벤트
     initializeModalHandlers();
 
-    //dropdown 이벤트
+    //dropdown 게시판 10, 20, 30개씩 보기 
     alarmDopdownHandler();
 
-    //알림모달의 필터세팅싱크 이벤트
+    //알림센터 검색창 모달 필터세팅 싱크 이벤트
     initializeFilterHandlers();
 
-
+    //세팅페이지
     initializeAlarmSettings();
 
+    //모바일 테이블 게시글 및 pc 테이블 tr 삭제
     removeAlarm();
 
+    //세팅페이지의 집중모드
     doNotDistrub();
 
+    //세팅페이지의 보기/편집 모달 창 
     chk_all_ctrl();
 
+    //각 모달및 세팅페이지의 초기화 버튼
     setupRefreshAllButton();
 });
 
@@ -104,8 +108,15 @@ function setupRefreshAllButton() {
             input.value = '';
             input.dispatchEvent(new Event('change', { bubbles: true }));
         });
+
+        // 4. 날짜 입력 필드 초기화
+        const dateInputs = document.querySelectorAll('input[type="date"]');
+        dateInputs.forEach(input => {
+            input.value = '';
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+        });
         
-        // 4. 추가: select 요소들도 초기화 (있을 경우)
+        // 5. 추가: select 요소들도 초기화 (있을 경우)
         const selectElements = document.querySelectorAll('select');
         selectElements.forEach(select => {
             select.selectedIndex = 0;
@@ -212,12 +223,11 @@ function chk_all_ctrl() {
 
 function doNotDistrub(){
     // 모든 이벤트의 기준이 될 가장 상위 컨테이너
-    const mainContainer = document.querySelector('.alarm__setting_conts_box.alarm_setting_schedule_on_off_box');
+    const mainContainer = document.querySelector('.alarm_setting_conts_box.alarm_setting_schedule_on_off_box');
     // 추가 버튼
     const addButton = document.querySelector('.add_alarm_not_disturb');
-
     if (mainContainer && addButton) {
-        
+        console.log('삭제한다.');
         // 이벤트 위임으로 삭제 버튼 및 체크박스 변경 이벤트 처리
         mainContainer.addEventListener('click', (event) => {
             const clickedElement = event.target;
@@ -270,7 +280,7 @@ function doNotDistrub(){
         // 추가 기능
         addButton.addEventListener('click', () => {
             const newElement = document.createElement('div');
-            newElement.className = 'dp_flx';
+            newElement.className = 'dp_flx dp_flx_no';
 
             const uniqueId = Date.now();
             newElement.setAttribute('data-disturb-id', uniqueId);
@@ -318,7 +328,7 @@ function doNotDistrub(){
                     <input type="time" id="no-disturb-time1_${uniqueId}" name="no-disturb-time1"> -
                     <input type="time" id="no-disturb-time2_${uniqueId}" name="no-disturb-time2">
                 </div>
-                <div class="alarm_btn_ico_box">
+                <div class="alarm_btn_ico_box alarm_btn_ico_box_remove">
                     <button class="remove_alarm_not_disturb" type="button">
                         <i class="icon_alarm icon_alarm_close_bk"></i>
                         <span class="hidden">방해금지 스케쥴 삭제</span>
@@ -335,7 +345,21 @@ function doNotDistrub(){
 
 function removeAlarm(){
     const removeButtons = document.querySelectorAll('.remove_alarm');
+    if(window.innerWidth<768){
+        const removeBtn_m = document.querySelectorAll('.alarm_btn_del');
 
+        if(removeBtn_m){
+            removeBtn_m.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const row = event.target.closest('li');
+                    if (row) {
+                        row.remove();
+                    }
+                });
+            });
+        }
+    }
+    
     if(removeButtons){
         removeButtons.forEach(button => {
             button.addEventListener('click', (event) => {
@@ -794,21 +818,70 @@ function initializeModalHandlers (){
 
     document.addEventListener('click', function(e) {
         const target = e.target;
+
+        if(window.innerWidth < 768 ) {
+            if( target.closest('.alarm_btn_calender_m') ){
+                const alarmCard = target.closest('.alarm_card_m');
+                console.log(alarmCard)
+                let alarmId = null;
+                if (alarmCard) {
+                    // data-alarmslide-id 속성에서 ID 값을 가져옵니다.
+                    alarmId = alarmCard.dataset.alarmSlideId? alarmCard.dataset.alarmSlideId:alarmCard.dataset.alarmListId;
+                    // 모달을 열기 위한 함수에 ID를 전달
+                    openModalWithApiCall(alarmId); //이곳에서 DB 칼렌더 연결 실행문 실행!!!!!!!!!!
+                }
+                e.preventDefault();
+                show('.modal_outer_alarm');
+                show('.modal_calender_alarm ');
+                
+            }
+
+            if( target.closest('.srch_alarm_btn_m') ) {                
+                e.preventDefault();
+                show('.modal_outer_alarm');
+                show('.modal_srch_alarm_filter ');
+            }
+
+            if( target.closest('.btn_size_big_alarm_cancel') ) {                
+                e.preventDefault();
+                const resetButton = document.querySelector('.alarm_srch_refreshAll');
+                if(resetButton){
+                    resetButton.dispatchEvent(new Event('click'))
+                }
+                closeModal(target)
+            }
+
+            if( target.closest('.btn_size_big_alarm_confirm') ) {                
+                e.preventDefault();
+                closeModal(target)
+            }
+
+
+
+        }
         
+        // 데이트 초기화 
+        if(target.closest('.alarm_filter_set_date_refresh')){
+            console.log('데이트 초기화');
+            e.preventDefault();
+            document.querySelector('.alarm_date_picker1').value='';
+            document.querySelector('.alarm_date_picker2').value='';
+        }
+
         // 필터 모달 열기
         if (target.closest('.srch_alarm_filter_setting')) {
             e.preventDefault();
             show('.modal_outer_alarm');
             show('.modal_srch_alarm_filter');
         }
-        
+        // 설정
         else if(target.closest('.alarm_setting_on_off_edit')){
             e.preventDefault();
             show('.modal_outer_alarm');
             show('.modal_cancel_alarm');
         }
         
-        // 스케줄 종속 모달 열기
+        // ******** 스케줄 열고 난 이후, 스케줄 종속 모달 열기
         else if (target.closest('.srch_alarm_modal_opener')) {
             e.preventDefault();
             show('.modal_alarm_srch_schedule');

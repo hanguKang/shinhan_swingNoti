@@ -131,14 +131,19 @@
                                                 button.srch_alarm_modal_opener(type="button")
                                                     i.icon_alarm.icon_alarm_calendar_gry
                                                     span.hidden 스케쥴
-                                        button.btn.alarm_srch_refresh(type="button")
+                                        button.btn.alarm_srch_refresh.alarm_filter_set_date_refresh(type="button")
                                             i.icon_alarm.icon_alarm_refresh_bk
                                             span.hidden 조회기간 직접입력 값 새로고침
                 .modal_footer_alarm 
-                    .modal_footer_alarm_txt * 필터에서 선택한 알림만 검색합니다.  모든 알림을 검색하려면 초기화하세요
+                    .modal_footer_alarm_txt 
+                        span * 
+                        span.pd_l 필터에서 선택한 알림만 검색합니다.  모든 알림을 검색하려면 초기화하세요
                     button.btn.alarm_srch_refreshAll(type="button")
                         span 전체 초기화
                         i.icon_alarm.icon_alarm_refresh_bk
+                .modal_footer_big_btn.mobile 
+                    button.btn.btn_size_big_alarm.btn_size_big_alarm_cancel 취소
+                    button.btn.btn_size_big_alarm.btn_size_big_alarm_confirm 확인
         .modal_alarm_srch_schedule
             .modal_wrap_alarm 
                 .modal_header_alarm 
@@ -199,7 +204,7 @@
                                             span.alarm_cancel_board_tbl_li_txt 알림코드명
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
                                             span.alarm_cancel_board_tbl_li_txt 서비스(서버)명
-                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
+                                        li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03.web
                                             span.alarm_cancel_board_tbl_li_txt 알림코드
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             button.alarm_btn_txt.alarm_btn_arrow_down 
@@ -213,9 +218,11 @@
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_01
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_tit 긴급알림
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS) 소그룹 내부통제 이상징후 탐지시스템(ADS)소그룹 내부통제 이상징후 탐지시스템(ADS)소그룹 내부통제 이상징후 탐지시스템(ADS)
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code
+                                                span.alarm_cancel_board_code_mo.mobile 알림코드
+                                                | CNO_ADS_SEW_0001
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
                                 .alarm_cancel_board_body.alarm_tbl_tr
@@ -228,7 +235,9 @@
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code
+                                                span.alarm_cancel_board_code_mo.mobile 알림코드
+                                                | CNO_ADS_SEW_0001
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
                                 .alarm_cancel_board_body.alarm_tbl_tr
@@ -241,7 +250,9 @@
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code
+                                                span.alarm_cancel_board_code_mo.mobile 알림코드
+                                                | CNO_ADS_SEW_0001
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
                                 .alarm_cancel_board_body.alarm_tbl_tr
@@ -254,7 +265,9 @@
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code
+                                                span.alarm_cancel_board_code_mo.mobile 알림코드
+                                                | CNO_ADS_SEW_0001
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
                                 .alarm_cancel_board_body.alarm_tbl_tr
@@ -267,7 +280,9 @@
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code
+                                                span.alarm_cancel_board_code_mo.mobile 알림코드
+                                                | CNO_ADS_SEW_0001
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
                                 .alarm_cancel_board_body.alarm_tbl_tr
@@ -280,7 +295,9 @@
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code
+                                                span.alarm_cancel_board_code_mo.mobile 알림코드
+                                                | CNO_ADS_SEW_0001
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
                                 .alarm_cancel_board_body.alarm_tbl_tr
@@ -293,7 +310,9 @@
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code
+                                                span.alarm_cancel_board_code_mo.mobile 알림코드
+                                                | CNO_ADS_SEW_0001
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
                                 .alarm_cancel_board_body.alarm_tbl_tr
@@ -306,7 +325,9 @@
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code
+                                                span.alarm_cancel_board_code_mo.mobile 알림코드
+                                                | CNO_ADS_SEW_0001
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
                                 .alarm_cancel_board_body.alarm_tbl_tr
@@ -319,7 +340,9 @@
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code
+                                                span.alarm_cancel_board_code_mo.mobile 알림코드
+                                                | CNO_ADS_SEW_0001
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
                                 .alarm_cancel_board_body.alarm_tbl_tr
@@ -332,7 +355,9 @@
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_02
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_conts 소그룹 내부통제 이상징후 탐지시스템(ADS)
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_03
-                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code CNO_ADS_SEW_0001
+                                            span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_code
+                                                span.alarm_cancel_board_code_mo.mobile 알림코드
+                                                | CNO_ADS_SEW_0001
                                         li.alarm_cancel_board_tbl_li.alarm_cancel_board_tbl_li_04
                                             span.alarm_cancel_board_tbl_li_txt.alarm_cancel_board_time 2024.02.28
                                    

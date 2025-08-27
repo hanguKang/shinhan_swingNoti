@@ -113,7 +113,7 @@ block content
                   span.alarm_bar / 
                   span.alarm_all 1,300건 
           #content_area.content_area
-            .division_list
+            .division_list.web
               // List Container
               #list_container.list_container.list_container_vr
                 #listbox.listbox.listbox_vr
@@ -155,12 +155,12 @@ block content
                       .eapp
                         table.lst_hr_tbl
                           colgroup
-                            col.col1(style="width:140px;")
-                            col.col2(style="width:auto")
-                            col.col3(style="width:180px;")
-                            col.col4(style="width:180px;")
-                            col.col5(style="width:200px;")
-                            col.col6(style="width:100px;")
+                            col.col1
+                            col.col2
+                            col.col3
+                            col.col4
+                            col.col5
+                            col.col6
                           thead
                             tr
                               th.alrm_tbl_th_cate
@@ -551,8 +551,277 @@ block content
                           <li><a href="http://49.247.42.217:8080/business7/shinhan/html/board/p01_%EA%B2%8C%EC%8B%9C%ED%8C%90_%EB%AA%A9%EB%A1%9D%ED%98%95.html#" class="page_last"><span>Last</span></a></li>
                         </ul>
                       </div>
+            .alarm_m_top.mobile 
+              h3.alarm_mobile_h 
+                | 알림센터
+                span.alarm_noti_cnt 6
+              .flx_rgt 
+                .srch_alarm_box
+                  button.btn.srch_alarm_btn.srch_alarm_btn_m( type="button") 
+                    i.icon_alarm_m.icon_alarm_m_srch_bk
+                    span.hidden 검색
+                .toggl_btn_wrapper
+                  span.label_txt 
+                    | 집중근무
+                  label.alarm_toggle_switch_wrapper.alarm_concentration_toggle(for="alarm-concentration-toggle-switch-m")
+                    input#alarm-concentration-toggle-switch-m.alarm_toggle_switch_input.alarm_concentration_toggle_switch(type="checkbox")
+                    span.alarm_toggle_switch-slider
+                  p.alarm_setting 
+                    a(href="#none") 
+                      i.icon_alarm_m.icon_alarm_m_set_bk          
+                      span.hidden 알림설정
+            .division_list.mobile
+              .board_tab_alarm
+                .tab_swiper_alarm.swiper
+                  ul.alarm_list.swiper-wrapper
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 전체
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 중요/긴급
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 안 읽은
+                            .icon_alarm_m.icon_alarm_m_hot_gry
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a.active(href="")
+                          span.alarm_tab_text 메일
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 결재
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 일정
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 할일
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 태그
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text SAQ
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 쪽지
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 구독
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 내서랍
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 게시판
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 설문
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 자원예약
+                            span.alarm_noti
+                    li.swiper-slide
+                      .alarm_item
+                        a(href="")
+                          span.alarm_tab_text 시스템
+                            span.alarm_noti
+              .board_list_alarm_box 
+                ul.alarm_board_list_ul_m
+                  li.alarm_board_list_li_m
+                    .none_data_m
 
-
-
-
-
+                  li.alarm_board_list_li_m
+                    .alarm_board_cate_m
+                      .alrm_cate_tit.alarm_tit_mail 메일
+                      .alrm_cate_tit.alarm_tit_siren.alarm_warn
+                        .icon_alarm.icon_alarm_siren_wt
+                        span.hidden 긴급
+                    .alarm_board_conts_m
+                      dl.alarm_board_conts_box_m
+                        dt.alarm_board_conts_title_m 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                        dd.alarm_board_conts_text_m 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                        dd.alarm_board_conts_info_m
+                          span.alarm_board_conts_writer_m 홍길동 
+                          span.alarm_board_conts_date_m 
+                            em.alarm_board_conts_day_m 오늘
+                            em.alarm_board_conts_time_m 13:00
+                    .alarm_board_util_m
+                      .alarm_btn_box
+                        .alarm_btn_wrap
+                          .alarm_btn_ico_box 
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
+                              span.hidden 일정
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
+                            button.btn.alarm_btn_recall(type="button")
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
+                              span.hidden 상기
+                        button.btn.alarm_more(type="button") 
+                          i.icon_alarm_m.icon_alarm_m_more_bk
+                          span.hidden 알림 메뉴 더보기
+                        button.btn.alarm_btn_del(type="button") 
+                          i.icon_alarm_m.icon_alarm_m_close_bk
+                          span.hidden 알림 삭제
+                  li.alarm_board_list_li_m
+                    .alarm_board_cate_m
+                      .alrm_cate_tit.alarm_tit_mail 메일
+                      .alrm_cate_tit.alarm_tit_siren.alarm_warn
+                        .icon_alarm.icon_alarm_siren_wt
+                        span.hidden 긴급
+                    .alarm_board_conts_m
+                      dl.alarm_board_conts_box_m
+                        dt.alarm_board_conts_title_m 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                        dd.alarm_board_conts_text_m 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                        dd.alarm_board_conts_info_m
+                          span.alarm_board_conts_writer_m 홍길동 
+                          span.alarm_board_conts_date_m 
+                            em.alarm_board_conts_day_m 오늘
+                            em.alarm_board_conts_time_m 13:00
+                    .alarm_board_util_m
+                      .alarm_btn_box
+                        .alarm_btn_wrap
+                          .alarm_btn_ico_box 
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
+                              span.hidden 일정
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
+                            button.btn.alarm_btn_recall(type="button")
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
+                              span.hidden 상기
+                        button.btn.alarm_more(type="button") 
+                          i.icon_alarm_m.icon_alarm_m_more_bk
+                          span.hidden 알림 메뉴 더보기
+                        button.btn.alarm_btn_del(type="button") 
+                          i.icon_alarm_m.icon_alarm_m_close_bk
+                          span.hidden 알림 삭제
+                  li.alarm_board_list_li_m
+                    .alarm_board_cate_m
+                      .alrm_cate_tit.alarm_tit_mail 메일
+                      .alrm_cate_tit.alarm_tit_siren.alarm_warn
+                        .icon_alarm.icon_alarm_siren_wt
+                        span.hidden 긴급
+                    .alarm_board_conts_m
+                      dl.alarm_board_conts_box_m
+                        dt.alarm_board_conts_title_m 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                        dd.alarm_board_conts_text_m 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                        dd.alarm_board_conts_info_m
+                          span.alarm_board_conts_writer_m 홍길동 
+                          span.alarm_board_conts_date_m 
+                            em.alarm_board_conts_day_m 오늘
+                            em.alarm_board_conts_time_m 13:00
+                    .alarm_board_util_m
+                      .alarm_btn_box
+                        .alarm_btn_wrap
+                          .alarm_btn_ico_box 
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
+                              span.hidden 일정
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
+                            button.btn.alarm_btn_recall(type="button")
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
+                              span.hidden 상기
+                        button.btn.alarm_more(type="button") 
+                          i.icon_alarm_m.icon_alarm_m_more_bk
+                          span.hidden 알림 메뉴 더보기
+                        button.btn.alarm_btn_del(type="button") 
+                          i.icon_alarm_m.icon_alarm_m_close_bk
+                          span.hidden 알림 삭제
+                  li.alarm_board_list_li_m.alarm_read
+                    .alarm_board_cate_m
+                      .alrm_cate_tit.alarm_tit_mail.alarm_read 메일
+                    .alarm_board_conts_m
+                      dl.alarm_board_conts_box_m
+                        dt.alarm_board_conts_title_m 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                        dd.alarm_board_conts_text_m 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                        dd.alarm_board_conts_info_m
+                          span.alarm_board_conts_writer_m 홍길동 
+                          span.alarm_board_conts_date_m 
+                            em.alarm_board_conts_day_m 오늘
+                            em.alarm_board_conts_time_m 13:00
+                    .alarm_board_util_m
+                      .alarm_btn_box
+                        .alarm_btn_wrap
+                          .alarm_btn_ico_box 
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
+                              span.hidden 일정
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
+                            button.btn.alarm_btn_recall(type="button")
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
+                              span.hidden 상기
+                        button.btn.alarm_more(type="button") 
+                          i.icon_alarm_m.icon_alarm_m_more_bk
+                          span.hidden 알림 메뉴 더보기
+                        button.btn.alarm_btn_del(type="button") 
+                          i.icon_alarm_m.icon_alarm_m_close_bk
+                          span.hidden 알림 삭제
+                  li.alarm_board_list_li_m
+                    .alarm_board_cate_m
+                      .alrm_cate_tit.alarm_tit_mail 메일
+                    .alarm_board_conts_m
+                      dl.alarm_board_conts_box_m
+                        dt.alarm_board_conts_title_m 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                        dd.alarm_board_conts_text_m 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                        dd.alarm_board_conts_info_m
+                          span.alarm_board_conts_writer_m 홍길동 
+                          span.alarm_board_conts_date_m 
+                            em.alarm_board_conts_day_m 오늘
+                            em.alarm_board_conts_time_m 13:00
+                    .alarm_board_util_m
+                      .alarm_btn_box
+                        .alarm_btn_wrap
+                          .alarm_btn_ico_box 
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
+                              span.hidden 일정
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
+                            button.btn.alarm_btn_recall(type="button")
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
+                              span.hidden 상기
+                        button.btn.alarm_more(type="button") 
+                          i.icon_alarm_m.icon_alarm_m_more_bk
+                          span.hidden 알림 메뉴 더보기
+                        button.btn.alarm_btn_del(type="button") 
+                          i.icon_alarm_m.icon_alarm_m_close_bk
+                          span.hidden 알림 삭제
+                  

@@ -138,8 +138,8 @@ block content
                           button.alarm_more(type="button") 
                             i.icon_alarm.icon_alarm_more_bk
                         .alarm_input 
-                          label.chkbox(for="alrm_chk_subscribe_0")
-                            input.input_chk(type="checkbox" name="" id="alrm_chk_subscribe_0")
+                          label.chkbox(for="alrm_chk_subscribe_m_0")
+                            input.input_chk(type="checkbox" name="" id="alrm_chk_subscribe_m_0")
                             span.alrm_chk_on 읽음
                       .alarm_content 
                         .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
@@ -603,12 +603,12 @@ block content
                       .eapp
                         table.lst_hr_tbl
                           colgroup
-                            col.col1(style="width:140px;")
-                            col.col2(style="width:auto")
-                            col.col3(style="width:180px;")
-                            col.col4(style="width:180px;")
-                            col.col5(style="width:200px;")
-                            col.col6(style="width:100px;")
+                            col.col1
+                            col.col2
+                            col.col3
+                            col.col4
+                            col.col5
+                            col.col6
                           thead
                             tr
                               th.alrm_tbl_th_cate
@@ -622,7 +622,7 @@ block content
                               th.alrm_tbl_th_del 삭제
                           tbody 
                             tr.alarm_empty(style="padding-top:268px;")
-                              td(colspan="6" style="height:calc(100vh - 600px); padding-top:268px; background:url(./img/alarm_board_empty.png) no-repeat center center;") 
+                              td(colspan="6" style="height:calc(100vh - 600px); padding-top:268px; background:url(./img/main/alarm_board_empty.png) no-repeat center center;") 
                                 span.hidden 알림이 없습니다.
                             tr
                               td.alrm_tbl_td_cate
@@ -630,8 +630,8 @@ block content
                                   .alrm_cate_tit.alarm_tit_mail 메일
                               td.alrm_tbl_td_cont 
                                 dl.alarm_board_cont 
-                                  dt.alarm_board_tit 부서기획 협업 요청건
-                                  dd.alarm_board_txt 킥오프 미팅을 아래와 같이 개최합니다. 
+                                  dt.alarm_board_tit 부서기획 협업 요청건 부서기획 협업 요청건 부서기획 협업 요청건 부서기획 협업 요청건 부서기획 협업 요청건 부서기획 협업 요청건 부서기획 협업 요청건 부서기획 협업 요청건 부서기획 협업 요청건 부서기획 협업 요청건
+                                  dd.alarm_board_txt 킥오프 미팅을 아래와 같이 개최합니다. 킥오프 미팅을 아래와 같이 개최합니다. 킥오프 미팅을 아래와 같이 개최합니다. 킥오프 미팅을 아래와 같이 개최합니다. 킥오프 미팅을 아래와 같이 개최합니다. 킥오프 미팅을 아래와 같이 개최합니다. 
                               td.alrm_tbl_td_writer 
                                 span.thmb.thmb_1 
                                   strong 이
@@ -810,8 +810,8 @@ block content
                 span.alarm_noti_cnt 6
               .flx_rgt 
                 .srch_alarm_box
-                  button.btn.srch_alarm_btn( type="button") 
-                    i.icon_alarm.icon_alarm_search_bk
+                  button.btn.srch_alarm_btn.srch_alarm_btn_m( type="button") 
+                    i.icon_alarm_m.icon_alarm_m_srch_bk
                     span.hidden 검색
                 .toggl_btn_wrapper
                   span.label_txt 
@@ -820,8 +820,9 @@ block content
                     input#alarm-concentration-toggle-switch-m.alarm_toggle_switch_input.alarm_concentration_toggle_switch(type="checkbox")
                     span.alarm_toggle_switch-slider
                   p.alarm_setting 
-                    i.icon_alarm.icon_alarm_set_bk          
-                    span.hidden 알림설정
+                    a(href="#none") 
+                      i.icon_alarm_m.icon_alarm_m_set_bk          
+                      span.hidden 알림설정
             .division_list.mobile 
               .board_tab_alarm
                 .tab_swiper_alarm.swiper
@@ -840,7 +841,7 @@ block content
                       .alarm_item
                         a(href="")
                           span.alarm_tab_text 안 읽은
-                            .icon_alarm
+                            .icon_alarm_m.icon_alarm_m_hot_gry
                             span.alarm_noti
                     li.swiper-slide
                       .alarm_item
@@ -910,9 +911,12 @@ block content
               .board_list_alarm_box 
                 ul.alarm_board_list_ul_m
                   li.alarm_board_list_li_m
+                    .none_data_m
+
+                  li.alarm_board_list_li_m.alarm_card_m.alarm_card_m(data-alarm-list-id="alarm_board_0")
                     .alarm_board_cate_m
                       .alrm_cate_tit.alarm_tit_mail 메일
-                      .alrm_cate_tit.alarm_tit_siren 
+                      .alrm_cate_tit.alarm_tit_siren.alarm_warn 
                         .icon_alarm.icon_alarm_siren_wt
                         span.hidden 긴급
                     .alarm_board_conts_m
@@ -928,25 +932,25 @@ block content
                       .alarm_btn_box
                         .alarm_btn_wrap
                           .alarm_btn_ico_box 
-                            button.btn.alarm_btn_calender(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
                               span.hidden 일정
-                            button.alarm_btn_copy(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                              span.hidden 복사
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
                             button.btn.alarm_btn_recall(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
                               span.hidden 상기
                         button.btn.alarm_more(type="button") 
-                          i.icon_alarm.icon_alarm_more_bk
+                          i.icon_alarm_m.icon_alarm_m_more_bk
                           span.hidden 알림 메뉴 더보기
                         button.btn.alarm_btn_del(type="button") 
-                          i.icon_alarm.icon_alarm_close_bk
+                          i.icon_alarm_m.icon_alarm_m_close_bk
                           span.hidden 알림 삭제
-                  li.alarm_board_list_li_m
+                  li.alarm_board_list_li_m.alarm_card_m(data-alarm-list-id="alarm_board_1")
                     .alarm_board_cate_m
                       .alrm_cate_tit.alarm_tit_mail 메일
-                      .alrm_cate_tit.alarm_tit_siren 
+                      .alrm_cate_tit.alarm_tit_siren.alarm_warn 
                         .icon_alarm.icon_alarm_siren_wt
                         span.hidden 긴급
                     .alarm_board_conts_m
@@ -962,25 +966,25 @@ block content
                       .alarm_btn_box
                         .alarm_btn_wrap
                           .alarm_btn_ico_box 
-                            button.btn.alarm_btn_calender(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
                               span.hidden 일정
-                            button.alarm_btn_copy(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                              span.hidden 복사
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
                             button.btn.alarm_btn_recall(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
                               span.hidden 상기
                         button.btn.alarm_more(type="button") 
-                          i.icon_alarm.icon_alarm_more_bk
+                          i.icon_alarm_m.icon_alarm_m_more_bk
                           span.hidden 알림 메뉴 더보기
                         button.btn.alarm_btn_del(type="button") 
-                          i.icon_alarm.icon_alarm_close_bk
+                          i.icon_alarm_m.icon_alarm_m_close_bk
                           span.hidden 알림 삭제
-                  li.alarm_board_list_li_m
+                  li.alarm_board_list_li_m.alarm_card_m(data-alarm-list-id="alarm_board_2")
                     .alarm_board_cate_m
                       .alrm_cate_tit.alarm_tit_mail 메일
-                      .alrm_cate_tit.alarm_tit_siren 
+                      .alrm_cate_tit.alarm_tit_siren.alarm_warn 
                         .icon_alarm.icon_alarm_siren_wt
                         span.hidden 긴급
                     .alarm_board_conts_m
@@ -996,22 +1000,22 @@ block content
                       .alarm_btn_box
                         .alarm_btn_wrap
                           .alarm_btn_ico_box 
-                            button.btn.alarm_btn_calender(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
                               span.hidden 일정
-                            button.alarm_btn_copy(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                              span.hidden 복사
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
                             button.btn.alarm_btn_recall(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
                               span.hidden 상기
                         button.btn.alarm_more(type="button") 
-                          i.icon_alarm.icon_alarm_more_bk
+                          i.icon_alarm_m.icon_alarm_m_more_bk
                           span.hidden 알림 메뉴 더보기
                         button.btn.alarm_btn_del(type="button") 
-                          i.icon_alarm.icon_alarm_close_bk
+                          i.icon_alarm_m.icon_alarm_m_close_bk
                           span.hidden 알림 삭제
-                  li.alarm_board_list_li_m
+                  li.alarm_board_list_li_m.alarm_card_m(data-alarm-list-id="alarm_board_3")
                     .alarm_board_cate_m
                       .alrm_cate_tit.alarm_tit_resource 자원예약
                     .alarm_board_conts_m
@@ -1027,22 +1031,22 @@ block content
                       .alarm_btn_box
                         .alarm_btn_wrap
                           .alarm_btn_ico_box 
-                            button.btn.alarm_btn_calender(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
                               span.hidden 일정
-                            button.alarm_btn_copy(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                              span.hidden 복사
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
                             button.btn.alarm_btn_recall(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
                               span.hidden 상기
                         button.btn.alarm_more(type="button") 
-                          i.icon_alarm.icon_alarm_more_bk
+                          i.icon_alarm_m.icon_alarm_m_more_bk
                           span.hidden 알림 메뉴 더보기
                         button.btn.alarm_btn_del(type="button") 
-                          i.icon_alarm.icon_alarm_close_bk
+                          i.icon_alarm_m.icon_alarm_m_close_bk
                           span.hidden 알림 삭제
-                  li.alarm_board_list_li_m
+                  li.alarm_board_list_li_m.alarm_card_m(data-alarm-list-id="alarm_board_4")
                     .alarm_board_cate_m
                       .alrm_cate_tit.alarm_tit_memo 쪽지
                     .alarm_board_conts_m
@@ -1058,22 +1062,22 @@ block content
                       .alarm_btn_box
                         .alarm_btn_wrap
                           .alarm_btn_ico_box 
-                            button.btn.alarm_btn_calender(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
                               span.hidden 일정
-                            button.alarm_btn_copy(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                              span.hidden 복사
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
                             button.btn.alarm_btn_recall(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
                               span.hidden 상기
                         button.btn.alarm_more(type="button") 
-                          i.icon_alarm.icon_alarm_more_bk
+                          i.icon_alarm_m.icon_alarm_m_more_bk
                           span.hidden 알림 메뉴 더보기
                         button.btn.alarm_btn_del(type="button") 
-                          i.icon_alarm.icon_alarm_close_bk
+                          i.icon_alarm_m.icon_alarm_m_close_bk
                           span.hidden 알림 삭제
-                  li.alarm_board_list_li_m
+                  li.alarm_board_list_li_m.alarm_card_m(data-alarm-list-id="alarm_board_5")
                     .alarm_board_cate_m
                       .alrm_cate_tit.alarm_tit_system 시스템
                     .alarm_board_conts_m
@@ -1089,22 +1093,22 @@ block content
                       .alarm_btn_box
                         .alarm_btn_wrap
                           .alarm_btn_ico_box 
-                            button.btn.alarm_btn_calender(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
                               span.hidden 일정
-                            button.alarm_btn_copy(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                              span.hidden 복사
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
                             button.btn.alarm_btn_recall(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
                               span.hidden 상기
                         button.btn.alarm_more(type="button") 
-                          i.icon_alarm.icon_alarm_more_bk
+                          i.icon_alarm_m.icon_alarm_m_more_bk
                           span.hidden 알림 메뉴 더보기
                         button.btn.alarm_btn_del(type="button") 
-                          i.icon_alarm.icon_alarm_close_bk
+                          i.icon_alarm_m.icon_alarm_m_close_bk
                           span.hidden 알림 삭제
-                  li.alarm_board_list_li_m.alarm_read
+                  li.alarm_board_list_li_m.alarm_read.alarm_card_m(data-alarm-list-id="alarm_board_6")
                     .alarm_board_cate_m
                       .alrm_cate_tit.alarm_tit_survey.alarm_read 설문
                     .alarm_board_conts_m
@@ -1120,22 +1124,22 @@ block content
                       .alarm_btn_box
                         .alarm_btn_wrap
                           .alarm_btn_ico_box 
-                            button.btn.alarm_btn_calender(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
                               span.hidden 일정
-                            button.alarm_btn_copy(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                              span.hidden 복사
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
                             button.btn.alarm_btn_recall(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
                               span.hidden 상기
                         button.btn.alarm_more(type="button") 
-                          i.icon_alarm.icon_alarm_more_bk
+                          i.icon_alarm_m.icon_alarm_m_more_bk
                           span.hidden 알림 메뉴 더보기
                         button.btn.alarm_btn_del(type="button") 
-                          i.icon_alarm.icon_alarm_close_bk
+                          i.icon_alarm_m.icon_alarm_m_close_bk
                           span.hidden 알림 삭제
-                  li.alarm_board_list_li_m.alarm_read
+                  li.alarm_board_list_li_m.alarm_read.alarm_card_m(data-alarm-list-id="alarm_board_7")
                     .alarm_board_cate_m
                       .alrm_cate_tit.alarm_tit_drawer.alarm_read 내서랍
                     .alarm_board_conts_m
@@ -1151,22 +1155,22 @@ block content
                       .alarm_btn_box
                         .alarm_btn_wrap
                           .alarm_btn_ico_box 
-                            button.btn.alarm_btn_calender(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
                               span.hidden 일정
-                            button.alarm_btn_copy(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                              span.hidden 복사
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
                             button.btn.alarm_btn_recall(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
                               span.hidden 상기
                         button.btn.alarm_more(type="button") 
-                          i.icon_alarm.icon_alarm_more_bk
+                          i.icon_alarm_m.icon_alarm_m_more_bk
                           span.hidden 알림 메뉴 더보기
                         button.btn.alarm_btn_del(type="button") 
-                          i.icon_alarm.icon_alarm_close_bk
+                          i.icon_alarm_m.icon_alarm_m_close_bk
                           span.hidden 알림 삭제
-                  li.alarm_board_list_li_m.alarm_read
+                  li.alarm_board_list_li_m.alarm_read.alarm_card_m(data-alarm-list-id="alarm_board_8")
                     .alarm_board_cate_m
                       .alrm_cate_tit.alarm_tit_survey.alarm_read 내서랍
                     .alarm_board_conts_m
@@ -1182,22 +1186,22 @@ block content
                       .alarm_btn_box
                         .alarm_btn_wrap
                           .alarm_btn_ico_box 
-                            button.btn.alarm_btn_calender(type="button")
-                              i.icon_alarm.icon_alarm_calendar_gry
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
+                              i.icon_alarm_m.icon_alarm_m_calender_gry
                               span.hidden 일정
-                            button.alarm_btn_copy(type="button")
-                              i.icon_alarm.icon_alarm_copy_gry
-                              span.hidden 복사
+                            //- button.alarm_btn_copy(type="button")
+                            //-   i.icon_alarm_m.icon_alarm_m_copy_gry
+                            //-   span.hidden 복사
                             button.btn.alarm_btn_recall(type="button")
-                              i.icon_alarm.icon_alarm_recall_gry
+                              i.icon_alarm_m.icon_alarm_m_recall_gry
                               span.hidden 상기
                         button.btn.alarm_more(type="button") 
-                          i.icon_alarm.icon_alarm_more_bk
+                          i.icon_alarm_m.icon_alarm_m_more_bk
                           span.hidden 알림 메뉴 더보기
                         button.btn.alarm_btn_del(type="button") 
-                          i.icon_alarm.icon_alarm_close_bk
+                          i.icon_alarm_m.icon_alarm_m_close_bk
                           span.hidden 알림 삭제
-                  li.alarm_board_list_li_m.alarm_read
+                  li.alarm_board_list_li_m.alarm_read.alarm_card_m(data-alarm-list-id="alarm_board_9")
                     .alarm_board_cate_m
                       .alrm_cate_tit.alarm_tit_mail.alarm_read 메일
                     .alarm_board_conts_m
@@ -1213,7 +1217,7 @@ block content
                       .alarm_btn_box
                         .alarm_btn_wrap
                           .alarm_btn_ico_box 
-                            button.btn.alarm_btn_calender(type="button")
+                            button.btn.alarm_btn_calender.alarm_btn_calender_m(type="button")
                               i.icon_alarm.icon_alarm_calendar_gry
                               span.hidden 일정
                             button.alarm_btn_copy(type="button")
@@ -1228,172 +1232,188 @@ block content
                         button.btn.alarm_btn_del(type="button") 
                           i.icon_alarm.icon_alarm_close_bk
                           span.hidden 알림 삭제
-                  ul.alarm_board_list_card_ul_m
-                    li.alarm_board_list_card_li_m
-                      .alarm_card(data-alarm-slide-id="alrm_0")
-                        .alarm_card_header
-                          strong.alrm_cate_tit.alarm_tit_subscribe 구독
-                          span.icon_alarm.icon_alarm_siren_wt 
-                            span.hidden 긴급
-                          .alarm_btn_box
-                            .alarm_btn_wrap
-                              .alarm_btn_ico_box 
-                                button.alarm_btn_calender(type="button")
-                                  i.icon_alarm.icon_alarm_calendar_gry
-                                  span.hidden 일정
-                                button.alarm_btn_copy(type="button")
-                                  i.icon_alarm.icon_alarm_copy_gry
-                                  span.hidden 복사
-                                button.alarm_btn_recall(type="button")
-                                  i.icon_alarm.icon_alarm_recall_gry
-                                  span.hidden 상기
-                            button.alarm_more(type="button") 
-                              i.icon_alarm.icon_alarm_more_bk
-                          .alarm_input 
-                            label.chkbox(for="alrm_chk_subscribe_0")
-                              input.input_chk(type="checkbox" name="" id="alrm_chk_subscribe_0")
-                              span.alrm_chk_on 읽음
-                        .alarm_content 
-                          .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
-                          .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-                        .alarm_bottom 
-                          .alarm_writer 홍길동
-                          .alarm_time 
-                            sapn.alarm_t_day 오늘 
-                            time(datetime="2019-04-19T20:00:00") 
-                              span.alarm_t 20:00
-                    li.alarm_board_list_card_li_m
-                      .alarm_card(data-alarm-slide-id="alrm_0")
-                        .alarm_card_header
-                          strong.alrm_cate_tit.alarm_tit_subscribe 구독
-                          span.icon_alarm.icon_alarm_siren_wt 
-                            span.hidden 긴급
-                          .alarm_btn_box
-                            .alarm_btn_wrap
-                              .alarm_btn_ico_box 
-                                button.alarm_btn_calender(type="button")
-                                  i.icon_alarm.icon_alarm_calendar_gry
-                                  span.hidden 일정
-                                button.alarm_btn_copy(type="button")
-                                  i.icon_alarm.icon_alarm_copy_gry
-                                  span.hidden 복사
-                                button.alarm_btn_recall(type="button")
-                                  i.icon_alarm.icon_alarm_recall_gry
-                                  span.hidden 상기
-                            button.alarm_more(type="button") 
-                              i.icon_alarm.icon_alarm_more_bk
-                          .alarm_input 
-                            label.chkbox(for="alrm_chk_subscribe_0")
-                              input.input_chk(type="checkbox" name="" id="alrm_chk_subscribe_0")
-                              span.alrm_chk_on 읽음
-                        .alarm_content 
-                          .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
-                          .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-                        .alarm_bottom 
-                          .alarm_writer 홍길동
-                          .alarm_time 
-                            sapn.alarm_t_day 오늘 
-                            time(datetime="2019-04-19T20:00:00") 
-                              span.alarm_t 20:00
-                    li.alarm_board_list_card_li_m
-                      .alarm_card(data-alarm-slide-id="alrm_0")
-                        .alarm_card_header
-                          strong.alrm_cate_tit.alarm_tit_subscribe 구독
-                          span.icon_alarm.icon_alarm_siren_wt 
-                            span.hidden 긴급
-                          .alarm_btn_box
-                            .alarm_btn_wrap
-                              .alarm_btn_ico_box 
-                                button.alarm_btn_calender(type="button")
-                                  i.icon_alarm.icon_alarm_calendar_gry
-                                  span.hidden 일정
-                                button.alarm_btn_copy(type="button")
-                                  i.icon_alarm.icon_alarm_copy_gry
-                                  span.hidden 복사
-                                button.alarm_btn_recall(type="button")
-                                  i.icon_alarm.icon_alarm_recall_gry
-                                  span.hidden 상기
-                            button.alarm_more(type="button") 
-                              i.icon_alarm.icon_alarm_more_bk
-                          .alarm_input 
-                            label.chkbox(for="alrm_chk_subscribe_0")
-                              input.input_chk(type="checkbox" name="" id="alrm_chk_subscribe_0")
-                              span.alrm_chk_on 읽음
-                        .alarm_content 
-                          .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
-                          .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-                        .alarm_bottom 
-                          .alarm_writer 홍길동
-                          .alarm_time 
-                            sapn.alarm_t_day 오늘 
-                            time(datetime="2019-04-19T20:00:00") 
-                              span.alarm_t 20:00
-                    li.alarm_board_list_card_li_m
-                      .alarm_card(data-alarm-slide-id="alrm_0")
-                        .alarm_card_header
-                          strong.alrm_cate_tit.alarm_tit_subscribe 구독
-                          span.icon_alarm.icon_alarm_siren_wt 
-                            span.hidden 긴급
-                          .alarm_btn_box
-                            .alarm_btn_wrap
-                              .alarm_btn_ico_box 
-                                button.alarm_btn_calender(type="button")
-                                  i.icon_alarm.icon_alarm_calendar_gry
-                                  span.hidden 일정
-                                button.alarm_btn_copy(type="button")
-                                  i.icon_alarm.icon_alarm_copy_gry
-                                  span.hidden 복사
-                                button.alarm_btn_recall(type="button")
-                                  i.icon_alarm.icon_alarm_recall_gry
-                                  span.hidden 상기
-                            button.alarm_more(type="button") 
-                              i.icon_alarm.icon_alarm_more_bk
-                          .alarm_input 
-                            label.chkbox(for="alrm_chk_subscribe_0")
-                              input.input_chk(type="checkbox" name="" id="alrm_chk_subscribe_0")
-                              span.alrm_chk_on 읽음
-                        .alarm_content 
-                          .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
-                          .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-                        .alarm_bottom 
-                          .alarm_writer 홍길동
-                          .alarm_time 
-                            sapn.alarm_t_day 오늘 
-                            time(datetime="2019-04-19T20:00:00") 
-                              span.alarm_t 20:00
-                    li.alarm_board_list_card_li_m
-                      .alarm_card(data-alarm-slide-id="alrm_0")
-                        .alarm_card_header
-                          strong.alrm_cate_tit.alarm_tit_subscribe 구독
-                          span.icon_alarm.icon_alarm_siren_wt 
-                            span.hidden 긴급
-                          .alarm_btn_box
-                            .alarm_btn_wrap
-                              .alarm_btn_ico_box 
-                                button.alarm_btn_calender(type="button")
-                                  i.icon_alarm.icon_alarm_calendar_gry
-                                  span.hidden 일정
-                                button.alarm_btn_copy(type="button")
-                                  i.icon_alarm.icon_alarm_copy_gry
-                                  span.hidden 복사
-                                button.alarm_btn_recall(type="button")
-                                  i.icon_alarm.icon_alarm_recall_gry
-                                  span.hidden 상기
-                            button.alarm_more(type="button") 
-                              i.icon_alarm.icon_alarm_more_bk
-                          .alarm_input 
-                            label.chkbox(for="alrm_chk_subscribe_0")
-                              input.input_chk(type="checkbox" name="" id="alrm_chk_subscribe_0")
-                              span.alrm_chk_on 읽음
-                        .alarm_content 
-                          .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
-                          .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
-                        .alarm_bottom 
-                          .alarm_writer 홍길동
-                          .alarm_time 
-                            sapn.alarm_t_day 오늘 
-                            time(datetime="2019-04-19T20:00:00") 
-                              span.alarm_t 20:00
+                ul.alarm_board_list_card_ul_m
+                  li.alarm_board_list_card_li_m
+                    .alarm_card.none_data(data-alarm-slide-id="no_alarm")
+                      .none_txt
+                        span.hidden 중요 또는 긴급한 알림이 오면 이곳에서도 확인할 수 있어요
+                  li.alarm_board_list_card_li_m
+                    .alarm_card.loading_alarm_m(data-alarm-slide-id="")
+                      .none_txt
+                        span.hidden 로딩중
+                  li.alarm_board_list_card_li_m
+                    .alarm_card.loading_alarm_m(data-alarm-slide-id="")
+                      .none_txt
+                        span.hidden 로딩중
+                  li.alarm_board_list_card_li_m
+                    .alarm_card.loading_alarm_m(data-alarm-slide-id="")
+                      .none_txt
+                        span.hidden 로딩중
+                  li.alarm_board_list_card_li_m
+                    .alarm_card.alarm_card_m(data-alarm-slide-id="alrm_1")
+                      .alarm_card_header
+                        strong.alrm_cate_tit.alarm_tit_subscribe 구독
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
+                        .alarm_btn_box
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender_m(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
+                          button.alarm_more(type="button") 
+                            i.icon_alarm.icon_alarm_more_bk
+                        .alarm_input 
+                          label.chkbox(for="alrm_chk_subscribe_m_0")
+                            input.input_chk(type="checkbox" name="alrm_chk_subscribe_m_0" id="alrm_chk_subscribe_m_0")
+                            span.alrm_chk_on 읽음
+                      .alarm_content 
+                        .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                        .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
+                      .alarm_bottom 
+                        .alarm_writer 홍길동
+                        .alarm_time 
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                  li.alarm_board_list_card_li_m
+                    .alarm_card.alarm_card_m(data-alarm-slide-id="alrm_2")
+                      .alarm_card_header
+                        strong.alrm_cate_tit.alarm_tit_subscribe 구독
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
+                        .alarm_btn_box
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender_m(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
+                          button.alarm_more(type="button") 
+                            i.icon_alarm.icon_alarm_more_bk
+                        .alarm_input 
+                          label.chkbox(for="alrm_chk_subscribe_m_1")
+                            input.input_chk(type="checkbox" name="alrm_chk_subscribe_m_1" id="alrm_chk_subscribe_m_1")
+                            span.alrm_chk_on 읽음
+                      .alarm_content 
+                        .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                        .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
+                      .alarm_bottom 
+                        .alarm_writer 홍길동
+                        .alarm_time 
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                  li.alarm_board_list_card_li_m
+                    .alarm_card.alarm_card_m(data-alarm-slide-id="alrm_3")
+                      .alarm_card_header
+                        strong.alrm_cate_tit.alarm_tit_subscribe 구독
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
+                        .alarm_btn_box
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender_m(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
+                          button.alarm_more(type="button") 
+                            i.icon_alarm.icon_alarm_more_bk
+                        .alarm_input 
+                          label.chkbox(for="alrm_chk_subscribe_m_2")
+                            input.input_chk(type="checkbox" name="alrm_chk_subscribe_m_2" id="alrm_chk_subscribe_m_2")
+                            span.alrm_chk_on 읽음
+                      .alarm_content 
+                        .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                        .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
+                      .alarm_bottom 
+                        .alarm_writer 홍길동
+                        .alarm_time 
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                  li.alarm_board_list_card_li_m
+                    .alarm_card.alarm_card_m(data-alarm-slide-id="alrm_4")
+                      .alarm_card_header
+                        strong.alrm_cate_tit.alarm_tit_subscribe 구독
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
+                        .alarm_btn_box
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender_m(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
+                          button.alarm_more(type="button") 
+                            i.icon_alarm.icon_alarm_more_bk
+                        .alarm_input 
+                          label.chkbox(for="alrm_chk_subscribe_m_3")
+                            input.input_chk(type="checkbox" name="alrm_chk_subscribe_m_3" id="alrm_chk_subscribe_m_3")
+                            span.alrm_chk_on 읽음
+                      .alarm_content 
+                        .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                        .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
+                      .alarm_bottom 
+                        .alarm_writer 홍길동
+                        .alarm_time 
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
+                  li.alarm_board_list_card_li_m
+                    .alarm_card.alarm_card_m(data-alarm-slide-id="alrm_5")
+                      .alarm_card_header
+                        strong.alrm_cate_tit.alarm_tit_subscribe 구독
+                        span.icon_alarm.icon_alarm_siren_wt 
+                          span.hidden 긴급
+                        .alarm_btn_box
+                          .alarm_btn_wrap
+                            .alarm_btn_ico_box 
+                              button.alarm_btn_calender_m(type="button")
+                                i.icon_alarm.icon_alarm_calendar_gry
+                                span.hidden 일정
+                              button.alarm_btn_copy(type="button")
+                                i.icon_alarm.icon_alarm_copy_gry
+                                span.hidden 복사
+                              button.alarm_btn_recall(type="button")
+                                i.icon_alarm.icon_alarm_recall_gry
+                                span.hidden 상기
+                          button.alarm_more(type="button") 
+                            i.icon_alarm.icon_alarm_more_bk
+                        .alarm_input 
+                          label.chkbox(for="alrm_chk_subscribe_m_4")
+                            input.input_chk(type="checkbox" name="alrm_chk_subscribe_m_4" id="alrm_chk_subscribe_m_4")
+                            span.alrm_chk_on 읽음
+                      .alarm_content 
+                        .alarm_h3 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 
+                        .txt  7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에 7일부터 각국에 대한 상호관세가 발효된 가운데 남은 품목관세중 반도체와 의약품 관세가 구체화하면서 반도체와 의약품 관세가 구체화하면서 반도체 강국인 한국에
+                      .alarm_bottom 
+                        .alarm_writer 홍길동
+                        .alarm_time 
+                          sapn.alarm_t_day 오늘 
+                          time(datetime="2019-04-19T20:00:00") 
+                            span.alarm_t 20:00
 
 
 

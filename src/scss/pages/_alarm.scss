@@ -5,17 +5,20 @@
 
 
 .alarm_wrap{
+    @media screen and (max-width:1280px) {
+        height:100vh; background:#fff;
+    }
     &.mobile{
         #snb.snb.snb_board {display:none;}
     }
     h1, h2, h3, h4 {margin:0;}
     button{background-color:#fff; cursor:pointer;}
     //아이콘 
-    .icon_alarm{flex:0 0 2.4rem; display:inline-block; width:2.4rem; height:2.4rem; margin-right:1rem; background:url(var.$imgurl_ico+"icon_alarm.png") no-repeat 0 0;
+    .icon_alarm{flex:0 0 2.4rem; display:inline-block; width:2.4rem; height:2.4rem; margin-right:1rem; background:url(var.$imgurl+"icon_alarm.png") no-repeat 0 0;
         &.icon_wide{flex:0 0 6.8rem; border-radius:0.4rem; }
         &.icon_alarm_all_noti_bk{background-position:0 0;}
         &.icon_alarm_all_noti_blu{background-position:0 -2.4rem;}
-        &.icon_alarm_siren_wt{background-position:0 -4.8rem; background-color:#fa5252; border-radius:0.4rem;}
+        &.icon_alarm_siren_wt{background-position:0 -4.8rem; background-color:var_colors.$shinhan_warn_bg; border-radius:0.4rem;}
         &.icon_alarm_siren_bk{background-position:0 -7.2rem;}
         &.icon_alarm_siren_blu{background-position:0 -9.6rem;}
         &.icon_alarm_help_wt{background-position:0 -12rem;}
@@ -44,11 +47,11 @@
         &.icon_alarm_refresh_blu{background-position:0 -67.2rem;}
         &.icon_alarm_search_bk{background-position:0 -69.6rem;}
         &.icon_alarm_search_blu{background-position:0 -72rem;}
-        &.icon_alarm_plus {flex:0 0 4rem; display:inline-block; width:4rem; height:4rem; margin:0; border-radius:50%; background:var_colors.$shinhan_bg_icon_gry url(var.$imgurl_ico+"alarm_plus_x2.png") no-repeat 0 0/100% auto;
+        &.icon_alarm_plus {flex:0 0 4rem; display:inline-block; width:4rem; height:4rem; margin:0; border-radius:50%; background:var_colors.$shinhan_bg_icon_gry url(var.$imgurl+"alarm_plus_x2.png") no-repeat 0 0/100% auto;
             &:hover{}
         }
     }
-    .icon_alarm_16{flex:0 0 1.6rem; display:inline-block; width:1.6rem; height:1.6rem; background:url(var.$imgurl_ico+"icon_alarm_16.png") no-repeat 0 0;
+    .icon_alarm_16{flex:0 0 1.6rem; display:inline-block; width:1.6rem; height:1.6rem; background:url(var.$imgurl+"icon_alarm_16.png") no-repeat 0 0;
         &.icon_close_gry_16{background-position:0 0;}
         &.icon_close_bk_16{background-position:0 -1.6rem;}
         &.icon_close_blu_16{background-position:0 -3.2rem;}
@@ -66,6 +69,42 @@
         &.icon_refresh_blu_16{background-position:0 -22.4rem;}
     }
 
+    .icon_alarm_m{flex:0 0 2.4rem; display:inline-block; width:2.4rem; height:2.4rem; background:url(var.$imgurl+"icon_alarm_m.png") no-repeat 0 0/100% auto;
+        &.icon_alarm_m_srch_gry{background-position:0 0;}
+        &.icon_alarm_m_srch_bk{background-position:0 -2.4rem;}
+        &.icon_alarm_m_srch_blu{background-position:0 -4.8rem;}
+        &.icon_alarm_m_set_gry{background-position:0 -7.2rem;}
+        &.icon_alarm_m_set_bk{background-position:0 -9.6rem;}
+        &.icon_alarm_m_set_blu{background-position:0 -12rem;}
+        &.icon_alarm_m_hot_gry{background-position:0 -14.4rem;}
+        &.icon_alarm_m_hot_bk{background-position:0 -16.8rem;}
+        &.icon_alarm_m_hot_blu{background-position:0 -19.2rem;}
+        &.icon_alarm_m_close_gry{background-position:0 -21.6rem;}
+        &.icon_alarm_m_close_bk{background-position:0 -24rem;}
+        &.icon_alarm_m_close_blu{background-position:0 -26.4rem;}
+        &.icon_alarm_m_more_gry{background-position:0 -28.8rem;}
+        &.icon_alarm_m_more_bk{background-position:0 -31.2rem;}
+        &.icon_alarm_m_more_blu{background-position:0 -33.6rem;}
+        &.icon_alarm_m_siren_gry{background-position:0 -36rem;}
+        &.icon_alarm_m_siren_bk{background-position:0 -38.4rem;}
+        &.icon_alarm_m_siren_blu{background-position:0 -40.8rem;}
+        &.icon_alarm_m_siren_wt{background-position:0 -43.2rem;}
+        &.icon_alarm_m_calender_gry{background-position:0 -45.6rem;}
+        &.icon_alarm_m_calender_bk{background-position:0 -48rem;}
+        &.icon_alarm_m_calender_blu{background-position:0 -50.4rem;}
+        &.icon_alarm_m_recall_gry{background-position:0 -52.8rem;}
+        &.icon_alarm_m_recall_bk{background-position:0 -55.2rem;}
+        &.icon_alarm_m_recall_blu{background-position:0 -57.6rem;}
+    }
+    .icon_alarm_m2{flex:0 0 2.4rem; display:inline-block; width:2.4rem; height:2.4rem; background:url(var.$imgurl+"icon_alarm_2x.png") no-repeat 0 0/100% auto;
+        &.icon_alarm_m2_more{background-position:0 rem;}
+        &.icon_alarm_m2_arr_lft_gry{background-position:0 -2.4rem;}
+        &.icon_alarm_m2_arr_lft_bk{background-position:0 -4.8rem;}
+        &.icon_alarm_m2_arr_lft_blu{background-position:0 7.2-rem;}
+        &.icon_alarm_m2_arr_rgt_gry{background-position:0 -9.6rem;}
+        &.icon_alarm_m2_arr_rgt_bk{background-position:0 -12rem;}
+        &.icon_alarm_m2_arr_rgt_blu{background-position:0 -14.4rem;}
+    }
     .alarm_txt{margin-right:1rem;}
     .alarm_noti_cnt{flex:1 0 1.6rem; height:2.4rem; padding:0 0.4rem; background-color:var_colors.$color_red; border-radius:2.4rem; text-align:center; color:var_colors.$color_white;}
 
@@ -106,6 +145,7 @@
         &.alarm_tit_memo{background-color:#88931A;}
         &.alarm_tit_approve {background-color:#F98D00;}
         &.alarm_read {background-color:#ADB5BD !important;}
+        &.alarm_warn {background-color:var_colors.$shinhan_warn_bg;}
     }
 
     //경고
@@ -216,7 +256,13 @@
             }
             &.alarm_cancel_board_body{border-bottom:1px solid var_colors.$shinhan_tbl_gry;
                 .alarm_cancel_board_tbl_ul{
-                    li.alarm_cancel_board_tbl_li{height:5rem; }
+                    li.alarm_cancel_board_tbl_li{height:5rem; 
+                        .alarm_cancel_board_tbl_li_txt {overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;}
+                    }
                 }
             }
         }
@@ -255,8 +301,8 @@
         .alarm_setting{
             &.alarm_active{position:relative;
                 a{color:var_colors.$shinhan_acitve;}
+                &>::after{content:''; position:absolute; right:0; width:0.6rem; height:2rem; border-radius:0.2ren 0 0.2rem; background-color:var_colors.$shinhan_acitve; }
             }
-            &>::after{content:''; position:absolute; right:0; width:0.6rem; height:2rem; border-radius:0.2ren 0 0 0.2rem; background-color:var_colors.$shinhan_acitve; }
         }
     } 
     //컨텐츠 시작
@@ -345,6 +391,12 @@
                 }
             }
             .division_list{
+                @media screen and (max-width:1280px){
+                    padding-top:6rem;
+                }
+                 @media screen and (max-width:768px){
+                    padding-top:0;
+                }
                 .list_container{
                     .listbox{
                         .listbox_cont{
@@ -379,6 +431,14 @@
                                                 .btn_alarm_srch_filter {margin-bottom:1.2rem;}
                                                 .btn_checked_list_show {margin-left:auto;}
                                             }
+                                            @media screen and (max-width:1280px){
+                                                overflow:visible; justify-content:flex-start; flex-wrap:wrap; position:absolute; z-index:100; right:0rem; top:-60px;  padding:0.8rem; width:40rem; height:auto;  background-color:#fff;  border-radius:0.6rem;
+                                                    .btn_alarm_srch_filter{transform:scale(0.8); margin-right:0;}
+                                                
+                                                &.show_all_checked_btns{
+                                                     width:32rem; top:-100%; transform:translateY(0);
+                                                }
+                                            }
                                         }
                                         .srch_filter_more{
                                             .btn.srch_alarm_filter_setting{display: flex; align-items: center; justify-content: center; border:0 none;}
@@ -401,6 +461,31 @@
                             //테이블 시작
                             .list_head{background-color:#fff;
                                 .lst_hr_tbl{
+                                    colgroup{
+                                        .col1{width:140px;}
+                                        .col2{width:auto;}
+                                        .col3{width:180px;}
+                                        .col4{width:180px;}
+                                        .col5{width:200px;}
+                                        .col6{width:100px;}
+
+                                        @media only screen and ( max-width: 1280px )  {
+                                            .col1{width:90px;}
+                                            .col2{width:auto;}
+                                            .col3{width:80px;}
+                                            .col4{width:100px;}
+                                            .col5{width:160px;}
+                                            .col6{width:60px;}
+                                        }
+                                        @media only screen and ( max-width: 767px )  {
+                                            .col1{width:auto;}
+                                            .col2{width:auto;}
+                                            .col3{width:auto;}
+                                            .col4{width:auto;}
+                                            .col5{width:auto;}
+                                            .col6{width:auto;}
+                                        }
+                                    }
                                     thead {
                                         th{ border-bottom:1px solid #eee; 
                                             .el{}
@@ -421,8 +506,12 @@
                                                }
                                                &.alrm_tbl_td_cont{text-align: left;
                                                    dl{margin:0; padding:0;
-                                                       dt{margin:0; padding:0; font-weight:700;}
-                                                       dd{margin:0; padding:0;}
+                                                       dt{margin:0; padding:0; font-weight:700;
+                                                            &.alarm_board_tit{overflow:hidden; width:100%; white-space: nowrap; text-overflow: ellipsis;}
+                                                        }
+                                                       dd{margin:0; padding:0;
+                                                            &.alarm_board_txt{overflow:hidden; width:100%; white-space: nowrap; text-overflow: ellipsis;}
+                                                        }
                                                    }
                                                }
                                                &.alrm_tbl_td_writer{}
@@ -460,7 +549,7 @@
     .alarm_strong{flex:0 0 7.8rem; margin-top:0.8rem; color:var_colors.$shinhan_text_gray;}
     .alarm_srch_filter_list_ul{ display: flex; flex-wrap: wrap; margin:0 -0.8rem;
         li.alarm_srch_filter_list_li{ margin-left:0.8rem; margin-bottom:0.8rem;
-            .alarm_srch_filter_label{display:flex; align-items:center; font-size:1.3rem; width: 10rem; height: 3.4rem; border-radius: 1.6rem; border:0.1rem solid var_colors.$btnbdcolor; background-color: var_colors.$color_white; cursor:pointer;
+            .alarm_srch_filter_label{display:flex; align-items:center; font-size:1.4rem; width: 10rem; height: 3.4rem; border-radius: 1.6rem; border:0.1rem solid var_colors.$btnbdcolor; background-color: var_colors.$color_white; cursor:pointer;
                 .alarm_srch_filter_input{
                     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
                 }
@@ -470,6 +559,10 @@
                 &:has(.alarm_srch_filter_input:checked) {
                     background-color: var_colors.$shinhan_text_primary; // 검정색 배경
                     color: var_colors.$color_white; // 흰색 글자
+                }
+
+                @media screen and (max-width:767px) {
+                    width:8rem; box-sizing: border-box;
                 }
             }
             &.expand{display: flex;
@@ -485,6 +578,11 @@
                         .icon_alarm_refresh_bk{margin-left:0.4rem;}
                     }
                 }
+            }
+
+            // li.alarm_srch_filter_list_li
+             @media screen and (max-width:767px) {
+                margin-left:0;
             }
         }
     }
@@ -581,7 +679,171 @@
             
         }
     } 
-}
+
+    // ======================================  모달 모바일 ==========================================
+    @media screen and (max-width:768px) {
+        //모달 세팅 공통
+        .modal_footer_big_btn.mobile{ display:flex; justify-content: center;
+            button.btn.btn_size_big_alarm{ flex:0 0  50%; height:5.6rem; color:var_colors.$color_white; font-size:1.6rem; font-weight:700; line-height:5.6rem; border:0 none; border-radius:0;
+             &.btn_size_big_alarm_cancel {background-color:var_colors.$shinhan_tbl_gry;}   
+             &.btn_size_big_alarm_confirm {background-color:var_colors.$shinhan_acitve;}
+            }
+        }
+        .alarm_srch_filter_list{display: block; margin-bottom:1.6rem;
+            &.margin_0{margin-bottom:0;}
+            //제목
+            .alarm_strong{flex:0 0 7.8rem; font-size:1.6rem; font-weight:500; margin-bottom:1.2rem; margin-top:0.8rem; color:var_colors.$shinhan_text_gray;}
+            //체크박스
+            .alarm_srch_filter_list_ul{ display: flex; flex-wrap: wrap; margin:0 -0.8rem;
+                li.alarm_srch_filter_list_li{ margin-left:0.8rem; margin-bottom:0.8rem;
+                    .alarm_srch_filter_label{display:flex; align-items:center; font-size:1.4rem; width: 10rem; height: 3.4rem; border-radius: 1.6rem; border:0.1rem solid var_colors.$btnbdcolor; background-color: var_colors.$color_white; cursor:pointer;
+                        .alarm_srch_filter_input{
+                            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+                        }
+                        .alarm_srch_filter_txt{ display: flex;  align-items: center; justify-content: center; width: 100%; height: 100%; font-weight: bold; transition: background-color 0.3s, color 0.3s;}
+
+                        // 체크박스가 체크되었을 때의 스타일
+                        &:has(.alarm_srch_filter_input:checked) {
+                            background-color: var_colors.$shinhan_text_primary; // 검정색 배경
+                            color: var_colors.$color_white; // 흰색 글자
+                        }
+                    }
+                    &.expand{display: block;
+                        .alarm_srch_slct_box{margin-left:0;margin-top:0.8rem;;
+                            .input_wrap_alarm{ position:relative; 
+                                    .alarm_btn_ico_box{width:auto; height:auto; padding:0; position:absolute; right:0.8rem; top:65%; transform: translateY(-50%); background:none;
+                                        button{
+                                            .icon_alarm{margin-right:0;}
+                                        }
+                                    }
+                            }
+                            .alarm_srch_refresh{display: inline-flex; width:3.6rem; align-items: center; justify-content: center; border:0 none;
+                                .icon_alarm_refresh_bk{margin-left:0.4rem;}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //.modal_outer_alarm 시작
+        width:100%; height:100vh;
+        .modal_dimmed_alarm{
+            width:100%; height:100vh;
+            .modal_component_alarm{position:absolute; top:0; left:0; transform: translate(0, 0); width:100%; height:100%; min-height:100%; overflow-y: auto;
+                .modal_header_alarm{padding:1.6rem; border-bottom:1px solid #eee; display:flex; align-items:center; justify-content:space-between; font-size:1.4rem;
+                    h3{font-size:1.6rem; font-weight:500; margin-bottom:1.2rem;}
+                    button{background:none; border:none; cursor:pointer;}
+                }
+                .modal_body_alarm{padding:1.6rem;  font-size:1.4rem;}
+                .modal_footer_alarm{padding:1.6rem; text-align:right;  font-size:1.4rem;
+                    .btn_close_alarm_calender{}
+                }
+                //모달 스와이퍼 스케쥴 관리
+                &.modal_calender_alarm{ z-index: 100;}
+                //모달 알람 검색 필터
+                &.modal_srch_alarm_filter{ width:100%; 
+                    .modal_header_alarm{display: block; border-bottom:0 none;  padding-bottom:0;
+                        .srch_alarm_form2{position:relative;  border-bottom:1px solid var_colors.$btnbdcolor; padding-bottom:1.6rem;
+                            .input_alarm_text2{ width:100%; height:100%; border:0 none;
+                                &:focus{outline: none;}
+                                &::placeholder{color:var_colors.$shinhan_text_gray;}
+                            }
+                            .srch_alarm_btn2{position:absolute; right:0; top:0; width:2.4rem; height:2.4rem; display:flex; align-items:center; justify-content:center; 
+                                .icon_alarm.icon_alarm_search_bk{
+                                    margin-left:0.4rem;
+                                }
+                            }
+
+                        }
+                    }
+                    .modal_body_alarm{
+                        
+                    }
+                    .modal_footer_alarm{display: flex; flex-wrap:wrap; align-items: center; justify-content: flex-start;
+                        .modal_footer_alarm_txt{ display: flex; justify-content:start; align-items: start; text-align:left; gap:0.8rem;}
+                        .alarm_srch_refreshAll{  margin-top:0.8rem; display: flex; align-items: center; justify-content: flex-start;
+                            .icon_alarm_refresh_bk{margin-left:0.8rem; margin-right:0; transform:scale(0.7)}
+                        }
+                    }
+                    
+                }
+                //모달 중지 데이터 필터
+                &.modal_cancel_alarm{ width:100%;
+                    .alarm_cancel_board_edit{display: block; justify-content: space-between; align-items:center;
+                        .flx_lft{margin-bottom:1.2rem;}
+                        .flx_rgt{display: flex; justify-content: space-between;
+                            form{display: flex;
+                                .input_alarm_text{ width: 16.6rem; height: 3.4rem; padding: 0 0.8rem; border-radius: 0.8rem 0 0 0.8rem; background-color: #EBEEF0; border: 1px solid #C6CBD0; border-right: 0 none; font-size: 1.3rem; color: #212529; background-color: #fff;}
+                                .srch_alarm_btn{ width: 3.4rem; height: 3.6rem; display: flex; align-items: center; justify-content: center; border-left: 0 none; border-radius: 0 0.8rem 0.8rem 0; border: 1px solid #C6CBD0;
+                                    .icon_alarm_search_bk{transform:scale(0.7); margin-right:0;}
+                                }
+                            }
+                            .alarm_drop_down{ 
+                                &.srch_alarm_box_cnt{margin-left:0.6rem;}
+                                .alarm_drop_down_box{
+                                    &.srch_alarm_slct_cnt{}
+                                    .alarm_drop_down_wrapper{
+                                        &.srch_alarm_slct_cnt_ul{}
+                                        .alarm_drop_down_item{
+                                            &.srch_alarm_slct_cnt_li{}
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .alarm_tbl_box{
+                        .alarm_input { flex: 0 0 3rem; display: flex; justify-content: center; align-items: center; }
+                        button{ background-color:transparent;
+                            .icon_alarm_16.icon_down_bk_16{transform:translateY(0.4rem);}
+                        }
+                        .alarm_tbl_tr{
+                            &.alarm_cancel_board_top {
+                                .alarm_cancel_board_tbl_ul{
+                                    .alarm_cancel_board_tbl_li_01 {}
+                                    .alarm_cancel_board_tbl_li_02 {flex:1 0 auto; }
+                                    .alarm_cancel_board_tbl_li_03 {display: none;}
+                                    .alarm_cancel_board_tbl_li_04 {}
+                                }
+                            }
+                            &.alarm_cancel_board_body{position:relative; padding-bottom:3rem;
+                                .alarm_cancel_board_tbl_ul {
+                                    li.alarm_cancel_board_tbl_li {
+                                        height: 5rem;
+                                        &.alarm_cancel_board_tbl_li_01 {flex:0 0 9rem;}
+                                        &.alarm_cancel_board_tbl_li_02 {flex:1 0 calc(100% - 17rem); }
+                                        &.alarm_cancel_board_tbl_li_03 {position:absolute; left:0; bottom:0; width:100%; height:3rem; line-height:3rem; 
+                                            .alarm_cancel_board_code{display: flex; width:100%; padding-left:5rem;}
+                                        }
+                                        &.alarm_cancel_board_tbl_li_04 {flex:0 0 8rem;}
+                                    }
+                                }
+                            }
+                        } 
+                            
+                    }
+                    .alarm_cancel_board_list{
+                        .pagination.alarm_pagination{}
+                    }  
+
+                }
+            }
+            .modal_alarm_srch_schedule{top:0%; left:0%; transform: translate(0, 0); width:100%; height:100vh; min-height:100vh; border-radius:0; box-shadow:0 0 0 rgba(0,0,0,0); z-index:10001; overflow-y:auto;
+                &.open{display: block;}
+                .modal_header_alarm{padding:1.6rem; border-bottom:1px solid #eee; display:flex; align-items:center; justify-content:space-between;
+                    h3{font-size:1.8rem; font-weight:500;}
+                    button{background:none; border:none; cursor:pointer;}
+                }
+                .modal_body_alarm{padding:1.6rem;}
+                .modal_footer_alarm{padding:1.6rem; text-align:right;
+                    .btn_close_alarm_calender{}
+                }
+                
+            }
+        }
+    }
+} //---------- 모달 끝
 
 //알람센터 검색 세팅 페이지 
 .alarm_setting_page{
@@ -596,7 +858,7 @@
                 .alarm_setting_title_p{margin-bottom:0;}
             }
         }
-        .alarm__setting_conts_box{flex:0 0 44rem; padding:3rem 3.4rem;
+        .alarm_setting_conts_box{flex:0 0 44rem; padding:3rem 3.4rem;
             &.alarm_setting_schedule_on_off_box{flex:0 0 70rem; display:flex; align-items:center; 
                 .dp_flx{display:inline-flex; align-items:center; margin-bottom:1.6rem; padding:1rem 2rem; border-radius:0.8rem; background-color:var_colors.$shinhan_bg_icon_gry;}
                 .alarm_srch_filter_list_ul{ margin:0;
@@ -608,7 +870,7 @@
                     } 
                 }
                 
-                .alarm_setting_schedule_time{margin-left:1.6rem;; }
+                .alarm_setting_schedule_time{margin-left:1.6rem; }
                 .alarm_btn_ico_box{ margin-left:1.6rem;  
                     &.mr_t_14{margin-top:1.4rem; }
                     button {background-color:rgba(255,255,255,0);}
@@ -655,6 +917,98 @@
             }
         }
     }
+
+    @media screen and (max-width:767px) {
+        //세팅페이지 .alarm_setting_page
+         .alarm_srch_filter_list{ flex-wrap:wrap; max-width:100%; 
+            &.flx_shrink{
+                justify-content: space-between;
+                .alarm_strong{
+                    &.alarm_setting_title_box{flex:0 1 auto; }
+                }
+            }
+            &.max_width_80{max-width:100%;}
+            &.v_center{align-items:center;}
+            &.alarm_setting_on_off_cate{ }
+            &.margin_0{}
+            .alarm_strong{
+                &.alarm_setting_title_box{flex:0 0 100%; padding:1.6rem; box-sizing:border-box; margin-top:0;
+                    h3{font-size:1.6rem; font-weight:500; color:var_colors.$shinhan_text_primary; }
+                    .alarm_setting_title_p{margin-bottom:0; margin-top:0.4rem;}
+                }
+            }
+            .alarm_srch_filter_list_ul {justify-content: space-between;}
+            .alarm_setting_conts_box{position:relative; flex:0 1 auto; box-sizing:border-box; padding:0 1.6rem;
+                &.alarm_setting_schedule_on_off_box{position:relative; flex:0 0 100%; display:flex; align-items:center; 
+                    .dp_flx{position:relative; display:flex; align-items:center; margin-bottom:1.6rem; padding:1rem 5rem 1rem 2rem; border-radius:0.8rem; background-color:var_colors.$shinhan_bg_icon_gry;
+                        &.dp_flx_no{ display:block; margin-bottom:0; margin-bottom:1.2rem;}
+                    }
+                    .alarm_srch_filter_list_ul{ margin:0; justify-content:space-between;
+                        &.flx_justify_start{justify-content:space-between;}
+                        &.alarm_setting_schedule_on_off_ul{ 
+                            li.alarm_setting_schedule_on_off_li{ margin-bottom:0; 
+                                .alarm_srch_filter_label{ width:auto; padding-left:1rem; padding-right:1rem;}
+                                
+                            }
+                        } 
+                    }
+                    
+                    .alarm_setting_schedule_time{display:flex; justify-content:space-between; margin-left:0; margin-top:1.2rem; 
+                        input {flex:0 0 46%;}
+                    }
+                    .alarm_btn_ico_box{ margin-left:0; 
+                        &.alarm_btn_ico_box_remove{position:absolute; right:1rem; top:50%; transform:translateY(-50%);} 
+                        &.mr_t_14{margin-top:1.4rem; }
+                        button {background-color:rgba(255,255,255,0);}
+                    }
+                }
+                &.dp_block{display: block;}
+                .alarm_srch_filter_list_ul{ 
+                    
+                    li.alarm_srch_filter_list_li{ 
+                        .alarm_srch_filter_label{ 
+                            .alarm_srch_filter_input{
+                                
+                            }
+                            .alarm_srch_filter_txt{ }
+        
+                            // 체크박스가 체크되었을 때의 스타일
+                            &:has(.alarm_srch_filter_input:checked) {
+                            
+                            }
+                        }
+                        &.expand{
+                            .alarm_srch_slct_box{
+                                .input_wrap_alarm{ 
+                                        .alarm_btn_ico_box{w
+                                            button{
+                                                .icon_alarm{ }
+                                            }
+                                        }
+                                }
+                                .alarm_srch_refresh{
+                                    .icon_alarm_refresh_bk{
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .alarm_flex_expand_box{ text-align:right; padding-right:1rem;
+                    &.align_left{text-align:left;}
+                    .alarm_setting_on_off_refreshAll, .alarm_setting_on_off_refresh{display: inline-flex; justify-content:space-between; align-items: center; 
+                        .icon_alarm_refresh_bk{transform:scale(0.7) translateX(0.8rem);}
+                    }
+                    //.alarm_flex_expand_box
+                    @media screen and (max-width:767px){
+                        &.pos_change{
+                            position:absolute; right:0; top:-6rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 @keyframes slideRemoveAnimation {
     0% {
@@ -694,20 +1048,87 @@
 //태블릿, 모바일 
 @media only screen and ( max-width: 1280px )  {
     body.gw_header {height:auto;}
-    .mobile {display:block;}
-    .web{display:none;}
-    body.gw_theme15.gw_header #layout_header { display: none; }
+    body.gw_header #layout_header {display:none;}
     #layout_container {
         min-height: auto;
         margin: 0;
     }
+   
     #layout_wrap {
         min-width: 100%; width:auto;
         height: auto;
     }
-    #layout_content .content .title_bar {display:none;}
-    .alarm_wrap #content.content .content_area .alarm_card_wrapper {display:none; }
+    
+    body.gw_theme15.gw_header.gw_sub #layout_content, 
+    body.gw_theme15.gw_header.gw_sub 
+    .snb_w_def #layout_content, 
+    body.gw_theme15.gw_header.gw_sub 
+    .snb_w_med #layout_content, 
+    body.gw_theme15.gw_header.gw_sub 
+    .snb_w_lar #layout_content {padding-left: 26rem;  } //408px - 260px = 148px
 
+    body.gw_theme15.gw_header.gw_sub .snb_w_def #layout_content .snb, body.gw_theme15.gw_header.gw_sub .snb_w_med #layout_content .snb, body.gw_theme15.gw_header.gw_sub .snb_w_lar #layout_content .snb {margin-left:0; left:0; height:100vh; z-index:200; }
+
+
+    /* Side Navigation 접기 */
+    /* =========================================================================
+    * 본 기능은 화면분할, 전체보기 기능과는 별도로 동작하도록 구현되어 있습니다.
+    * ========================================================================= */
+    .hide_snb #layout_container {
+        background: #fff !important;
+    }
+
+    body.gw_theme15.gw_header.gw_sub .hide_snb #layout_content, 
+    body.gw_theme15.gw_header.gw_sub .hide_snb .snb_w_def #layout_content, 
+    body.gw_theme15.gw_header.gw_sub .hide_snb .snb_w_med #layout_content,
+    body.gw_theme15.gw_header.gw_sub .hide_snb .snb_w_lar .hide_snb #layout_content {
+        padding-left: 0;
+    }
+
+    .hide_snb #layout_content .snb {
+        left: -260px;
+        visibility: hidden;
+        display: none;
+    }
+
+    .hide_snb #layout_content .content .title_bar .fold {
+        display: none;
+    }
+
+    .hide_snb #layout_content .content .title_bar .tgl_snb .btn_tgl_snb {
+        background-position: 0 -46px;
+    }
+
+    .hide_snb.snb_w_med #layout_content .snb {
+        left: -260px;
+    }
+
+    .hide_snb.snb_w_lar #layout_content .snb {
+        left: -290px;
+    }
+
+    .hide_snb #layout_content .hs_only {
+        display: block;
+    }
+
+    .hide_snb #layout_content .btn_group .hs_only, .hide_snb #layout_content .btn_group.hs_only, .hide_snb #layout_content .btn_hs_only, .hide_snb #layout_content button.hs_only {
+        display: inline-block;
+    }
+
+    .hide_snb #layout_content .content_area_vr {
+        padding: 0;
+    }
+
+    .hide_snb #layout_content .content_area_vr .division_list, .hide_snb #layout_content .content_area_vr .list_container_vr {
+        width: auto;
+    }
+    .hide_snb #content{}
+}
+//모바일 
+@media only screen and ( max-width: 767px )  {
+    .mobile {display:block;}
+    .web{display:none;}
+    
     body.gw_theme15.gw_header.gw_sub #layout_content, 
     body.gw_theme15.gw_header.gw_sub 
     .snb_w_def #layout_content, 
@@ -715,13 +1136,15 @@
     .snb_w_med #layout_content, 
     body.gw_theme15.gw_header.gw_sub 
     .snb_w_lar #layout_content { padding-left:0;}
-}
-//모바일 
-@media only screen and ( max-width: 767px )  {
+
+    #layout_content .content .title_bar {display:none;}
+    .alarm_wrap #content.content .content_area .alarm_card_wrapper {display:none; }
+
+    body.gw_theme15.gw_header.gw_sub .snb_w_def #layout_content .snb, body.gw_theme15.gw_header.gw_sub .snb_w_med #layout_content .snb, body.gw_theme15.gw_header.gw_sub .snb_w_lar #layout_content .snb {display:none; }
     //알람센터 상단
     .alarm_m_top { display: flex; justify-content: space-between; align-items: center; padding: 1rem; width: 100%; height: 60px; box-sizing: border-box;
-        .alarm_mobile_h { 
-            .alarm_noti_cnt{margin-left:0.8rem; padding-left:0.6rem; padding-right:0.6rem; font-size:1.2rem; }
+        .alarm_mobile_h { display:flex; justify-content: flex-start; align-items:center;
+            .alarm_noti_cnt{margin-left:0.8rem; padding-left:0.6rem; padding-right:0.6rem; font-size:1.2rem; line-height:2.4rem; }
         }
         .flx_rgt { display: flex; align-items: center; gap: 1rem;
             .srch_alarm_box {
@@ -764,115 +1187,119 @@
     }
 
     // 전체 게시판 리스트 컨테이너
-.board_list_alarm_box {width: 100%; height:calc(100vh - 10.8rem); box-sizing: border-box; overflow-y: auto;
-    // 게시판 알림 목록
-    .alarm_board_list_ul_m {padding: 0;
-        .alarm_board_list_li_m { display: flex; align-items: center; gap:1.2rem; background-color: var_colors.$color-white; padding:2rem 1.6rem;  border-bottom:.1rem solid var_colors.$shinhan_bd_gry;
-            &.alarm_read{color:var_colors.$shinhan_text_gray;
-                .alarm_board_conts_m{
-                    .alarm_board_conts_box_m{color:var_colors.$shinhan_text_gray;
-                        .alarm_board_conts_title_m{color:var_colors.$shinhan_text_gray;}
-                        .alarm_board_conts_text_m{color:var_colors.$shinhan_text_gray;}
+    .board_list_alarm_box {width: 100%; height:calc(100vh - 10.8rem); box-sizing: border-box; overflow-y: auto;
+        // 게시판 알림 목록
+        .alarm_board_list_ul_m { padding: 0;
+            .alarm_board_list_li_m { display: flex; align-items: center; gap:1.2rem; background-color: var_colors.$color-white; padding:2rem 1.6rem;  border-bottom:.1rem solid var_colors.$shinhan_bd_gry;
+                &.alarm_read{color:var_colors.$shinhan_text_gray;
+                    .alarm_board_conts_m{
+                        .alarm_board_conts_box_m{color:var_colors.$shinhan_text_gray;
+                            .alarm_board_conts_title_m{color:var_colors.$shinhan_text_gray;}
+                            .alarm_board_conts_text_m{color:var_colors.$shinhan_text_gray;}
 
+                        }
+                    }
+                }
+                .none_data_m{ width:100%; height:30rem; background:url(var.$imgurl + 'alarm_board_empty.png') no-repeat center center/100% auto; }
+                // 알림 게시판 카테고리 컨테이너
+                .alarm_board_cate_m { flex:0 0 6.8rem; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0.5rem;
+                    .alrm_cate_tit { flex: 0 0 2.6rem; margin-right:0;
+                        .icon_alarm {margin-right:0;}
+                        &.alrm_tit_mail { }
+                        &.alrm_tit_siren {
+                            background-color: #ef4444; // 긴급 아이콘 색상 (예시)
+                            position: relative;
+                            .icon_alarm { margin-right:0;}
+                        }
+                    }
+                }
+
+                // 알림 게시판 제목 내용 작성자 시간 컨테이너
+                .alarm_board_conts_m { flex: 0 0 calc(100% - 16rem); overflow:hidden;
+                    .alarm_board_conts_box_m { 
+                        .alarm_board_conts_title_m {width:100%; white-space:nowrap; font-size: 1.6rem; font-weight: 500; line-height:2.2rem; margin-bottom: 0.4rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+                        .alarm_board_conts_text_m { font-size: 1.6rem; line-height:2.4rem; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color:var_colors.$shinhan_text_gray;}
+                        .alarm_board_conts_info_m {margin: 0; margin-top: 0.5rem; font-size: 1.2rem; line-height:1.8rem; display: flex; justify-content: space-between; color:var_colors.$shinhan_text_gray;
+                            .alarm_board_conts_writer_m,
+                            .alarm_board_conts_day_m,
+                            .alarm_board_conts_time_m { font-style: normal; }
+                            .alarm_board_conts_day_m,.alarm_board_conts_time_m { color:var_colors.$shinhan_text_gray_num;}
+                        }
                     }
                 }
             }
-        // 알림 게시판 카테고리 컨테이너
-        .alarm_board_cate_m { flex:0 0 6.8rem; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0.5rem;
-            .alrm_cate_tit { flex: 0 0 2.6rem; margin-right:0;
-                .icon_alarm {margin-right:0;}
-                &.alrm_tit_mail { }
-                &.alrm_tit_siren {
-                    background-color: #ef4444; // 긴급 아이콘 색상 (예시)
-                    position: relative;
-                    .icon_alarm { margin-right:0;}
-                }
-            }
-        }
-
-        // 알림 게시판 제목 내용 작성자 시간 컨테이너
-        .alarm_board_conts_m { flex: 0 0 calc(100% - 16rem); overflow:hidden;
-            .alarm_board_conts_box_m { 
-                .alarm_board_conts_title_m {width:100%; white-space:nowrap; font-size: 1.6rem; font-weight: 500; line-height:2.2rem; margin-bottom: 0.4rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
-                .alarm_board_conts_text_m { font-size: 1.6rem; line-height:2.4rem; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color:var_colors.$shinhan_text_gray;}
-                .alarm_board_conts_info_m {margin: 0; margin-top: 0.5rem; font-size: 1.2rem; line-height:1.8rem; display: flex; justify-content: space-between; color:var_colors.$shinhan_text_gray;
-                    .alarm_board_conts_writer_m,
-                    .alarm_board_conts_day_m,
-                    .alarm_board_conts_time_m { font-style: normal; }
-                    .alarm_board_conts_day_m,.alarm_board_conts_time_m { color:var_colors.$shinhan_text_gray_num;}
-                }
-            }
-        }
-        // 알림 게시판 유틸리티 버튼 컨테이너
-        .alarm_board_util_m { flex:0 0 6.8rem; height:3.4rem; display: flex; align-items: center; gap: 0.5rem;
-            .alarm_btn_box {position:relative; display: flex; align-items: center;
-                .alarm_btn_wrap {position:absolute; right:7.8rem; top:50%; transform:translateY(-50%); display:none; align-items: center; justify-content:space-between; padding:2.2rem; box-shadow:0.2rem 0.2rem 0.4rem rgba(80,80,80,0.5); border-radius:1.2rem; background-color:var_colors.$color_white;
-                    &.active_mobile{display: flex; }
-                    .alarm_btn_ico_box { display: flex; gap: 0.8rem;
-                        button { width:2.4rem; height:2.4rem; background: none; border: none;  padding: 0;
-                            .icon_alarm { margin-right:0;
+            // 알림 게시판 유틸리티 버튼 컨테이너
+            .alarm_board_util_m { flex:0 0 6.8rem; height:3.4rem; display: flex; align-items: center; gap: 0.5rem;
+                .alarm_btn_box {position:relative; display: flex; align-items: center;
+                    .alarm_btn_wrap {position:absolute; right:7.8rem; top:50%; transform:translateY(-50%); display:none; align-items: center; justify-content:space-between; padding:2.2rem; box-shadow:0.2rem 0.2rem 0.4rem rgba(80,80,80,0.5); border-radius:1.2rem; background-color:var_colors.$color_white;
+                        &.active_mobile{display: flex; }
+                        .alarm_btn_ico_box { display: flex; gap: 0.8rem;
+                            button { width:2.4rem; height:2.4rem; background: none; border: none;  padding: 0;
+                                .icon_alarm { margin-right:0;
+                                }
                             }
                         }
                     }
-                }
-                & > button.btn{ flex:0 0 3.4rem; display:flex; align-items:center; justify-content:center; padding:0; box-sizing:border-box; border:0 none;
-                    &.alarm_btn_more{}
-                    &.alarm_btn_del{}
-                    .icon_alarm {margin-right:0;}
-                }
+                    & > button.btn{ flex:0 0 3.4rem; display:flex; align-items:center; justify-content:center; padding:0; box-sizing:border-box; border:0 none;
+                        &.alarm_btn_more{}
+                        &.alarm_btn_del{}
+                        .icon_alarm {margin-right:0;}
+                    }
 
-                &.alarm_on{
-                    .alarm_btn_wrap{display:flex;}
-                }
+                    &.alarm_on{
+                        .alarm_btn_wrap{display:flex;}
+                    }
 
-                .alarm_more { background: none; border: none; padding: 0;
-                   .icon_alarm { }
+                    .alarm_more { background: none; border: none; padding: 0;
+                    .icon_alarm { }
+                    }
                 }
             }
         }
-    }
-    .alarm_board_list_card_ul_m{
-        .alarm_board_list_card_li_m{margin:1.6rem; box-shadow:0.3rem 0.3rem 1rem rgba(120,120,120,0.5); border-radius:0.8rem; transition:all 0.3s ease; opacity:1; transform:scale(1);
-            &.remove_card{transform:scale(0); opacity:0.3;}
-            .alarm_card{padding:1.7rem 2rem; 
-                .alarm_btn_box {position:relative; display: flex; align-items: center;
-                    .alarm_btn_wrap {
-                        // 초기에 버튼을 숨깁니다.
-                        position:absolute; right:3.4rem; top:50%; transform:translateY(-50%);
-                        display: none;
-                        margin-right: 0.8rem;
-                        
-                        // 필요하다면 그림자, 배경색 등 추가 스타일
-                        box-shadow: 0.2rem 0.2rem 0.4rem rgba(80,80,80,0.5);
-                        border-radius: 1.2rem;
-                        background-color: var_colors.$color_white;
-                        padding: 2.2rem;
-                        
-                        // transform 대신 display 속성으로 전환
-                        transition: none; // 기존의 복잡한 transition을 무시
-                        
-                        .alarm_btn_ico_box {
-                            display: flex;
-                            gap: 0.8rem;
-                            // 기존의 복잡한 transform을 무시합니다.
-                            transform: none;
-                            opacity: 1;
-                            transition: none;
-                        }
-                    }
 
-                    // `.alarm_on` 클래스가 추가되면 버튼을 보이게 합니다.
-                    &.alarm_on {
+        .alarm_board_list_card_ul_m{
+            .alarm_board_list_card_li_m{margin:1.6rem; box-shadow:0.3rem 0.3rem 1rem rgba(120,120,120,0.5); border-radius:0.8rem; transition:all 0.3s ease; opacity:1; transform:scale(1);
+                &.remove_card{transform:scale(0); opacity:0.3;}
+                .alarm_card{padding:1.7rem 2rem; 
+                    &.none_data{height:16.7rem;}
+                    &.loading_alarm_m{height:16.7rem; background:url(var.$imgurl + 'loading_alarm_card.png') no-repeat 0 0;}
+                    .alarm_btn_box {position:relative; display: flex; align-items: center;
                         .alarm_btn_wrap {
-                            display: flex; // 숨겨진 버튼들을 보이게 함
+                            // 초기에 버튼을 숨깁니다.
+                            position:absolute; right:3.4rem; top:50%; transform:translateY(-50%);
+                            display: none;
+                            margin-right: 0.8rem;
+                            
+                            // 필요하다면 그림자, 배경색 등 추가 스타일
+                            box-shadow: 0.2rem 0.2rem 0.4rem rgba(80,80,80,0.5);
+                            border-radius: 1.2rem;
+                            background-color: var_colors.$color_white;
+                            padding: 2.2rem;
+                            
+                            // transform 대신 display 속성으로 전환
+                            transition: none; // 기존의 복잡한 transition을 무시
+                            
+                            .alarm_btn_ico_box {
+                                display: flex;
+                                gap: 0.8rem;
+                                // 기존의 복잡한 transform을 무시합니다.
+                                transform: none;
+                                opacity: 1;
+                                transition: none;
+                            }
+                        }
+
+                        // `.alarm_on` 클래스가 추가되면 버튼을 보이게 합니다.
+                        &.alarm_on {
+                            .alarm_btn_wrap {
+                                display: flex; // 숨겨진 버튼들을 보이게 함
+                            }
                         }
                     }
-                }
-            } 
+                } 
+            }
         }
     }
-  }
-}
 
 }
 

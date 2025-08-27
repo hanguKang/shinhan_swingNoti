@@ -109,6 +109,25 @@ block content
               h3.fl 
                 span 알림설정
           #content_area.content_area
+            .alarm_m_top.mobile 
+              h3.alarm_mobile_h
+                i.icon_alarm_m2.icon_alarm_m2_arr_rgt_gry 
+                | 알림설정
+              .flx_rgt 
+                .srch_alarm_box
+                  button.btn.srch_alarm_btn.srch_alarm_btn_m( type="button") 
+                    i.icon_alarm_m.icon_alarm_m_srch_bk
+                    span.hidden 검색
+                .toggl_btn_wrapper
+                  span.label_txt 
+                    | 집중근무
+                  label.alarm_toggle_switch_wrapper.alarm_concentration_toggle(for="alarm-concentration-toggle-switch-m")
+                    input#alarm-concentration-toggle-switch-m.alarm_toggle_switch_input.alarm_concentration_toggle_switch(type="checkbox")
+                    span.alarm_toggle_switch-slider
+                  p.alarm_setting 
+                    a(href="#none") 
+                      i.icon_alarm_m.icon_alarm_m_set_bk          
+                      span.hidden 알림설정
             .alarm_setting_page
               .alarm_setting_body
                 .alarm_wrap
@@ -116,7 +135,7 @@ block content
                     .alarm_strong.alarm_setting_title_box
                       h3 알림 받기/끄기
                       p.alarm_setting_title_p 알림을 받고싶은 종류만 선택해 주세요
-                    .alarm__setting_conts_box
+                    .alarm_setting_conts_box
                       ul.alarm_srch_filter_list_ul.alarm_setting_on_off
                         li.alarm_srch_filter_list_li
                           label.alarm_srch_filter_label(for="filter_setting_mail")
@@ -127,7 +146,7 @@ block content
                             input.alarm_srch_filter_input(type="checkbox" name="filter_setting_approve" id="filter_setting_approve")
                             span.alarm_srch_filter_txt 결재
                         li.alarm_srch_filter_list_li
-                          label.alarm_srch_filter_label(for="filter_setting_tag")
+                          label.alarm_srch_filter_label(for="filter_setting_scedule")
                             input.alarm_srch_filter_input(type="checkbox" name="filter_setting_tag" id="filter_setting_scedule")
                             span.alarm_srch_filter_txt 일정
                         li.alarm_srch_filter_list_li
@@ -148,7 +167,7 @@ block content
                             span.alarm_srch_filter_txt 쪽지
                         li.alarm_srch_filter_list_li
                           label.alarm_srch_filter_label(for="filter_setting_subscribe")
-                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_subscrib" id="filter_setting_subscribe ")
+                            input.alarm_srch_filter_input(type="checkbox" name="filter_setting_subscribe" id="filter_setting_subscribe")
                             span.alarm_srch_filter_txt 구독
                         li.alarm_srch_filter_list_li
                           label.alarm_srch_filter_label(for="filter_setting_drawer")
@@ -170,25 +189,25 @@ block content
                           label.alarm_srch_filter_label(for="filter_setting_system")
                             input.alarm_srch_filter_input(type="checkbox" name="filter_setting_system" id="filter_setting_system")
                             span.alarm_srch_filter_txt 시스템
-                      .alarm_flex_expand_box
+                      .alarm_flex_expand_box.pos_change
                         button.btn.alarm_setting_on_off_refresh(type="button")
                           span 초기화
                           i.icon_alarm.icon_alarm_refresh_bk  
-                  .alarm_srch_filter_list.v_center
+                  .alarm_srch_filter_list.v_center.flx_shrink
                     .alarm_strong.alarm_setting_title_box
                       h3 모바일로 알림 받기
                       p.alarm_setting_title_p 동일한 알림을 모바일로도 받을 수 있어요
-                    .alarm__setting_conts_box
+                    .alarm_setting_conts_box
                       .toggl_btn_wrapper
                         label.alarm_toggle_switch_wrapper.alarm_get-mobile_toggle(for="alarm-get-mobile-toggle-switch")
                           input#alarm-get-mobile-toggle-switch.alarm_toggle_switch_input(type="checkbox")
                           span.alarm_toggle_switch-slider
    
-                  .alarm_srch_filter_list.v_center
+                  .alarm_srch_filter_list.v_center.flx_shrink
                     .alarm_strong.alarm_setting_title_box
                       h3 집중근무 알림 켜기
                       p.alarm_setting_title_p 2시간 동안 모든 알림을 중지해요
-                    .alarm__setting_conts_box
+                    .alarm_setting_conts_box
                       .toggl_btn_wrapper
                         label.alarm_toggle_switch_wrapper.alarm_concentration_toggle(for="alarm-concentration-toggle-switch2")
                           input#alarm-concentration-toggle-switch2.alarm_toggle_switch_input.alarm_concentration_toggle_switch(type="checkbox")
@@ -197,9 +216,9 @@ block content
                     .alarm_strong.alarm_setting_title_box
                       h3 방해금지 스케줄 만들기
                       p.alarm_setting_title_p 주중 특정 요일과 시간에 알림을 중지해요
-                    .alarm__setting_conts_box.alarm_setting_schedule_on_off_box.dp_block
-                      .dp_flx
-                        ul.alarm_srch_filter_list_ul.alarm_setting_schedule_on_off_ul
+                    .alarm_setting_conts_box.alarm_setting_schedule_on_off_box.dp_block
+                      .dp_flx.dp_flx_no
+                        ul.alarm_srch_filter_list_ul.alarm_setting_schedule_on_off_ul.flx_justify_start
                           li.alarm_srch_filter_list_li.alarm_setting_schedule_on_off_li
                             label.alarm_srch_filter_label(for="filter_setting_day")
                               input.alarm_srch_filter_input(type="checkbox" name="filter_setting_day" id="filter_setting_day")
@@ -226,9 +245,9 @@ block content
                               span.alarm_srch_filter_txt 금
                         .alarm_setting_schedule_time 
                           <input type="time" id="no-disturb-time1" name="no-disturb-time1"> 
-                          | - 
+                           - 
                           <input type="time" id="no-disturb-time2" name="no-disturb-time2">
-                        .alarm_btn_ico_box 
+                        .alarm_btn_ico_box.alarm_btn_ico_box_remove
                           button.remove_alarm_not_disturb(type="button")
                             i.icon_alarm.icon_alarm_close_bk
                             span.hidden 방해금지 스케쥴 삭제
@@ -237,20 +256,24 @@ block content
                           button.add_alarm_not_disturb(type="button")
                             i.icon_alarm.icon_alarm_plus
                             span.hidden 방해금지 스케쥴 추가
-                  .alarm_srch_filter_list.v_center
+                  .alarm_srch_filter_list.v_center.flx_shrink
                     .alarm_strong.alarm_setting_title_box
                       h3 알림 중지된 대상
-                      p.alarm_setting_title_p 알람을 받지 않도록 등록한 사용자를 보고 편집할 수 있어요
-                    .alarm__setting_conts_box
+                      p.alarm_setting_title_p 
+                      | 알람을 받지 않도록 등록한 사용자를 보고 
+                      br.mobile 
+                      | 편집할 수 있어요
+                    .alarm_setting_conts_box
                       .alarm_flex_expand_box.align_left
                         button.btn.alarm_setting_on_off_edit(type="button")
                           span 보기/편집
-                  .alarm_srch_filter_list.v_center
+                  .alarm_srch_filter_list.v_center.flx_shrink
                     .alarm_strong.alarm_setting_title_box
                       h3 알림 설정 초기화
                       p.alarm_setting_title_p 모든 알림 설정을 최초의 상태로 변경해요
-                    .alarm__setting_conts_box
+                    .alarm_setting_conts_box
                       .alarm_flex_expand_box.align_left
                         button.btn.alarm_setting_on_off_refreshAll(type="button")
                           span 초기화
                           i.icon_alarm.icon_alarm_refresh_bk
+            
