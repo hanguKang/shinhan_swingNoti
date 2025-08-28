@@ -7,6 +7,8 @@
 
 .btn_txt {$font-size:14px; font-size:$font-size; font-weight:400; color:var_colors.$shinhan_text_primary;}
 .btn_border {border-color:1px solid #ced4da; }
+.btn_underline {border:0 none; border-bottom:1px solid var_colors.$shinhan_text_primary; font-size:1.2rem; font-family:var.$shinhan_noti;}
+.btn_alarm_txt {border:0 none !important; padding:1.6rem 1rem; }
 
 // //체크박스
 // .chk_each_box{$font-size:16px; font-size: $font-size; text-align:left; }

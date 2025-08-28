@@ -1,0 +1,733 @@
+
+extends ./templates/header
+
+block content 
+    #alarm_search.alarm_search
+        //- .content
+        //-   .content_area.content_area_vr
+        //알람 컨텐츠 시작
+        .alarm_wrap
+            .alarm_lft
+                header.alarm_srch_great_header.dp_flx
+                    .alarm_srch_header 
+                        h1
+                            a(href="#none ") 
+                                img(src="/img/main/logo.png" alt="스윙")
+                    form.alarm_main_frm(action="" method="get")
+                        .frm_alarm_main_srch_box
+                            .frm_alarm_main_srch_wrapper.dp_flx.vertical_center
+                                .input_group_box.dp_flx.vertical_center
+                                    button.btn.btn_alarm_main_srch(type="submit") 
+                                        i.icon_alarm.icon_alarm_search_bk
+                                        span.hidden 검색하기
+                                    input.alarm_main_srch_input(type="text" placeholder="검색어를 입력하세요") 
+                                    button.alarm_btn_srch_close 
+                                        i.icon_alarm.icon_alarm_X_gry
+                                .alarm_btn_ico_box 
+                                    button.alarm_btn_help(type="button")
+                                        i.icon_alarm.icon_alarm_help_blu 
+                            .frm_alarm_main_srch_filter_list_box.dp_flx.space_between
+                                .frm_alarm_main_srch_filter_list_wrapper 
+                                    ul.frm_alarm_main_srch_filter_ul.dp_flx.vertical_center
+                                        li.frm_alarm_main_srch_filter_li 
+                                            span.frm_alarm_main_srch_filter_li_txt 결재
+                                            i.icon_search_20.icon_search_20_close_mid_gry
+                                                span.hidden 닫기
+                                        li.frm_alarm_main_srch_filter_li 
+                                            span.frm_alarm_main_srch_filter_li_txt 결재
+                                            i.icon_search_20.icon_search_20_close_mid_gry
+                                                span.hidden 닫기
+                                        li.frm_alarm_main_srch_filter_li 
+                                            span.frm_alarm_main_srch_filter_li_txt 결재
+                                            i.icon_search_20.icon_search_20_close_mid_gry
+                                                span.hidden 닫기
+                                        li.frm_alarm_main_srch_filter_li 
+                                            span.frm_alarm_main_srch_filter_li_txt 결재
+                                            i.icon_search_20.icon_search_20_close_mid_gry
+                                                span.hidden 닫기
+                                        li.frm_alarm_main_srch_filter_li 
+                                            span.frm_alarm_main_srch_filter_li_txt 결재
+                                            i.icon_search_20.icon_search_20_close_mid_gry
+                                                span.hidden 닫기
+                                        li.frm_alarm_main_srch_filter_li 
+                                            span.frm_alarm_main_srch_filter_li_txt 결재
+                                            i.icon_search_20.icon_search_20_close_mid_gry
+                                                span.hidden 닫기
+                                        li.frm_alarm_main_srch_filter_li 
+                                            span.frm_alarm_main_srch_filter_li_txt 결재
+                                            i.icon_search_20.icon_search_20_close_mid_gry
+                                                span.hidden 닫기
+                                        li.frm_alarm_main_srch_filter_li 
+                                            span.frm_alarm_main_srch_filter_li_txt 결재
+                                            i.icon_search_20.icon_search_20_close_mid_gry
+                                                span.hidden 닫기
+                                button.btn(type="button")
+                                    i.icon_alarm.icon_alarm_filter_bk
+                        #alarm_main_srch_opt_box.alarm_main_srch_opt_box.alarm_srch_opt_filter_box  
+                            .modal_header_alarm
+                                .alarm_srch_wrap
+                                    .alarm_srch_filter_list.align_stretch
+                                        h3.alarm_strong 최근 검색어
+                                        ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_cate
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 비움과 채움
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 일림 검색어
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 스윙챗
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 2분기 실적보고
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 감사 준비 안내
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 신상품
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 스윙레터
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 공통플랫폼팁
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 스윙 새기능
+                                            li.alarm_srch_filter_list_li
+                                        .alarm_srch_btn_box     
+                                            button.btn.btn_underline.btn_alarm_srch_btn_list_del 전체삭제
+                            .modal_body_alarm
+                                .alarm_srch_wrap
+                                    .alarm_srch_filter_list_header 
+                                        h2.var.alarm_h16 검색범위
+                                    .alarm_srch_filter_list
+                                        h3.alarm_strong 메뉴
+                                        ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_cate
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_mail")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_mail" id="filter_alarm_mail")
+                                                    span.alarm_srch_filter_txt 메일
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_approve")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_approve" id="filter_alarm_approve")
+                                                    span.alarm_srch_filter_txt 결재
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_schedule")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_schedule" id="filter_alarm_schedule")
+                                                    span.alarm_srch_filter_txt 일정
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_todo")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_todo" id="filter_alarm_todo")
+                                                    span.alarm_srch_filter_txt 할일
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_staff")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_staff" id="filter_alarm_staff")
+                                                    span.alarm_srch_filter_txt 임직원
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_SAQ")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_SAQ" id="filter_alarm_SAQ")
+                                                    span.alarm_srch_filter_txt SAQ
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_memo")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_memo" id="filter_alarm_memo")
+                                                    span.alarm_srch_filter_txt 쪽지
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_subscribe")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_subscribe" id="filter_alarm_subscribe")
+                                                    span.alarm_srch_filter_txt 구독
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_drawer")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_drawer" id="filter_alarm_drawer")
+                                                    span.alarm_srch_filter_txt 내서랍
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_board")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_board" id="filter_alarm_board")
+                                                    span.alarm_srch_filter_txt 게시판
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_survey")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_survey" id="filter_alarm_survey")
+                                                    span.alarm_srch_filter_txt 설문
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_resource")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_resource" id="filter_alarm_resource")
+                                                    span.alarm_srch_filter_txt 자원예약
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_system")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_system" id="filter_alarm_system")
+                                                    span.alarm_srch_filter_txt 시스템
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_Cop")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_Cop" id="filter_alarm_Cop")
+                                                    span.alarm_srch_filter_txt 시스템
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_msnger")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_msnger" id="filter_alarm_msnger")
+                                                    span.alarm_srch_filter_txt 시스템
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_slct_all")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_slct_all" id="filter_alarm_slct_all")
+                                                    span.alarm_srch_filter_txt 시스템
+                                    .alarm_srch_filter_list
+                                        h3.alarm_strong 제목/내용
+                                        ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_title
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_tit")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_tit" id="filter_alarm_tit")
+                                                    span.alarm_srch_filter_txt 제목
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_conts")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_conts" id="filter_alarm_conts")
+                                                    span.alarm_srch_filter_txt 내용
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_file")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_file" id="filter_alarm_file")
+                                                    span.alarm_srch_filter_txt 첨부파일
+                                    .alarm_srch_filter_list.margin_0
+                                        h3.alarm_strong 조회기간
+                                        ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_period
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_today")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_today")
+                                                    span.alarm_srch_filter_txt 오늘
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_week")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_week")
+                                                    span.alarm_srch_filter_txt 일주일
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_month")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_month")
+                                                    span.alarm_srch_filter_txt 한달
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_month")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_month")
+                                                    span.alarm_srch_filter_txt 3개월
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_month")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_month")
+                                                    span.alarm_srch_filter_txt 6개월
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_month")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_month")
+                                                    span.alarm_srch_filter_txt 1년
+                                    .alarm_srch_filter_list
+                                        .alarm_strong 
+                                        ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_date
+                                            li.alarm_srch_filter_list_li.expand
+                                                label.alarm_srch_filter_label(for="filter_alarm_direct_text")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_direct_text" id="filter_alarm_direct_text")
+                                                    span.alarm_srch_filter_txt 직접입력
+                                                .alarm_srch_slct_box 
+                                                    <input name="" type="text" title="날짜선택" placeholder="yyyy-mm-dd" class="input_date hasDatepicker alarm_date_picker alarm_date_picker1" id="dp1754556217703"> -
+                                                    span.input_wrap_alarm 
+                                                        <input name="" type="text" title="날짜선택" placeholder="yyyy-mm-dd" class="input_date hasDatepicker alarm_date_picker alarm_date_picker2" id="dp1754556217704">
+                                                        .alarm_btn_ico_box 
+                                                            button.srch_alarm_modal_opener(type="button")
+                                                                i.icon_alarm.icon_alarm_calendar_gry
+                                                                span.hidden 스케쥴
+                                                    button.btn.alarm_srch_refresh.alarm_filter_set_date_refresh(type="button")
+                                                        i.icon_alarm.icon_alarm_refresh_bk
+                                                        span.hidden 조회기간 직접입력 값 새로고침 
+                            .modal_footer_alarm 
+                                .modal_footer_alarm_txt 
+                                    span * 
+                                    span.pd_l 필터에서 선택한 알림만 검색합니다.  모든 알림을 검색하려면 초기화하세요
+                                button.btn.alarm_srch_refreshAll(type="button")
+                                    span 전체 초기화
+                                    i.icon_alarm.icon_alarm_refresh_bk    
+                        #alarm_main_srch_filter_box.alarm_main_srch_filter_box.alarm_srch_opt_filter_box
+                            .modal_header_alarm
+                                .alarm_srch_wrap
+                                    .alarm_srch_filter_list
+                                        h3.alarm_strong 최근 검색어
+                                        ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_cate
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 비움과 채움
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 일림 검색어
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 스윙챗
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 2분기 실적보고
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 감사 준비 안내
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 신상품
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 스윙레터
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 공통플랫폼팁
+                                            li.alarm_srch_filter_list_li
+                                                span.alarm_srch_filter_txt 스윙 새기능
+                                            li.alarm_srch_filter_list_li
+                                        .alarm_srch_btn_box     
+                                            button.btn.btn_underline.btn_alarm_srch_btn_list_del 전체삭제
+                            .modal_body_alarm
+                                .alarm_srch_wrap
+                                    .alarm_srch_filter_list_header 
+                                        h2.var.alarm_h16 검색범위
+                                    .alarm_srch_filter_list
+                                        h3.alarm_strong 메뉴
+                                        ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_cate
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_mail_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_mail_result" id="filter_alarm_mail_result")
+                                                    span.alarm_srch_filter_txt 메일
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_approve_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_approve_result" id="filter_alarm_approve_result")
+                                                    span.alarm_srch_filter_txt 결재
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_schedule_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_schedule_result" id="filter_alarm_schedule_result")
+                                                    span.alarm_srch_filter_txt 일정
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_todo_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_todo_result" id="filter_alarm_todo_result")
+                                                    span.alarm_srch_filter_txt 할일
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_staff_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_staff_result" id="filter_alarm_staff_result")
+                                                    span.alarm_srch_filter_txt 임직원
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_SAQ_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_SAQ_result" id="filter_alarm_SAQ_result")
+                                                    span.alarm_srch_filter_txt SAQ
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_memo_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_memo_result" id="filter_alarm_memo_result")
+                                                    span.alarm_srch_filter_txt 쪽지
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_subscribe_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_subscribe_result" id="filter_alarm_subscribe_result")
+                                                    span.alarm_srch_filter_txt 구독
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_drawer_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_drawer_result" id="filter_alarm_drawer_result")
+                                                    span.alarm_srch_filter_txt 내서랍
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_board_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_board_result" id="filter_alarm_board_result")
+                                                    span.alarm_srch_filter_txt 게시판
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_survey_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_survey_result" id="filter_alarm_survey_result")
+                                                    span.alarm_srch_filter_txt 설문
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_resource_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_resource_result" id="filter_alarm_resource_result")
+                                                    span.alarm_srch_filter_txt 자원예약
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_system_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_system_result" id="filter_alarm_system_result")
+                                                    span.alarm_srch_filter_txt 시스템
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_CoP_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_CoP_result" id="filter_alarm_CoP_result")
+                                                    span.alarm_srch_filter_txt CoP
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_msnger_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_msnger_result" id="filter_alarm_msnger_result")
+                                                    span.alarm_srch_filter_txt 메신저
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_slct_all__result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_slct_all_result" id="filter_alarm_slct_all_result")
+                                                    span.alarm_srch_filter_txt 전체선택
+                                    .alarm_srch_filter_list
+                                        h3.alarm_strong 제목/내용
+                                        ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_title
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_tit_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_tit_result" id="filter_alarm_tit_result")
+                                                    span.alarm_srch_filter_txt 제목
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_conts_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_conts_result" id="filter_alarm_conts_result")
+                                                    span.alarm_srch_filter_txt 내용
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_file_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_file_result" id="filter_alarm_file_result")
+                                                    span.alarm_srch_filter_txt 첨부파일
+                                    .alarm_srch_filter_list.margin_0
+                                        h3.alarm_strong 조회기간
+                                        ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_period
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_today_result")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_today_result")
+                                                    span.alarm_srch_filter_txt 오늘
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_week_result")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_week_result")
+                                                    span.alarm_srch_filter_txt 일주일
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_month_result")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_month_result")
+                                                    span.alarm_srch_filter_txt 한달
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_month3__result")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_month3__result")
+                                                    span.alarm_srch_filter_txt 3개월
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_month6_result")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_month6_result")
+                                                    span.alarm_srch_filter_txt 6개월
+                                            li.alarm_srch_filter_list_li
+                                                label.alarm_srch_filter_label(for="filter_alarm_date_year_result")
+                                                    input.alarm_srch_filter_input(type="radio" name="filter_alarm_date" id="filter_alarm_date_year_result")
+                                                    span.alarm_srch_filter_txt 1년
+                                    .alarm_srch_filter_list
+                                        .alarm_strong 
+                                        ul.alarm_srch_filter_list_ul.alarm_srch_filter_list_date
+                                            li.alarm_srch_filter_list_li.expand
+                                                label.alarm_srch_filter_label(for="filter_alarm_direct_text_result")
+                                                    input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_direct_text_result" id="filter_alarm_direct_text_result")
+                                                    span.alarm_srch_filter_txt 직접입력
+                                                .alarm_srch_slct_box 
+                                                    <input name="" type="text" title="날짜선택" placeholder="yyyy-mm-dd" class="input_date hasDatepicker alarm_date_picker alarm_date_picker1" id="dp1754556217703"> -
+                                                    span.input_wrap_alarm 
+                                                        <input name="" type="text" title="날짜선택" placeholder="yyyy-mm-dd" class="input_date hasDatepicker alarm_date_picker alarm_date_picker2" id="dp1754556217704">
+                                                        .alarm_btn_ico_box 
+                                                            button.srch_alarm_modal_opener(type="button")
+                                                                i.icon_alarm.icon_alarm_calendar_gry
+                                                                span.hidden 스케쥴
+                                                    button.btn.alarm_srch_refresh.alarm_filter_set_date_refresh(type="button")
+                                                        i.icon_alarm.icon_alarm_refresh_bk
+                                                        span.hidden 조회기간 직접입력 값 새로고침 
+                            .modal_footer_alarm 
+                                .modal_footer_alarm_txt 
+                                    span * 
+                                    span.pd_l 필터에서 선택한 알림만 검색합니다.  모든 알림을 검색하려면 초기화하세요
+                                button.btn.alarm_srch_refreshAll(type="button")
+                                    span 전체 초기화
+                                    i.icon_alarm.icon_alarm_refresh_bk  
+                main.alarm_srch_main 
+                    header.alarm_srch_main_header 
+                        .alarm_srch_main_header_tab 
+                            .alarm_srch_main_header_tab_wrapper
+                                ul.alarm_srch_main_header_tab_ul 
+                                    li.alarm_srch_main_header_tab_li.active
+                                        button.btn.btn_alarm_txt_btn
+                                            em 
+                                                span.btn_txt 전체
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em 
+                                                span.btn_txt 임직원
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 게시판
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 메일
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 결재
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 내서랍
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 주소록
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt SAQ
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 메신저
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 설문
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 태그
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 일정
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 할일
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 구독
+                                                span.alarm_noti
+                                    li.alarm_srch_main_header_tab_li
+                                        button.btn.btn_alarm_txt_btn
+                                            em
+                                                span.btn_txt 자원예약
+                                                span.alarm_noti
+                            .alarm_srch_result_all_cnt 
+                                h4.alarm_h3.flx_lft 
+                                    |총 
+                                    span.alarm_srch_main_list_result_all_num 3,275건의 검색 결과
+                                    |건의 검색결과
+                        .alarm_srch_main_list_result_all 
+                            //- .alarm_srch_main_list_result_all_header
+                            //-     .flx_lt 
+                            //-     .flx_rgt 
+                                    //- .alarm_drop_down.srch_alarm_box_cnt
+                                    //-     .alarm_drop_down_box.srch_alarm_slct_cnt
+                                    //-         span.alarm_dropdown_selected_value 최신순
+                                    //-         ul.alarm_drop_down_wrapper.srch_alarm_slct_cnt_ul 
+                                    //-             li.alarm_drop_down_item.srch_alarm_slct_cnt_li 
+                                    //-                 button(type="button") 최신순
+                                    //-             li.alarm_drop_down_item.srch_alarm_slct_cnt_li
+                                    //-                 button(type="button") 정확도순
+                                    //-     .icon_alarm_16.icon_down_bk_16     
+                            .alarm_srch_main_list_result_all_body 
+                                .alarm_srch_main_list_result_all_body_header
+                                    h5.alarm_h18 AI 브리핑
+                                    p.alarm_srch_main_list_result_all_body_txt 신한의 그룹웨어 Swing이 2025년 9월 2일을 시작으로 한 분야씩 업그레이드하며 내년 초, 더 스마트하고 더 편리하게 그룹웨어가 진화합니다. 스윙의 업그레이드를 하나씩 소개하는 웹툰 시리즈 뉴스레터로 여러분께 전달하고 있습니다. ‘비움과 채움’으로 시작해 계속 진화하는 스윙! 신한인의 업무 환경을 더울 편하고 즐겁게 만들어줄꺼예요.
+                                .alarm_srch_main_list_result_all_body_main 
+                                    h6.alarm_h18.fw_noraml 주요기능소개
+                                    ul.alarm_srch_main_list_result_all_body_main_ul.list_dot
+                                        li.alarm_srch_main_list_result_all_body_main_li 직관적인 인터페이스1
+                                        li.alarm_srch_main_list_result_all_body_main_li 직관적인 인터페이스2
+                                        li.alarm_srch_main_list_result_all_body_main_li 직관적인 인터페이스3
+                                        li.alarm_srch_main_list_result_all_body_main_li 직관적인 인터페이스4
+                                        li.alarm_srch_main_list_result_all_body_main_li 직관적인 인터페이스5
+                                .alarm_wt_grdinet
+                            .alarm_srch_main_list_result_all_more 
+                                button.btn.btn_alarm_txt_btn
+                                    | 더보기
+                                    i.icon_search_20.icon_search_20_arr_down_bk        
+                        .alarm_srch_main_cate_box 
+                            header.alarm_srch_main_cate_box_header 
+                                .dp_flx.vertical_center
+                                    .flx_lft.dp_flx.vertical_center  
+                                        .alrm_cate_tit.alarm_tit_mail 메일
+                                        .alrm_cate_count 
+                                            span.alrm_cate_count_no 24
+                                            | 건
+                                    .flx_rgt 
+                                        .alarm_cate_filter_box.dp_flx.vertical_center 
+                                            button.btn.btn_alarm_txt 
+                                                | 더보기
+                                                i.icon_search_20.icon_search_20_plus_gry
+                                            label.alarm_srch_filter_label(for="filter_alarm_get_mail")
+                                                input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_get_mail" id="filter_alarm_get_mail")
+                                                span.alarm_srch_filter_txt 받은 메일
+                                            label.alarm_srch_filter_label(for="filter_alarm_send_mail")
+                                                input.alarm_srch_filter_input(type="checkbox" name="filter_alarm_send_mail" id="filter_alarm_send_mail")
+                                                span.alarm_srch_filter_txt 보낸 메일
+                            .alarm_srch_main_cate_box_body
+                                ul.alarm_srch_main_cate_box_body_ul 
+                                    li.alarm_srch_main_cate_box_body_li 
+                                        .dp_flx
+                                            .flx_lft 
+                                                .alarm_srch_main_cate_box_body_li_item 
+                                                    dl.alarm_srch_main_cate_box_body_li_dl
+                                                        dt.alarm_srch_main_cate_box_body_li_dt
+                                                            .alarm_srch_main_cate_box_body_li_dt_tit 
+                                                                | [비움과 채움]
+                                                                span.alarm_srch_keyword 스윙 뉴스레터
+                                                                | kick-off 미팅
+                                                            .alarm_srch_main_cate_box_body_li_dt_info.dp_flx 
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_date
+                                                                    time(datepicker="2025-08-30") 2025.08.30
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_writer 손신한
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_depart 
+                                                                    em ,
+                                                                    span.alarm_shinhan_depart_name SDGs 전략팀
+                                                        dd.alarm_srch_main_cate_box_body_li_dd
+                                                            .alarm_srch_main_cate_box_body_li_dd_txt SOL이 전하는 스윙 뉴스레터의 기획 아이디어 회의입니다.
+                                    li.alarm_srch_main_cate_box_body_li 
+                                        .dp_flx
+                                            .flx_lft
+                                                .alrm_cate_tit.alrm_cate_tit_sm.alrm_cate_gry D-8 
+                                            .flx_lft 
+                                                .alarm_srch_main_cate_box_body_li_item 
+                                                    dl.alarm_srch_main_cate_box_body_li_dl
+                                                        dt.alarm_srch_main_cate_box_body_li_dt
+                                                            .alarm_srch_main_cate_box_body_li_dt_tit 
+                                                                | [비움과 채움2]
+                                                                span.alarm_srch_keyword 스윙 뉴스레터
+                                                                | kick-off 미팅
+                                                            .alarm_srch_main_cate_box_body_li_dt_info.dp_flx 
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_date
+                                                                    time(datepicker="2025-08-30") 2025.08.30
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_writer 손신한
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_depart 
+                                                                    em ,
+                                                                    span.alarm_shinhan_depart_name SDGs 전략팀
+                                                        dd.alarm_srch_main_cate_box_body_li_dd
+                                                            .alarm_srch_main_cate_box_body_li_dd_txt SOL이 전하는 스윙 뉴스레터의 기획 아이디어 회의입니다.
+                                                    dl.alarm_srch_main_cate_box_body_li_dl
+                                                        dt.alarm_srch_main_cate_box_body_li_dt
+                                                            .alarm_srch_main_cate_box_body_li_dt_tit 
+                                                                | [비움과 채움2]
+                                                                span.alarm_srch_keyword 스윙 뉴스레터
+                                                                | kick-off 미팅
+                                                            .alarm_srch_main_cate_box_body_li_dt_info.dp_flx 
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_date
+                                                                    time(datepicker="2025-08-30") 2025.08.30
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_writer 손신한
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_depart 
+                                                                    em ,
+                                                                    span.alarm_shinhan_depart_name SDGs 전략팀
+                                                        dd.alarm_srch_main_cate_box_body_li_dd
+                                                            .alarm_srch_main_cate_box_body_li_dd_txt SOL이 전하는 스윙 뉴스레터의 기획 아이디어 회의입니다.
+                        .alarm_srch_main_cate_box 
+                            header.alarm_srch_main_cate_box_header 
+                                .dp_flx
+                                    .flx_lft  
+                                        .alrm_cate_tit.alarm_tit_schedule 일정
+                                        .alrm_cate_count 
+                                            span.alrm_cate_count_no 24
+                                            | 건
+                                    .flx_rgt 
+                                        .alarm_cate_filter_box 
+                                            button.btn.btn_alarm_txt 
+                                                | 더보기
+                                                i.icon_search_20.icon_search_20_plus_gry
+                            .alarm_srch_main_cate_box_body
+                                ul.alarm_srch_main_cate_box_body_ul 
+                                    li.alarm_srch_main_cate_box_body_li 
+                                        .dp_flx
+                                            .flx_lft
+                                                .alrm_cate_tit.alrm_cate_tit_sm.alrm_cate_gry D-14 
+                                            .flx_lft 
+                                                .alarm_srch_main_cate_box_body_li_item 
+                                                    dl.alarm_srch_main_cate_box_body_li_dl
+                                                        dt.alarm_srch_main_cate_box_body_li_dt
+                                                            .alarm_srch_main_cate_box_body_li_dt_tit 
+                                                                | [비움과 채움]
+                                                                span.alarm_srch_keyword 스윙 뉴스레터
+                                                                | kick-off 미팅
+                                                            .alarm_srch_main_cate_box_body_li_dt_info.dp_flx 
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_date
+                                                                    time(datepicker="2025-08-30") 2025.08.30
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_writer 손신한
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_depart 
+                                                                    em ,
+                                                                    span.alarm_shinhan_depart_name SDGs 전략팀
+                                                        dd.alarm_srch_main_cate_box_body_li_dd
+                                                            .alarm_srch_main_cate_box_body_li_dd_txt SOL이 전하는 스윙 뉴스레터의 기획 아이디어 회의입니다.
+                                    li.alarm_srch_main_cate_box_body_li 
+                                        .dp_flx
+                                            .flx_lft
+                                                .alrm_cate_tit.alrm_cate_tit_sm.alrm_cate_gry D-8 
+                                            .flx_lft 
+                                                .alarm_srch_main_cate_box_body_li_item 
+                                                    dl.alarm_srch_main_cate_box_body_li_dl
+                                                        dt.alarm_srch_main_cate_box_body_li_dt
+                                                            .alarm_srch_main_cate_box_body_li_dt_tit 
+                                                                | [비움과 채움2]
+                                                                span.alarm_srch_keyword 스윙 뉴스레터
+                                                                | kick-off 미팅
+                                                            .alarm_srch_main_cate_box_body_li_dt_info.dp_flx 
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_date
+                                                                    time(datepicker="2025-08-30") 2025.08.30
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_writer 손신한
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_depart 
+                                                                    em ,
+                                                                    span.alarm_shinhan_depart_name SDGs 전략팀
+                                                        dd.alarm_srch_main_cate_box_body_li_dd
+                                                            .alarm_srch_main_cate_box_body_li_dd_txt SOL이 전하는 스윙 뉴스레터의 기획 아이디어 회의입니다.
+                                                    dl.alarm_srch_main_cate_box_body_li_dl
+                                                        dt.alarm_srch_main_cate_box_body_li_dt
+                                                            .alarm_srch_main_cate_box_body_li_dt_tit 
+                                                                | [비움과 채움2]
+                                                                span.alarm_srch_keyword 스윙 뉴스레터
+                                                                | kick-off 미팅
+                                                            .alarm_srch_main_cate_box_body_li_dt_info.dp_flx 
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_date
+                                                                    time(datepicker="2025-08-30") 2025.08.30
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_writer 손신한
+                                                                span.flx_lft.alarm_srch_main_cate_box_body_li_dt_depart 
+                                                                    em ,
+                                                                    span.alarm_shinhan_depart_name SDGs 전략팀
+                                                        dd.alarm_srch_main_cate_box_body_li_dd
+                                                            .alarm_srch_main_cate_box_body_li_dd_txt SOL이 전하는 스윙 뉴스레터의 기획 아이디어 회의입니다.
+                        .alarm_srch_main_cate_box 
+                            header.alarm_srch_main_cate_box_header 
+                                .dp_flx
+                                    .flx_lft  
+                                        .alrm_cate_tit.alarm_tit_board 임직원
+                                        .alrm_cate_count 
+                                            span.alrm_cate_count_no 24
+                                            | 건
+                                    .flx_rgt 
+                                        .alarm_cate_filter_box 
+                                            button.btn.btn_alarm_txt 
+                                                | 더보기
+                                                i.icon_search_20.icon_search_20_plus_gry
+                            .alarm_srch_main_cate_box_body
+                                ul.alarm_srch_main_cate_box_body_ul.alarm_layout_card.dp_flx 
+                                    li.alarm_srch_main_cate_box_body_li
+                                        .alarm_srch_main_cate_box_body_li_wrapper 
+                                            .alarm_srch_main_cate_box_body_li_header.dp_flx 
+                                                .alarm_staff_profile_show.flx_lft 
+                                                .alarm_staff_info_conts.flx_lft 
+                                                    dl.alarm_staff_info_conts_dl 
+                                                        dt.alarm_staff_info_conts_dt 
+                                                            span.alarm_profile_info_name 오신한
+                                                            span.alarm_profile_info_grade1 프로
+                                                            | ( 
+                                                            span.alarm_profile_info_grade2 책임
+                                                            | ) 
+                                                        dd.alarm_staff_info_conts_dd.alarm_fc_gry
+                                                            .alarm_staff_info_conts_dd_positoin
+                                                                span.alarm_staff_info_conts_dd_positoin_part 신한DS
+                                                                span.mid_dot &middot;
+                                                                span.alarm_staff_info_conts_dd_positoin_part_detail 공통 플랫폼 팀 
+                                                        dd.alarm_staff_info_conts_dd_history 
+                                                            a(href="#none") 소통 이력보기
+                                            .alarm_srch_main_cate_box_body_li_main.dp_flx
+                                                ul.alarm_srch_main_cate_box_body_li_main_ul 
+                                                    li.alarm_srch_main_cate_box_body_li_main_li 
+                                                        i.icon_search_16.icon_search_16_call_gry
+                                                        span.alarm_srch_main_cate_box_body_li_main_li_txt 02-1234-5678
+                                                    li.alarm_srch_main_cate_box_body_li_main_li 
+                                                        i.icon_search_16.icon_search_16_mail_gry
+                                                        span.alarm_srch_main_cate_box_body_li_main_li_txt 02-1234-5678
+                                                    li.alarm_srch_main_cate_box_body_li_main_li 
+                                                        i.icon_search_16.icon_search_16_phone_gry
+                                                        span.alarm_srch_main_cate_box_body_li_main_li_txt 02-1234-5678
+                                                    li.alarm_srch_main_cate_box_body_li_main_li 
+                                                        i.icon_search_16.icon_search_16_talk _gry
+                                                        span.alarm_srch_main_cate_box_body_li_main_li_txt 02-1234-5678                          
+            .alarm_rgt 
+                .alarm_search_histroy
+                    .alarm_search_histroy_header 
+                    .alarm_search_histroy_main 
+                        ul.alarm_search_histroy_ul         
+                            li.alarm_search_histroy_li 
+                                .alarm_search_histroy_li_txt_wrapper 비움과 채움
+                            li.alarm_search_histroy_li 
+                                .alarm_search_histroy_li_txt_wrapper 공통플랫폼팀
+                            li.alarm_search_histroy_li 
+                                .alarm_search_histroy_li_txt_wrapper 스윙챗
+                            li.alarm_search_histroy_li 
+                                .alarm_search_histroy_li_txt_wrapper 스윙레터
+                            li.alarm_search_histroy_li 
+                                .alarm_search_histroy_li_txt_wrapper 고개센터
+                            li.alarm_search_histroy_li 
+                                .alarm_search_histroy_li_txt_wrapper 더 스마트한 스윙
+                            li.alarm_search_histroy_li 
+                                .alarm_search_histroy_li_txt_wrapper 간편 일정등록
+                            li.alarm_search_histroy_li 
+                                .alarm_search_histroy_li_txt_wrapper 업무의 시작과 끝
+                            li.alarm_search_histroy_li 
+                                .alarm_search_histroy_li_txt_wrapper 업무효율 끝판왕
+                            li.alarm_search_histroy_li 
+                                .alarm_search_histroy_li_txt_wrapper 우리함께 Lv업
+
+
