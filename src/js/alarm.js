@@ -712,6 +712,7 @@ function handleDropdownSelection(value) {
 function alarmDopdownHandler(){
     // 문서 전체에 클릭 이벤트를 위임하여 모든 드롭다운을 관리합니다.
     document.addEventListener('click', (event) => {
+        const btnAll = document.querySelectorAll('.alarm_drop_down button');
                 // 클릭된 요소가 드롭다운인지 확인
         const clickedDropDown = event.target.closest('.alarm_drop_down');
         
@@ -730,6 +731,10 @@ function alarmDopdownHandler(){
             if (isItemButton) {
                 // 아이템(버튼) 클릭 핸들러
                 const selectedValue = isItemButton.textContent.trim();
+                btnAll.forEach(btn => {
+                    btn.classList.remove('active')
+                });
+                isItemButton.classList.add('active');
                 console.log('아이템이 클릭되었습니다:', selectedValue);
                 
                 // 선택된 아이템의 텍스트를 드롭다운 박스에 표시
